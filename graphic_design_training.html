@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphic Design Tutor Training — Kodland</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#C4F046;--lime-d:#AEDD2E;--pink:#F03D9E;--pink-d:#D4308A;
+  --ink:#111111;--ink2:#3A3A3A;--muted:#7A7A8A;
+  --bg:#E8FABD;--surface:#FFFFFF;--surface2:#F4FCD3;--border:#D8F07A;
+  --text:var(--ink);--text2:var(--ink2);--text-muted:var(--muted);
+  --nav-bg:rgba(255,255,255,0.94);--nav-b:#DDFAA0;
+  --shadow:0 2px 12px rgba(0,0,0,.07);--shadow-h:0 8px 28px rgba(0,0,0,.13);
+  --code-bg:#111820;--code-text:#C9E4FF;
+  --cw-bg:#FFF7F0;--cw-b:#FED7AA;--cw-t:#9A3412;
+  --ct-bg:#F0F9FF;--ct-b:#BAE6FD;--ct-t:#0C4A6E;
+  --cg-bg:#F0FDF4;--cg-b:#BBF7D0;--cg-t:#14532D;
+  --hi-bg:#FFF0F8;--hi-b:#F9A8D4;--hi-t:#831843;
+  --opt-h:#F4FCD3;
+  --ok-bg:#F0FDF4;--ok-b:#86EFAC;--ok-t:#15803D;
+  --no-bg:#FEF2F2;--no-b:#FECACA;--no-t:#B91C1C;
+  --r:14px;--rsm:8px;--rpill:999px;
+}
+[data-theme="dark"]{
+  --bg:#0E1210;--surface:#181F15;--surface2:#1E2A18;--border:#2A3D22;
+  --text:#F0FAD8;--text2:#B8D89A;--text-muted:#6B8A5A;
+  --nav-bg:rgba(14,18,16,0.94);--nav-b:#2A3D22;
+  --shadow:0 2px 16px rgba(0,0,0,.5);--shadow-h:0 8px 28px rgba(0,0,0,.5);
+  --cw-bg:rgba(249,115,22,.1);--cw-b:rgba(249,115,22,.3);--cw-t:#FB923C;
+  --ct-bg:rgba(14,165,233,.1);--ct-b:rgba(14,165,233,.3);--ct-t:#38BDF8;
+  --cg-bg:rgba(34,197,94,.1);--cg-b:rgba(34,197,94,.3);--cg-t:#4ADE80;
+  --hi-bg:rgba(240,61,158,.08);--hi-b:rgba(240,61,158,.3);--hi-t:#F472B6;
+  --opt-h:#1E2A18;
+  --ok-bg:rgba(34,197,94,.1);--ok-b:rgba(34,197,94,.4);--ok-t:#4ADE80;
+  --no-bg:rgba(239,68,68,.1);--no-b:rgba(239,68,68,.4);--no-t:#F87171;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;overflow-x:hidden;transition:background .25s,color .25s}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:62px;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:2px solid var(--nav-b);position:sticky;top:0;z-index:100;transition:background .25s,border-color .25s}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+.logo-mark{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.5px;color:var(--ink);line-height:1;white-space:nowrap}
+[data-theme="dark"] .logo-mark{color:var(--lime)}
+.logo-sub{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--pink);white-space:nowrap;line-height:1}
+.logo-div{width:1px;height:16px;background:var(--border);margin:0 4px}
+.nav-r{display:flex;align-items:center;gap:8px}
+.tbtn{width:38px;height:38px;border-radius:var(--rpill);background:var(--surface);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all .15s;flex-shrink:0}
+.tbtn:hover{background:var(--lime);border-color:var(--lime-d)}
+.pbtn{display:flex;align-items:center;gap:5px;padding:8px 16px;border-radius:var(--rpill);background:var(--surface);border:2px solid var(--border);color:var(--text2);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
+.pbtn:hover{background:var(--lime);border-color:var(--lime-d);color:var(--ink)}
+/* HERO */
+.hero{padding:52px 40px 36px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;bottom:30%;background:radial-gradient(ellipse 70% 55% at 50% 0%,var(--lime) 0%,transparent 70%);opacity:.45;pointer-events:none}
+[data-theme="dark"] .hero::before{background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(196,240,70,.15) 0%,transparent 70%);opacity:1}
+.hero-inner{position:relative;max-width:600px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:2px solid var(--border);border-radius:var(--rpill);padding:5px 14px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;color:var(--text2);margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px}
+.hero h1{font-family:'Nunito',sans-serif;font-size:clamp(28px,5vw,46px);font-weight:900;line-height:1.1;letter-spacing:-1px;color:var(--text);margin-bottom:14px}
+.h-pill{display:inline-block;background:var(--pink);color:#fff;border-radius:var(--rpill);padding:1px 18px;margin:0 2px;font-size:.93em}
+[data-theme="dark"] .h-pill{background:var(--lime);color:var(--ink)}
+.hero p{color:var(--text2);font-size:15px;line-height:1.65;margin-bottom:28px}
+.prog-strip{display:inline-flex;align-items:center;gap:14px;background:var(--surface);border:2px solid var(--border);border-radius:var(--rpill);padding:10px 20px;box-shadow:var(--shadow);max-width:360px;width:100%}
+.pnum{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--text);line-height:1;flex-shrink:0}
+.ptrack{flex:1;height:8px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rpill);overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,var(--lime),var(--pink));border-radius:var(--rpill);transition:width .6s cubic-bezier(.34,1.56,.64,1)}
+.plbl{font-size:12px;color:var(--text-muted);font-weight:600;flex-shrink:0}
+/* GRID */
+.msec{padding:8px 32px 70px;max-width:1060px;margin:0 auto;width:100%}
+.slbl{font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:16px;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.mc{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;box-shadow:var(--shadow)}
+.mc:hover:not(.locked){transform:translateY(-4px);box-shadow:var(--shadow-h)}
+.mc.locked{opacity:.45;cursor:not-allowed}
+.mc.done{border-color:var(--lime-d)}
+[data-theme="dark"] .mc.done{border-color:rgba(196,240,70,.4)}
+.mc-stripe{height:6px}
+.mc-body{padding:20px}
+.mc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mc-num{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text-muted)}
+.mc-em{font-size:22px}
+.mc-title{font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;letter-spacing:-.2px;color:var(--text);margin-bottom:5px}
+.mc-desc{font-size:13px;color:var(--text2);line-height:1.55}
+.mc-foot{margin-top:15px;display:flex;align-items:center;justify-content:space-between}
+.badge{font-family:'Nunito',sans-serif;font-size:11px;font-weight:900;letter-spacing:.3px;padding:4px 12px;border-radius:var(--rpill);text-transform:uppercase}
+.bd{background:var(--lime);color:var(--ink);border:1.5px solid var(--lime-d)}
+.bs{background:var(--pink);color:#fff;border:1.5px solid var(--pink-d)}
+.bl{background:var(--surface2);color:var(--text-muted);border:1.5px solid var(--border)}
+.btr{background:#FFF7E6;color:#B45309;border:1.5px solid #FDE68A}
+[data-theme="dark"] .btr{background:rgba(245,158,11,.1);color:#FBB040;border-color:rgba(245,158,11,.3)}
+[data-theme="dark"] .bd{background:rgba(196,240,70,.18);color:var(--lime);border-color:rgba(196,240,70,.4)}
+[data-theme="dark"] .bs{background:rgba(240,61,158,.18);color:var(--pink);border-color:rgba(240,61,158,.4)}
+.stag{font-size:12px;color:var(--text-muted);font-weight:600}
+.stag b{color:var(--text)}
+/* CONTENT */
+.cbody{padding:36px 40px 60px;max-width:800px;margin:0 auto;width:100%;flex:1}
+.meyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:8px}
+.mh1{font-family:'Nunito',sans-serif;font-size:clamp(24px,4vw,34px);font-weight:900;letter-spacing:-.6px;line-height:1.12;color:var(--text);margin-bottom:14px}
+.mobj{background:var(--surface);border:2px solid var(--border);border-left:5px solid var(--acc,var(--lime));border-radius:0 var(--rsm) var(--rsm) 0;padding:12px 16px;font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:32px}
+.mobj strong{color:var(--text)}
+.sch{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;margin:28px 0 12px;color:var(--text);display:flex;align-items:center;gap:8px}
+.sch::after{content:'';flex:1;height:2px;background:var(--border);border-radius:2px}
+.card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:10px;box-shadow:var(--shadow)}
+.card h4{font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:var(--text);margin-bottom:7px}
+.card p,.card li{font-size:14px;color:var(--text2);line-height:1.7}
+.card ul,.card ol{padding-left:17px}
+.card li{margin-bottom:4px}
+.card p strong,.card li strong{color:var(--text)}
+.card a{color:var(--pink);font-weight:600}
+.callout a{color:inherit;font-weight:700;text-decoration:underline}
+.tbl-wrap{overflow-x:auto;margin-top:4px}
+.card table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.55}
+.card th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);font-family:'Nunito',sans-serif;font-size:12.5px;color:var(--text)}
+.card td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.card tr:last-child td{border-bottom:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:14px}
+.fact{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rsm);padding:16px 12px;text-align:center;box-shadow:var(--shadow)}
+.fact-ic{font-size:26px;margin-bottom:7px}
+.fact-t{font-size:12.5px;color:var(--text2);line-height:1.55}
+.fact-t b,.fact-t strong{color:var(--text)}
+.prog{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.prog-mod{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rsm);padding:14px 16px;box-shadow:var(--shadow)}
+.prog-h{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.prog-n{background:var(--lime);color:var(--ink);font-family:'Nunito',sans-serif;font-weight:900;font-size:11px;border-radius:var(--rpill);padding:3px 10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.prog-t{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--text)}
+.prog-ls{padding-left:17px;margin-bottom:9px}
+.prog-ls li{font-size:13px;color:var(--text2);line-height:1.65}
+.prog-res{font-size:12.5px;color:var(--text2);background:var(--surface2);border-radius:var(--rsm);padding:9px 11px;line-height:1.55}
+.qa-row{padding:10px 0;border-bottom:1px solid var(--border)}
+.qa-row:last-child{border-bottom:none;padding-bottom:2px}
+.qa-k{font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--text);margin-bottom:3px}
+.qa-v{font-size:13.5px;color:var(--text2);line-height:1.6}
+.card code{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--surface2);border:1.5px solid var(--border);border-radius:5px;padding:2px 7px;color:var(--pink)}
+[data-theme="dark"] .card code{color:var(--lime)}
+.card.hi{background:var(--hi-bg);border-color:var(--hi-b)}
+.card.hi h4{color:var(--hi-t)}
+.card.hi p,.card.hi li{color:var(--hi-t);opacity:.88}
+.card.hi code{background:rgba(240,61,158,.1);border-color:rgba(240,61,158,.25);color:var(--pink)}
+.callout{display:flex;gap:10px;border-radius:var(--rsm);padding:12px 15px;margin-bottom:10px;font-size:13.5px;line-height:1.65;border:1.5px solid}
+.ci{font-size:15px;flex-shrink:0;margin-top:1px}
+.cw{background:var(--cw-bg);border-color:var(--cw-b);color:var(--cw-t)}
+.ct{background:var(--ct-bg);border-color:var(--ct-b);color:var(--ct-t)}
+.cg{background:var(--cg-bg);border-color:var(--cg-b);color:var(--cg-t)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.two-col{grid-template-columns:1fr}}
+.divider{border:none;border-top:2px solid var(--border);margin:28px 0}
+.ctabtn{display:block;width:100%;padding:16px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;cursor:pointer;transition:all .15s;margin-bottom:40px;margin-top:4px;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.ctabtn:hover{background:var(--pink);transform:translateY(-2px);box-shadow:0 6px 20px rgba(240,61,158,.35)}
+[data-theme="dark"] .ctabtn{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .ctabtn:hover{background:var(--pink);color:#fff}
+@media(max-width:640px){.cbody,.msec,.hero{padding-left:18px;padding-right:18px}}
+/* IMAGES & VIDEO */
+.mod-img{max-width:100%;border-radius:var(--rsm);border:1.5px solid var(--border);margin:10px 0 12px;display:block}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:var(--rsm);display:block;background:#000;margin-top:10px}
+.yt-lite{position:relative;display:block;width:100%;aspect-ratio:16/9;background-size:cover;background-position:center;border-radius:var(--rsm);cursor:pointer;margin-top:10px;overflow:hidden;background-color:#000}
+.yt-lite:hover .yt-play{background:#f00;transform:scale(1.08)}
+.yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:rgba(33,33,33,.85);border-radius:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;pointer-events:none}
+.yt-play::after{content:'';display:block;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent #fff;margin-left:4px}
+.video-link{display:inline-block;margin-top:10px;font-size:13px;color:var(--pink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+/* QUIZ */
+.qbody{padding:36px 40px;max-width:680px;margin:0 auto;width:100%;flex:1}
+.qpt{height:7px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rpill);margin-bottom:36px;overflow:hidden}
+.qpf{height:100%;background:linear-gradient(90deg,var(--lime),var(--pink));border-radius:var(--rpill);transition:width .4s ease}
+.qctr{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:10px}
+.qtxt{font-family:'Nunito',sans-serif;font-size:21px;font-weight:900;letter-spacing:-.3px;line-height:1.35;margin-bottom:26px;color:var(--text)}
+.qopts{display:flex;flex-direction:column;gap:10px}
+.qopt{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:14px 18px;cursor:pointer;font-size:14px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s;text-align:left;line-height:1.5;box-shadow:var(--shadow)}
+.qopt:hover:not(.answered){background:var(--opt-h);border-color:var(--lime-d)}
+.qopt.correct{background:var(--ok-bg);border-color:var(--ok-b);color:var(--ok-t)}
+.qopt.wrong{background:var(--no-bg);border-color:var(--no-b);color:var(--no-t)}
+.qopt.answered{cursor:default}
+.qfb{display:none;margin-top:14px;border-radius:var(--rsm);padding:13px 16px;font-size:14px;line-height:1.6;border:2px solid}
+.qfb.show{display:block}
+.qfb.ok{background:var(--ok-bg);border-color:var(--ok-b);color:var(--ok-t)}
+.qfb.bad{background:var(--no-bg);border-color:var(--no-b);color:var(--no-t)}
+.qnxt{display:none;margin-top:18px;width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;cursor:pointer;transition:all .15s}
+.qnxt.show{display:block}
+.qnxt:hover{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .qnxt{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .qnxt:hover{background:var(--pink);color:#fff}
+/* RESULTS */
+.rbody{padding:60px 40px;max-width:520px;margin:0 auto;text-align:center;flex:1}
+.remi{font-size:64px;margin-bottom:14px}
+.rtitle{font-family:'Nunito',sans-serif;font-size:30px;font-weight:900;letter-spacing:-.4px;color:var(--text)}
+.rpct{font-family:'Nunito',sans-serif;font-size:62px;font-weight:900;line-height:1;margin:14px 0 6px}
+.rpct.pass{color:var(--lime-d)}
+.rpct.fail{color:var(--pink)}
+[data-theme="dark"] .rpct.pass{color:var(--lime)}
+.rsub{color:var(--text2);font-size:15px;line-height:1.65;margin-bottom:30px}
+.bdark{display:block;width:100%;padding:14px 24px;margin-bottom:10px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;cursor:pointer;transition:all .15s}
+.bdark:hover{background:var(--pink)}
+[data-theme="dark"] .bdark{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .bdark:hover{background:var(--pink);color:#fff}
+.bline{display:block;width:100%;padding:13px 24px;margin-bottom:10px;background:transparent;color:var(--text2);border:2px solid var(--border);border-radius:var(--rpill);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.bline:hover{background:var(--surface2);color:var(--text);border-color:var(--lime-d)}
+/* CERT */
+.compbody{padding:60px 40px;max-width:600px;margin:0 auto;text-align:center;flex:1}
+.cert{background:var(--surface);border:3px solid var(--lime-d);border-radius:20px;padding:32px 28px;margin:28px 0;box-shadow:0 0 40px rgba(196,240,70,.18);position:relative;overflow:hidden}
+.cert::before{content:'';position:absolute;top:-60px;right:-60px;width:160px;height:160px;border-radius:50%;background:var(--lime);opacity:.1;pointer-events:none}
+.clbl2{font-family:'Nunito',sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:var(--pink);margin-bottom:12px}
+.cert h2{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.3px;color:var(--text)}
+.cert p{color:var(--text2);margin-top:6px;font-size:14px}
+.cmods{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
+.cmod{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+/* DST */
+.dst-body{padding:40px 40px 60px;max-width:780px;margin:0 auto;flex:1}
+.dst-badge{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:var(--ink);border:2px solid var(--lime-d);border-radius:var(--rpill);padding:5px 14px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+[data-theme="dark"] .dst-badge{background:rgba(196,240,70,.18);color:var(--lime);border-color:rgba(196,240,70,.4)}
+.dst-h1{font-family:'Nunito',sans-serif;font-size:clamp(22px,4vw,32px);font-weight:900;letter-spacing:-.6px;line-height:1.12;color:var(--text);margin-bottom:10px}
+.dst-sub{font-size:15px;color:var(--text2);line-height:1.7}
+.dst-section-label{font-family:'Nunito',sans-serif;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin:28px 0 14px}
+.dst-task{display:flex;gap:16px;margin-bottom:18px;align-items:flex-start}
+.dst-task-num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+[data-theme="dark"] .dst-task-num{background:var(--lime);color:var(--ink)}
+.dst-task-body{flex:1;background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow)}
+.dst-task-body h3{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;color:var(--text);margin-bottom:6px}
+.dst-task-body p{font-size:14px;color:var(--text2);line-height:1.65}
+.dst-task-body p strong{color:var(--text)}
+.dst-link-btn{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:10px 18px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;cursor:pointer;text-decoration:none;transition:all .15s}
+.dst-link-btn:hover{background:var(--pink);transform:translateY(-1px)}
+[data-theme="dark"] .dst-link-btn{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .dst-link-btn:hover{background:var(--pink);color:#fff}
+.dst-warn{background:var(--cw-bg);border:2px solid var(--cw-b);border-radius:var(--rsm);padding:14px 18px;color:var(--cw-t);font-size:13.5px;line-height:1.7;margin:24px 0}
+.dst-warn ul{padding-left:18px;margin-top:6px}
+.dst-warn strong{font-weight:800}
+.dst-submit-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:24px 24px;box-shadow:var(--shadow)}
+.dst-submit-title{font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:var(--text);margin-bottom:10px}
+@media(max-width:640px){.dst-body{padding-left:18px;padding-right:18px}.dst-task{flex-direction:column}.dst-task-num{margin-bottom:-8px}}
+/* LOGIN */
+.login-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
+.login-wrap::before{content:'';position:absolute;inset:0;bottom:40%;background:radial-gradient(ellipse 70% 55% at 50% 0%,var(--lime) 0%,transparent 70%);opacity:.45;pointer-events:none}
+[data-theme="dark"] .login-wrap::before{background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(196,240,70,.15) 0%,transparent 70%);opacity:1}
+.login-card{position:relative;background:var(--surface);border:2px solid var(--border);border-radius:20px;padding:40px 36px;max-width:400px;width:100%;box-shadow:var(--shadow-h);text-align:center}
+.login-card .lgi{font-size:44px;margin-bottom:12px}
+.login-card h1{font-family:'Nunito',sans-serif;font-size:23px;font-weight:900;letter-spacing:-.4px;color:var(--text);margin-bottom:8px}
+.login-card .lsub{font-size:13.5px;color:var(--text2);line-height:1.6;margin-bottom:24px}
+.login-input{width:100%;padding:13px 16px;margin-bottom:12px;border:2px solid var(--border);border-radius:12px;background:var(--surface2);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;transition:border-color .15s}
+.login-input:focus{outline:none;border-color:var(--lime-d)}
+.login-input::placeholder{color:var(--text-muted)}
+.login-err{display:none;margin:0 0 12px;padding:10px 14px;border-radius:var(--rsm);background:var(--no-bg);border:1.5px solid var(--no-b);color:var(--no-t);font-size:13px;font-weight:600}
+/* skip & modals */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:var(--surface);border:2px solid var(--border);border-radius:20px;padding:32px 28px;max-width:440px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal h3{font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:var(--text);margin-bottom:10px}
+.modal p{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:24px}
+.modal-btns{display:flex;gap:10px}
+.modal-yes{flex:1;padding:13px;background:var(--pink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;cursor:pointer;transition:all .15s}
+.modal-yes:hover{background:var(--pink-d)}
+.modal-no{flex:1;padding:13px;background:var(--surface2);color:var(--text2);border:2px solid var(--border);border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s}
+.modal-no:hover{background:var(--border);color:var(--text)}
+.skip-row{text-align:center;padding:0 32px 48px}
+.skip-btn{background:none;border:none;color:var(--text-muted);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color .15s}
+.skip-btn:hover{color:var(--text2)}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="screen-login" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Graphic Design Training</span>
+    </a>
+    <div class="nav-r">
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="lgi">🔐</div>
+      <h1>Tutor Training Access</h1>
+      <p class="lsub">This training is for Kodland tutor candidates only. Enter the shared credentials you received to unlock the modules.</p>
+      <input class="login-input" id="login-user" type="text" placeholder="Username" autocomplete="off">
+      <input class="login-input" id="login-pass" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')tryLogin()">
+      <div class="login-err" id="login-err">Incorrect username or password.</div>
+      <button class="bdark" onclick="tryLogin()" style="margin-bottom:0">Unlock Training →</button>
+    </div>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="screen-home" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Graphic Design Training</span>
+    </a>
+    <div class="nav-r">
+      <span id="ntag" style="font-size:13px;color:var(--text-muted);font-weight:600;display:none"></span>
+      <button class="tbtn" id="tb0" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">🎨 Tutor Training Program</div>
+      <h1>Prepare to teach<br><span class="h-pill">Graphic Design</span><br>to kids</h1>
+      <p>Work through all 8 modules to complete your tutor preparation. Score 70%+ on each quiz to unlock the next module.</p>
+      <div class="prog-strip">
+        <div class="pnum" id="pnum">0/8</div>
+        <div class="ptrack"><div class="pfill" id="pfill" style="width:0%"></div></div>
+        <div class="plbl">modules completed</div>
+      </div>
+    </div>
+  </div>
+  <div class="msec">
+    <div class="slbl">Your modules</div>
+    <div class="grid" id="mgrid"></div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="screen-content" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Graphic Design Training</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Modules</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="cbody" id="cbody"></div>
+</div>
+
+<!-- QUIZ -->
+<div id="screen-quiz" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Graphic Design Training</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="exitQuiz()">← Exit Quiz</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="qbody">
+    <div class="qpt"><div class="qpf" id="qfill"></div></div>
+    <div class="qctr" id="qcount"></div>
+    <div class="qtxt" id="qtext"></div>
+    <div class="qopts" id="qopts"></div>
+    <div class="qfb" id="qfb"></div>
+    <button class="qnxt" id="qnxt" onclick="nextQ()">Next →</button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="screen-results" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Graphic Design Training</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Modules</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="rbody" id="rbody"></div>
+</div>
+
+<!-- COMPLETE -->
+<div id="screen-complete" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Graphic Design Training</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Dashboard</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="compbody" id="compbody"></div>
+</div>
+
+<!-- DST SCREEN -->
+<div id="screen-dst" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Graphic Design Training</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Modules</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="dst-body">
+    <div class="dst-badge">🎯 Digital Skill Test</div>
+    <div class="dst-h1">Build an App Prototype!</div>
+    <p class="dst-sub">Throughout the course, students will spend a considerable amount of time using the Figma app and its many features. Your assignment is to create a prototype of an app's home screen. You are free to be creative with the app's theme, as long as your home screen meets the following criteria:</p>
+
+    <div class="dst-section-label">Requirements</div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">1</div>
+      <div class="dst-task-body">
+        <h3>Show your font</h3>
+        <p>The home screen must mention the <strong>font's name</strong>. The font must stylistically match the illustration.</p>
+      </div>
+    </div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">2</div>
+      <div class="dst-task-body">
+        <h3>Draw a vector illustration</h3>
+        <p>The page must feature a simple <strong>vector illustration drawn in Figma using the Pen tool</strong>.</p>
+      </div>
+    </div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">3</div>
+      <div class="dst-task-body">
+        <h3>Add an interactive home button</h3>
+        <p>The page must include a <strong>home button that changes colour when the cursor hovers over it</strong>. Keep in mind that this feature must be implemented using <strong>Components</strong>. You can use this tutorial for guidance:</p>
+        <a class="dst-link-btn" href="https://www.youtube.com/watch?v=yNAsvYWuI70" target="_blank">▶ Components Tutorial →</a>
+      </div>
+    </div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">4</div>
+      <div class="dst-task-body">
+        <h3>Present it on an iPhone</h3>
+        <p>The prototype must be presented on the <strong>iPhone 14/15/16</strong>. Be sure to follow the dimensions.</p>
+      </div>
+    </div>
+
+    <div class="dst-section-label">Sharing your result</div>
+    <div class="dst-task">
+      <div class="dst-task-num">5</div>
+      <div class="dst-task-body">
+        <h3>Share your Figma prototype link</h3>
+        <p>Finally, share your result by sending the <strong>link to your Figma prototype</strong>, as shown in this example:</p>
+        <a class="dst-link-btn" href="https://www.figma.com/proto/Rcm51N8axdIpC4J8QEbnWr/Test-Example?node-id=1-3&amp;p=f&amp;t=76xC6Pae7kMP0Cfv-1&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1" target="_blank">🔗 View Example Prototype →</a>
+        <p style="margin-top:12px">Here you can find a tutorial on how to share the Figma link:</p>
+        <a class="dst-link-btn" href="https://www.youtube.com/watch?v=sPpqBITEZGE" target="_blank">▶ How to Share a Figma Link →</a>
+      </div>
+    </div>
+
+    <div class="dst-warn">
+      <strong>⚠️ Important — please read carefully</strong>
+      <ul>
+        <li>If you violate several key requirements at once, there may be <strong>no opportunity to revise</strong> the project.</li>
+        <li>The project must <strong>NOT</strong> be fully or partially copied from the internet — doing so will immediately raise concerns about your honesty and professionalism.</li>
+        <li>🚫 <strong>The use of AI is a direct rejection reason.</strong> Completing the final project on your own not only proves you have the skills to teach — it shows you value your own learning.</li>
+      </ul>
+    </div>
+
+    <div class="dst-submit-card">
+      <div class="dst-submit-title">📤 How to submit</div>
+      <p style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:14px">Complete the skill test form and paste your project link as the answer to the final question.</p>
+      <a class="dst-link-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSe8BYcnPbz_sNHisqiuH6e0cs8kiXMtUtjrUB75R6dBaeFhtQ/viewform" target="_blank">Open the Skill Test Form →</a>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;padding-bottom:20px">
+      <p style="font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:var(--text);margin-bottom:6px">Good luck! 🍀</p>
+      <p style="font-size:13px;color:var(--text-muted)">The Kodland team is rooting for you.</p>
+      <button class="bline" onclick="goHome()" style="max-width:260px;margin:20px auto 0">← Back to Dashboard</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// THEME
+(function(){
+  const s=localStorage.getItem('kl-theme');
+  const sys=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+  const t=s||sys;
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  setIcons(t);
+})();
+function setIcons(t){ document.querySelectorAll('.tbtn').forEach(b=>b.textContent=t==='dark'?'☀️':'🌙'); }
+function toggleTheme(){
+  const d=document.documentElement.getAttribute('data-theme')==='dark';
+  const n=d?'light':'dark';
+  n==='dark'?document.documentElement.setAttribute('data-theme','dark'):document.documentElement.removeAttribute('data-theme');
+  localStorage.setItem('kl-theme',n); setIcons(n);
+}
+
+// ─── MODULE 0 (welcome / no quiz) ────────────────────────────────────────────
+const MODULE0={emoji:'👋',color:'#64748B',title:'Welcome to the Graphic Design Course!',desc:'What the course is about, its methodology and goals — and how this training prepares you to teach it.',
+ sections:[
+  {t:'🎓 About the Course',cards:[
+    {type:'text',h:'What is this course about?',b:'The Graphic Design course introduces students to the world of professional design through <strong>hands-on projects</strong>. Throughout the program, they will develop creativity, visual thinking, and digital skills while using industry-standard design tools.'},
+    {type:'hi',h:'🪅 Course concept: An internship in a design agency',b:'The students will receive a unique opportunity: a graphic design internship at one of the world\'s most popular agencies — <strong>Kodland Art Labs</strong>. However, before they can begin, they must demonstrate the skills and qualities essential for a successful designer.<br><br>During their internship, they will work on assignments from global brands, simulating real-life scenarios. The projects students undertake throughout the course will boost their confidence and serve as the foundation for professional portfolios that will become key elements of their personal brands.'},
+    {type:'facts',items:[
+      {ic:'🙂',t:'<strong>Students\' age</strong><br>13+ years'},
+      {ic:'🎓',t:'<strong>Complexity level</strong><br>Intermediate'},
+      {ic:'🕐',t:'<strong>Course duration</strong><br>40 lessons'},
+      {ic:'⏱',t:'<strong>Lesson duration</strong><br>90 min (group) or 50 min (individual)'},
+      {ic:'🛠️',t:'<strong>Studied programs</strong><br>Figma, Photopea'},
+    ]},
+    {type:'text',h:'What will students learn?',b:'By the end of the course, students will be able to:'},
+    {type:'facts',items:[
+      {ic:'🎨',t:'<strong>Create graphic designs</strong><br>banners, posters, packaging and more'},
+      {ic:'🏷️',t:'<strong>Develop a brand identity</strong><br>logos, fonts, colours and brand books'},
+      {ic:'📱',t:'<strong>Design an app prototype</strong><br>clickable, animated screens in Figma'},
+      {ic:'🚀',t:'<strong>Build a professional portfolio</strong><br>published on Behance to showcase their work'},
+    ]},
+    {type:'text',h:'📚 Course program',b:'Here is a summarized view of the 40 lessons students will travel through — and what each module leaves them with:'},
+    {type:'prog',mods:[
+      {n:1,t:'Introduction to graphic design in Figma',lessons:['<strong>L1.</strong> What is graphic design? Getting to know Figma.','<strong>L2.</strong> Studying Figma: Creating our first layout.','<strong>L3.</strong> Studying Figma: Plugins and vector graphics.','<strong>L4.</strong> Building your own portfolio.'],res:'Students learn how to work with vector graphics and create their first banners.'},
+      {n:2,t:'The tools of a graphic designer',lessons:['<strong>L5.</strong> Understanding color theory.','<strong>L6.</strong> Fonts and typography.','<strong>L7.</strong> The basics of composition.','<strong>L8.</strong> Modular grids. Complex compositions.'],res:'Students learn how to pick colors and fonts for their projects, as well as how to build the composition of layouts.'},
+      {n:3,t:'Building event identity in Photopea',lessons:['<strong>L9.</strong> The basics of working in Photopea; Creating a space-inspired composition.','<strong>L10.</strong> Retouching and photo editing.','<strong>L11.</strong> Developing a creative design for an event.','<strong>L12.</strong> Developing the main components of the event\'s identity.'],res:'Students learn the basics of image processing. They also learn how to edit photos and develop designs for events.'},
+      {n:4,t:'Our first project! Developing a logo',lessons:['<strong>L13.</strong> Understanding branding.','<strong>L14.</strong> The process of working on a design project. The basics of designing logos.','<strong>L15.</strong> Working on a logo.','<strong>L16.</strong> Mockups. Understanding advertisement.'],res:'Students learn about the essential stages of working on any design project. They also develop logos, and demonstrate how these logos might look on merchandise products.'},
+      {n:5,t:'Developing brand identity',lessons:['<strong>L17.</strong> The main components of corporate identity. Designing a logo.','<strong>L18.</strong> Picking fonts and colors.','<strong>L19.</strong> Designing a presentation, Part 1.','<strong>L20.</strong> Designing a presentation, Part 2. Understanding infographics.','<strong>L21.</strong> Brand books and Guidelines.'],res:'Students create their brand books and learn what role they play in graphic design.'},
+      {n:6,t:'Designing for social media',lessons:['<strong>L22.</strong> Working on an animation for a social media page.','<strong>L23.</strong> Designing a social media profile, Part 1.','<strong>L24.</strong> Designing a social media profile, Part 2.'],res:'Students learn how to design for social media, and why this branch of design is so distinct. They also develop their own style for social media profile design.'},
+      {n:7,t:'Web Design',lessons:['<strong>L25.</strong> Creating a landing page, Part 1.','<strong>L26.</strong> Creating a landing page, Part 2.','<strong>L27.</strong> Creating an application prototype, Part 1.','<strong>L28.</strong> Creating an application prototype, Part 2.'],res:'Students learn the secrets of web design, and put this knowledge to use to create their very own websites.'},
+      {n:8,t:'Introduction to print design',lessons:['<strong>L29.</strong> Business card design: creating a memorable first impression.','<strong>L30.</strong> Interior poster: from concept to eye-catching wall art.','<strong>L31.</strong> Book cover design: turning stories into visual masterpieces.','<strong>L32.</strong> Social awareness poster: design that inspires change.'],res:'Students get familiar with print design projects and create four pieces: a business card, an interior poster, a book cover and a social poster. Along the way, they demonstrate their creativity, apply new Figma features and use neural networks.'},
+      {n:9,t:'Design project development',lessons:['<strong>L33.</strong> Developing an idea into a concrete concept and a project plan.','<strong>L34.</strong> Establishing the project\'s visual direction and style.','<strong>L35.</strong> Adjusting details and implementing the necessary changes.','<strong>L36.</strong> Completing the final assembly and delivering the finished project.'],res:'After completing this module, students will be able to develop a clear design concept and project plan, define a coherent visual style, refine design details through iterative adjustments, and successfully assemble and deliver the final result of their work.'},
+      {n:10,t:'Building a custom brand',lessons:['<strong>L37.</strong> Career guidance. Creating a Behance profile.','<strong>L38.</strong> Filling out the Behance profile and organizing projects.','<strong>L39.</strong> Preparing a self-presentation.','<strong>L40.</strong> Graduation, self-presentation.'],res:'At the end of the course, the students collect all their projects and create a portfolio on a dedicated graphic design platform.'},
+    ]},
+    {type:'text',h:'What tools will students use?',b:'Throughout the course, students will work with <strong>Figma</strong>, <strong>Photopea</strong>, and <strong>Behance</strong>. They will also learn the fundamentals of <strong>colour theory, composition, typography, branding, social media design</strong>, and basic <strong>UI/UX principles</strong>.<br><br>In this mini course, you\'ll be introduced to these tools and the core concepts of graphic design, giving you the knowledge and confidence to teach the course successfully from your very first lesson.'},
+  ]},
+  {t:'🧭 About This Training',cards:[
+    {type:'text',h:'What is this mini course about?',b:'This training consists of <strong>8 short modules plus a final Digital Skill Test</strong>, designed to prepare you to teach the course with confidence. <strong>Modules 1–6</strong> cover the design concepts and tools you\'ll teach — the technical foundations and the quality standards expected in class. <strong>Modules 7–8</strong> focus on something just as important: <strong>how to teach</strong> — the structure of a great Kodland lesson, how to give feedback that helps students grow, and a real recorded lesson where you\'ll see it all in action. Each module ends with a short quiz — score <strong>70% or higher</strong> to unlock the next one (Module 8 is a recorded lesson with no quiz), and complete all eight to reach the Digital Skill Test.'},
+    {type:'good',txt:'Now it\'s time to get started! Head to <strong>Module 1</strong> and discover what graphic design is all about.'},
+  ]},
+ ]};
+
+function openModule0(){
+  let html=`<div class="meyebrow">Module 0 · Start Here · No Quiz</div><div class="mh1">${MODULE0.emoji} ${MODULE0.title}</div><div class="mobj" style="border-left-color:${MODULE0.color}"><strong>Objective:</strong> Understand what the Graphic Design course is, its methodology and goals, before diving into the content modules.</div>`;
+  MODULE0.sections.forEach(s=>{html+=`<div class="sch">${s.t}</div>`;s.cards.forEach(c=>{html+=rc(c);});});
+  html+=`<hr class="divider"><button class="ctabtn" onclick="openModule(MODULES[0])">Go to Module 1 →</button>`;
+  document.getElementById('cbody').innerHTML=html;
+  showScreen('screen-content');
+  window.scrollTo(0,0);
+}
+
+// ─── MODULES ─────────────────────────────────────────────────────────────────
+const MODULES=[
+  {id:1,emoji:'🎨',title:'Graphic Design Fundamentals',desc:'What graphic design is (and isn\'t), plus the theory core: colour, typography, composition, corporate identity, branding and logos.',obj:'Build the theory foundation every lesson of the course leans on — colour, type, composition, identity and branding.',color:'#2B8EF0',
+   sections:[
+    {t:'👀 What This Module Covers',cards:[
+      {type:'text',b:'In this module you will discover what graphic design really is and explore the core concepts every designer relies on to turn ideas into visuals that resonate with an audience. Mastering this foundation is what will give you the confidence to guide your students through their own creative decisions — helping them see that behind every colour, layout, or brand there\'s always a reason, never a random choice.'},
+    ]},
+    {t:'🎨 What Is Graphic Design?',cards:[
+      {type:'text',b:'Graphic design is the process of creating visuals that help people understand information or ideas through images, text, and colour. It blends creativity with logic — a designer turns ideas into functional visuals that grab attention and communicate a clear message. It\'s all around us: logos, book covers, movie posters, apps, packaging, social media.'},
+      {type:'hi',h:'⚠️ It Is NOT a Drawing Course',b:'This is a rule to repeat throughout the methodology: <strong>never tell students the course involves drawing</strong>. Design is about arranging images, text, and colour — not painting. Concept art, 3D modelling, animation, and 2D illustration are related but separate professions, and it\'s worth being clear about that distinction from day one so students set the right expectations.'},
+      {type:'twocol',left:{h:'✅ Graphic design',items:['Logos & brand identity','Posters & banners','Icons & memes','Book covers','Social media pages']},right:{h:'❌ Not graphic design',items:['3D models (3D Artist)','Character concepts (Concept Artist)','Movement (Animator)','Game locations (Level Designer)','2D illustration (2D Artist)']}},
+      {type:'img',src:'images/graphic-design.png',alt:'Examples of graphic design'},
+      {type:'text',b:'Module 1 also introduces students to other professions that rely on graphic design: <strong>Web Designer, Photo Artist, and Presentation Designer</strong>.'},
+    ]},
+    {t:'🧠 Graphic Design Concepts',cards:[
+      {type:'text',b:'Now that you know what graphic design is (and isn\'t), it\'s time to go over all the core concepts every graphic designer must know. Everything from here to the end of the module — colour, typography, composition, branding and corporate identity — is the conceptual toolkit behind every project of the course, so take your time with each one.'},
+    ]},
+    {t:'🌈 Colour',cards:[
+      {type:'text',b:'Designers need to understand colour theory because colour does more than make a design look attractive — it communicates information, evokes emotion, and directs the viewer\'s attention. This concept carries weight throughout the entire course: students will put it into practice early on in <strong>Lesson 5 ("Understanding color theory")</strong>, the lesson that opens the designer-tools module, and it returns with full force in <strong>Module 5 (Lessons 17–18)</strong>, when colour theory becomes central to designing a logo and picking the brand\'s colours. Because of how often it resurfaces, you should feel confident with the following ideas.'},
+      {type:'list',h:'The colour wheel',p:'Swiss artist and educator <strong>Johannes Itten</strong> developed the colour wheel to visualize how colours relate to one another, helping designers build balanced colour compositions. The wheel is divided into twelve sectors, each representing a primary colour or colour tone.',items:['<strong>Primary colours</strong> — red, yellow, and blue — cannot be created by mixing other colours.','<strong>Secondary colours</strong> — green, orange, and purple — sit between the primaries and are produced by mixing two adjacent primary colours.','<strong>Tertiary colours</strong> come from mixing a primary colour with the secondary colour next to it.']},
+      {type:'img',src:'images/colour-wheel.png',alt:'The colour wheel'},
+      {type:'list',h:'The properties of colour',p:'Every colour can be described through three characteristics:',items:['<strong>Hue</strong> — the colour itself (red, blue, green).','<strong>Saturation</strong> — its intensity or richness (red is highly saturated, grey is not).','<strong>Brightness</strong> — how light or dark it is.']},
+      {type:'img',src:'images/properties-colour.png',alt:'The properties of colour: hue, saturation and brightness'},
+      {type:'tip',txt:'These concepts will be taught to students digitally, inside <strong>Figma</strong>, where they\'ll also learn how colour is described through codes — <strong>HEX</strong> for general use, <strong>RGB</strong> for screens, and <strong>CMYK</strong> for print. The next module covers how to explore colour palettes and these tools in Figma.'},
+      {type:'text',h:'Relations between colours',b:'Once students understand the basics of a digital colour palette, it\'s time to explore how colours relate to one another, since design work is really about combining them effectively.<br><br><strong>Contrast</strong> represents the difference between colours, driven by their hue, saturation, or brightness. The higher the contrast, the more two colours stand out from each other.<br><br><strong>Complementary colours</strong> sit opposite each other on the colour wheel, producing bold, vivid, expressive combinations that grab attention. <strong>Analogous colours</strong>, by contrast, sit next to each other on the wheel and share a common base tone; their role in design is to create harmony, visual cohesion, and balance without generating strong contrast.'},
+      {type:'img',src:'images/relations-colours.png',alt:'Relations between colours: contrast, complementary and analogous colours'},
+      {type:'text',h:'60-30-10',b:'Now that you understand the basics of colour and how colours work together, let\'s explore one of the most widely used design principles. You\'ve likely encountered it every day without even noticing — it plays a key role in creating balanced logos and memorable visual identities.<br><br>60-30-10 is a classic proportion rule for building visually balanced colour palettes: <strong>60% dominant colour</strong> (background), <strong>30% secondary colour</strong> (structure or supporting elements), and <strong>10% accent colour</strong> (vibrant details).'},
+      {type:'img',src:'images/rules-of-colour-selection.png',alt:'Rules of colour selection'},
+      {type:'good',txt:'<strong>Enough theory, time to have fun!</strong> Today we have tools that make this process much easier, generating colour palettes that already follow these rules — all we need to know is what we want to communicate. Students will try this out with <a href="https://coolors.co/a5978b-5c4742-8d5b4c-d0fcb3-5a2a27" target="_blank"><strong>Coolors</strong></a>, so it\'s worth exploring it yourself too.'},
+    ]},
+    {t:'🔤 Typography',cards:[
+      {type:'text',b:'Beyond colour, typography is another essential concept in graphic design. Just like colour, it isn\'t a matter of style — typefaces carry personality and shape how a message is perceived. Use this section to help students recognize the different families.'},
+      {type:'table',head:['Category','Why does it communicate this?','Primary use'],rows:[['<strong>Serif</strong>','Used for centuries in books and official documents, serif fonts are associated with tradition, reliability, and trust.','Books, newspapers, official documents, luxury brands'],['<strong>Sans Serif</strong>','Their clean appearance and widespread use in technology make them feel modern, simple, and easy to read.','Apps, websites, user interfaces, video games'],['<strong>Handwritten</strong>','Mimics human handwriting, creating a personal, friendly, and creative feel.','Invitations, certificates, greeting cards, handcrafted logos'],['<strong>Decorative</strong>','Designed to stand out and reinforce a specific theme rather than support long passages of text.','Headlines, advertisements, covers, and posters']]},
+      {type:'img',src:'images/four-font-categories.png',alt:'The four font categories'},
+      {type:'text',h:'Hierarchy and font pairing',b:'Good typography stays readable while reinforcing a design\'s message and personality. Its main job is building <strong>visual hierarchy</strong> — guiding the eye to what matters most through size, weight, colour, and placement, so a bold title naturally stands out before smaller body text. That\'s also why most brands pair fonts rather than rely on one: a bold heading font paired with a clean, readable body font creates contrast while keeping everything consistent.'},
+    ]},
+    {t:'📐 Composition',cards:[
+      {type:'text',b:'Composition is another key concept in graphic design. It creates harmony between the different elements of a design and directs the viewer\'s attention toward the most important information, helping communicate a message clearly, in an organized and visually appealing way.'},
+      {type:'text',h:'Focal points',b:'One of the main goals of composition is to create <strong>focal points</strong> — areas that capture the viewer\'s attention first.'},
+      {type:'tip',txt:'<strong>How this is taught in the course:</strong> exactly the way you\'re about to learn it — by showing a variety of examples, like the posters of well-known films below, and <strong>analyzing their focal points together</strong>. Get comfortable "reading" a poster out loud: where does your eye land first, and why?'},
+      {type:'img',src:'images/focal-points-1.png',alt:'Focal points'},
+      {type:'text',b:'While the geometric centre of an image naturally draws the eye, a focal point can also be built using <strong>contrast, colour, size, or shape</strong>. A design can have more than one focal point, as long as a visual hierarchy guides the viewer from one element to the next.'},
+      {type:'img',src:'images/focal-points-2.png',alt:'Building focal points with contrast, colour, size and shape'},
+      {type:'text',b:'A widely used technique for this is the <strong>rule of thirds</strong>, which divides the space into nine equal parts using two horizontal and two vertical lines; placing important elements near the intersections of these lines produces more balanced, dynamic compositions — similar to what the image below shows.'},
+      {type:'img',src:'images/focal-points-3.png',alt:'The rule of thirds'},
+      {type:'good',txt:'This concept becomes especially useful once students start designing <strong>posters, banners, or editing photographs</strong>, where you\'ll want to show them you understand the weight that harmony carries in a composition.'},
+    ]},
+    {t:'🏷️ Branding',cards:[
+      {type:'text',b:'To close this foundational guide to graphic design, we turn to <strong>branding</strong> — a concept that becomes central starting in Module 4 of the course and beyond, so it\'s worth understanding clearly now, along with how it differs from the concepts we associate it with.'},
+      {type:'text',h:'What a brand is',b:'A brand is <strong>everything associated with a company, not just its name</strong> — it tells people what to expect and sets it apart from competitors. Branding functions like a company\'s personality, and it\'s what builds trust. Almost anything can be branded: products, companies, services, personalities, places, ideas, movements, games, and films.'},
+      {type:'img',src:'images/what-a-brand-is.png',alt:'What a brand is'},
+      {type:'text',h:'What can be part of a brand',b:'Logos, typography, colour schemes, patterns, product shape, packaging, characters, ad campaigns, even sounds. Classroom examples worth using: the <strong>Toblerone Matterhorn</strong>, Lego\'s stud-and-tube design (patented in 1958), the <strong>Louis Vuitton Monogram</strong> (1896), <strong>Disney\'s signature</strong>, and <strong>Coca-Cola\'s Christmas truck</strong>.'},
+    ]},
+    {t:'💼 Corporate Identity',cards:[
+      {type:'text',h:'What is corporate identity?',b:'If a brand is a company\'s personality, corporate identity is its <strong>"clothing"</strong> — the visual elements that build a unique image: the <strong>logo</strong> (its centrepiece), <strong>fonts</strong>, <strong>brand colours</strong>, and <strong>graphic elements</strong> like illustrations, patterns, and icons. A consistent identity is what builds recognition and trust over time.'},
+      {type:'img',src:'images/corporate-identity.png',alt:'Elements of corporate identity'},
+      {type:'text',h:'The logo — the heart of the identity',b:'A logo is the visual and graphic symbol that immediately identifies a company, brand, or project — the cornerstone of corporate identity, acting as its most visible and memorable representation in the mind of the consumer. Because it carries so much weight, it helps to know the three main forms a logo can take: the <strong>symbol logo</strong>, an icon that works without any text (think of the Apple apple); the <strong>wordmark</strong>, the brand\'s name set in a distinctive branded font (like Google or Coca-Cola); and the <strong>combination logo</strong>, which joins symbol and text into one harmonious composition — the most flexible type, since its parts can also be used separately.'},
+      {type:'img',src:'images/symbol-wordmark-combination-logo.png',alt:'The three logo types: symbol, wordmark and combination'},
+      {type:'good',txt:'<strong>Where students will apply these concepts:</strong> in Module 5 of the course, students pick a well-known brand (Apple, PlayStation, Coca-Cola or Nike), define its mission, values and target audience, and design the corporate identity for a brand-new product line — logo first, then fonts, colours and graphic elements. Everything from this module — colour theory, typography, composition, branding — comes together in that project, and in the client-style logo and packaging orders students take on along the way.'},
+    ]},
+   ],
+   quiz:[
+    {q:'A student asks if the course will teach them to draw characters. What should you say?',opts:['Yes — drawing is a core part of graphic design','No — the course is about design (arranging images, text and colour), not drawing','Only in the later modules','Only if they buy a graphics tablet'],c:1,fb:'The methodology explicitly says never to present the course as a drawing course. Design is about communication through images, text and colour.'},
+    {q:'Which are the three primary colours on the colour wheel?',opts:['Red, green, blue','Red, yellow, blue','Cyan, magenta, yellow','Orange, green, purple'],c:1,fb:'Red, yellow and blue are the primaries — they can\'t be obtained by mixing other colours.'},
+    {q:'Which font category is the best choice for body text in an app or website?',opts:['Decorative','Handwritten / Cursive','Serif (Antiqua)','Sans-serif (Grotesque)'],c:3,fb:'Sans-serif fonts offer the best readability and are the standard for UI, apps, websites and games.'},
+    {q:'What does the "rule of thirds" say?',opts:['Use exactly three colours','Divide the canvas into 9 parts and place focal points at the intersections','A third of the design must be empty','Text must occupy one third of the poster'],c:1,fb:'The canvas is split into thirds both ways; the four intersections are natural focal points.'},
+    {q:'If a brand is a company\'s personality, what is corporate identity?',opts:['Its legal registration','Its "clothing" — the visual elements (logo, fonts, colours, graphics) that create a unique image','Its advertising budget','Its product catalogue'],c:1,fb:'Corporate identity is the brand\'s "clothing": logo, fonts, brand colours and graphic elements working together to build recognition and trust.'},
+   ]
+  },
+  {id:2,emoji:'🧭',title:'Figma Basics',desc:'What Figma is, vectors vs raster, creating an account, basic tools, illustration, fonts, modular grids and plugins.',obj:'Get hands-on with Figma — the course\'s primary tool — from creating an account to drawing, grids and plugins.',color:'#22C55E',
+   sections:[
+    {t:'👀 What This Module Covers',cards:[
+      {type:'text',b:'In this module you\'ll get hands-on with <strong>Figma</strong> — the free, browser-based design tool where most of the course happens. You\'ll create an account, learn the basic tools, draw your first illustrations, install fonts, set up modular grids and discover plugins. Students open Figma in their very first lesson and use it in nearly every project after that — memes, stickers, logos, packaging, landing pages — so <strong>your fluency here directly shapes how smooth every lesson feels: when a student gets stuck on a tool, you want to diagnose it in seconds, not minutes.</strong>'},
+    ]},
+    {t:'🖥️ What Is Figma?',cards:[
+      {type:'text',b:'Figma is the primary tool of the course — and of much of the design industry. It\'s free, runs entirely in the browser, and supports <strong>real-time multi-user collaboration</strong>, which matters in class: you can open a student\'s file and guide them inside their own design, live. It also offers <strong>Components</strong> (design once, reuse everywhere), <strong>Plugins</strong> and <strong>Animated Prototypes</strong>. Everything students build in the course — from memes to full brand books — happens here.<br><br>Before moving on to the Figma tutorials, though, there is one concept you need to know first: the difference between <strong>vector and raster graphics</strong>. It explains why Figma behaves the way it does — and it\'s the reason why, in later modules, the course also uses another editing program, <strong>Photopea</strong>.'},
+    ]},
+    {t:'🔺 Vectors vs Raster',cards:[
+      {type:'text',b:'A computer can describe an image in two fundamentally different ways. <strong>Raster graphics</strong> store a grid of coloured pixels — perfect for photographs and rich detail, but zoom in and the squares appear. <strong>Vector graphics</strong> store mathematics instead: points, lines and curves that the computer redraws at any size. Figma is a <strong>vector editor</strong>, and that is the single most important technical fact about it — it\'s why a logo made in Figma stays perfectly crisp whether it\'s printed on a pen or a billboard.'},
+      {type:'twocol',left:{h:'Raster graphics',items:['Made of <strong>pixels</strong>','Formats: JPEG, PNG','Best for photos & rich detail','Blurry when scaled up','Larger file sizes']},right:{h:'Vector graphics',items:['Made of <strong>maths</strong>: points, lines, curves','Scales with no quality loss','Small files, easy edits','Best for logos & icons','What Figma produces']}},
+      {type:'img',src:'images/raster-vector-graphics.png',alt:'The difference between raster and vector graphics'},
+      {type:'tip',txt:'Teach this with a demonstration, not a definition: zoom into a photo until the pixels show, then zoom into a Figma shape and watch it stay crisp. It also explains a course decision students will notice later — when it\'s time to edit photos, the class switches to a <strong>raster</strong> editor, Photopea (Module 3 of this training).'},
+    ]},
+    {t:'🚀 Creating an Account & Installing Figma',cards:[
+      {type:'text',b:'In the very first lesson you\'ll walk students through this exact flow, so run through it yourself first. Go to <strong>figma.com</strong> and click <strong>Get started for free</strong>. You can sign up with an email and password, or directly with a <strong>Google account</strong> — the recommended option in the course, since it keeps student logins simple. Verify the email, choose the free <strong>Starter</strong> plan, and you\'re in.<br><br>Figma runs fully in the browser, but there\'s also a <strong>desktop app</strong> for Windows and macOS (from figma.com/downloads) — useful when the browser version glitches mid-lesson. The official step-by-step guide: <a href="https://help.figma.com/hc/en-us/articles/360039811114-Create-a-Figma-account" target="_blank">Create a Figma account →</a>'},
+    ]},
+    {t:'🛠️ Learn the Basic Tools',cards:[
+      {type:'text',b:'With your account ready, it\'s time to get your hands dirty. Frames, shapes, text, Fill and Stroke — these are the moves students repeat in every single project, and the ones you\'ll demonstrate on screen dozens of times. Watch this tutorial and <strong>follow it inside Figma as you go</strong> — pausing and repeating each step is far faster than watching passively, and it mirrors exactly how you\'ll ask students to learn: try it, don\'t just watch it.'},
+      {type:'video',h:'▶ Figma Basics Tutorial',id:'jQ1sfKIl50E'},
+    ]},
+    {t:'✏️ Drawing Illustrations in Figma',cards:[
+      {type:'text',b:'Once the basic shapes feel comfortable, the next step is combining and bending them into <strong>illustrations</strong> — the skill behind the stickers, logos and vector art students make throughout the course (and the vector illustration you\'ll need for your own Digital Skill Test). The key tool is the <strong>Pen tool</strong>: it places anchor points that connect into any shape you can imagine, and clicking back on the first anchor closes the path. Start there, then explore <strong>brushes</strong> for looser, more organic strokes.'},
+      {type:'video',h:'▶ Drawing with the Pen Tool',id:'cke01gWWwyo'},
+      {type:'video',h:'▶ Drawing with Brushes',id:'AUSZHj17bzY'},
+    ]},
+    {t:'🔤 Installing Fonts in Figma',cards:[
+      {type:'text',b:'This is where the typography theory from Module 1 turns practical: when students design invitations, posters and logos, the default fonts quickly run out, and they\'ll want fonts with the right <em>personality</em>. Fonts come from sources like <strong>Google Fonts, 1001fonts and DaFont</strong>. The workflow: download the font, extract the archive (right-click → Extract All), select the font files and right-click → <strong>Install</strong>. For Figma in the browser to see locally installed fonts, students also install the small <strong>Font Installer</strong> helper app. Newly installed fonts show a <strong>"New"</strong> marker; the "All fonts" filter separates Google Fonts from "Installed by you".'},
+      {type:'warn',txt:'Teach <strong>font licences</strong>: free/open-source, creative (non-commercial), commercial (must purchase) and subscription. Students must check the licence before using a downloaded font — a professional habit worth building early.'},
+    ]},
+    {t:'🏗️ Modular Grids',cards:[
+      {type:'text',b:'Once you have a solid handle on Figma\'s basic functions, <strong>modular grids become an essential part of design work</strong> — which is why this is a topic you must master, not just recognise. Students meet grids in <strong>Lesson 8 of the course ("Modular grids. Complex compositions")</strong>, the lesson that closes the designer-tools module, and from then on grids quietly power their biggest projects: the presentations and brand books of the brand identity module, and especially the <strong>landing pages and app prototypes of the Web Design module (Lessons 25–28)</strong>.'},
+      {type:'text',h:'What and why',b:'A modular grid is a system of <strong>columns, rows and margins</strong> that organises a layout. Cell-based grids suit print; <strong>column grids</strong> suit websites and apps (no horizontal lines, because screen heights vary). The benefits students feel immediately: unified style, snap-to-guide speed, proportional aesthetics and clearer hierarchy — and in the real world, front-end developers build directly from the designer\'s grid.'},
+      {type:'video',h:'▶ Setting One Up in Figma',id:'HcQ6Hd7y-ew',start:267},
+    ]},
+    {t:'🧩 Plugins',cards:[
+      {type:'text',b:'The last piece of the Figma toolkit: <strong>plugins</strong>, small add-ons that extend Figma with extra functions. They\'re used constantly in the course — <strong>stock photos</strong> (Unsplash, Pixabay), <strong>colour palettes</strong>, <strong>decorative shapes</strong> (Blobs, Hero Patterns), <strong>background removal</strong> (Icons8 Background Remover) and <strong>gradients</strong> (Generative Gradients) — because they save students from leaving Figma for routine tasks and keep the lesson moving.<br><br>To access them, open the <strong>Actions</strong> button in the bottom toolbar or press <code>Ctrl/Cmd + K</code>, switch to the <strong>Plugins &amp; Widgets</strong> tab, search, and click <strong>Run</strong>. Used plugins save to the tab automatically; remove one via its three-dots menu.'},
+      {type:'warn',txt:'Some community plugins are paid or trial-limited, and any plugin can glitch mid-lesson — the methodology says <strong>skip a broken plugin and move on</strong>. Never let a broken plugin eat ten minutes of class.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Why does a logo made in Figma stay sharp at any size?',opts:['Figma exports at very high resolution','Figma creates vector graphics — mathematical shapes that scale with no quality loss','Figma compresses images automatically','Logos are always small files'],c:1,fb:'Figma is a vector editor: shapes are maths, not pixels, so they scale infinitely without blurring.'},
+    {q:'Which image type is best for detailed photographs?',opts:['Vector','Raster (made of pixels)','SVG','Wireframe'],c:1,fb:'Raster graphics (JPEG, PNG) are made of pixels and handle photographic detail; vectors suit logos and icons.'},
+    {q:'When drawing with the Pen tool, how do you close a shape?',opts:['Press Escape','Double-click anywhere','Click the first anchor point again','Press Ctrl+S'],c:2,fb:'Clicking back on the first anchor point closes the path into a complete shape.'},
+    {q:'A font installed on your computer doesn\'t appear in Figma in the browser. What\'s missing?',opts:['A paid Figma plan','The Font Installer helper app that lets Figma access local fonts','A system restart','The font must be from Google Fonts'],c:1,fb:'Browser Figma needs the small Font Installer app to read locally installed fonts; reload the page after installing.'},
+    {q:'What are plugins in Figma?',opts:['Paid templates','Add-ons that extend Figma with extra functions (stock photos, palettes, background removal), opened via Actions / Ctrl+K','External apps that replace Figma tools','Figma\'s name for fonts'],c:1,fb:'Plugins extend Figma from inside — found via the Actions button or Ctrl/Cmd+K under Plugins & Widgets.'},
+   ]
+  },
+  {id:3,emoji:'🖌️',title:'Photopea & Raster Design',desc:'The free Photoshop alternative: interface basics, photo editing and retouching, mockups and Smart Objects.',obj:'Get comfortable in Photopea and understand the raster workflows students use in Module 3 of the course.',color:'#F59E0B',
+   sections:[
+    {t:'👀 What This Module Covers',cards:[
+      {type:'text',b:'In this module you\'ll meet the second tool of the course: <strong>Photopea</strong>, a free, browser-based raster editor. Remember the vector-vs-raster distinction from the previous module? This is its consequence in practice — Figma\'s mathematical shapes are perfect for logos, but they can\'t retouch a photo or build a collage. Everything pixel-based in the course lives here: photo editing, retouching, and the <strong>mockups</strong> students use to present every later project like professionals. And because Photopea mirrors Photoshop almost exactly, everything students (and you) learn here transfers directly to the industry-standard tool.'},
+    ]},
+    {t:'🖥️ Meet Photopea',cards:[
+      {type:'text',b:'Photopea looks and behaves like Photoshop, runs free in the browser with no installation, and opens PSD files — which is exactly why the course chose it. The first class task in the course is a practical one: install an ad-blocker so the free tool\'s ads don\'t distract students.<br><br>Students meet the interface by building a <strong>space artwork completely from scratch</strong> — layers, brushes, filters and blending modes, with no external images at all. It\'s a clever first project: by the end, they\'ve touched every core part of the interface without ever feeling like they were doing an "interface tour". Along the way they learn the golden rule of raster work, the one you\'ll repeat all module: <strong>separate parts go on separate layers</strong>. A design where everything sits on one layer can\'t be moved, recoloured or fixed — layers are what keep a design editable. Watch this video to learn the interface yourself:'},
+      {type:'video',h:'▶ Photopea Interface Basics',id:'yhR8Ea2z1qI'},
+    ]},
+    {t:'📸 Photo Editing & Retouching',cards:[
+      {type:'text',b:'With the interface under control, the course moves to its real raster skill: <strong>editing photos tastefully</strong>. Two tools make this possible without ever destroying the original image. <strong>Adjustment layers</strong> change colour and light as a separate layer sitting on top of the photo — turn it off and the original is untouched. <strong>Masks</strong> control where an effect applies by painting: <strong>black hides, white reveals</strong>. Together they beat the eraser every time, because nothing is ever permanently deleted — a mistake is just repainted.<br><br>The taste rule students learn (and the one to reinforce in feedback): retouching should stay <em>invisible</em>. Keep skin texture natural — never blur it flat — and correct colours so the photo looks like a better version of itself, not a filter. This video covers the full workflow:'},
+      {type:'video',h:'▶ Photo Editing & Retouching in Photopea',id:'liDH6FlbtSc'},
+      {type:'tip',txt:'A metaphor that lands with kids: a mask is a <strong>stencil</strong> held over the photo. Painting black covers a hole in the stencil; painting white opens it again. Nothing underneath ever changes.'},
+    ]},
+    {t:'📦 Mockups & Smart Objects',cards:[
+      {type:'text',b:'The module closes with the skill students will reuse for the rest of the course: <strong>mockups</strong> — PSD templates that show a design in real life (tickets, T-shirts, business cards, packaging). Why they matter: <strong>ease of use</strong> (the design is swapped with a simple layer replacement), <strong>professional presentation</strong> — a logo floating on a white canvas says little, but the same logo on a photographed coffee cup instantly looks real to clients and parents — and <strong>time-saving</strong>. The mechanism behind the swap is the <strong>Smart Object</strong>: a special layer that holds the design; replace its contents and every copy across the mockup updates at once. Watch this video to see how it works:'},
+      {type:'video',h:'▶ Creating Smart Object Mockups in Photopea',id:'9lzT277iPZU'},
+      {type:'good',txt:'In the course, students end Module 3 by adapting one design across several mockups — the classic client-delivery workflow. From this point on, expect (and encourage) mockups in every project presentation, all the way to the Behance portfolio at the end of the course.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Why does the course switch to Photopea for this module?',opts:['Figma stopped being free','Photo editing and collages need a raster editor, and Figma is vector','Photopea makes better logos','Students must learn coding'],c:1,fb:'Photopea is a free raster editor (a Photoshop alternative) — the right tool for photo editing, which vector-based Figma handles poorly.'},
+    {q:'On a Photopea layer mask, what does painting with black do?',opts:['Reveals that part of the layer','Hides that part of the layer','Deletes the layer permanently','Inverts the colours'],c:1,fb:'Black hides, white reveals — and it\'s all non-destructive, unlike the eraser.'},
+    {q:'How do you update a design inside a PSD mockup?',opts:['Redraw the mockup from scratch','Replace the Smart Object\'s contents and save — all copies update','Export the mockup as SVG first','Use the Spot Healing Brush'],c:1,fb:'Mockups use Smart Objects: double-click the smart layer (or Replace Contents), paste your design, save, and the mockup updates everywhere.'},
+    {q:'Which Photopea tool allows you to select areas based on their color?',opts:['Magic Selection','Rectangular Selection','Quick Selection','Magnetic Selection'],c:0,fb:'Magic Selection selects areas of similar colour with one click — ideal for isolating flat-coloured regions.'},
+    {q:'Which Photopea adjustment allows you to color an image using a single color while giving you greater control over the final result?',opts:['Black & White','Saturation','Gradient Map'],c:0,fb:'The Black & White adjustment converts the image while letting you control how each original colour translates — giving far more control over the final result.'},
+   ]
+  },
+  {id:4,emoji:'📱',title:'UX/UI and Web Design',desc:'UX vs UI, landing pages and prototypes, mobile design principles, and prototype animation in Figma.',obj:'Own the web/app module: from a black-and-white landing prototype to an animated mobile flow in Figma.',color:'#EC4899',
+   sections:[
+    {t:'👀 What This Module Covers',cards:[
+      {type:'text',b:'In this module you\'ll learn how websites and apps are designed: the difference between <strong>UX and UI</strong>, how landing pages are structured, why professionals prototype in black and white first, the rules of <strong>mobile design</strong>, and how Figma turns static screens into <strong>clickable, animated prototypes</strong>. For students this is one of the most exciting stretches of the course — their designs finally <em>behave</em> like real products they use every day. And it matters doubly for you: the tutor <strong>Digital Skill Test at the end of this training is an app prototype</strong>, built with exactly these concepts.'},
+    ]},
+    {t:'🧭 UX vs UI',cards:[
+      {type:'text',b:'Every screen students design is judged on two separate qualities, and the course teaches them with a bicycle. <strong>UX (User Experience)</strong> is how easy and enjoyable something is to use — a comfortable seat and a smooth ride. <strong>UI (User Interface)</strong> is how it looks — colours, styling, lights. A bike that looks cool but hurts to ride has a <strong>UX problem</strong>; one that rides great but looks dull has a <strong>UI problem</strong>. Both good = great design. Keep this analogy handy — it turns an abstract industry distinction into something a ten-year-old can diagnose ("is this a seat problem or a paint problem?").'},
+      {type:'img',src:'images/UX-UI.png',alt:'UX vs UI explained'},
+      {type:'text',h:'What quality design looks like',b:'Students learn to recognise three signs of quality: <strong>simplicity and clarity</strong> — the essentials reachable within a couple of clicks; <strong>logical navigation</strong> — buttons and menus where users expect them; and <strong>conventional elements</strong> — buttons look like buttons, links look like links. Surprising users is for art, not interfaces.'},
+      {type:'img',src:'images/quality-design.png',alt:'The signs of quality design'},
+      {type:'text',h:'Composition, revisited for screens',b:'The composition principles from Module 1 return here, adapted to interfaces: <strong>proximity</strong> — related elements sit close, and white space does the grouping; <strong>similarity</strong> — matching colour, size or shape reads as one group; <strong>symmetry</strong> — conveys order; and <strong>design patterns</strong> — familiar behaviours users bring from every other site (logo click → homepage, navigation at the top). When a student\'s screen "feels messy", one of these four is almost always the reason — name it specifically in your feedback.'},
+      {type:'img',src:'images/composition-principles-interfaces.png',alt:'Composition principles for interfaces'},
+    ]},
+    {t:'🌐 Landing Pages & Prototypes',cards:[
+      {type:'text',b:'The first web project in the course is a <strong>landing page</strong> — a one-page website with a single goal: persuade the visitor to take one action (buy, book, sign up). But students don\'t start with colours and photos. They start with a <strong>prototype</strong>: a draft layout showing structure and function <em>without</em> design specifics — grey rectangles stand in for images, no colours, no fancy fonts.'},
+      {type:'hi',h:'⚠️ Black-and-white first',b:'The prototype is the foundation. <strong>Graphics and colour are only added after the prototype is approved</strong> — this is the professional workflow students must internalise, and it\'s worth explaining <em>why</em>: colour is seductive. A pretty screen hides a broken structure, while a grey one exposes it. Structure first, beauty second.'},
+      {type:'text',h:'The anatomy of a landing page',b:'Because a landing page exists to persuade, its sections aren\'t arbitrary — each one answers a question forming in the visitor\'s head, in the order it forms. That\'s the story to teach, top to bottom:<br><br>The <strong>header</strong> (logo, navigation, action buttons) answers <em>"where am I?"</em> — it identifies the site and gives orientation. The <strong>hero</strong>, the large first screen with a headline and a call-to-action button, answers <em>"what is this and what should I do?"</em> — a visitor should grasp the offer in seconds. The <strong>content sections</strong>, laid out on the column grid from Module 2, answer <em>"why should I care?"</em> by unpacking benefits one idea at a time. <strong>Testimonials</strong> answer <em>"can I trust this?"</em> with social proof — real people vouching for the product. The <strong>FAQ</strong> clears the last doubts, adding credibility. And the <strong>footer</strong> (contacts and links) catches whoever reached the bottom and still wants something.<br><br>When you review a student\'s landing page, walk it as that conversation: is each visitor question being answered, in order? A section that answers no question can be cut — a great feedback moment. Once the prototype is approved, students dress it in a <strong>UI style</strong> — Minimalism, Classic, Grunge, Glassmorphism — and real designs mix them.'},
+      {type:'img',src:'images/landing-anatomy.png',alt:'Anatomy of a landing page'},
+    ]},
+    {t:'📲 Mobile Design Principles',cards:[
+      {type:'text',b:'From websites the course moves to apps — and designing for a phone is not designing for a small monitor. A phone is held in one hand, glanced at for seconds, and controlled with a thumb, which gives mobile its own rules. A great way to teach these is to have students check them against apps they already love:'},
+      {type:'list',h:'The five principles',items:['<strong>Thumbs control everything</strong> — place important buttons (Add, Back, Buy) at the bottom of the screen, within thumb reach.','<strong>People scan, don\'t read</strong> — use short headings, icons, and contrasting colours for key actions (red "Pay", green "Confirm").','<strong>Minimalism is key</strong> — 3–5 primary colours, no more than 2 fonts, and buttons large enough to tap comfortably.','<strong>Use grid systems and even spacing</strong> — mobile designers space everything in 8-pixel increments (8, 16, 24, 32).','<strong>Make use of UI Kits</strong> — ready-made element libraries for iOS and Android speed up work, but kit-only apps risk looking the same as everyone else\'s.'],ordered:true},
+      {type:'img',src:'images/five-mobile-principles.png',alt:'The five principles of mobile design'},
+    ]},
+    {t:'🎬 Prototyping & Animation',cards:[
+      {type:'list',h:'The seven interaction settings',p:'Finally, the moment that delights every student: making the design <strong>respond</strong>. Figma animates on a keyframe principle — you draw an element in two states and Figma fills in the transition. Every interaction in the Prototype tab is configured with seven settings, and knowing them by name is what lets you debug a student\'s prototype quickly ("your Trigger is right, but check the Destination"):',items:['<strong>Trigger</strong> — what starts the transition (a click, hover or swipe).','<strong>Delay</strong> — how long to wait before the animation begins.','<strong>Action</strong> — what happens (navigate to a screen, open an overlay).','<strong>Destination</strong> — the frame the transition leads to.','<strong>Animation</strong> — the transition effect (Instant, Dissolve, Smart animate…).','<strong>Curve</strong> — the easing style (linear, ease in and out…).','<strong>Duration</strong> — the length in milliseconds (400 ms feels snappy; 800 ms is showy).'],ordered:true},
+      {type:'text',b:'Settings lists only get you so far — interactions are something you have to <strong>see</strong>. Watch this video to see how prototype responses look in Figma and learn how to add interactions yourself:'},
+      {type:'video',h:'▶ Adding Interactions to a Figma Prototype',id:'-d6zNGeF59M'},
+      {type:'warn',txt:'Animations must <strong>enhance UX, not hinder it</strong> — smooth, fast, intuitive. When a student stacks five effects on one button, bring back the bicycle: is this making the ride better, or just the paint louder?'},
+      {type:'good',txt:'Everything in this module is exactly what you\'ll use in your own <strong>Digital Skill Test</strong>: a mobile app prototype with clickable, animated screens. As you study, build alongside.'},
+    ]},
+   ],
+   quiz:[
+    {q:'An app looks beautiful but users can\'t find the checkout button. What kind of problem is this?',opts:['A UI problem','A UX problem','A branding problem','A typography problem'],c:1,fb:'UX is about ease of use. Beautiful but confusing = bad user experience.'},
+    {q:'Why do prototypes start black-and-white with grey rectangles for images?',opts:['To save Figma memory','To test structure and UX before any visual design is approved','Because clients prefer grey','To print cheaper drafts'],c:1,fb:'The prototype validates structure, element placement and flow first; colour and graphics come after approval.'},
+    {q:'Where should the most important buttons sit on a mobile screen?',opts:['Top-left corner','Centered vertically','At the bottom, within thumb reach','In a hamburger menu'],c:2,fb:'"Thumbs control everything" — key actions belong at the bottom where thumbs naturally rest.'},
+    {q:'What spacing increments does mobile design use?',opts:['5px steps','8px steps (8, 16, 24, 32)','10px steps','Random, based on feel'],c:1,fb:'Mobile designers work in 8-pixel increments for consistent rhythm and usability.'},
+    {q:'In Figma prototyping, what does the "Trigger" setting define?',opts:['The animation\'s speed','What initiates the transition (click, hover, swipe)','The target screen','The easing curve'],c:1,fb:'The Trigger is the user action that starts the interaction; Destination is where it leads, Duration is how long it takes.'},
+   ]
+  },
+  {id:5,emoji:'🖨️',title:'Print Design',desc:'Bleed and trim, 300 DPI, RGB vs CMYK, interior posters, book covers and social posters.',obj:'Understand the print-specific rules well enough to catch every classic student mistake before it prints.',color:'#F97316',
+   sections:[
+    {t:'👀 What This Module Covers',cards:[
+      {type:'text',b:'In this module the course leaves the screen and designs for <strong>paper</strong> — <strong>Module 8 of the course, "Introduction to print design" (Lessons 29–32)</strong>: business cards, interior posters, book covers and social posters. Print is unforgiving in a way screens are not — there\'s no zoom, no backlight, and no undo after the cutting press. Nearly every classic student mistake here — text too small, colours that print dull, designs cut off at the edge — is <strong>invisible on screen</strong> and only shows up on paper. Understanding the physical rules of printing is what lets you catch those mistakes before a student\'s file ever leaves Figma.'},
+    ]},
+    {t:'📏 Print Rules',cards:[
+      {type:'text',h:'The challenges of print',b:'Designing for print is different from designing for screens, and two challenges cause most of the surprises. The first is <strong>colour</strong>: a printer mixes inks on paper, so the bright colours you see on a glowing screen often come out duller once printed — colours and contrast simply don\'t survive the journey unchanged. The second is <strong>cutting</strong>: after printing, every card and poster is trimmed by a cutting press, and presses always shift by a millimetre or two. A design that ends exactly at the edge can end up with ugly white slivers. Both problems are solved at the design stage — by choosing print-friendly colours and by extending the background beyond the cut line.'},
+      {type:'text',h:'Sizes and the maths',b:'Printers work at <strong>300 DPI</strong> (dots per inch) — that\'s how many dots of ink fit into every inch of paper. It\'s far denser than a screen needs, because people hold printed cards centimetres from their eyes; anything less starts to look fuzzy. In practice this means roughly <strong>118 pixels per centimetre</strong>, so a standard 90×50 mm business card becomes a 1062×591 px design.<br><br>The working frame is made slightly larger — <strong>1110×638 px</strong> — and that extra ring around the edge is the <strong>bleed margin</strong>: the zone the cutting press is allowed to eat. The background must fill the whole frame including the bleed, while text and logos stay safely inside the inner trim area. Students apply this immediately in their first print project, the <strong>business card of Lesson 29</strong> — the lesson that opens the course\'s print module — and checking the bleed is the first thing you should do when reviewing one.'},
+    ]},
+    {t:'🌗 RGB vs CMYK & Contrast',cards:[
+      {type:'text',b:'Why do screen colours print dull? Because screens and printers build colour in opposite ways. A screen <em>adds light</em>: mix all its colours and you get white. A printer <em>subtracts light</em> with inks: mix all its inks and you get black. These two systems have names — <strong>RGB</strong> for screens and <strong>CMYK</strong> for print — and the moment students understand the difference between them, faded printouts stop being a mystery.'},
+      {type:'twocol',left:{h:'RGB (screens)',items:['Colours made of <strong>light</strong>','Additive: all mixed = white','What Figma works in','Can look faded when printed']},right:{h:'CMYK (print)',items:['Colours made of <strong>inks</strong>','Subtractive: all mixed = black','What printers calibrate to','Needed for accurate print colour']}},
+      {type:'text',h:'Working around Figma\'s RGB',b:'Figma doesn\'t support CMYK natively. The course life-hack: eyedropper colours from a <strong>CMYK Colour Wheel</strong> reference file so the printed result matches the screen. And check <strong>contrast</strong> with Figma\'s checker (the yin-yang icon in the colour panel — the AA icon auto-fixes weak contrast), because printers "eat" contrast.'},
+    ]},
+    {t:'🖼️ Interior Posters & Book Covers',cards:[
+      {type:'text',h:'Interior posters',b:'With the physical rules in place, the print module moves to its most artistic project in <strong>Lesson 30 ("Interior poster: from concept to eye-catching wall art")</strong> — right after the business-card lesson, so students already know bleed, DPI and CMYK and can focus on the creative side: posters designed to decorate a real room. Interior posters feature <strong>text and hand-drawn graphics — not photographs</strong> — and must match the room\'s colours, style and purpose; this is where the composition and typography skills from Module 1 get applied to a physical object. Print sizes come from a template (A3 optimal; A1 can slow Figma). Techniques from the course: each word typed separately for independent styling, <strong>dynamic strokes</strong> (Frequency, Wiggle, Smoothen), brush strokes, and <strong>Radial repeat</strong> in Figma Draw mode for perfectly symmetrical ornaments.'},
+      {type:'img',src:'images/interior-posters.png',alt:'Interior poster examples'},
+      {type:'text',h:'Book cover anatomy',b:'<strong>Lesson 31 ("Book cover design: turning stories into visual masterpieces")</strong> raises the difficulty: a cover is more than the front. It has a <strong>front cover, back cover and spine</strong> (with its own width calculated from the page count), a <strong>safe/live area</strong> for text and logos, <strong>margins</strong>, <strong>bleed</strong>, and trim sizes. Nobody memorises those numbers — professionals generate them. Templates come from the <a href="https://kdp.amazon.com/cover-calculator" target="_blank"><strong>Amazon Cover File Calculator</strong></a>: enter binding, paper, trim size and page count → download a correctly sized, marked-up template to design on.'},
+      {type:'img',src:'images/book-cover-anatomy.png',alt:'Book cover anatomy'},
+    ]},
+    {t:'📢 Social Posters',cards:[
+      {type:'list',h:'Four goals',p:'The print module closes with <strong>Lesson 32 ("Social awareness poster: design that inspires change")</strong> and the poster type that asks the most of a young designer — a project that draws on everything from the previous three print lessons. A social advert doesn\'t sell a product — it makes people stop and think, and every design decision must serve that. Every social poster pursues four goals:',items:['<strong>Inform</strong> — deliver one vivid fact or idea (like plastic polluting the ocean).','<strong>Evoke emotion</strong> — shock, anxiety, sympathy or hope; the viewer must not stay indifferent.','<strong>Call to action</strong> — tell people what to do (reduce plastic, sort waste).','<strong>Shape values</strong> — influence what the audience believes matters.'],ordered:true,after:'A good social poster is a <strong>"visual strike"</strong> that lands in one second.'},
+      {type:'img',src:'images/four-goals.png',alt:'The four goals of a social poster'},
+      {type:'text',h:'Design rules',b:'A social poster works when a stranger understands it in one second — so every design choice serves speed and impact. The course teaches students to make deliberate decisions in three areas:<br><br><strong>Message.</strong> One idea — one poster. If you try to say three things, the viewer takes away none of them. Keep text minimal: a short slogan, plus at most one fact or a link.<br><br><strong>Imagery.</strong> Build the poster around a single strong <strong>visual metaphor</strong> — lungs made of black plastic bags say more about pollution than any paragraph. Give that object all the attention: one dominant, centred element with high contrast, and remove every detail that competes with it.<br><br><strong>Colour.</strong> Colours carry emotion before the text is even read — <strong>red</strong> signals alarm, <strong>black</strong> signals threat, <strong>blue and green</strong> signal life and hope. Pick the association that matches the message.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Why does a print design need bleed margins?',opts:['To leave room for the client\'s notes','Cutting presses shift slightly — background must extend past the trim line','To make the file smaller','Because Figma requires them'],c:1,fb:'Presses shift during cutting; the background fills the bleed so no white slivers appear, while important content stays inside the trim area.'},
+    {q:'What happens when you mix all colours in RGB vs in CMYK?',opts:['White in both','Black in both','RGB → white(ish), CMYK → black','RGB → black, CMYK → white'],c:2,fb:'RGB is additive light (all = white); CMYK is subtractive ink (all = black). That\'s why RGB designs can print faded.'},
+    {q:'Which of these belongs on an interior poster?',opts:['A high-resolution photograph','Text and hand-drawn graphics','A QR code','A product price'],c:1,fb:'Interior posters are built from typography and hand-drawn graphics — not photographs.'},
+    {q:'Why is print design created at 300 DPI instead of a typical screen resolution?',opts:['It\'s Figma\'s default export setting','Print needs far more dots per inch to look crisp up close — screen resolution would look blurry on paper','It makes the file smaller','It\'s only required when using CMYK'],c:1,fb:'People hold printed material centimetres from their eyes — 300 dots per inch keeps it crisp where screen resolution would look fuzzy.'},
+    {q:'A social poster crams three messages at once. What rule does it break?',opts:['Minimal text','One idea — one poster','Contrast and focus','Colour associations'],c:1,fb:'One idea per poster — a social advert must land a single "visual strike", not a lecture.'},
+   ]
+  },
+  {id:6,emoji:'🚀',title:'Portfolio & Behance',desc:'Case studies, uploading projects to Behance, and the upload specs every designer must know.',obj:'Guide students through publishing real case studies on Behance — the course\'s career finish line.',color:'#6366F1',
+   sections:[
+    {t:'👀 What This Module Covers',cards:[
+      {type:'text',b:'This module is the finish line of the course: turning everything students built into a <strong>professional portfolio on Behance</strong>. The portfolio is what students (and their parents) keep after the course ends — proof of every project, behind a single shareable link, presented the way working designers present themselves. For you it\'s also the module with the most <strong>classroom logistics</strong>: account registration, an age requirement and precise upload settings all have to go right in one lesson, so knowing the exact numbers ahead of time is what keeps it calm.'},
+    ]},
+    {t:'🌍 Behance & Case Studies',cards:[
+      {type:'text',h:'Why Behance',b:'Behance is the global platform where creative professionals live: a <strong>portfolio behind one link</strong>, direct client discovery, and endless inspiration to browse. Publishing there tells a student something no grade can: <em>your work now exists in the same place as professional designers\' work.</em>'},
+      {type:'img',src:'images/why-behance.png',alt:'Why Behance matters for designers'},
+      {type:'text',h:'Anatomy of a good case study',b:'Projects on Behance aren\'t just image dumps — they\'re presented as <strong>case studies</strong>, where the story of how a project was made matters as much as the visuals. A good one has a <strong>cover image</strong>, a project description, <strong>process materials</strong> (sketches, concepts, even the revealed modular grid), <strong>final visuals</strong> (the mockups from Module 3 earn their keep here), and contact information. The brand book students build in the course already follows this shape — teach them to see their process work not as scraps, but as content worth showing.'},
+      {type:'warn',txt:'Registration requires age <strong>13+</strong> — younger students need parental permission (consent is collected via the group chat before the lesson). Accounts are created with the same Google account used for Figma.'},
+    ]},
+    {t:'📤 Upload Specs',cards:[
+      {type:'text',h:'The numbers to remember',b:'Behance is precise about formats, and getting them right is what makes a student\'s page look professional instead of broken. Presentation frames in Figma must be exactly <strong>1400 px wide</strong> (height from 800 px and up). The custom thumbnail frame is <strong>202×158 px</strong>. In Behance\'s Styles tab, set <strong>Content Spacing to 0</strong> so stacked images join seamlessly into one continuous page. Tags are limited to 10; categorisation is required; visibility set to Everyone.'},
+      {type:'good',txt:'With the portfolio published, students have travelled the entire arc of the course: from "what is graphic design?" to a public page of real, finished work. The remaining modules of this training shift the focus from <em>what</em> you\'ll teach to <em>how</em> you\'ll teach it.'},
+    ]},
+   ],
+   quiz:[
+    {q:'What is a case study on Behance?',opts:['A legal document about the project','A mini-presentation telling the story of how a project was made','A paid advertising slot','A list of the tools used'],c:1,fb:'Case studies tell the project\'s story — task, process, results — alongside the final visuals.'},
+    {q:'How wide must a Figma frame be for a Behance upload?',opts:['1080 px','1200 px','1400 px','1920 px'],c:2,fb:'Exactly 1400 px wide — height is flexible (800+ px).'},
+    {q:'What must be checked before students under 13 register on Behance?',opts:['Their quiz scores','Parental permission','Their typing speed','A paid subscription'],c:1,fb:'Behance requires users to be 13+; younger students need parental consent, collected via the group chat.'},
+    {q:'Why set Content Spacing to 0 in Behance\'s Styles tab?',opts:['To reduce the file size','So stacked images join seamlessly without white gaps','To enable comments','To unlock more tags'],c:1,fb:'Zero content spacing removes the gaps between uploaded images so the case study reads as one continuous page.'},
+    {q:'What is Behance\'s greatest strength for a designer?',opts:['Free stock photos','A portfolio behind one link where clients can find you directly','Automatic logo generation','Built-in printing services'],c:1,fb:'Behance turns a designer\'s work into a single shareable portfolio link — and clients can discover designers directly on the platform.'},
+   ]
+  },
+  {id:7,emoji:'🧑‍🏫',title:'How to Run a Great Lesson',desc:'The mirror lesson structure, the theory-and-practice stage, and how to give feedback that actually teaches.',obj:'Master the shape of a strong Kodland lesson — from warm-up to wrap-up — plus the two skills a creative course demands most: flexible practice and specific feedback. <strong>This is about how you teach, independent of the topic.</strong>',color:'#EF4444',
+   sections:[
+    {t:'👀 What This Module Covers',cards:[
+      {type:'text',b:'You can know Figma, colour theory and every mockup trick perfectly and still run a weak lesson if it has no structure. Kids learn best inside a <strong>predictable rhythm</strong> — they settle faster, retain more, and stay motivated when every lesson follows the same familiar arc. This module teaches that arc: Kodland\'s lesson structure with its "mirror" design (the way a lesson <em>ends</em> echoes the way it <em>begins</em>), the theory-and-practice stage at its heart, and — because design is a creative, personal subject — how to give <strong>feedback that actually teaches</strong> instead of just praising. These habits apply to every lesson you will ever teach.'},
+      {type:'tip',txt:'Consistency is the point. Once students learn your rhythm, they stop spending energy figuring out "what happens now?" and spend it on designing instead. Run the same structure every time until it is second nature — for you and for them.'},
+    ]},
+    {t:'🌅 The beginning: four phases',cards:[
+      {type:'text',h:'1 · Warm-Up — activate energy & focus',b:'Open with something light that switches the student\'s brain into "lesson mode": a quick question, a tiny challenge, a cool design spotted during the week. The goal is energy and attention, not assessment. It signals "we\'re starting now" and pulls a distracted kid into the session.'},
+      {type:'text',h:'2 · Previous Lesson Revision — recall & consolidate',b:'Briefly revisit what was learned last time. Retrieval — making the student <em>recall</em> rather than re-hearing — is one of the strongest memory tools there is. A two-minute "what makes a strong focal point?" does more than re-explaining ever could.'},
+      {type:'text',h:'3 · HW Check — review homework together',b:'Go through the homework <em>with</em> the student — in this course, that means looking at a design they made. This is where you catch misunderstandings, praise effort, and show that homework actually matters. It\'s also one of the two key <strong>feedback moments</strong> of the lesson (see the feedback section below): don\'t settle for "nice poster!" — say specifically what works and what to push further. Skipping the check teaches kids that homework is optional.'},
+      {type:'text',h:'4 · Lesson Goal — set clear objectives',b:'State plainly what today is about: "today we\'ll design a poster with one clear focal point." A clear goal gives the lesson direction and gives the student something concrete to aim for.'},
+    ]},
+    {t:'🎨 The middle: theory & practice',cards:[
+      {type:'text',h:'5 · Theory & Practice — the heart of the lesson',b:'Between the lesson goal and the closing phases sits the longest stage, where new material is taught and immediately used. Keep theory in <strong>small chunks</strong> — one concept, then hands-on work with it — and <strong>model first</strong>: demonstrate the technique on your screen before students try it on theirs. In a design course the practice stage is where students actually create, so protect that time fiercely; a lesson where kids only watched you design is a lesson where nobody designed.'},
+      {type:'hi',h:'Be flexible — freedom inside the objectives',b:'This is the most important adaptation for a creative course: <strong>let students design what they want, as long as the learning objectives are met</strong>. If the lesson plan says "make a poster for a music festival" but your student is obsessed with a video game, let them make the game poster — it still needs a focal point, balanced composition and readable typography, which is what the lesson is really about. A student designing something they care about works harder, remembers more, and starts building a portfolio that feels like <em>theirs</em>. Adapt the theme, never the objective.'},
+      {type:'warn',txt:'Flexibility is not the absence of standards. Whatever the student chooses to design, hold it to the lesson\'s learning objectives — that\'s the deal that makes the freedom work.'},
+    ]},
+    {t:'🏁 The end: the mirror',cards:[
+      {type:'hi',h:'The end mirrors the beginning, reversed',b:'The closing four phases echo the opening ones in reverse — the lesson ends the way it began, giving students a satisfying sense of <strong>closure and rhythm</strong>. This "circular" shape is what makes a lesson feel complete rather than just stopping when time runs out.'},
+      {type:'text',h:'6 · Lesson Summary — tutor + student based',b:'Recap what was covered — but don\'t just tell them. Have the <em>student</em> summarise in their own words too. Their summary reveals what actually landed and doubles as a second retrieval moment.'},
+      {type:'text',h:'7 · HW Assignment — clear instructions',b:'Assign homework with crystal-clear instructions on what to design and how. Vague homework is homework that won\'t get done. This pairs with the HW Check that opened the lesson.'},
+      {type:'text',h:'8 · Next Lesson Preview — build curiosity',b:'Tease what\'s coming next: "next time, we\'ll put your design on a real coffee cup!" A hook builds anticipation and forward momentum across sessions — it pairs with the Lesson Goal from the start.'},
+      {type:'text',h:'9 · Wrap-Up — close with energy',b:'End on a high: celebrate what the student created today, acknowledge their effort, and send them off feeling good. The last 30 seconds shape how they remember the whole lesson.'},
+    ]},
+    {t:'💬 Feedback that teaches (not just praises)',cards:[
+      {type:'text',h:'The problem with "great job!"',b:'Design is personal — a student\'s poster is <em>their</em> taste on screen, so feedback lands harder here than in any other subject. That makes generic praise a real problem: <strong>"Great job!", "So pretty!", "I like it!"</strong> feel kind, but they teach nothing — the student learns neither what worked nor what to do again. Specific feedback does both: <strong>say exactly what you like and why it works</strong>, using the design vocabulary from Modules 1–6.'},
+      {type:'twocol',left:{h:'❌ Generic (avoid)',items:['"Great job!"','"So pretty!"','"I like it!"','"Nice colours!"','"Well done, next slide!"']},right:{h:'✅ Specific (aim for this)',items:['"The red button really pops against the dark background — that\'s strong contrast."','"Your title is the first thing I see. You built a clear focal point."','"These two fonts pair well: the bold heading grabs attention and the body text stays readable."','"Putting the price near the photo groups them — good use of proximity."']}},
+      {type:'text',h:'Correcting without crushing',b:'When something needs fixing, pair one specific strength with one concrete improvement: <em>"The palette works beautifully — now let\'s give the text more room to breathe so it\'s easier to read."</em> The student hears what to keep <strong>and</strong> what to change, and neither gets lost in vagueness.'},
+      {type:'good',txt:'Where to use this: the two feedback moments of every lesson — the <strong>HW Check</strong> at the start and the <strong>Practice</strong> stage in the middle.'},
+    ]},
+    {t:'💡 Why this structure works',cards:[
+      {type:'twocol',left:{h:'🧠 Cognitive Ease',items:['A predictable format lowers mental load','Students know what to expect','Focus goes to designing, not decoding the lesson shape']},right:{h:'🔁 Retention Boost',items:['Revision at the START consolidates last time','Summary at the END consolidates today','Two memory checkpoints → far better recall']}},
+      {type:'twocol',left:{h:'🎯 Clear Purpose',items:['Stating the goal upfront builds motivation','Previewing next lesson creates momentum','The student always knows why they\'re here']},right:{h:'✅ Accountability Loop',items:['HW check at the start...','...pairs with HW assignment at the end','Students feel the continuity between lessons']}},
+      {type:'good',txt:'Notice the pairing: warm-up ↔ wrap-up, revision ↔ summary, HW check ↔ HW assignment, lesson goal ↔ next-lesson preview — with theory &amp; practice at the centre. Each opening phase has a closing partner. That symmetry is what makes the structure "circular" and memorable.'},
+    ]},
+    {t:'🙋 Keeping every kid involved',cards:[
+      {type:'text',h:'The golden rule',b:'A lesson where the tutor talks and the student listens is a weak lesson. Your job is to make the student <strong>do, say, and think</strong> as much as possible — and in a design course, that means their hands on the tools. Use these four techniques constantly, in every phase.'},
+      {type:'twocol',left:{h:'❓ Open Questions',items:['"What do you think will happen if we swap these colours?"','"How would you make this title stand out more?"','Avoid yes/no questions — invite real design thinking']},right:{h:'🖥️ Screen Sharing',items:['Have the student share their screen','Let them walk you through their own design','Great during HW check &amp; practice — builds ownership']}},
+      {type:'twocol',left:{h:'📖 Slide Reading',items:['Invite students to read slide text aloud','Ask them to explain it in their own words','Boosts comprehension and keeps them active']},right:{h:'🌟 Praise &amp; Encouragement',items:['Be specific — name the design decision that worked','Praise effort and choices, not just pretty results','Use energy to keep momentum up throughout']}},
+      {type:'warn',txt:'Beware the passive lesson trap: it feels smooth because there\'s no friction, but the student isn\'t learning much. If you\'ve been talking for more than a minute or two without the student doing or saying something, hand it back to them.'},
+    ]},
+    {t:'🎯 Putting it into practice',cards:[
+      {type:'hi',h:'Structure frees you, it doesn\'t restrict you',b:'New tutors sometimes fear a fixed structure will make lessons robotic. The opposite is true: once the phases are automatic, you stop worrying about "what next?" and have all your attention free for the student — their questions, their designs, their energy. The structure is the scaffold that lets you be present.'},
+      {type:'tip',txt:'Keep a mental (or literal) checklist of the phases for your first lessons. After a few weeks the rhythm becomes automatic. In the next module, you\'ll watch a real lesson and see every one of these phases and techniques in action.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Why is the Kodland lesson structure described as a "mirror" or "circular" format?',opts:['The closing phases echo the opening phases in reverse, so the lesson ends the way it began','The tutor and student swap roles halfway through','The slides are shown twice, forward then backward','Every lesson repeats the previous lesson exactly'],c:0,fb:'The end mirrors the beginning reversed (warm-up↔wrap-up, revision↔summary, HW check↔HW assignment), giving closure and rhythm.'},
+    {q:'A student shows their homework poster. Which response is the best feedback?',opts:['"Great job, I love it!"','"Your title is the first thing I see — you built a clear focal point. Now let\'s give the text more room to breathe."','"It\'s nice, but try harder next time."','"Perfect, let\'s move to today\'s topic."'],c:1,fb:'Specific feedback names what works and why (focal point) and pairs it with one concrete improvement — generic praise teaches nothing.'},
+    {q:'The lesson plan says "design a music festival poster", but your student wants to make a poster about their favourite video game. What do you do?',opts:['Let them — as long as the design still meets the lesson\'s learning objectives (focal point, composition, typography)','Refuse: the lesson plan must be followed exactly','Let them, and drop the lesson objectives so they can do anything','Make them do both posters as punishment'],c:0,fb:'Be flexible with the theme, never with the objectives. A student designing something they love works harder and learns more — as long as the learning goals are met.'},
+    {q:'Which pair of phases forms the "accountability loop" across a lesson?',opts:['HW Check at the start and HW Assignment at the end','Warm-Up and Lesson Goal','Theory and Practice','Lesson Summary and Wrap-Up'],c:0,fb:'Checking homework at the start and assigning it at the end closes the loop and builds continuity between lessons.'},
+    {q:'A tutor delivers a smooth lesson but did most of the talking while the student watched them design. Why is this a warning sign?',opts:['A passive lesson feels frictionless but the student learns little — in a design course, the student\'s hands should be on the tools','It isn\'t a problem if the material was covered','It means the structure was followed correctly','Smoothness always indicates a great lesson'],c:0,fb:'Engagement is the goal. A lesson where only the tutor designed is a lesson where nobody learned to design — hand the tools back to the student.'},
+    {q:'A tutor skips the Previous Lesson Revision to save time. What is the main cost, pedagogically?',opts:['They lose a retrieval moment — making students recall prior learning is one of the strongest ways to consolidate it','Nothing, as long as the goal is stated','The homework can\'t be assigned later','The lesson will run over time'],c:0,fb:'Revision forces retrieval, a powerful memory tool. It is one of the structure\'s two consolidation checkpoints (the other is the Lesson Summary).'},
+   ]
+  },
+  {id:8,emoji:'🎥',title:'Example of a Great Lesson',desc:'Watch a model Kodland lesson end to end and see the structure from Module 7 in action, with a full QA evaluation.',obj:'See the lesson structure and engagement techniques from the previous module put into practice by an experienced tutor: pacing, questioning, modeling, feedback, encouragement and classroom flow — in a single real recorded Kodland lesson.',color:'#0EA5E9',lesson:true,
+   sections:[
+    {t:'🎬 The recording',cards:[
+      {type:'video',h:'▶ A Real Kodland Lesson, Recorded in Full',id:'9wvaVdg-gls'},
+      {type:'warn',txt:'The recording is a real, full-length lesson. Watch it when you can give it your complete attention — it is the single best reference for everything Module 7 covered.'},
+    ]},
+    {t:'🧭 About this lesson',cards:[
+      {type:'text',h:'What you\'re watching',b:'This is a genuine, unscripted Kodland <strong>Python</strong> lesson led by an experienced tutor with a small group of students. Why Python and not Graphic Design? The Graphic Design course is new, and there are no English recordings of it yet. But that matters less than you\'d think: the lesson structure, the engagement techniques and the feedback habits you studied in <strong>Module 7</strong> are the same in every Kodland course — and watching an amazing Python class lets you see all of them working in practice, exactly as you\'ll apply them in your own design lessons.'},
+      {type:'hi',h:'Watch for the structure you just learned',b:'As you watch, spot the phases from <strong>Module 7</strong> in action: the greeting and warm-up, the bridge to the previous lesson, the homework check, the clear goal at the start, the modeling and hands-on practice in the middle — then, at the end, the recap, the homework for next time, and the preview of the next lesson. The opening and closing mirror each other, exactly as the "circular" structure describes.'},
+    ]},
+    {t:'✅ Why this is a great lesson — QA evaluation',cards:[
+      {type:'text',h:'Assessed against our QA criteria',b:'Every Kodland lesson can be evaluated against a set of QA quality criteria. This lesson <strong>passed all of them</strong>. Below is the evidence, grouped by the lesson phases from Module 7 — use it as a checklist of what "great" looks like in practice.'},
+      {type:'qa',h:'🌅 Opening the lesson',items:[
+        {k:'Warm-Up &amp; Greeting',v:'The tutor greeted the students and asked about their week.'},
+        {k:'Lesson Objective',v:'The tutor stated they would work on collision methods and output text.'},
+        {k:'Previous Lesson Bridge',v:'The tutor asked students to recall the previous lesson about detecting button presses.'},
+        {k:'Home Task Review',v:'The tutor reviewed homework and extended the deadline for Vera.'},
+      ]},
+      {type:'qa',h:'🧑‍🏫 Instruction &amp; practice',items:[
+        {k:'Clear Instruction Chunking',v:'Instructions were given in manageable steps, such as implementing changes and checking code.'},
+        {k:'Modeling Before Independent Work',v:'The tutor demonstrated tasks before students worked independently, like showing how to implement collision.'},
+        {k:'Practice Stage Present',v:'Students engaged in practice tasks, such as coding and debugging.'},
+      ]},
+      {type:'qa',h:'🙋 Engagement &amp; participation',items:[
+        {k:'Broad Participation',v:'Multiple students participated, including Mateusz, Vera, Amin, and Muhsin.'},
+        {k:'Direct Student Addressing',v:'The tutor addressed students by name, such as Mateusz, Vera, Amin, and Muhsin.'},
+        {k:'Multiple-Student Learning Participation',v:'At least two students, Mateusz and Amin, participated in learning interaction.'},
+        {k:'Repeated Student Interaction',v:'There were multiple interaction moments, such as students sharing screens and implementing code.'},
+        {k:'Instructionally Useful Feedback',v:'The tutor provided feedback on student code, helping them correct errors.'},
+        {k:'Student Reasoning Elicited',v:'The tutor asked reasoning questions about game preferences and received relevant responses.'},
+      ]},
+      {type:'qa',h:'😊 Positive learning climate',items:[
+        {k:'Low Repeated Confusion',v:'There were fewer than 3 explicit confusion statements across the whole lesson.'},
+        {k:'No Explicit Refusal or Boredom',v:'No explicit statements of refusal, boredom, or dissatisfaction were noted.'},
+      ]},
+      {type:'qa',h:'🏁 Closing the lesson (the mirror)',items:[
+        {k:'Closing Recap or Review',v:'The tutor recapped the lesson by summarizing the game over implementation.'},
+        {k:'Homework for Next Class',v:'Homework was clearly explained: create a version of Minecraft.'},
+        {k:'Next Lesson Continuity',v:'The tutor mentioned the next lesson will focus on game customization.'},
+      ]},
+      {type:'good',txt:'Notice the symmetry: the lesson opens with a greeting, a bridge to last time, a homework check and a clear goal — and closes with a recap, homework for next time and a preview of what\'s next. That mirror is exactly the structure from Module 7, and it is a large part of why this lesson scores so well. Now bring it into your own design lessons.'},
+    ]},
+   ],
+  },
+];
+
+// ─── PROGRESS ───────────────────────────────────────────────────────────────
+const PROG_KEY='kl-gd-progress';
+function getProgress(){
+  try{ return JSON.parse(localStorage.getItem(PROG_KEY)||'{}'); }catch(e){ return {}; }
+}
+function saveProgress(p){ localStorage.setItem(PROG_KEY, JSON.stringify(p)); }
+function isPassed(id){ const p=getProgress(); return p[id]?.passed===true; }
+function getScore(id){ const p=getProgress(); return p[id]?.score||0; }
+function setResult(id, pct, passed){
+  const p=getProgress();
+  p[id]={passed:passed||p[id]?.passed===true, score:Math.max(pct,p[id]?.score||0)};
+  saveProgress(p);
+}
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let currentModule=null, quizData=[], qi=0, score=0;
+const TOTAL=MODULES.length;
+
+// ─── HOME ─────────────────────────────────────────────────────────────────
+function renderHome(){
+  const done = MODULES.filter(m=>isPassed(m.id)).length;
+  document.getElementById('pnum').textContent=done+'/'+TOTAL;
+  document.getElementById('pfill').style.width=(done/TOTAL*100)+'%';
+  const tag=document.getElementById('ntag');
+  if(done>0){tag.style.display='inline';tag.textContent=done===TOTAL?'🏆 All done!':done+'/'+TOTAL+' complete';}else tag.style.display='none';
+  const g=document.getElementById('mgrid'); g.innerHTML='';
+
+  // Module 0 — welcome card, always unlocked, no quiz, not counted in progress
+  const m0=document.createElement('div');
+  m0.className='mc';
+  m0.innerHTML=`<div class="mc-stripe" style="background:${MODULE0.color}"></div>
+  <div class="mc-body">
+    <div class="mc-top"><div class="mc-num">Module 0 · Start Here</div><div class="mc-em">${MODULE0.emoji}</div></div>
+    <div class="mc-title">${MODULE0.title}</div>
+    <div class="mc-desc">${MODULE0.desc}</div>
+    <div class="mc-foot"><span class="badge btr">📖 Read</span><span class="stag">No quiz</span></div>
+  </div>`;
+  m0.onclick=openModule0;
+  g.appendChild(m0);
+
+  MODULES.forEach((m,i)=>{
+    const prev = i===0 ? true : isPassed(MODULES[i-1].id);
+    const isDone = isPassed(m.id);
+    const locked = !prev;
+    const el=document.createElement('div');
+    el.className='mc'+(locked?' locked':'')+(isDone?' done':'');
+    const pct=getScore(m.id);
+    let badge,stag;
+    if(m.lesson){
+      badge=isDone?'<span class="badge bd">✓ Watched</span>':locked?'<span class="badge bl">🔒 Locked</span>':'<span class="badge bs">▶ Watch</span>';
+      stag=locked?`<span class="stag">Complete Module ${m.id-1}</span>`:'<span class="stag">Example lesson · No quiz</span>';
+    } else {
+      badge=isDone?'<span class="badge bd">✓ Completed</span>':locked?'<span class="badge bl">🔒 Locked</span>':'<span class="badge bs">Start</span>';
+      stag=isDone?`<span class="stag">Score: <b>${pct}%</b></span>`:locked?`<span class="stag">Complete Module ${m.id-1}</span>`:'<span class="stag">Has quiz</span>';
+    }
+    el.innerHTML=`<div class="mc-stripe" style="background:${m.color}"></div>
+    <div class="mc-body">
+      <div class="mc-top"><div class="mc-num">Module ${m.id}</div><div class="mc-em">${m.emoji}</div></div>
+      <div class="mc-title">${m.title}</div>
+      <div class="mc-desc">${m.desc}</div>
+      <div class="mc-foot">${badge}${stag}</div>
+    </div>`;
+    if(!locked) el.onclick=()=>openModule(m);
+    g.appendChild(el);
+  });
+
+  // DST card
+  const allDone=MODULES.every(m=>isPassed(m.id));
+  const dstEl=document.createElement('div');
+  dstEl.className='mc'+(allDone?'':' locked');
+  dstEl.innerHTML=`<div class="mc-stripe" style="background:linear-gradient(90deg,var(--lime),var(--pink))"></div>
+  <div class="mc-body">
+    <div class="mc-top"><div class="mc-num">Final Stage</div><div class="mc-em">🏆</div></div>
+    <div class="mc-title">Digital Skill Test</div>
+    <div class="mc-desc">Build an app prototype in Figma and submit it to complete your tutor preparation.</div>
+    <div class="mc-foot"><span class="badge ${allDone?'bd':'bl'}">${allDone?'Ready':'🔒 Locked'}</span><span class="stag">Practical assessment</span></div>
+  </div>`;
+  if(allDone) dstEl.onclick=showDST;
+  g.appendChild(dstEl);
+}
+
+// ─── MODULE CONTENT ───────────────────────────────────────────────────────
+function openModule(m){
+  currentModule=m.id;
+  let html=`<div class="meyebrow">Module ${m.id} of ${TOTAL}${m.lesson?' · No Quiz':''}</div><div class="mh1">${m.emoji} ${m.title}</div><div class="mobj" style="border-left-color:${m.color}"><strong>Objective:</strong> ${m.obj}</div>`;
+  m.sections.forEach(s=>{html+=`<div class="sch">${s.t}</div>`;s.cards.forEach(c=>{html+=rc(c);});});
+  if(m.lesson){
+    const lbl=isPassed(m.id)?'✓ Watched — Mark Again':'✓ Mark as Watched';
+    html+=`<hr class="divider"><p style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:14px">Once you have watched the recording and read through the evaluation notes, mark this module complete to finish your training and unlock the Digital Skill Test.</p><button class="ctabtn" onclick="markWatched(${m.id})">${lbl}</button>`;
+  } else {
+    const lbl=isPassed(m.id)?'🔄 Retake Quiz':'📝 Take the Quiz →';
+    html+=`<hr class="divider"><button class="ctabtn" onclick="startQuiz(${m.id})">${lbl}</button>`;
+  }
+  document.getElementById('cbody').innerHTML=html;
+  showScreen('screen-content');
+  window.scrollTo(0,0);
+}
+
+function rc(c){
+  if(c.type==='text')return`<div class="card">${c.h?`<h4>${c.h}</h4>`:''}<p>${c.b}</p></div>`;
+  if(c.type==='hi')return`<div class="card hi">${c.h?`<h4>${c.h}</h4>`:''}<p>${c.b}</p></div>`;
+  if(c.type==='table'){
+    const head=c.head.map(h=>`<th>${h}</th>`).join('');
+    const rows=c.rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('');
+    return`<div class="card">${c.h?`<h4>${c.h}</h4>`:''}<div class="tbl-wrap"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  }
+  if(c.type==='facts'){
+    const items=c.items.map(i=>`<div class="fact"><div class="fact-ic">${i.ic}</div><div class="fact-t">${i.t}</div></div>`).join('');
+    return`<div class="facts">${items}</div>`;
+  }
+  if(c.type==='prog'){
+    const mods=c.mods.map(m=>`<div class="prog-mod"><div class="prog-h"><span class="prog-n">Module ${m.n}</span><span class="prog-t">${m.t}</span></div><ul class="prog-ls">${m.lessons.map(l=>`<li>${l}</li>`).join('')}</ul><div class="prog-res">🎯 <strong>Module results:</strong> ${m.res}</div></div>`).join('');
+    return`<div class="prog">${mods}</div>`;
+  }
+  if(c.type==='qa'){
+    const items=c.items.map(i=>`<div class="qa-row"><div class="qa-k">✅ ${i.k}</div><div class="qa-v">${i.v}</div></div>`).join('');
+    return`<div class="card"><h4>${c.h}</h4>${items}</div>`;
+  }
+  if(c.type==='warn')return`<div class="callout cw"><span class="ci">⚠️</span><span>${c.txt}</span></div>`;
+  if(c.type==='tip')return`<div class="callout ct"><span class="ci">💡</span><span>${c.txt}</span></div>`;
+  if(c.type==='good')return`<div class="callout cg"><span class="ci">✅</span><span>${c.txt}</span></div>`;
+  if(c.type==='img')return`<img class="mod-img" src="${c.src}" alt="${c.alt||''}" loading="lazy">`;
+  if(c.type==='video'){
+    const wlink='https://www.youtube.com/watch?v='+c.id+(c.start?('&t='+c.start+'s'):'');
+    return`<div class="card video-card"><h4>${c.h}</h4><a class="yt-lite" href="${wlink}" target="_blank" style="background-image:url('https://i.ytimg.com/vi/${c.id}/hqdefault.jpg')" title="${c.h}"><div class="yt-play"></div></a><a class="video-link" href="${wlink}" target="_blank">▶ Watch on YouTube →</a></div>`;
+  }
+  if(c.type==='list'){
+    const tag=c.ordered?'ol':'ul';
+    const li=c.items.map(i=>`<li>${i}</li>`).join('');
+    return`<div class="card"><h4>${c.h}</h4>${c.p?`<p style="margin-bottom:8px">${c.p}</p>`:''}<${tag}>${li}</${tag}>${c.after?`<p style="margin-top:10px">${c.after}</p>`:''}</div>`;
+  }
+  if(c.type==='twocol'){
+    const li=items=>items.map(i=>`<li>${i}</li>`).join('');
+    return`<div class="two-col"><div class="card"><h4>${c.left.h}</h4><ul>${li(c.left.items)}</ul></div><div class="card hi"><h4 style="color:var(--hi-t)">${c.right.h}</h4><ul>${li(c.right.items)}</ul></div></div>`;
+  }
+  return'';
+}
+
+// ─── QUIZ ─────────────────────────────────────────────────────────────────
+// Fisher-Yates shuffle — uniform, unlike sort(()=>Math.random()-.5), which is
+// biased and can leave the correct answer in a near-fixed position.
+function shuf(a){
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function startQuiz(id){
+  currentModule=id;
+  const m=MODULES.find(x=>x.id===id);
+  // Shuffle question order AND the position of each question's options,
+  // so the correct answer never sits in a predictable slot.
+  quizData=shuf([...m.quiz]).map(q=>{
+    const order=shuf(q.opts.map((_,i)=>i));
+    return {q:q.q, opts:order.map(i=>q.opts[i]), c:order.indexOf(q.c), fb:q.fb};
+  });
+  qi=0; score=0;
+  renderQ(); showScreen('screen-quiz');
+  window.scrollTo(0,0);
+}
+function renderQ(){
+  const q=quizData[qi];
+  document.getElementById('qfill').style.width=(qi/quizData.length*100)+'%';
+  document.getElementById('qcount').textContent=`Question ${qi+1} of ${quizData.length}`;
+  document.getElementById('qtext').textContent=q.q;
+  const el=document.getElementById('qopts'); el.innerHTML='';
+  q.opts.forEach((o,idx)=>{const b=document.createElement('button');b.className='qopt';b.textContent=o;b.onclick=()=>answerQ(idx);el.appendChild(b);});
+  document.getElementById('qfb').className='qfb';
+  document.getElementById('qnxt').className='qnxt';
+}
+function answerQ(idx){
+  if(document.querySelector('.qopt.answered')) return;
+  const q=quizData[qi]; const ok=idx===q.c;
+  if(ok)score++;
+  document.querySelectorAll('.qopt').forEach((b,i)=>{b.classList.add('answered');if(i===q.c)b.classList.add('correct');else if(i===idx&&!ok)b.classList.add('wrong');});
+  const fb=document.getElementById('qfb');
+  fb.className='qfb show '+(ok?'ok':'bad');
+  fb.innerHTML=(ok?'✓ Correct! ':'✗ Not quite — ')+q.fb;
+  const nx=document.getElementById('qnxt');
+  nx.className='qnxt show';
+  nx.textContent=qi===quizData.length-1?'See Results':'Next →';
+}
+function nextQ(){
+  qi++;
+  if(qi<quizData.length){renderQ();window.scrollTo(0,0);return;}
+  const pct=Math.round(score/quizData.length*100);
+  const passed=pct>=70;
+  setResult(currentModule, pct, passed);
+  showResults(pct, passed);
+}
+
+// ─── RESULTS ──────────────────────────────────────────────────────────────
+function showResults(pct, passed){
+  const m=MODULES.find(x=>x.id===currentModule);
+  let acts='';
+  if(passed&&m.id<TOTAL) acts+=`<button class="bdark" onclick="openModule(MODULES.find(x=>x.id==${m.id+1}))">Next Module →</button>`;
+  if(passed&&m.id===TOTAL) acts+='<button class="bdark" onclick="showComplete()">🏆 View Certificate</button>';
+  acts+=`<button class="bline" onclick="openModule(MODULES.find(x=>x.id==${m.id}))">📖 Review Module ${m.id}</button>`;
+  acts+=`<button class="bline" onclick="startQuiz(${m.id})">Retake Quiz</button>`;
+  const sub=`You answered ${score}/${quizData.length} correctly.`+(passed?' The next module is unlocked.':' You need at least 70% to continue.');
+  document.getElementById('rbody').innerHTML=`<div class="remi">${passed?'🎉':'😅'}</div><div class="rtitle">${passed?'You Passed!':'Keep Studying'}</div><div class="rpct ${passed?'pass':'fail'}">${pct}%</div><div class="rsub">${sub}</div>${acts}`;
+  showScreen('screen-results');
+  window.scrollTo(0,0);
+  setTimeout(renderHome, 100);
+}
+
+// ─── MARK WATCHED (lesson modules without a quiz) ─────────────────────────
+function markWatched(id){
+  setResult(id, 100, true);
+  if(MODULES.every(m=>isPassed(m.id))) showComplete();
+  else goHome();
+}
+
+// ─── COMPLETE ─────────────────────────────────────────────────────────────
+function showComplete(){
+  const qm=MODULES.filter(m=>!m.lesson);
+  const avg=Math.round(qm.map(m=>getScore(m.id)).reduce((a,b)=>a+b,0)/qm.length);
+  document.getElementById('compbody').innerHTML=`<div style="font-size:72px">🏆</div><h1 style="font-family:'Nunito',sans-serif;font-size:32px;font-weight:900;letter-spacing:-.5px;margin-top:14px;color:var(--text)">Training Complete!</h1><p style="color:var(--text2);margin-top:8px;font-size:15px;line-height:1.65">You've mastered all ${TOTAL} modules — congratulations! You're ready for the Digital Skill Test.</p><div class="cert"><div class="clbl2">Certificate of Completion</div><h2>Graphic Design Tutor Training</h2><p>Kodland · All ${TOTAL} modules · Average score: ${avg}%</p><div class="cmods">${MODULES.map(m=>`<div class="cmod" style="background:${m.color}20;color:${m.color}">${m.emoji}</div>`).join('')}</div></div><button class="bdark" style="margin-bottom:10px" onclick="showDST()">🎯 Take the Digital Skill Test →</button><button class="bline" onclick="goHome()">← Back to Dashboard</button>`;
+  showScreen('screen-complete');
+  window.scrollTo(0,0);
+}
+
+// ─── DST ─────────────────────────────────────────────────────────────────
+function showDST(){
+  showScreen('screen-dst');
+  window.scrollTo(0,0);
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────
+function exitQuiz(){ const m=MODULES.find(x=>x.id===currentModule); if(m) openModule(m); else goHome(); }
+function goHome(){ renderHome(); showScreen('screen-home'); window.scrollTo(0,0); }
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ─── AUTH ────────────────────────────────────────────────────────────────
+const AUTH_KEY='kl-gd-auth';
+const AUTH_HASH=405719967;
+function _h(s){let x=5381;for(let i=0;i<s.length;i++){x=((x<<5)+x+s.charCodeAt(i))|0;}return x>>>0;}
+function tryLogin(){
+  const u=document.getElementById('login-user').value.trim();
+  const p=document.getElementById('login-pass').value;
+  if(_h(u+':'+p)===AUTH_HASH){
+    localStorage.setItem(AUTH_KEY,'1');
+    document.getElementById('login-err').style.display='none';
+    renderHome();
+    showScreen('screen-home');
+    window.scrollTo(0,0);
+  } else {
+    document.getElementById('login-err').style.display='block';
+  }
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────
+if(localStorage.getItem(AUTH_KEY)==='1'){
+  renderHome();
+  showScreen('screen-home');
+} else {
+  showScreen('screen-login');
+}
+
+// ─── DEV MODE (Shift+D × 3 to toggle) ───────────────────────────────────────
+(function(){
+  let _dSeq = 0, _dTimer = null;
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'D' && e.shiftKey){
+      clearTimeout(_dTimer);
+      _dSeq++;
+      _dTimer = setTimeout(() => _dSeq = 0, 1200);
+      if(_dSeq >= 3){ _dSeq = 0; toggleDevMode(); }
+    }
+  });
+
+  function toggleDevMode(){
+    const active = localStorage.getItem('kl-gd-devmode') === '1';
+    if(!active){
+      const p = {};
+      MODULES.forEach(m => { p[m.id] = { passed: true, score: 100 }; });
+      localStorage.setItem(PROG_KEY, JSON.stringify(p));
+      localStorage.setItem('kl-gd-devmode','1');
+      showDevBadge(true);
+      renderHome();
+      alert('🔓 Dev mode ON — all modules unlocked');
+    } else {
+      localStorage.removeItem('kl-gd-devmode');
+      localStorage.removeItem(PROG_KEY);
+      showDevBadge(false);
+      renderHome();
+      alert('🔒 Dev mode OFF — progress cleared');
+    }
+  }
+
+  function showDevBadge(on){
+    let b = document.getElementById('dev-badge');
+    if(!b){
+      b = document.createElement('div');
+      b.id = 'dev-badge';
+      b.style.cssText = 'position:fixed;bottom:12px;right:12px;background:#f03d9e;color:#fff;font-family:Nunito,sans-serif;font-weight:900;font-size:12px;padding:4px 10px;border-radius:20px;z-index:9999;pointer-events:none;letter-spacing:.5px';
+      b.textContent = '🔓 DEV MODE';
+      document.body.appendChild(b);
+    }
+    b.style.display = on ? 'block' : 'none';
+  }
+
+  if(localStorage.getItem('kl-gd-devmode') === '1') {
+    showDevBadge(true);
+  }
+})();
+// ─────────────────────────────────────────────────────────────────────────────
+
+</script>
+
+<footer style="text-align:center;padding:20px 24px;font-size:11px;color:var(--text2);border-top:1px solid var(--border);margin-top:auto;line-height:1.7;opacity:0.7;">
+  © 2026 Kodland. Designed and developed by Ayberk Temizci for internal tutor training purposes.<br>
+  This material is the exclusive property of Kodland. Unauthorized duplication, distribution, or use outside of Kodland's internal training program is strictly prohibited.
+</footer>
+</body>
+</html>
