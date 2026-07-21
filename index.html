@@ -273,13 +273,13 @@ footer{
         <div class="soon-badge">🔜 In translation</div>
       </a>
 
-      <a class="region-card pending" onclick="comingSoon('Español')" href="#">
+      <a class="region-card" onclick="confirmNav('graphic_design_training_es.html')" href="#">
         <div class="region-flag">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="40" height="27" style="vertical-align:middle;border-radius:3px"><rect width="60" height="40" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/></svg>
         </div>
         <div class="region-name">Español</div>
-        <div class="region-desc">The Spanish training track is currently <strong>being translated</strong>.</div>
-        <div class="soon-badge">🔜 In translation</div>
+        <div class="region-desc">Para tutores en la <strong>región de habla hispana</strong> — incluye el programa de formación en español y su propio formulario de entrega.</div>
+        <div class="region-cta">Abrir formación en español →</div>
       </a>
 
       <a class="region-card pending" onclick="comingSoon('Polski')" href="#">
@@ -291,31 +291,31 @@ footer{
         <div class="soon-badge">🔜 In translation</div>
       </a>
 
-      <a class="region-card pending" onclick="comingSoon('Português')" href="#">
+      <a class="region-card" onclick="confirmNav('graphic_design_training_PT.html')" href="#">
         <div class="region-flag">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="40" height="27" style="vertical-align:middle;border-radius:3px"><rect width="60" height="40" fill="#009C3B"/><polygon points="30,4 56,20 30,36 4,20" fill="#FFDF00"/><circle cx="30" cy="20" r="9" fill="#002776"/></svg>
         </div>
         <div class="region-name">Português</div>
-        <div class="region-desc">The Portuguese training track is currently <strong>being translated</strong>.</div>
-        <div class="soon-badge">🔜 In translation</div>
+        <div class="region-desc">Para tutores na <strong>região de língua portuguesa</strong> — inclui o programa de formação em português e seu próprio formulário de envio.</div>
+        <div class="region-cta">Abrir formação em português →</div>
       </a>
 
-      <a class="region-card pending" onclick="comingSoon('Türkiye')" href="#">
+      <a class="region-card" onclick="confirmNav('graphic_design_training_TR.html')" href="#">
         <div class="region-flag">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="40" height="27" style="vertical-align:middle;border-radius:3px"><rect width="60" height="40" fill="#E30A17"/><circle cx="22" cy="20" r="11" fill="#fff"/><circle cx="26" cy="20" r="8.5" fill="#E30A17"/><polygon points="35,20 43,14 41,20 43,26" fill="#fff"/><polygon points="38.5,20 45,17 44,20 45,23" fill="#fff"/></svg>
         </div>
         <div class="region-name">Türkiye</div>
-        <div class="region-desc">The Turkish training track is currently <strong>being translated</strong>.</div>
-        <div class="soon-badge">🔜 In translation</div>
+        <div class="region-desc">Türkiye'deki tutorlar için <strong>Türkçe bölge</strong> — Türkçe eğitim programını ve kendi gönderim formunu içerir.</div>
+        <div class="region-cta">Türkçe eğitimi aç →</div>
       </a>
 
-      <a class="region-card pending" onclick="comingSoon('Indonesia')" href="#">
+      <a class="region-card" onclick="confirmNav('graphic_design_training_ind.html')" href="#">
         <div class="region-flag">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="40" height="27" style="vertical-align:middle;border-radius:3px"><rect width="60" height="20" fill="#CE1126"/><rect y="20" width="60" height="20" fill="#fff"/></svg>
         </div>
         <div class="region-name">Indonesia</div>
-        <div class="region-desc">The Indonesian training track is currently <strong>being translated</strong>.</div>
-        <div class="soon-badge">🔜 In translation</div>
+        <div class="region-desc">Untuk tutor di <strong>wilayah Indonesia</strong> — termasuk program pelatihan Bahasa Indonesia dan formulir pengumpulan sendiri.</div>
+        <div class="region-cta">Buka pelatihan Bahasa Indonesia →</div>
       </a>
 
     </div><!-- /region-grid -->
@@ -353,12 +353,25 @@ function toggleTheme(){
 }
 if(saved === 'dark') document.getElementById('theme-btn').textContent = '☀️';
 
-// ── English region → confirm & open ─────────────────────
+// ── Active regions → confirm & open (per-region native copy) ─
+const regionData = {
+  'graphic_design_training.html': { title:'Open English Training',
+    body:'This will open the English-region Graphic Design training track and its own submission form. Make sure you applied for the English region before proceeding.' },
+  'graphic_design_training_es.html': { title:'Abrir Formación en Español',
+    body:'Esto abrirá la ruta de formación de Diseño Gráfico para la región de habla hispana con su propio formulario de entrega. Asegúrate de haber solicitado la región en español antes de continuar.' },
+  'graphic_design_training_PT.html': { title:'Abrir Formação em Português',
+    body:'Isso abrirá a trilha de formação de Design Gráfico para a região de língua portuguesa com seu próprio formulário de envio. Certifique-se de ter se inscrito para a região em português antes de prosseguir.' },
+  'graphic_design_training_TR.html': { title:'Türkçe Eğitimi Aç',
+    body:'Bu, Türkiye bölgesi için kendi gönderim formuyla birlikte Grafik Tasarım Türkçe eğitim rotasını açacaktır. Devam etmeden önce Türkiye bölgesine başvurduğunuzdan emin olun.' },
+  'graphic_design_training_ind.html': { title:'Buka Pelatihan Bahasa Indonesia',
+    body:'Ini akan membuka jalur pelatihan Desain Grafis untuk wilayah Indonesia dengan formulir pengumpulan tersendiri. Pastikan Anda telah mendaftar untuk wilayah Indonesia sebelum melanjutkan.' },
+};
 function confirmNav(url){
   event.preventDefault();
+  const d = regionData[url] || { title:'Open Training', body:'This will open the training for your region. Make sure you applied for this region before proceeding.' };
   document.getElementById('modal-flag').textContent = '🎨';
-  document.getElementById('modal-title').textContent = 'Open English Training';
-  document.getElementById('modal-body').textContent = 'This will open the English-region Graphic Design training track and its own submission form. Make sure you applied for the English region before proceeding.';
+  document.getElementById('modal-title').textContent = d.title;
+  document.getElementById('modal-body').textContent = d.body;
   const btns = document.getElementById('modal-btns');
   btns.innerHTML = '<button class="modal-no" onclick="document.getElementById(\'nav-modal\').classList.remove(\'show\')">Cancel</button><button class="modal-yes" onclick="window.location.href=\'' + url + '\'">Open →</button>';
   document.getElementById('nav-modal').classList.add('show');

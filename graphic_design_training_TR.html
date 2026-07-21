@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grafik Tasarım Eğitmen Eğitimi — Kodland</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#C4F046;--lime-d:#AEDD2E;--pink:#F03D9E;--pink-d:#D4308A;
+  --ink:#111111;--ink2:#3A3A3A;--muted:#7A7A8A;
+  --bg:#E8FABD;--surface:#FFFFFF;--surface2:#F4FCD3;--border:#D8F07A;
+  --text:var(--ink);--text2:var(--ink2);--text-muted:var(--muted);
+  --nav-bg:rgba(255,255,255,0.94);--nav-b:#DDFAA0;
+  --shadow:0 2px 12px rgba(0,0,0,.07);--shadow-h:0 8px 28px rgba(0,0,0,.13);
+  --code-bg:#111820;--code-text:#C9E4FF;
+  --cw-bg:#FFF7F0;--cw-b:#FED7AA;--cw-t:#9A3412;
+  --ct-bg:#F0F9FF;--ct-b:#BAE6FD;--ct-t:#0C4A6E;
+  --cg-bg:#F0FDF4;--cg-b:#BBF7D0;--cg-t:#14532D;
+  --hi-bg:#FFF0F8;--hi-b:#F9A8D4;--hi-t:#831843;
+  --opt-h:#F4FCD3;
+  --ok-bg:#F0FDF4;--ok-b:#86EFAC;--ok-t:#15803D;
+  --no-bg:#FEF2F2;--no-b:#FECACA;--no-t:#B91C1C;
+  --r:14px;--rsm:8px;--rpill:999px;
+}
+[data-theme="dark"]{
+  --bg:#0E1210;--surface:#181F15;--surface2:#1E2A18;--border:#2A3D22;
+  --text:#F0FAD8;--text2:#B8D89A;--text-muted:#6B8A5A;
+  --nav-bg:rgba(14,18,16,0.94);--nav-b:#2A3D22;
+  --shadow:0 2px 16px rgba(0,0,0,.5);--shadow-h:0 8px 28px rgba(0,0,0,.5);
+  --cw-bg:rgba(249,115,22,.1);--cw-b:rgba(249,115,22,.3);--cw-t:#FB923C;
+  --ct-bg:rgba(14,165,233,.1);--ct-b:rgba(14,165,233,.3);--ct-t:#38BDF8;
+  --cg-bg:rgba(34,197,94,.1);--cg-b:rgba(34,197,94,.3);--cg-t:#4ADE80;
+  --hi-bg:rgba(240,61,158,.08);--hi-b:rgba(240,61,158,.3);--hi-t:#F472B6;
+  --opt-h:#1E2A18;
+  --ok-bg:rgba(34,197,94,.1);--ok-b:rgba(34,197,94,.4);--ok-t:#4ADE80;
+  --no-bg:rgba(239,68,68,.1);--no-b:rgba(239,68,68,.4);--no-t:#F87171;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;overflow-x:hidden;transition:background .25s,color .25s}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:62px;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:2px solid var(--nav-b);position:sticky;top:0;z-index:100;transition:background .25s,border-color .25s}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+.logo-mark{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.5px;color:var(--ink);line-height:1;white-space:nowrap}
+[data-theme="dark"] .logo-mark{color:var(--lime)}
+.logo-sub{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--pink);white-space:nowrap;line-height:1}
+.logo-div{width:1px;height:16px;background:var(--border);margin:0 4px}
+.nav-r{display:flex;align-items:center;gap:8px}
+.tbtn{width:38px;height:38px;border-radius:var(--rpill);background:var(--surface);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all .15s;flex-shrink:0}
+.tbtn:hover{background:var(--lime);border-color:var(--lime-d)}
+.pbtn{display:flex;align-items:center;gap:5px;padding:8px 16px;border-radius:var(--rpill);background:var(--surface);border:2px solid var(--border);color:var(--text2);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap;text-decoration:none}
+.pbtn:hover{background:var(--lime);border-color:var(--lime-d);color:var(--ink)}
+/* HERO */
+.hero{padding:52px 40px 36px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;bottom:30%;background:radial-gradient(ellipse 70% 55% at 50% 0%,var(--lime) 0%,transparent 70%);opacity:.45;pointer-events:none}
+[data-theme="dark"] .hero::before{background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(196,240,70,.15) 0%,transparent 70%);opacity:1}
+.hero-inner{position:relative;max-width:600px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:2px solid var(--border);border-radius:var(--rpill);padding:5px 14px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;color:var(--text2);margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px}
+.hero h1{font-family:'Nunito',sans-serif;font-size:clamp(28px,5vw,46px);font-weight:900;line-height:1.1;letter-spacing:-1px;color:var(--text);margin-bottom:14px}
+.h-pill{display:inline-block;background:var(--pink);color:#fff;border-radius:var(--rpill);padding:1px 18px;margin:0 2px;font-size:.93em}
+[data-theme="dark"] .h-pill{background:var(--lime);color:var(--ink)}
+.hero p{color:var(--text2);font-size:15px;line-height:1.65;margin-bottom:28px}
+.prog-strip{display:inline-flex;align-items:center;gap:14px;background:var(--surface);border:2px solid var(--border);border-radius:var(--rpill);padding:10px 20px;box-shadow:var(--shadow);max-width:360px;width:100%}
+.pnum{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--text);line-height:1;flex-shrink:0}
+.ptrack{flex:1;height:8px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rpill);overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,var(--lime),var(--pink));border-radius:var(--rpill);transition:width .6s cubic-bezier(.34,1.56,.64,1)}
+.plbl{font-size:12px;color:var(--text-muted);font-weight:600;flex-shrink:0}
+/* GRID */
+.msec{padding:8px 32px 70px;max-width:1060px;margin:0 auto;width:100%}
+.slbl{font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:16px;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.mc{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;box-shadow:var(--shadow)}
+.mc:hover:not(.locked){transform:translateY(-4px);box-shadow:var(--shadow-h)}
+.mc.locked{opacity:.45;cursor:not-allowed}
+.mc.done{border-color:var(--lime-d)}
+[data-theme="dark"] .mc.done{border-color:rgba(196,240,70,.4)}
+.mc-stripe{height:6px}
+.mc-body{padding:20px}
+.mc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mc-num{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text-muted)}
+.mc-em{font-size:22px}
+.mc-title{font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;letter-spacing:-.2px;color:var(--text);margin-bottom:5px}
+.mc-desc{font-size:13px;color:var(--text2);line-height:1.55}
+.mc-foot{margin-top:15px;display:flex;align-items:center;justify-content:space-between}
+.badge{font-family:'Nunito',sans-serif;font-size:11px;font-weight:900;letter-spacing:.3px;padding:4px 12px;border-radius:var(--rpill);text-transform:uppercase}
+.bd{background:var(--lime);color:var(--ink);border:1.5px solid var(--lime-d)}
+.bs{background:var(--pink);color:#fff;border:1.5px solid var(--pink-d)}
+.bl{background:var(--surface2);color:var(--text-muted);border:1.5px solid var(--border)}
+.btr{background:#FFF7E6;color:#B45309;border:1.5px solid #FDE68A}
+[data-theme="dark"] .btr{background:rgba(245,158,11,.1);color:#FBB040;border-color:rgba(245,158,11,.3)}
+[data-theme="dark"] .bd{background:rgba(196,240,70,.18);color:var(--lime);border-color:rgba(196,240,70,.4)}
+[data-theme="dark"] .bs{background:rgba(240,61,158,.18);color:var(--pink);border-color:rgba(240,61,158,.4)}
+.stag{font-size:12px;color:var(--text-muted);font-weight:600}
+.stag b{color:var(--text)}
+/* CONTENT */
+.cbody{padding:36px 40px 60px;max-width:800px;margin:0 auto;width:100%;flex:1}
+.meyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:8px}
+.mh1{font-family:'Nunito',sans-serif;font-size:clamp(24px,4vw,34px);font-weight:900;letter-spacing:-.6px;line-height:1.12;color:var(--text);margin-bottom:14px}
+.mobj{background:var(--surface);border:2px solid var(--border);border-left:5px solid var(--acc,var(--lime));border-radius:0 var(--rsm) var(--rsm) 0;padding:12px 16px;font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:32px}
+.mobj strong{color:var(--text)}
+.sch{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;margin:28px 0 12px;color:var(--text);display:flex;align-items:center;gap:8px}
+.sch::after{content:'';flex:1;height:2px;background:var(--border);border-radius:2px}
+.card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:10px;box-shadow:var(--shadow)}
+.card h4{font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:var(--text);margin-bottom:7px}
+.card p,.card li{font-size:14px;color:var(--text2);line-height:1.7}
+.card ul,.card ol{padding-left:17px}
+.card li{margin-bottom:4px}
+.card p strong,.card li strong{color:var(--text)}
+.card a{color:var(--pink);font-weight:600}
+.callout a{color:inherit;font-weight:700;text-decoration:underline}
+.tbl-wrap{overflow-x:auto;margin-top:4px}
+.card table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.55}
+.card th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);font-family:'Nunito',sans-serif;font-size:12.5px;color:var(--text)}
+.card td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.card tr:last-child td{border-bottom:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:14px}
+.fact{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rsm);padding:16px 12px;text-align:center;box-shadow:var(--shadow)}
+.fact-ic{font-size:26px;margin-bottom:7px}
+.fact-t{font-size:12.5px;color:var(--text2);line-height:1.55}
+.fact-t b,.fact-t strong{color:var(--text)}
+.prog{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.prog-mod{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rsm);padding:14px 16px;box-shadow:var(--shadow)}
+.prog-h{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.prog-n{background:var(--lime);color:var(--ink);font-family:'Nunito',sans-serif;font-weight:900;font-size:11px;border-radius:var(--rpill);padding:3px 10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.prog-t{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--text)}
+.prog-ls{padding-left:17px;margin-bottom:9px}
+.prog-ls li{font-size:13px;color:var(--text2);line-height:1.65}
+.prog-res{font-size:12.5px;color:var(--text2);background:var(--surface2);border-radius:var(--rsm);padding:9px 11px;line-height:1.55}
+.qa-row{padding:10px 0;border-bottom:1px solid var(--border)}
+.qa-row:last-child{border-bottom:none;padding-bottom:2px}
+.qa-k{font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--text);margin-bottom:3px}
+.qa-v{font-size:13.5px;color:var(--text2);line-height:1.6}
+.card code{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--surface2);border:1.5px solid var(--border);border-radius:5px;padding:2px 7px;color:var(--pink)}
+[data-theme="dark"] .card code{color:var(--lime)}
+.card.hi{background:var(--hi-bg);border-color:var(--hi-b)}
+.card.hi h4{color:var(--hi-t)}
+.card.hi p,.card.hi li{color:var(--hi-t);opacity:.88}
+.card.hi code{background:rgba(240,61,158,.1);border-color:rgba(240,61,158,.25);color:var(--pink)}
+.callout{display:flex;gap:10px;border-radius:var(--rsm);padding:12px 15px;margin-bottom:10px;font-size:13.5px;line-height:1.65;border:1.5px solid}
+.ci{font-size:15px;flex-shrink:0;margin-top:1px}
+.cw{background:var(--cw-bg);border-color:var(--cw-b);color:var(--cw-t)}
+.ct{background:var(--ct-bg);border-color:var(--ct-b);color:var(--ct-t)}
+.cg{background:var(--cg-bg);border-color:var(--cg-b);color:var(--cg-t)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.two-col{grid-template-columns:1fr}}
+.divider{border:none;border-top:2px solid var(--border);margin:28px 0}
+.ctabtn{display:block;width:100%;padding:16px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;cursor:pointer;transition:all .15s;margin-bottom:40px;margin-top:4px;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.ctabtn:hover{background:var(--pink);transform:translateY(-2px);box-shadow:0 6px 20px rgba(240,61,158,.35)}
+[data-theme="dark"] .ctabtn{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .ctabtn:hover{background:var(--pink);color:#fff}
+@media(max-width:640px){.cbody,.msec,.hero{padding-left:18px;padding-right:18px}}
+/* IMAGES & VIDEO */
+.mod-img{max-width:100%;border-radius:var(--rsm);border:1.5px solid var(--border);margin:10px 0 12px;display:block}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:var(--rsm);display:block;background:#000;margin-top:10px}
+.yt-lite{position:relative;display:block;width:100%;aspect-ratio:16/9;background-size:cover;background-position:center;border-radius:var(--rsm);cursor:pointer;margin-top:10px;overflow:hidden;background-color:#000}
+.yt-lite:hover .yt-play{background:#f00;transform:scale(1.08)}
+.yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:rgba(33,33,33,.85);border-radius:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;pointer-events:none}
+.yt-play::after{content:'';display:block;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent #fff;margin-left:4px}
+.video-link{display:inline-block;margin-top:10px;font-size:13px;color:var(--pink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.video-note{margin-top:8px;font-size:11.5px;color:var(--text-muted);line-height:1.5}
+/* QUIZ */
+.qbody{padding:36px 40px;max-width:680px;margin:0 auto;width:100%;flex:1}
+.qpt{height:7px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rpill);margin-bottom:36px;overflow:hidden}
+.qpf{height:100%;background:linear-gradient(90deg,var(--lime),var(--pink));border-radius:var(--rpill);transition:width .4s ease}
+.qctr{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:10px}
+.qtxt{font-family:'Nunito',sans-serif;font-size:21px;font-weight:900;letter-spacing:-.3px;line-height:1.35;margin-bottom:26px;color:var(--text)}
+.qopts{display:flex;flex-direction:column;gap:10px}
+.qopt{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:14px 18px;cursor:pointer;font-size:14px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s;text-align:left;line-height:1.5;box-shadow:var(--shadow)}
+.qopt:hover:not(.answered){background:var(--opt-h);border-color:var(--lime-d)}
+.qopt.correct{background:var(--ok-bg);border-color:var(--ok-b);color:var(--ok-t)}
+.qopt.wrong{background:var(--no-bg);border-color:var(--no-b);color:var(--no-t)}
+.qopt.answered{cursor:default}
+.qfb{display:none;margin-top:14px;border-radius:var(--rsm);padding:13px 16px;font-size:14px;line-height:1.6;border:2px solid}
+.qfb.show{display:block}
+.qfb.ok{background:var(--ok-bg);border-color:var(--ok-b);color:var(--ok-t)}
+.qfb.bad{background:var(--no-bg);border-color:var(--no-b);color:var(--no-t)}
+.qnxt{display:none;margin-top:18px;width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;cursor:pointer;transition:all .15s}
+.qnxt.show{display:block}
+.qnxt:hover{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .qnxt{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .qnxt:hover{background:var(--pink);color:#fff}
+/* RESULTS */
+.rbody{padding:60px 40px;max-width:520px;margin:0 auto;text-align:center;flex:1}
+.remi{font-size:64px;margin-bottom:14px}
+.rtitle{font-family:'Nunito',sans-serif;font-size:30px;font-weight:900;letter-spacing:-.4px;color:var(--text)}
+.rpct{font-family:'Nunito',sans-serif;font-size:62px;font-weight:900;line-height:1;margin:14px 0 6px}
+.rpct.pass{color:var(--lime-d)}
+.rpct.fail{color:var(--pink)}
+[data-theme="dark"] .rpct.pass{color:var(--lime)}
+.rsub{color:var(--text2);font-size:15px;line-height:1.65;margin-bottom:30px}
+.bdark{display:block;width:100%;padding:14px 24px;margin-bottom:10px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;cursor:pointer;transition:all .15s}
+.bdark:hover{background:var(--pink)}
+[data-theme="dark"] .bdark{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .bdark:hover{background:var(--pink);color:#fff}
+.bline{display:block;width:100%;padding:13px 24px;margin-bottom:10px;background:transparent;color:var(--text2);border:2px solid var(--border);border-radius:var(--rpill);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.bline:hover{background:var(--surface2);color:var(--text);border-color:var(--lime-d)}
+/* CERT */
+.compbody{padding:60px 40px;max-width:600px;margin:0 auto;text-align:center;flex:1}
+.cert{background:var(--surface);border:3px solid var(--lime-d);border-radius:20px;padding:32px 28px;margin:28px 0;box-shadow:0 0 40px rgba(196,240,70,.18);position:relative;overflow:hidden}
+.cert::before{content:'';position:absolute;top:-60px;right:-60px;width:160px;height:160px;border-radius:50%;background:var(--lime);opacity:.1;pointer-events:none}
+.clbl2{font-family:'Nunito',sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:var(--pink);margin-bottom:12px}
+.cert h2{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.3px;color:var(--text)}
+.cert p{color:var(--text2);margin-top:6px;font-size:14px}
+.cmods{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
+.cmod{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+/* DST */
+.dst-body{padding:40px 40px 60px;max-width:780px;margin:0 auto;flex:1}
+.dst-badge{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:var(--ink);border:2px solid var(--lime-d);border-radius:var(--rpill);padding:5px 14px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+[data-theme="dark"] .dst-badge{background:rgba(196,240,70,.18);color:var(--lime);border-color:rgba(196,240,70,.4)}
+.dst-h1{font-family:'Nunito',sans-serif;font-size:clamp(22px,4vw,32px);font-weight:900;letter-spacing:-.6px;line-height:1.12;color:var(--text);margin-bottom:10px}
+.dst-sub{font-size:15px;color:var(--text2);line-height:1.7}
+.dst-section-label{font-family:'Nunito',sans-serif;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin:28px 0 14px}
+.dst-task{display:flex;gap:16px;margin-bottom:18px;align-items:flex-start}
+.dst-task-num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+[data-theme="dark"] .dst-task-num{background:var(--lime);color:var(--ink)}
+.dst-task-body{flex:1;background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow)}
+.dst-task-body h3{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;color:var(--text);margin-bottom:6px}
+.dst-task-body p{font-size:14px;color:var(--text2);line-height:1.65}
+.dst-task-body p strong{color:var(--text)}
+.dst-link-btn{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:10px 18px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;cursor:pointer;text-decoration:none;transition:all .15s}
+.dst-link-btn:hover{background:var(--pink);transform:translateY(-1px)}
+[data-theme="dark"] .dst-link-btn{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .dst-link-btn:hover{background:var(--pink);color:#fff}
+.dst-warn{background:var(--cw-bg);border:2px solid var(--cw-b);border-radius:var(--rsm);padding:14px 18px;color:var(--cw-t);font-size:13.5px;line-height:1.7;margin:24px 0}
+.dst-warn ul{padding-left:18px;margin-top:6px}
+.dst-warn strong{font-weight:800}
+.dst-submit-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:24px 24px;box-shadow:var(--shadow)}
+.dst-submit-title{font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:var(--text);margin-bottom:10px}
+@media(max-width:640px){.dst-body{padding-left:18px;padding-right:18px}.dst-task{flex-direction:column}.dst-task-num{margin-bottom:-8px}}
+/* LOGIN */
+.login-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
+.login-wrap::before{content:'';position:absolute;inset:0;bottom:40%;background:radial-gradient(ellipse 70% 55% at 50% 0%,var(--lime) 0%,transparent 70%);opacity:.45;pointer-events:none}
+[data-theme="dark"] .login-wrap::before{background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(196,240,70,.15) 0%,transparent 70%);opacity:1}
+.login-card{position:relative;background:var(--surface);border:2px solid var(--border);border-radius:20px;padding:40px 36px;max-width:400px;width:100%;box-shadow:var(--shadow-h);text-align:center}
+.login-card .lgi{font-size:44px;margin-bottom:12px}
+.login-card h1{font-family:'Nunito',sans-serif;font-size:23px;font-weight:900;letter-spacing:-.4px;color:var(--text);margin-bottom:8px}
+.login-card .lsub{font-size:13.5px;color:var(--text2);line-height:1.6;margin-bottom:24px}
+.login-input{width:100%;padding:13px 16px;margin-bottom:12px;border:2px solid var(--border);border-radius:12px;background:var(--surface2);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;transition:border-color .15s}
+.login-input:focus{outline:none;border-color:var(--lime-d)}
+.login-input::placeholder{color:var(--text-muted)}
+.login-err{display:none;margin:0 0 12px;padding:10px 14px;border-radius:var(--rsm);background:var(--no-bg);border:1.5px solid var(--no-b);color:var(--no-t);font-size:13px;font-weight:600}
+/* skip & modals */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:var(--surface);border:2px solid var(--border);border-radius:20px;padding:32px 28px;max-width:440px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal h3{font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:var(--text);margin-bottom:10px}
+.modal p{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:24px}
+.modal-btns{display:flex;gap:10px}
+.modal-yes{flex:1;padding:13px;background:var(--pink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;cursor:pointer;transition:all .15s}
+.modal-yes:hover{background:var(--pink-d)}
+.modal-no{flex:1;padding:13px;background:var(--surface2);color:var(--text2);border:2px solid var(--border);border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s}
+.modal-no:hover{background:var(--border);color:var(--text)}
+.skip-row{text-align:center;padding:0 32px 48px}
+.skip-btn{background:none;border:none;color:var(--text-muted);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color .15s}
+.skip-btn:hover{color:var(--text2)}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="screen-login" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Grafik Tasarım Eğitimi</span>
+    </a>
+    <div class="nav-r">
+      <a class="pbtn" href="index.html">🌐 Bölge</a>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="lgi">🔐</div>
+      <h1>Eğitmen Eğitimi Erişimi</h1>
+      <p class="lsub">Bu eğitim yalnızca Kodland eğitmen adayları içindir. Modüllerin kilidini açmak için size verilen paylaşılan kullanıcı bilgilerini girin.</p>
+      <input class="login-input" id="login-user" type="text" placeholder="Kullanıcı Adı" autocomplete="off">
+      <input class="login-input" id="login-pass" type="password" placeholder="Şifre" onkeydown="if(event.key==='Enter')tryLogin()">
+      <div class="login-err" id="login-err">Kullanıcı adı veya şifre hatalı.</div>
+      <button class="bdark" onclick="tryLogin()" style="margin-bottom:0">Eğitimin Kilidini Aç →</button>
+    </div>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="screen-home" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Grafik Tasarım Eğitimi</span>
+    </a>
+    <div class="nav-r">
+      <span id="ntag" style="font-size:13px;color:var(--text-muted);font-weight:600;display:none"></span>
+      <a class="pbtn" id="btn-change-region" href="index.html">🌐 Bölge</a>
+      <button class="tbtn" id="tb0" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">🎨 Eğitmen Eğitim Programı</div>
+      <h1>Çocuklara<br><span class="h-pill">Grafik Tasarım</span><br>öğretmeye hazırlanın</h1>
+      <p>Eğitmen hazırlığınızı tamamlamak için 7 modülün tümünü tamamlayın ve her quizden geçin. Bir sonraki modülün kilidini açmak için %70 ve üzeri puan alın.</p>
+      <div class="prog-strip">
+        <div class="pnum" id="pnum">0/7</div>
+        <div class="ptrack"><div class="pfill" id="pfill" style="width:0%"></div></div>
+        <div class="plbl">modül tamamlandı</div>
+      </div>
+    </div>
+  </div>
+  <div class="msec">
+    <div class="slbl">Modülleriniz</div>
+    <div class="grid" id="mgrid"></div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="screen-content" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Grafik Tasarım Eğitimi</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Modüller</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="cbody" id="cbody"></div>
+</div>
+
+<!-- QUIZ -->
+<div id="screen-quiz" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Grafik Tasarım Eğitimi</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="exitQuiz()">← Quizden Çık</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="qbody">
+    <div class="qpt"><div class="qpf" id="qfill"></div></div>
+    <div class="qctr" id="qcount"></div>
+    <div class="qtxt" id="qtext"></div>
+    <div class="qopts" id="qopts"></div>
+    <div class="qfb" id="qfb"></div>
+    <button class="qnxt" id="qnxt" onclick="nextQ()">İleri →</button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="screen-results" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Grafik Tasarım Eğitimi</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Modüller</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="rbody" id="rbody"></div>
+</div>
+
+<!-- COMPLETE -->
+<div id="screen-complete" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Grafik Tasarım Eğitimi</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Panel</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="compbody" id="compbody"></div>
+</div>
+
+<!-- DST SCREEN -->
+<div id="screen-dst" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Grafik Tasarım Eğitimi</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Modüller</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="dst-body">
+    <div class="dst-badge">🎯 Digital Skill Test</div>
+    <div class="dst-h1">Bir Uygulama Prototipi Oluşturun!</div>
+    <p class="dst-sub">Kurs boyunca öğrenciler, Figma uygulamasını ve birçok özelliğini kullanarak önemli miktarda zaman geçirecekler. Göreviniz, bir uygulamanın ana ekranının prototipini oluşturmaktır. Ana ekranınız aşağıdaki kriterleri karşıladığı sürece, uygulamanın temasında yaratıcı olmakta özgürsünüz:</p>
+
+    <div class="dst-section-label">Gereksinimler</div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">1</div>
+      <div class="dst-task-body">
+        <h3>Fontunuzu gösterin</h3>
+        <p>Ana ekranda <strong>fontun adı</strong> belirtilmelidir. Font, illüstrasyonla stilistik olarak uyumlu olmalıdır.</p>
+      </div>
+    </div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">2</div>
+      <div class="dst-task-body">
+        <h3>Bir vektör illüstrasyon çizin</h3>
+        <p>Sayfa, <strong>Pen tool kullanılarak Figma'da çizilmiş</strong> basit bir vektör illüstrasyon içermelidir.</p>
+      </div>
+    </div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">3</div>
+      <div class="dst-task-body">
+        <h3>Etkileşimli bir ana ekran düğmesi ekleyin</h3>
+        <p>Sayfa, <strong>imleç üzerine gelindiğinde renk değiştiren bir ana ekran düğmesi</strong> içermelidir. Bu özelliğin <strong>Components</strong> kullanılarak uygulanması gerektiğini unutmayın. Rehberlik için bu eğitim videosunu kullanabilirsiniz:</p>
+        <a class="dst-link-btn" href="https://www.youtube.com/watch?v=yNAsvYWuI70" target="_blank">▶ Components Eğitim Videosu →</a>
+      </div>
+    </div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">4</div>
+      <div class="dst-task-body">
+        <h3>Bir iPhone üzerinde sunun</h3>
+        <p>Prototip, <strong>iPhone 14/15/16</strong> üzerinde sunulmalıdır. Boyutlara uyduğunuzdan emin olun.</p>
+      </div>
+    </div>
+
+    <div class="dst-section-label">Sonucunuzu paylaşma</div>
+    <div class="dst-task">
+      <div class="dst-task-num">5</div>
+      <div class="dst-task-body">
+        <h3>Figma prototip bağlantınızı paylaşın</h3>
+        <p>Son olarak, bu örnekte gösterildiği gibi <strong>Figma prototipinizin bağlantısını</strong> göndererek sonucunuzu paylaşın:</p>
+        <a class="dst-link-btn" href="https://www.figma.com/proto/Rcm51N8axdIpC4J8QEbnWr/Test-Example?node-id=1-3&amp;p=f&amp;t=76xC6Pae7kMP0Cfv-1&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1" target="_blank">🔗 Örnek Prototipi Görüntüle →</a>
+        <p style="margin-top:12px">Figma bağlantısının nasıl paylaşılacağına dair bir eğitim videosunu burada bulabilirsiniz:</p>
+        <a class="dst-link-btn" href="https://www.youtube.com/watch?v=sPpqBITEZGE" target="_blank">▶ Bir Figma Bağlantısı Nasıl Paylaşılır →</a>
+      </div>
+    </div>
+
+    <div class="dst-warn">
+      <strong>⚠️ Önemli — lütfen dikkatlice okuyun</strong>
+      <ul>
+        <li>Aynı anda birkaç önemli gereksinimi ihlal ederseniz, projeyi <strong>düzeltme fırsatı olmayabilir</strong>.</li>
+        <li>Proje internetten <strong>kısmen veya tamamen kopyalanmamalıdır</strong> — bunu yapmak dürüstlüğünüz ve profesyonelliğiniz hakkında hemen şüphe uyandıracaktır.</li>
+        <li>🚫 <strong>Yapay zeka kullanımı doğrudan bir reddedilme sebebidir.</strong> Nihai projeyi kendi başınıza tamamlamak, sadece öğretme becerisine sahip olduğunuzu kanıtlamaz — kendi öğreniminize değer verdiğinizi de gösterir.</li>
+      </ul>
+    </div>
+
+    <div class="dst-submit-card">
+      <div class="dst-submit-title">📤 Nasıl gönderilir</div>
+      <p style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:14px">Yetenek testi formunu doldurun ve proje bağlantınızı son sorunun cevabı olarak yapıştırın.</p>
+      <a class="dst-link-btn" href="https://forms.gle/evtpmfowr4m4Ndk4A" target="_blank">Yetenek Testi Formunu Aç →</a>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;padding-bottom:20px">
+      <p style="font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:var(--text);margin-bottom:6px">İyi şanslar! 🍀</p>
+      <p style="font-size:13px;color:var(--text-muted)">Kodland ekibi sana destek oluyor.</p>
+      <button class="bline" onclick="goHome()" style="max-width:260px;margin:20px auto 0">← Panele Geri Dön</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// THEME
+(function(){
+  const s=localStorage.getItem('kl-theme');
+  const sys=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+  const t=s||sys;
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  setIcons(t);
+})();
+function setIcons(t){ document.querySelectorAll('.tbtn').forEach(b=>b.textContent=t==='dark'?'☀️':'🌙'); }
+function toggleTheme(){
+  const d=document.documentElement.getAttribute('data-theme')==='dark';
+  const n=d?'light':'dark';
+  n==='dark'?document.documentElement.setAttribute('data-theme','dark'):document.documentElement.removeAttribute('data-theme');
+  localStorage.setItem('kl-theme',n); setIcons(n);
+}
+
+// ─── MODULE 0 (welcome / no quiz) ────────────────────────────────────────────
+const MODULE0={emoji:'👋',color:'#64748B',title:'Grafik Tasarım Kursuna Hoş Geldiniz!',desc:'Kursun ne hakkında olduğu, metodolojisi ve hedefleri — ve bu eğitimin sizi onu öğretmeye nasıl hazırladığı.',
+ sections:[
+  {t:'🎓 Kurs Hakkında',cards:[
+    {type:'text',h:'Bu kurs ne hakkında?',b:'Grafik Tasarım kursu, öğrencileri <strong>uygulamalı projeler</strong> aracılığıyla profesyonel tasarım dünyasıyla tanıştırır. Program boyunca öğrenciler, sektör standardı tasarım araçlarını kullanırken yaratıcılık, görsel düşünme ve dijital becerilerini geliştirecekler.'},
+    {type:'hi',h:'🪅 Kurs konsepti: Bir tasarım ajansında staj',b:'Öğrenciler eşsiz bir fırsat elde edecek: dünyanın en popüler ajanslarından biri olan <strong>Kodland Art Labs</strong>\'ta bir grafik tasarım stajı. Ancak başlayabilmeleri için önce başarılı bir tasarımcı için gerekli beceri ve nitelikleri göstermeleri gerekir.<br><br>Stajları boyunca, gerçek hayattaki senaryoları simüle eden küresel markalardan gelen görevler üzerinde çalışacaklar. Öğrencilerin kurs boyunca üstlendiği projeler özgüvenlerini artıracak ve kişisel markalarının temel unsurları haline gelecek profesyonel portfolyoların temelini oluşturacak.'},
+    {type:'facts',items:[
+      {ic:'🙂',t:'<strong>Öğrenci yaşı</strong><br>13+ yaş'},
+      {ic:'🎓',t:'<strong>Zorluk seviyesi</strong><br>Orta düzey'},
+      {ic:'🕐',t:'<strong>Kurs süresi</strong><br>40 ders'},
+      {ic:'⏱',t:'<strong>Ders süresi</strong><br>90 dk (grup) veya 50 dk (bireysel)'},
+      {ic:'🛠️',t:'<strong>Kullanılan programlar</strong><br>Figma, Photopea'},
+    ]},
+    {type:'text',h:'Öğrenciler ne öğrenecek?',b:'Kursun sonunda öğrenciler şunları yapabilecek:'},
+    {type:'facts',items:[
+      {ic:'🎨',t:'<strong>Grafik tasarımlar oluşturmak</strong><br>banner, poster, ambalaj ve daha fazlası'},
+      {ic:'🏷️',t:'<strong>Marka kimliği geliştirmek</strong><br>logo, font, renk ve marka kitapları'},
+      {ic:'📱',t:'<strong>Uygulama prototipi tasarlamak</strong><br>Figma\'da tıklanabilir, animasyonlu ekranlar'},
+      {ic:'🚀',t:'<strong>Profesyonel bir portfolyo oluşturmak</strong><br>çalışmalarını sergilemek için Behance\'de yayınlanan'},
+    ]},
+    {type:'text',h:'📚 Kurs programı',b:'İşte öğrencilerin geçeceği 40 dersin özet bir görünümü — ve her modülün onlara neler bıraktığı:'},
+    {type:'prog',mods:[
+      {n:1,t:'Figma\'da grafik tasarıma giriş',lessons:['<strong>L1.</strong> Grafik tasarım nedir? Figma\'yı tanıma.','<strong>L2.</strong> Figma\'yı öğrenme: İlk düzenimizi oluşturma.','<strong>L3.</strong> Figma\'yı öğrenme: Plugin\'ler ve vektör grafikler.','<strong>L4.</strong> Kendi portfolyonuzu oluşturma.'],res:'Öğrenciler vektör grafiklerle çalışmayı ve ilk bannerlarını oluşturmayı öğrenir.'},
+      {n:2,t:'Bir grafik tasarımcının araçları',lessons:['<strong>L5.</strong> Renk teorisini anlama.','<strong>L6.</strong> Fontlar ve tipografi.','<strong>L7.</strong> Kompozisyonun temelleri.','<strong>L8.</strong> Modüler ızgaralar. Karmaşık kompozisyonlar.'],res:'Öğrenciler projeleri için renk ve font seçmeyi, ayrıca düzenlerin kompozisyonunu oluşturmayı öğrenir.'},
+      {n:3,t:'Photopea\'da etkinlik kimliği oluşturma',lessons:['<strong>L9.</strong> Photopea\'da çalışmanın temelleri; Uzay temalı bir kompozisyon oluşturma.','<strong>L10.</strong> Rötuş ve fotoğraf düzenleme.','<strong>L11.</strong> Bir etkinlik için yaratıcı bir tasarım geliştirme.','<strong>L12.</strong> Etkinliğin kimliğinin ana bileşenlerini geliştirme.'],res:'Öğrenciler görüntü işlemenin temellerini öğrenir. Ayrıca fotoğraf düzenlemeyi ve etkinlikler için tasarım geliştirmeyi öğrenirler.'},
+      {n:4,t:'İlk projemiz! Bir logo geliştirme',lessons:['<strong>L13.</strong> Branding\'i anlama.','<strong>L14.</strong> Bir tasarım projesi üzerinde çalışma süreci. Logo tasarımının temelleri.','<strong>L15.</strong> Bir logo üzerinde çalışma.','<strong>L16.</strong> Mockup\'lar. Reklamı anlama.'],res:'Öğrenciler herhangi bir tasarım projesi üzerinde çalışmanın temel aşamalarını öğrenir. Ayrıca logolar geliştirir ve bu logoların tanıtım ürünlerinde nasıl görünebileceğini gösterirler.'},
+      {n:5,t:'Marka kimliği geliştirme',lessons:['<strong>L17.</strong> Kurumsal kimliğin ana bileşenleri. Bir logo tasarlama.','<strong>L18.</strong> Font ve renk seçme.','<strong>L19.</strong> Bir sunum tasarlama, Bölüm 1.','<strong>L20.</strong> Bir sunum tasarlama, Bölüm 2. İnfografikleri anlama.','<strong>L21.</strong> Marka kitapları ve Kılavuzlar.'],res:'Öğrenciler marka kitaplarını oluşturur ve grafik tasarımda nasıl bir rol oynadıklarını öğrenirler.'},
+      {n:6,t:'Sosyal medya için tasarım',lessons:['<strong>L22.</strong> Bir sosyal medya sayfası için animasyon üzerinde çalışma.','<strong>L23.</strong> Bir sosyal medya profili tasarlama, Bölüm 1.','<strong>L24.</strong> Bir sosyal medya profili tasarlama, Bölüm 2.'],res:'Öğrenciler sosyal medya için nasıl tasarım yapılacağını ve bu tasarım dalının neden bu kadar farklı olduğunu öğrenir. Ayrıca sosyal medya profil tasarımı için kendi stillerini geliştirirler.'},
+      {n:7,t:'Web Tasarımı',lessons:['<strong>L25.</strong> Bir açılış sayfası oluşturma, Bölüm 1.','<strong>L26.</strong> Bir açılış sayfası oluşturma, Bölüm 2.','<strong>L27.</strong> Bir uygulama prototipi oluşturma, Bölüm 1.','<strong>L28.</strong> Bir uygulama prototipi oluşturma, Bölüm 2.'],res:'Öğrenciler web tasarımının sırlarını öğrenir ve bu bilgiyi kendi web sitelerini oluşturmak için kullanırlar.'},
+      {n:8,t:'Baskı tasarımına giriş',lessons:['<strong>L29.</strong> Kartvizit tasarımı: akılda kalıcı bir ilk izlenim oluşturma.','<strong>L30.</strong> İç mekan posteri: konseptten göz alıcı duvar sanatına.','<strong>L31.</strong> Kitap kapağı tasarımı: hikayeleri görsel başyapıtlara dönüştürme.','<strong>L32.</strong> Sosyal farkındalık posteri: değişime ilham veren tasarım.'],res:'Öğrenciler baskı tasarımı projeleriyle tanışır ve dört parça oluşturur: bir kartvizit, bir iç mekan posteri, bir kitap kapağı ve bir sosyal poster. Bu süreçte yaratıcılıklarını gösterir, yeni Figma özelliklerini uygular ve nöral ağları kullanırlar.'},
+      {n:9,t:'Tasarım projesi geliştirme',lessons:['<strong>L33.</strong> Bir fikri somut bir konsepte ve proje planına dönüştürme.','<strong>L34.</strong> Projenin görsel yönünü ve stilini belirleme.','<strong>L35.</strong> Ayrıntıları düzenleme ve gerekli değişiklikleri uygulama.','<strong>L36.</strong> Son montajı tamamlama ve bitmiş projeyi teslim etme.'],res:'Bu modülü tamamladıktan sonra öğrenciler net bir tasarım konsepti ve proje planı geliştirebilecek, tutarlı bir görsel stil tanımlayabilecek, yinelemeli düzenlemelerle tasarım ayrıntılarını iyileştirebilecek ve çalışmalarının nihai sonucunu başarıyla bir araya getirip teslim edebilecekler.'},
+      {n:10,t:'Özel bir marka oluşturma',lessons:['<strong>L37.</strong> Kariyer rehberliği. Bir Behance profili oluşturma.','<strong>L38.</strong> Behance profilini doldurma ve projeleri düzenleme.','<strong>L39.</strong> Bir kendini tanıtım sunumu hazırlama.','<strong>L40.</strong> Mezuniyet, kendini tanıtım sunumu.'],res:'Kursun sonunda öğrenciler tüm projelerini toplar ve özel bir grafik tasarım platformunda bir portfolyo oluştururlar.'},
+    ]},
+    {type:'text',h:'Öğrenciler hangi araçları kullanacak?',b:'Kurs boyunca öğrenciler <strong>Figma</strong>, <strong>Photopea</strong> ve <strong>Behance</strong> ile çalışacaklar. Ayrıca <strong>renk teorisi, kompozisyon, tipografi, branding, sosyal medya tasarımı</strong> ve temel <strong>UI/UX prensipleri</strong> konularının temellerini öğrenecekler.<br><br>Bu mini kursta, bu araçlarla ve grafik tasarımın temel kavramlarıyla tanışacak, kursu ilk dersinizden itibaren başarıyla öğretmek için gereken bilgi ve özgüveni kazanacaksınız.'},
+  ]},
+  {t:'🧭 Bu Eğitim Hakkında',cards:[
+    {type:'text',h:'Bu mini kurs ne hakkında?',b:'Bu eğitim, kursu güvenle öğretmenize hazırlamak için tasarlanmış <strong>7 kısa modül ile son bir Digital Skill Test</strong>\'ten oluşur. <strong>1-6. Modüller</strong> öğreteceğiniz tasarım kavramlarını ve araçlarını kapsar — teknik temelleri ve sınıfta beklenen kalite standartlarını. <strong>Modül 7</strong> ise aynı derecede önemli bir konuya odaklanır: <strong>nasıl öğretileceği</strong> — harika bir Kodland dersinin yapısı ve öğrencilerin gelişmesine yardımcı olacak geri bildirimin nasıl verileceği. Her modül kısa bir quiz ile sona erer — bir sonrakinin kilidini açmak için <strong>%70 veya daha yüksek</strong> puan alın ve Digital Skill Test\'e ulaşmak için yedisini de tamamlayın.'},
+    {type:'good',txt:'Şimdi başlama zamanı! <strong>Modül 1</strong>\'e geçin ve grafik tasarımın ne olduğunu keşfedin.'},
+  ]},
+ ]};
+
+function openModule0(){
+  let html=`<div class="meyebrow">Modül 0 · Buradan Başlayın · Quiz Yok</div><div class="mh1">${MODULE0.emoji} ${MODULE0.title}</div><div class="mobj" style="border-left-color:${MODULE0.color}"><strong>Hedef:</strong> İçerik modüllerine geçmeden önce Grafik Tasarım kursunun ne olduğunu, metodolojisini ve hedeflerini anlamak.</div>`;
+  MODULE0.sections.forEach(s=>{html+=`<div class="sch">${s.t}</div>`;s.cards.forEach(c=>{html+=rc(c);});});
+  html+=`<hr class="divider"><button class="ctabtn" onclick="openModule(MODULES[0])">Modül 1\'e Geç →</button>`;
+  document.getElementById('cbody').innerHTML=html;
+  showScreen('screen-content');
+  window.scrollTo(0,0);
+}
+
+// ─── MODULES ─────────────────────────────────────────────────────────────────
+const MODULES=[
+  {id:1,emoji:'🎨',title:'Grafik Tasarımın Temelleri',desc:'Grafik tasarımın ne olduğu (ve ne olmadığı), ayrıca teori özü: renk, tipografi, kompozisyon, kurumsal kimlik, branding ve logolar.',obj:'Kursun her dersinin dayandığı teori temelini oluşturmak — renk, tip, kompozisyon, kimlik ve branding.',color:'#2B8EF0',
+   sections:[
+    {t:'👀 Bu Modülde Neler Var',cards:[
+      {type:'text',b:'Bu modülde grafik tasarımın gerçekte ne olduğunu keşfedecek ve her tasarımcının fikirleri bir izleyicide yankı bulan görsellere dönüştürmek için dayandığı temel kavramları inceleyeceksiniz. Bu temeli iyice özümsemek, öğrencilerinize kendi yaratıcı kararlarında rehberlik etmeniz için size özgüven verecek — her rengin, düzenin veya markanın arkasında her zaman bir sebep olduğunu, asla rastgele bir seçim olmadığını görmelerine yardımcı olacaksınız.'},
+    ]},
+    {t:'🎨 Grafik Tasarım Nedir?',cards:[
+      {type:'text',b:'Grafik tasarım, insanların görüntüler, metin ve renk aracılığıyla bilgi veya fikirleri anlamalarına yardımcı olan görseller oluşturma sürecidir. Yaratıcılığı mantıkla birleştirir — bir tasarımcı, fikirleri dikkat çeken ve açık bir mesaj ileten işlevsel görsellere dönüştürür. Her yerimizde: logolar, kitap kapakları, film posterleri, uygulamalar, ambalajlar, sosyal medya.'},
+      {type:'hi',h:'⚠️ Bu Bir Çizim Kursu DEĞİLDİR',b:'Metodoloji boyunca tekrarlanması gereken bir kural: <strong>öğrencilere kursun çizim içerdiğini asla söylemeyin</strong>. Tasarım, görüntüleri, metni ve rengi düzenlemekle ilgilidir — resim yapmakla değil. Konsept sanatı, 3D modelleme, animasyon ve 2D illüstrasyon ilişkili ama ayrı mesleklerdir ve öğrencilerin doğru beklentiler oluşturması için bu ayrımı ilk günden açıkça belirtmeye değer.'},
+      {type:'twocol',left:{h:'✅ Grafik tasarım',items:['Logolar ve marka kimliği','Posterler ve bannerlar','İkonlar ve memeler','Kitap kapakları','Sosyal medya sayfaları']},right:{h:'❌ Grafik tasarım değil',items:['3D modeller (3D Artist)','Karakter konseptleri (Concept Artist)','Hareket (Animator)','Oyun mekanları (Level Designer)','2D illüstrasyon (2D Artist)']}},
+      {type:'img',src:'images/TR/graphic-design.png',alt:'Grafik tasarım örnekleri'},
+      {type:'text',b:'Modül 1 ayrıca öğrencileri grafik tasarıma dayanan diğer mesleklerle tanıştırır: <strong>Web Tasarımcısı, Fotoğraf Sanatçısı ve Sunum Tasarımcısı</strong>.'},
+    ]},
+    {t:'🧠 Grafik Tasarım Kavramları',cards:[
+      {type:'text',b:'Artık grafik tasarımın ne olduğunu (ve ne olmadığını) bildiğinize göre, her grafik tasarımcının bilmesi gereken tüm temel kavramları gözden geçirme zamanı. Buradan modülün sonuna kadar her şey — renk, tipografi, kompozisyon, branding ve kurumsal kimlik — kursun her projesinin arkasındaki kavramsal araç setidir, bu yüzden her birine zaman ayırın.'},
+    ]},
+    {t:'🌈 Renk',cards:[
+      {type:'text',b:'Tasarımcıların renk teorisini anlaması gerekir çünkü renk, bir tasarımı çekici göstermekten daha fazlasını yapar — bilgi iletir, duygu uyandırır ve izleyicinin dikkatini yönlendirir. Bu kavram kurs boyunca önem taşır: öğrenciler bunu erkenden <strong>Ders 5\'te ("Renk teorisini anlama")</strong>, tasarımcı-araçları modülünü açan derste, uygulamaya koyacak ve renk teorisinin bir logo tasarlamak ve markanın renklerini seçmek için merkezi hale geldiği <strong>Modül 5\'te (Ders 17-18)</strong> tüm gücüyle geri dönecek. Bu kadar sık tekrar ortaya çıktığı için, aşağıdaki fikirlere güvenmelisiniz.'},
+      {type:'list',h:'Renk çemberi',p:'İsviçreli sanatçı ve eğitimci <strong>Johannes Itten</strong>, renklerin birbiriyle nasıl ilişkili olduğunu görselleştirmek için renk çemberini geliştirdi ve bu, tasarımcıların dengeli renk kompozisyonları oluşturmasına yardımcı olur. Çember, her biri bir ana renk veya renk tonunu temsil eden on iki bölüme ayrılmıştır.',items:['<strong>Ana renkler</strong> — kırmızı, sarı ve mavi — diğer renkleri karıştırarak oluşturulamaz.','<strong>İkincil renkler</strong> — yeşil, turuncu ve mor — ana renklerin arasında yer alır ve iki bitişik ana rengin karıştırılmasıyla üretilir.','<strong>Üçüncül renkler</strong>, bir ana rengin yanındaki ikincil renkle karıştırılmasından gelir.']},
+      {type:'img',src:'images/TR/colour-wheel.png',alt:'Renk çemberi'},
+      {type:'list',h:'Rengin özellikleri',p:'Her renk üç özellikle tanımlanabilir:',items:['<strong>Ton (Hue)</strong> — rengin kendisi (kırmızı, mavi, yeşil).','<strong>Doygunluk (Saturation)</strong> — yoğunluğu veya zenginliği (kırmızı yüksek doygunlukta, gri değil).','<strong>Parlaklık (Brightness)</strong> — ne kadar açık veya koyu olduğu.']},
+      {type:'img',src:'images/TR/properties-colour.png',alt:'Rengin özellikleri: ton, doygunluk ve parlaklık'},
+      {type:'tip',txt:'Bu kavramlar öğrencilere dijital olarak <strong>Figma</strong> içinde öğretilecek; burada rengin kodlar aracılığıyla nasıl tanımlandığını da öğrenecekler — genel kullanım için <strong>HEX</strong>, ekranlar için <strong>RGB</strong> ve baskı için <strong>CMYK</strong>. Bir sonraki modül, Figma\'da renk paletlerini ve bu araçları nasıl keşfedeceğinizi kapsar.'},
+      {type:'text',h:'Renkler arasındaki ilişkiler',b:'Öğrenciler dijital bir renk paletinin temellerini anladıktan sonra, tasarım işinin gerçekte renkleri etkili bir şekilde birleştirmekle ilgili olduğu için renklerin birbiriyle nasıl ilişkili olduğunu keşfetme zamanı gelir.<br><br><strong>Kontrast</strong>, renklerin tonu, doygunluğu veya parlaklığından kaynaklanan farkı temsil eder. Kontrast ne kadar yüksekse, iki renk birbirinden o kadar fazla ayrışır.<br><br><strong>Tamamlayıcı renkler</strong>, renk çemberinde birbirinin karşısında yer alır ve dikkat çeken cesur, canlı, etkileyici kombinasyonlar üretir. <strong>Analog renkler</strong> ise çemberde birbirinin yanında yer alır ve ortak bir temel tonu paylaşır; tasarımdaki rolleri, güçlü kontrast oluşturmadan uyum, görsel bütünlük ve denge yaratmaktır.'},
+      {type:'img',src:'images/TR/relations-colours.png',alt:'Renkler arasındaki ilişkiler: kontrast, tamamlayıcı ve analog renkler'},
+      {type:'text',h:'60-30-10',b:'Artık rengin temellerini ve renklerin birlikte nasıl çalıştığını anladığınıza göre, en yaygın kullanılan tasarım prensiplerinden birini keşfedelim. Muhtemelen bunu fark etmeden her gün karşılaşıyorsunuz — dengeli logolar ve akılda kalıcı görsel kimlikler oluşturmada önemli bir rol oynar.<br><br>60-30-10, görsel olarak dengeli renk paletleri oluşturmak için klasik bir oran kuralıdır: <strong>%60 hakim renk</strong> (arka plan), <strong>%30 ikincil renk</strong> (yapı veya destekleyici unsurlar) ve <strong>%10 vurgu rengi</strong> (canlı ayrıntılar).'},
+      {type:'img',src:'images/TR/rules-of-colour-selection.png',alt:'Renk seçim kuralları'},
+      {type:'good',txt:'<strong>Teori yeter, eğlenme zamanı!</strong> Bugün bu süreci çok daha kolaylaştıran araçlarımız var; bu araçlar zaten bu kurallara uyan renk paletleri oluşturuyor — tek bilmemiz gereken ne iletmek istediğimiz. Öğrenciler bunu <a href="https://coolors.co/a5978b-5c4742-8d5b4c-d0fcb3-5a2a27" target="_blank"><strong>Coolors</strong></a> ile deneyecekler, bu yüzden siz de kendiniz keşfetmeye değer.'},
+    ]},
+    {t:'🔤 Tipografi',cards:[
+      {type:'text',b:'Rengin yanı sıra, tipografi grafik tasarımda diğer bir temel kavramdır. Renk gibi, bir stil meselesi değildir — yazı tipleri kişilik taşır ve bir mesajın nasıl algılandığını şekillendirir. Öğrencilerin farklı aileleri tanımasına yardımcı olmak için bu bölümü kullanın.'},
+      {type:'table',head:['Kategori','Bunu neden iletir?','Birincil kullanım'],rows:[['<strong>Serif</strong>','Yüzyıllardır kitaplarda ve resmi belgelerde kullanılan serif fontlar; gelenek, güvenilirlik ve güvenle ilişkilendirilir.','Kitaplar, gazeteler, resmi belgeler, lüks markalar'],['<strong>Sans Serif</strong>','Sade görünümleri ve teknolojideki yaygın kullanımları onları modern, basit ve okunması kolay hissettirir.','Uygulamalar, web siteleri, kullanıcı arayüzleri, video oyunları'],['<strong>El Yazısı</strong>','İnsan el yazısını taklit ederek kişisel, samimi ve yaratıcı bir hissiyat oluşturur.','Davetiyeler, sertifikalar, tebrik kartları, el yapımı logolar'],['<strong>Dekoratif</strong>','Uzun metin parçalarını desteklemek yerine dikkat çekmek ve belirli bir temayı güçlendirmek için tasarlanmıştır.','Başlıklar, reklamlar, kapaklar ve posterler']]},
+      {type:'img',src:'images/TR/four-font-categories.png',alt:'Dört font kategorisi'},
+      {type:'text',h:'Hiyerarşi ve font eşleştirme',b:'İyi tipografi, bir tasarımın mesajını ve kişiliğini güçlendirirken okunabilir kalır. Ana görevi <strong>görsel hiyerarşi</strong> oluşturmaktır — boyut, kalınlık, renk ve konumlandırma yoluyla gözü en önemli şeye yönlendirmek, böylece kalın bir başlık daha küçük gövde metninden önce doğal olarak göze çarpar. Bu yüzden çoğu marka tek bir fonta bağlı kalmak yerine fontları eşleştirir: kalın bir başlık fontu, temiz ve okunabilir bir gövde fontuyla eşleştirildiğinde her şeyi tutarlı tutarken kontrast yaratır.'},
+    ]},
+    {t:'📐 Kompozisyon',cards:[
+      {type:'text',b:'Kompozisyon, grafik tasarımda diğer bir temel kavramdır. Bir tasarımın farklı unsurları arasında uyum yaratır ve izleyicinin dikkatini en önemli bilgiye yönlendirir, bir mesajın düzenli ve görsel olarak çekici bir şekilde açıkça iletilmesine yardımcı olur.'},
+      {type:'text',h:'Odak noktaları',b:'Kompozisyonun temel hedeflerinden biri, izleyicinin dikkatini önce yakalayan alanlar olan <strong>odak noktaları</strong> oluşturmaktır.'},
+      {type:'tip',txt:'<strong>Bunun kursta nasıl öğretildiği:</strong> tam olarak şimdi öğreneceğiniz şekilde — aşağıdaki gibi tanınmış filmlerin posterleri gibi çeşitli örnekler göstererek ve <strong>odak noktalarını birlikte analiz ederek</strong>. Bir posteri yüksek sesle "okumaya" alışın: gözünüz önce nereye iniyor ve neden?'},
+      {type:'img',src:'images/TR/focal-points-1.png',alt:'Odak noktaları'},
+      {type:'text',b:'Bir görüntünün geometrik merkezi doğal olarak gözü çekerken, bir odak noktası <strong>kontrast, renk, boyut veya şekil</strong> kullanılarak da oluşturulabilir. Bir tasarımda, görsel hiyerarşi izleyiciyi bir unsurdan diğerine yönlendirdiği sürece birden fazla odak noktası olabilir.'},
+      {type:'img',src:'images/TR/focal-points-2.png',alt:'Kontrast, renk, boyut ve şekille odak noktaları oluşturma'},
+      {type:'text',b:'Bunun için yaygın olarak kullanılan bir teknik, alanı iki yatay ve iki dikey çizgiyle dokuz eşit parçaya bölen <strong>üçte birler kuralıdır</strong>; önemli unsurları bu çizgilerin kesişim noktalarına yakın yerleştirmek, aşağıdaki görüntünün gösterdiğine benzer şekilde daha dengeli, dinamik kompozisyonlar üretir.'},
+      {type:'img',src:'images/TR/focal-points-3.png',alt:'Üçte birler kuralı'},
+      {type:'good',txt:'Bu kavram, öğrenciler <strong>poster, banner tasarlamaya veya fotoğraf düzenlemeye</strong> başladığında özellikle işe yarar hale gelir; burada onlara bir kompozisyonda uyumun taşıdığı ağırlığı anladığınızı göstermek isteyeceksiniz.'},
+    ]},
+    {t:'🏷️ Branding',cards:[
+      {type:'text',b:'Grafik tasarıma bu temel rehberi kapatmak için <strong>branding</strong>\'e dönüyoruz — kursun 4. Modülünden itibaren ve sonrasında merkezi hale gelen bir kavram, bu yüzden şimdi onu açıkça anlamaya, ayrıca ilişkilendirdiğimiz kavramlardan nasıl farklılaştığına değer.'},
+      {type:'text',h:'Marka nedir',b:'Bir marka, <strong>bir şirketle ilişkili her şeydir, sadece adı değil</strong> — insanlara ne bekleyeceklerini söyler ve onu rakiplerinden ayırır. Branding, bir şirketin kişiliği gibi işlev görür ve güven inşa eden şeydir. Neredeyse her şey markalanabilir: ürünler, şirketler, hizmetler, kişilikler, yerler, fikirler, hareketler, oyunlar ve filmler.'},
+      {type:'img',src:'images/TR/what-a-brand-is.png',alt:'Marka nedir'},
+      {type:'text',h:'Bir markanın parçası olabilecekler',b:'Logolar, tipografi, renk şemaları, desenler, ürün şekli, ambalaj, karakterler, reklam kampanyaları, hatta sesler. Sınıfta kullanmaya değer örnekler: <strong>Toblerone Matterhorn</strong>, Lego\'nun çıtçıt-ve-tüp tasarımı (1958\'de patentlendi), <strong>Louis Vuitton Monogram</strong> (1896), <strong>Disney\'nin imzası</strong> ve <strong>Coca-Cola\'nın Noel kamyonu</strong>.'},
+    ]},
+    {t:'💼 Kurumsal Kimlik',cards:[
+      {type:'text',h:'Kurumsal kimlik nedir?',b:'Eğer bir marka bir şirketin kişiliğiyse, kurumsal kimlik onun <strong>"kıyafetidir"</strong> — benzersiz bir imaj oluşturan görsel unsurlar: <strong>logo</strong> (merkez parçası), <strong>fontlar</strong>, <strong>marka renkleri</strong> ve illüstrasyonlar, desenler ve ikonlar gibi <strong>grafik unsurlar</strong>. Tutarlı bir kimlik, zamanla tanınırlık ve güven inşa eden şeydir.'},
+      {type:'img',src:'images/TR/corporate-identity.png',alt:'Kurumsal kimliğin unsurları'},
+      {type:'text',h:'Logo — kimliğin kalbi',b:'Logo, bir şirketi, markayı veya projeyi hemen tanımlayan görsel ve grafik semboldür — kurumsal kimliğin köşe taşı olup, tüketicinin zihninde onun en görünür ve akılda kalıcı temsili olarak işlev görür. Bu kadar büyük bir ağırlık taşıdığı için, bir logonun alabileceği üç ana formu bilmek yardımcı olur: metin olmadan çalışan bir ikon olan <strong>sembol logo</strong> (Apple elmasını düşünün); markanın adının ayırt edici bir markalı fontla yazılması olan <strong>kelime logosu (wordmark)</strong> (Google veya Coca-Cola gibi); ve sembolü ve metni tek bir uyumlu kompozisyonda birleştiren <strong>kombinasyon logosu</strong> — parçaları ayrı ayrı da kullanılabildiği için en esnek türdür.'},
+      {type:'img',src:'images/TR/symbol-wordmark-combination-logo.png',alt:'Üç logo türü: sembol, kelime logosu ve kombinasyon'},
+      {type:'good',txt:'<strong>Öğrencilerin bu kavramları nerede uygulayacağı:</strong> kursun 5. Modülünde öğrenciler tanınmış bir marka seçer (Apple, PlayStation, Coca-Cola veya Nike), misyonunu, değerlerini ve hedef kitlesini tanımlar ve yepyeni bir ürün hattı için kurumsal kimlik tasarlar — önce logo, sonra fontlar, renkler ve grafik unsurlar. Bu modülden her şey — renk teorisi, tipografi, kompozisyon, branding — o projede bir araya gelir, ayrıca öğrencilerin bu süreçte üstlendiği müşteri tarzı logo ve ambalaj siparişlerinde de.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Bir öğrenci kursun kendilerine karakter çizmeyi öğretip öğretmeyeceğini sorar. Ne demelisiniz?',opts:['Evet — çizim grafik tasarımın temel bir parçasıdır','Hayır — kurs tasarımla ilgilidir (görüntüleri, metni ve rengi düzenleme), çizimle değil','Sadece sonraki modüllerde','Sadece bir grafik tablet alırlarsa'],c:1,fb:'Metodoloji, kursun asla bir çizim kursu olarak sunulmaması gerektiğini açıkça belirtir. Tasarım, görüntüler, metin ve renk aracılığıyla iletişimle ilgilidir.'},
+    {q:'Renk çemberindeki üç ana renk hangileridir?',opts:['Kırmızı, yeşil, mavi','Kırmızı, sarı, mavi','Camgöbeği, magenta, sarı','Turuncu, yeşil, mor'],c:1,fb:'Kırmızı, sarı ve mavi ana renklerdir — diğer renkleri karıştırarak elde edilemezler.'},
+    {q:'Bir uygulama veya web sitesinde gövde metni için en iyi seçenek hangi font kategorisidir?',opts:['Dekoratif','El yazısı / Cursive','Serif (Antiqua)','Sans-serif (Grotesque)'],c:3,fb:'Sans-serif fontlar en iyi okunabilirliği sunar ve UI, uygulamalar, web siteleri ve oyunlar için standarttır.'},
+    {q:'"Üçte birler kuralı" ne söyler?',opts:['Tam olarak üç renk kullanın','Tuvali 9 parçaya bölün ve odak noktalarını kesişim noktalarına yerleştirin','Tasarımın üçte biri boş olmalıdır','Metin, posterin üçte birini kaplamalıdır'],c:1,fb:'Tuval her iki yönde üçe bölünür; dört kesişim noktası doğal odak noktalarıdır.'},
+    {q:'Eğer bir marka bir şirketin kişiliğiyse, kurumsal kimlik nedir?',opts:['Yasal kaydı','"Kıyafeti" — benzersiz bir imaj oluşturan görsel unsurlar (logo, fontlar, renkler, grafikler)','Reklam bütçesi','Ürün kataloğu'],c:1,fb:'Kurumsal kimlik, markanın "kıyafetidir": logo, fontlar, marka renkleri ve grafik unsurlar tanınırlık ve güven inşa etmek için birlikte çalışır.'},
+   ]
+  },
+  {id:2,emoji:'🧭',title:'Figma Temelleri',desc:'Figma\'nın ne olduğu, vektör ve raster karşılaştırması, hesap oluşturma, temel araçlar, illüstrasyon, fontlar, modüler ızgaralar ve plugin\'ler.',obj:'Kursun temel aracı olan Figma ile pratik yapmak — hesap oluşturmaktan çizim, ızgaralar ve plugin\'lere kadar.',color:'#22C55E',
+   sections:[
+    {t:'👀 Bu Modülde Neler Var',cards:[
+      {type:'text',b:'Bu modülde, kursun büyük bölümünün gerçekleştiği ücretsiz, tarayıcı tabanlı tasarım aracı <strong>Figma</strong> ile pratik yapacaksınız. Bir hesap oluşturacak, temel araçları öğrenecek, ilk illüstrasyonlarınızı çizecek, fontlar yükleyecek, modüler ızgaralar kuracak ve plugin\'leri keşfedeceksiniz. Öğrenciler Figma\'yı ilk derslerinde açar ve bundan sonra neredeyse her projede kullanırlar — memeler, çıkartmalar, logolar, ambalajlar, açılış sayfaları — bu yüzden <strong>buradaki akıcılığınız her dersin ne kadar sorunsuz geçtiğini doğrudan etkiler: bir öğrenci bir araçta tıkandığında, bunu dakikalar içinde değil saniyeler içinde teşhis etmek istersiniz.</strong>'},
+    ]},
+    {t:'🖥️ Figma Nedir?',cards:[
+      {type:'text',b:'Figma, kursun ve tasarım sektörünün büyük bölümünün ana aracıdır. Ücretsizdir, tamamen tarayıcıda çalışır ve sınıfta önemli olan <strong>gerçek zamanlı çok kullanıcılı iş birliğini</strong> destekler: bir öğrencinin dosyasını açıp canlı olarak kendi tasarımının içinde ona rehberlik edebilirsiniz. Ayrıca <strong>Components</strong> (bir kez tasarla, her yerde yeniden kullan), <strong>Plugins</strong> ve <strong>Animasyonlu Prototipler</strong> sunar. Öğrencilerin kursta oluşturduğu her şey — memelerden tam marka kitaplarına kadar — burada gerçekleşir.<br><br>Figma eğitim videolarına geçmeden önce, önce bilmeniz gereken bir kavram var: <strong>vektör ve raster grafikler</strong> arasındaki fark. Bu, Figma\'nın neden bu şekilde davrandığını açıklar — ve kursun sonraki modüllerde başka bir düzenleme programı olan <strong>Photopea</strong>\'yı da kullanmasının sebebidir.'},
+    ]},
+    {t:'🔺 Vektör ve Raster Karşılaştırması',cards:[
+      {type:'text',b:'Bir bilgisayar bir görüntüyü temelde iki farklı şekilde tanımlayabilir. <strong>Raster grafikler</strong> renkli piksellerden oluşan bir ızgara saklar — fotoğraflar ve zengin detaylar için mükemmeldir, ama yakınlaştırdığınızda kareler görünür. <strong>Vektör grafikler</strong> ise matematik saklar: bilgisayarın her boyutta yeniden çizdiği noktalar, çizgiler ve eğriler. Figma bir <strong>vektör editörüdür</strong> ve bu, hakkındaki en önemli teknik gerçektir — Figma\'da yapılan bir logonun bir kalemde veya bir billboard\'da basılsa da mükemmel netlikte kalmasının sebebi budur.'},
+      {type:'twocol',left:{h:'Raster grafikler',items:['<strong>Piksellerden</strong> oluşur','Formatlar: JPEG, PNG','Fotoğraflar ve zengin detaylar için en iyisi','Büyütüldüğünde bulanıklaşır','Daha büyük dosya boyutları']},right:{h:'Vektör grafikler',items:['<strong>Matematikten</strong> oluşur: noktalar, çizgiler, eğriler','Kalite kaybı olmadan ölçeklenir','Küçük dosyalar, kolay düzenlemeler','Logolar ve ikonlar için en iyisi','Figma\'nın ürettiği şey']}},
+      {type:'img',src:'images/TR/raster-vector-graphics.png',alt:'Raster ve vektör grafikler arasındaki fark'},
+      {type:'tip',txt:'Bunu bir tanımla değil, bir gösterimle öğretin: bir fotoğrafa pikseller görünene kadar yakınlaşın, sonra bir Figma şekline yakınlaşın ve net kalmasını izleyin. Bu ayrıca öğrencilerin daha sonra fark edeceği bir kurs kararını da açıklar — fotoğraf düzenleme zamanı geldiğinde sınıf, bir <strong>raster</strong> editörüne, Photopea\'ya (bu eğitimin 3. Modülü) geçer.'},
+    ]},
+    {t:'🚀 Hesap Oluşturma ve Figma\'yı Kurma',cards:[
+      {type:'text',b:'İlk derste öğrencilere tam olarak bu akışı anlatacaksınız, bu yüzden önce kendiniz uygulayın. <strong>figma.com</strong>\'a gidin ve <strong>Get started for free</strong>\'ye tıklayın. Bir e-posta ve şifre ile kaydolabilirsiniz veya doğrudan bir <strong>Google hesabı</strong> ile — kursta önerilen seçenek, çünkü öğrenci girişlerini basit tutar. E-postayı doğrulayın, ücretsiz <strong>Starter</strong> planını seçin ve içeri girersiniz.<br><br>Figma tamamen tarayıcıda çalışır, ancak Windows ve macOS için bir <strong>masaüstü uygulaması</strong> da vardır (figma.com/downloads\'tan) — tarayıcı sürümü ders ortasında sorun çıkardığında kullanışlıdır. Resmi adım adım kılavuz: <a href="https://help.figma.com/hc/en-us/articles/360039811114-Create-a-Figma-account" target="_blank">Bir Figma hesabı oluşturun →</a>'},
+    ]},
+    {t:'🛠️ Temel Araçları Öğrenin',cards:[
+      {type:'text',b:'Hesabınız hazır olduğuna göre, ellerinizi kirletme zamanı. Frame\'ler, şekiller, metin, Fill ve Stroke — bunlar öğrencilerin her projede tekrar ettiği hareketlerdir ve ekranda düzinelerce kez göstereceğiniz şeylerdir. Bu eğitim videosunu izleyin ve <strong>izlerken Figma içinde takip edin</strong> — her adımı durdurup tekrarlamak pasif izlemekten çok daha hızlıdır ve öğrencilerden öğrenmelerini isteyeceğiniz şekli tam olarak yansıtır: deneyin, sadece izlemeyin.'},
+      {type:'video',h:'▶ Figma Temelleri Eğitim Videosu',id:'jQ1sfKIl50E'},
+    ]},
+    {t:'✏️ Figma\'da İllüstrasyon Çizme',cards:[
+      {type:'text',b:'Temel şekiller rahat hissettirdiğinde, sonraki adım onları birleştirip bükerek <strong>illüstrasyonlara</strong> dönüştürmektir — öğrencilerin kurs boyunca yaptığı çıkartmaların, logoların ve vektör sanatının (ve kendi Digital Skill Test\'iniz için gereken vektör illüstrasyonun) arkasındaki beceri. Anahtar araç <strong>Pen tool</strong>\'dur: hayal edebileceğiniz herhangi bir şekle bağlanan çapa noktaları yerleştirir ve ilk çapaya geri tıklamak yolu kapatır. Buradan başlayın, sonra daha gevşek, daha organik vuruşlar için <strong>fırçaları</strong> keşfedin.'},
+      {type:'video',h:'▶ Pen Tool ile Çizim',id:'cke01gWWwyo'},
+      {type:'video',h:'▶ Fırçalarla Çizim',id:'AUSZHj17bzY'},
+    ]},
+    {t:'🔤 Figma\'da Font Yükleme',cards:[
+      {type:'text',b:'Burada Modül 1\'deki tipografi teorisi pratiğe dönüşür: öğrenciler davetiye, poster ve logo tasarlarken varsayılan fontlar hızla tükenir ve doğru <em>kişiliğe</em> sahip fontlar isteyeceklerdir. Fontlar <strong>Google Fonts, 1001fonts ve DaFont</strong> gibi kaynaklardan gelir. İş akışı: fontu indirin, arşivi çıkarın (sağ tık → Extract All), font dosyalarını seçin ve sağ tık → <strong>Install</strong>. Tarayıcıdaki Figma\'nın yerel olarak yüklenmiş fontları görebilmesi için öğrenciler küçük <strong>Font Installer</strong> yardımcı uygulamasını da yükler. Yeni yüklenen fontlar bir <strong>"New"</strong> işareti gösterir; "All fonts" filtresi Google Fonts\'u "Installed by you"dan ayırır.'},
+      {type:'warn',txt:'<strong>Font lisanslarını</strong> öğretin: ücretsiz/açık kaynak, yaratıcı (ticari olmayan), ticari (satın alınmalı) ve abonelik. Öğrenciler indirdikleri bir fontu kullanmadan önce lisansı kontrol etmelidir — erkenden inşa edilmeye değer profesyonel bir alışkanlık.'},
+    ]},
+    {t:'🏗️ Modüler Izgaralar',cards:[
+      {type:'text',b:'Figma\'nın temel işlevlerine iyice hakim olduğunuzda, <strong>modüler ızgaralar tasarım çalışmasının temel bir parçası haline gelir</strong> — bu yüzden bu, sadece tanımanız değil, ustalaşmanız gereken bir konudur. Öğrenciler ızgaralarla tasarımcı-araçları modülünü kapatan ders olan <strong>kursun 8. Dersinde ("Modüler ızgaralar. Karmaşık kompozisyonlar")</strong> tanışır ve o zamandan sonra ızgaralar en büyük projelerini sessizce güçlendirir: marka kimliği modülünün sunumları ve marka kitapları, ve özellikle <strong>Web Tasarımı modülünün açılış sayfaları ve uygulama prototipleri (Ders 25-28)</strong>.'},
+      {type:'text',h:'Ne ve neden',b:'Modüler ızgara, bir düzeni organize eden <strong>sütunlar, satırlar ve kenar boşlukları</strong> sistemidir. Hücre tabanlı ızgaralar baskı için uygundur; <strong>sütun ızgaraları</strong> web siteleri ve uygulamalar için uygundur (ekran yükseklikleri değiştiği için yatay çizgi yoktur). Öğrencilerin hemen hissettiği faydalar: birleşik stil, kılavuza yapışma hızı, orantılı estetik ve daha açık hiyerarşi — ve gerçek dünyada, ön uç geliştiriciler doğrudan tasarımcının ızgarasından inşa eder.'},
+      {type:'video',h:'▶ Figma\'da Bir Izgara Kurma',id:'HcQ6Hd7y-ew',start:267},
+    ]},
+    {t:'🧩 Plugin\'ler',cards:[
+      {type:'text',b:'Figma araç setinin son parçası: Figma\'yı ekstra işlevlerle genişleten küçük eklentiler olan <strong>plugin\'ler</strong>. Kursta sürekli kullanılırlar — <strong>stok fotoğraflar</strong> (Unsplash, Pixabay), <strong>renk paletleri</strong>, <strong>dekoratif şekiller</strong> (Blobs, Hero Patterns), <strong>arka plan kaldırma</strong> (Icons8 Background Remover) ve <strong>gradyanlar</strong> (Generative Gradients) — çünkü öğrencileri rutin görevler için Figma\'dan ayrılmaktan kurtarır ve dersi ilerletir.<br><br>Onlara erişmek için, alt araç çubuğundaki <strong>Actions</strong> düğmesini açın veya <code>Ctrl/Cmd + K</code>\'ya basın, <strong>Plugins &amp; Widgets</strong> sekmesine geçin, arama yapın ve <strong>Run</strong>\'a tıklayın. Kullanılan plugin\'ler otomatik olarak sekmeye kaydedilir; birini üç nokta menüsünden kaldırın.'},
+      {type:'warn',txt:'Bazı topluluk plugin\'leri ücretli veya deneme sınırlıdır ve herhangi bir plugin ders ortasında sorun çıkarabilir — metodoloji <strong>bozuk bir plugin\'i atlayıp ilerlemeyi</strong> söyler. Bozuk bir plugin\'in dersten on dakika çalmasına asla izin vermeyin.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Figma\'da yapılan bir logo neden her boyutta net kalır?',opts:['Figma çok yüksek çözünürlükte dışa aktarır','Figma vektör grafikler oluşturur — kalite kaybı olmadan ölçeklenen matematiksel şekiller','Figma görüntüleri otomatik olarak sıkıştırır','Logolar her zaman küçük dosyalardır'],c:1,fb:'Figma bir vektör editörüdür: şekiller pikseller değil matematiktir, bu yüzden bulanıklaşmadan sonsuz ölçeklenirler.'},
+    {q:'Detaylı fotoğraflar için hangi görüntü türü en iyisidir?',opts:['Vektör','Raster (piksellerden oluşan)','SVG','Wireframe'],c:1,fb:'Raster grafikler (JPEG, PNG) piksellerden oluşur ve fotoğrafik detayı işler; vektörler logolar ve ikonlar için uygundur.'},
+    {q:'Pen tool ile çizim yaparken bir şekli nasıl kapatırsınız?',opts:['Escape\'e basın','Herhangi bir yere çift tıklayın','İlk çapa noktasına yeniden tıklayın','Ctrl+S\'ye basın'],c:2,fb:'İlk çapa noktasına geri tıklamak yolu tam bir şekle kapatır.'},
+    {q:'Bilgisayarınıza yüklenmiş bir font tarayıcıdaki Figma\'da görünmüyor. Eksik olan ne?',opts:['Ücretli bir Figma planı','Figma\'nın yerel fontlara erişmesini sağlayan Font Installer yardımcı uygulaması','Bir sistem yeniden başlatma','Fontun Google Fonts\'tan olması gerekir'],c:1,fb:'Tarayıcı Figma\'sı, yerel olarak yüklenmiş fontları okumak için küçük Font Installer uygulamasına ihtiyaç duyar; yükledikten sonra sayfayı yeniden yükleyin.'},
+    {q:'Figma\'da plugin\'ler nedir?',opts:['Ücretli şablonlar','Figma\'yı ekstra işlevlerle genişleten eklentiler (stok fotoğraflar, paletler, arka plan kaldırma), Actions / Ctrl+K ile açılır','Figma araçlarının yerini alan harici uygulamalar','Figma\'nın fontlara verdiği ad'],c:1,fb:'Plugin\'ler Figma\'yı içeriden genişletir — Actions düğmesi veya Plugins & Widgets altındaki Ctrl/Cmd+K ile bulunur.'},
+   ]
+  },
+  {id:3,emoji:'🖌️',title:'Photopea ve Raster Tasarım',desc:'Ücretsiz Photoshop alternatifi: arayüz temelleri, fotoğraf düzenleme ve rötuş, mockup\'lar ve Smart Object\'ler.',obj:'Photopea\'da rahat hissetmek ve öğrencilerin kursun 3. Modülünde kullandığı raster iş akışlarını anlamak.',color:'#F59E0B',
+   sections:[
+    {t:'👀 Bu Modülde Neler Var',cards:[
+      {type:'text',b:'Bu modülde kursun ikinci aracıyla tanışacaksınız: ücretsiz, tarayıcı tabanlı bir raster editörü olan <strong>Photopea</strong>. Önceki modüldeki vektör-raster ayrımını hatırlıyor musunuz? Bu, onun pratikteki sonucudur — Figma\'nın matematiksel şekilleri logolar için mükemmeldir, ama bir fotoğrafı rötuşlayamaz veya bir kolaj oluşturamaz. Kursta piksel tabanlı olan her şey burada yaşar: fotoğraf düzenleme, rötuş ve öğrencilerin sonraki her projeyi profesyoneller gibi sunmak için kullandığı <strong>mockup\'lar</strong>. Ve Photopea, Photoshop\'u neredeyse tam olarak yansıttığı için, öğrencilerin (ve sizin) burada öğrendiği her şey doğrudan sektör standardı araca aktarılır.'},
+    ]},
+    {t:'🖥️ Photopea ile Tanışın',cards:[
+      {type:'text',b:'Photopea, Photoshop gibi görünür ve davranır, tarayıcıda kurulum gerektirmeden ücretsiz çalışır ve PSD dosyalarını açar — kursun onu seçmesinin tam sebebi budur. Kurstaki ilk ders görevi pratik bir görevdir: ücretsiz aracın reklamlarının öğrencilerin dikkatini dağıtmaması için bir reklam engelleyici yükleyin.<br><br>Öğrenciler, arayüzle <strong>tamamen sıfırdan bir uzay sanat eseri</strong> oluşturarak tanışır — katmanlar, fırçalar, filtreler ve harmanlama modları, hiç harici görüntü olmadan. Bu akıllıca bir ilk projedir: sonunda, hiçbir zaman bir "arayüz turu" yapıyormuş gibi hissetmeden arayüzün her temel parçasına dokunmuş olurlar. Bu süreçte, tüm modül boyunca tekrarlayacağınız raster çalışmasının altın kuralını öğrenirler: <strong>ayrı parçalar ayrı katmanlara gider</strong>. Her şeyin bir katmanda olduğu bir tasarım taşınamaz, yeniden renklendirilemez veya düzeltilemez — katmanlar bir tasarımı düzenlenebilir tutan şeydir. Arayüzü kendiniz öğrenmek için bu videoyu izleyin:'},
+      {type:'video',h:'▶ Photopea Arayüz Temelleri',id:'yhR8Ea2z1qI'},
+    ]},
+    {t:'📸 Fotoğraf Düzenleme ve Rötuş',cards:[
+      {type:'text',b:'Arayüz kontrol altındayken, kurs gerçek raster becerisine geçer: <strong>fotoğrafları zevkli bir şekilde düzenleme</strong>. İki araç, orijinal görüntüyü hiç bozmadan bunu mümkün kılar. <strong>Ayarlama katmanları (Adjustment layers)</strong>, fotoğrafın üstünde oturan ayrı bir katman olarak renk ve ışığı değiştirir — kapatın ve orijinal dokunulmamış kalır. <strong>Maskeler</strong>, boyayarak bir efektin nerede uygulandığını kontrol eder: <strong>siyah gizler, beyaz ortaya çıkarır</strong>. Birlikte, silgiyi her zaman yenerler, çünkü hiçbir şey kalıcı olarak silinmez — bir hata sadece yeniden boyanır.<br><br>Öğrencilerin öğrendiği zevk kuralı (ve geri bildirimde vurgulanması gereken): rötuş <em>görünmez</em> kalmalıdır. Cilt dokusunu doğal tutun — asla düz bir şekilde bulanıklaştırmayın — ve renkleri düzeltin, böylece fotoğraf bir filtre gibi değil, kendisinin daha iyi bir versiyonu gibi görünsün. Bu video tam iş akışını kapsar:'},
+      {type:'video',h:'▶ Photopea\'da Fotoğraf Düzenleme ve Rötuş',id:'xzK3js0lbBk'},
+      {type:'tip',txt:'Çocuklara hitap eden bir metafor: bir maske, fotoğrafın üzerinde tutulan bir <strong>şablondur (stencil)</strong>. Siyah boyamak şablondaki bir deliği kapatır; beyaz boyamak onu yeniden açar. Altındaki hiçbir şey değişmez.'},
+    ]},
+    {t:'📦 Mockup\'lar ve Smart Object\'ler',cards:[
+      {type:'text',b:'Modül, öğrencilerin kursun kalanında yeniden kullanacağı beceriyle kapanır: bir tasarımı gerçek hayatta gösteren PSD şablonları olan <strong>mockup\'lar</strong> (biletler, tişörtler, kartvizitler, ambalajlar). Neden önemli oldukları: <strong>kullanım kolaylığı</strong> (tasarım basit bir katman değişimiyle değiştirilir), <strong>profesyonel sunum</strong> — beyaz bir tuval üzerinde süzülen bir logo pek az şey söyler, ama fotoğraflanmış bir kahve fincanı üzerindeki aynı logo müşterilere ve ebeveynlere anında gerçek görünür — ve <strong>zaman tasarrufu</strong>. Değişimin arkasındaki mekanizma <strong>Smart Object</strong>\'tir: tasarımı tutan özel bir katman; içeriğini değiştirin ve mockup boyunca her kopya bir anda güncellenir. Nasıl çalıştığını görmek için bu videoyu izleyin:'},
+      {type:'video',h:'▶ Photopea\'da Smart Object Mockup Oluşturma',id:'9lzT277iPZU'},
+      {type:'good',txt:'Kursta öğrenciler, Modül 3\'ü bir tasarımı birkaç mockup üzerinde uyarlayarak sonlandırır — klasik müşteri teslim iş akışı. Bu noktadan sonra, kursun sonundaki Behance portfolyosuna kadar her proje sunumunda mockup\'lar bekleyin (ve teşvik edin).'},
+    ]},
+   ],
+   quiz:[
+    {q:'Kurs bu modül için neden Photopea\'ya geçiş yapar?',opts:['Figma ücretsiz olmaktan çıktı','Fotoğraf düzenleme ve kolajlar bir raster editörüne ihtiyaç duyar ve Figma vektördür','Photopea daha iyi logolar yapar','Öğrenciler kodlama öğrenmelidir'],c:1,fb:'Photopea ücretsiz bir raster editörüdür (bir Photoshop alternatifi) — vektör tabanlı Figma\'nın kötü yönettiği fotoğraf düzenleme için doğru araçtır.'},
+    {q:'Bir Photopea katman maskesinde, siyahla boyamak ne yapar?',opts:['Katmanın o kısmını ortaya çıkarır','Katmanın o kısmını gizler','Katmanı kalıcı olarak siler','Renkleri tersine çevirir'],c:1,fb:'Siyah gizler, beyaz ortaya çıkarır — ve bunların hepsi silgiden farklı olarak yıkıcı değildir (non-destructive).'},
+    {q:'Bir PSD mockup içindeki bir tasarımı nasıl güncellersiniz?',opts:['Mockup\'ı sıfırdan yeniden çizin','Smart Object\'in içeriğini değiştirin ve kaydedin — tüm kopyalar güncellenir','Önce mockup\'ı SVG olarak dışa aktarın','Spot Healing Brush kullanın'],c:1,fb:'Mockup\'lar Smart Object kullanır: akıllı katmana çift tıklayın (veya Replace Contents), tasarımınızı yapıştırın, kaydedin ve mockup her yerde güncellenir.'},
+    {q:'Hangi Photopea aracı, renklerine göre alanları seçmenize izin verir?',opts:['Magic Selection','Rectangular Selection','Quick Selection','Magnetic Selection'],c:0,fb:'Magic Selection, bir tıklamayla benzer renkteki alanları seçer — düz renkli bölgeleri izole etmek için idealdir.'},
+    {q:'Hangi Photopea ayarlaması, nihai sonuç üzerinde daha fazla kontrol sağlarken bir görüntüyü tek bir renkle renklendirmenize izin verir?',opts:['Black & White','Saturation','Gradient Map'],c:0,fb:'Black & White ayarlaması, her orijinal rengin nasıl çevrildiğini kontrol etmenize izin vererek görüntüyü dönüştürür — nihai sonuç üzerinde çok daha fazla kontrol sağlar.'},
+   ]
+  },
+  {id:4,emoji:'📱',title:'UX/UI ve Web Tasarımı',desc:'UX ve UI karşılaştırması, açılış sayfaları ve prototipler, mobil tasarım prensipleri ve Figma\'da prototip animasyonu.',obj:'Web/uygulama modülüne hakim olmak: siyah-beyaz bir açılış sayfası prototipinden Figma\'da animasyonlu bir mobil akışa.',color:'#EC4899',
+   sections:[
+    {t:'👀 Bu Modülde Neler Var',cards:[
+      {type:'text',b:'Bu modülde web siteleri ve uygulamaların nasıl tasarlandığını öğreneceksiniz: <strong>UX ve UI</strong> arasındaki fark, açılış sayfalarının nasıl yapılandırıldığı, profesyonellerin neden önce siyah-beyaz prototip yaptığı, <strong>mobil tasarımın</strong> kuralları ve Figma\'nın statik ekranları <strong>tıklanabilir, animasyonlu prototiplere</strong> nasıl dönüştürdüğü. Öğrenciler için bu, kursun en heyecan verici bölümlerinden biridir — tasarımları sonunda her gün kullandıkları gerçek ürünler gibi <em>davranmaya</em> başlar. Ve sizin için de iki kat önemlidir: bu eğitimin sonundaki eğitmen <strong>Digital Skill Test\'i tam olarak bu kavramlarla inşa edilmiş bir uygulama prototipidir</strong>.'},
+    ]},
+    {t:'🧭 UX ve UI Karşılaştırması',cards:[
+      {type:'text',b:'Öğrencilerin tasarladığı her ekran iki ayrı özellik üzerinden değerlendirilir ve kurs bunları bir bisikletle öğretir. <strong>UX (Kullanıcı Deneyimi)</strong>, bir şeyin kullanımının ne kadar kolay ve zevkli olduğudur — rahat bir koltuk ve pürüzsüz bir sürüş. <strong>UI (Kullanıcı Arayüzü)</strong>, nasıl göründüğüdür — renkler, stil, ışıklar. Havalı görünen ama sürmesi zor olan bir bisikletin <strong>UX sorunu</strong> vardır; harika süren ama sönük görünen birinin <strong>UI sorunu</strong> vardır. İkisi de iyi = harika tasarım. Bu benzetmeyi elinizin altında tutun — soyut bir sektör ayrımını on yaşındaki birinin bile teşhis edebileceği bir şeye dönüştürür ("bu bir koltuk sorunu mu yoksa bir boya sorunu mu?").'},
+      {type:'img',src:'images/TR/UX-UI.png',alt:'UX ve UI açıklaması'},
+      {type:'text',h:'Kaliteli tasarım nasıl görünür',b:'Öğrenciler kalitenin üç işaretini tanımayı öğrenir: <strong>sadelik ve açıklık</strong> — birkaç tıklamayla erişilebilen temel unsurlar; <strong>mantıklı gezinme</strong> — düğmelerin ve menülerin kullanıcıların beklediği yerlerde olması; ve <strong>geleneksel unsurlar</strong> — düğmeler düğme gibi görünür, bağlantılar bağlantı gibi görünür. Kullanıcıları sürprizlere uğratmak sanat içindir, arayüzler için değil.'},
+      {type:'img',src:'images/TR/quality-design.png',alt:'Kaliteli tasarımın işaretleri'},
+      {type:'text',h:'Kompozisyon, ekranlar için yeniden ele alındı',b:'Modül 1\'deki kompozisyon prensipleri buraya, arayüzlere uyarlanmış olarak geri döner: <strong>yakınlık (proximity)</strong> — ilgili unsurlar yakın oturur ve boşluk gruplamayı yapar; <strong>benzerlik (similarity)</strong> — eşleşen renk, boyut veya şekil tek bir grup olarak okunur; <strong>simetri (symmetry)</strong> — düzen ifade eder; ve <strong>tasarım kalıpları (design patterns)</strong> — kullanıcıların diğer her siteden getirdiği tanıdık davranışlar (logo tıklaması → ana sayfa, üstte gezinme). Bir öğrencinin ekranı "dağınık hissettirdiğinde", bunun sebebi neredeyse her zaman bu dördünden biridir — geri bildiriminizde bunu özellikle belirtin.'},
+      {type:'img',src:'images/TR/composition-principles-interfaces.png',alt:'Arayüzler için kompozisyon prensipleri'},
+    ]},
+    {t:'🌐 Açılış Sayfaları ve Prototipler',cards:[
+      {type:'text',b:'Kurstaki ilk web projesi bir <strong>açılış sayfasıdır (landing page)</strong> — tek bir hedefi olan tek sayfalık bir web sitesi: ziyaretçiyi bir eylemi gerçekleştirmeye ikna etmek (satın al, rezervasyon yap, kaydol). Ancak öğrenciler renklerle ve fotoğraflarla başlamaz. Bir <strong>prototiple</strong> başlarlar: tasarım detayları <em>olmadan</em> yapı ve işlevi gösteren bir taslak düzen — gri dikdörtgenler görsellerin yerini tutar, renk yok, süslü font yok.'},
+      {type:'hi',h:'⚠️ Önce siyah-beyaz',b:'Prototip temeldir. <strong>Grafikler ve renk, prototip onaylandıktan sonra eklenir</strong> — bu, öğrencilerin içselleştirmesi gereken profesyonel iş akışıdır ve <em>nedenini</em> açıklamaya değer: renk baştan çıkarıcıdır. Güzel bir ekran bozuk bir yapıyı gizler, gri bir ekran ise onu açığa çıkarır. Önce yapı, sonra güzellik.'},
+      {type:'text',h:'Bir açılış sayfasının anatomisi',b:'Bir açılış sayfası ikna etmek için var olduğu için, bölümleri rastgele değildir — her biri ziyaretçinin kafasında oluşan bir soruyu, oluştuğu sırayla yanıtlar. İşte yukarıdan aşağıya öğretilecek hikaye:<br><br><strong>Header</strong> (logo, gezinme, eylem düğmeleri) <em>"neredeyim?"</em> sorusunu yanıtlar — siteyi tanımlar ve yönelim verir. Bir başlık ve bir harekete geçirici mesaj düğmesi olan büyük ilk ekran olan <strong>hero</strong>, <em>"bu ne ve ne yapmalıyım?"</em> sorusunu yanıtlar — bir ziyaretçi teklifi saniyeler içinde kavramalıdır. Modül 2\'den sütun ızgarası üzerine yerleştirilmiş <strong>içerik bölümleri</strong>, faydaları bir seferde bir fikir açarak <em>"neden ilgilenmeliyim?"</em> sorusunu yanıtlar. <strong>Referanslar (testimonials)</strong>, sosyal kanıtla — ürüne kefil olan gerçek insanlarla — <em>"buna güvenebilir miyim?"</em> sorusunu yanıtlar. <strong>SSS</strong> son şüpheleri temizler, güvenilirlik ekler. Ve <strong>footer</strong> (iletişim bilgileri ve bağlantılar), en alta ulaşan ve hâlâ bir şey isteyen herkesi yakalar.<br><br>Bir öğrencinin açılış sayfasını incelerken, onu bu konuşma gibi ele alın: her ziyaretçi sorusu sırasıyla yanıtlanıyor mu? Hiçbir soruyu yanıtlamayan bir bölüm kesilebilir — harika bir geri bildirim anı. Prototip onaylandıktan sonra öğrenciler onu bir <strong>UI stiliyle</strong> giydirir — Minimalizm, Klasik, Grunge, Glassmorphism — ve gerçek tasarımlar bunları karıştırır.'},
+      {type:'img',src:'images/TR/landing-anatomy.png',alt:'Bir açılış sayfasının anatomisi'},
+    ]},
+    {t:'📲 Mobil Tasarım Prensipleri',cards:[
+      {type:'text',b:'Kurs web sitelerinden uygulamalara geçer — ve bir telefon için tasarlamak, küçük bir monitör için tasarlamak değildir. Bir telefon bir elde tutulur, saniyeler için göz atılır ve bir başparmakla kontrol edilir, bu da mobile kendi kurallarını verir. Bunları öğretmenin harika bir yolu, öğrencilerin bunları zaten sevdikleri uygulamalara göre kontrol etmesini sağlamaktır:'},
+      {type:'list',h:'Beş prensip',items:['<strong>Başparmaklar her şeyi kontrol eder</strong> — önemli düğmeleri (Ekle, Geri, Satın Al) ekranın altına, başparmak erişimi içine yerleştirin.','<strong>İnsanlar tarar, okumaz</strong> — kısa başlıklar, ikonlar ve önemli eylemler için kontrast renkler kullanın (kırmızı "Öde", yeşil "Onayla").','<strong>Minimalizm anahtardır</strong> — 3-5 ana renk, en fazla 2 font ve rahatça dokunulabilecek kadar büyük düğmeler.','<strong>Izgara sistemleri ve düzenli boşluklar kullanın</strong> — mobil tasarımcılar her şeyi 8 piksel aralıklarla düzenler (8, 16, 24, 32).','<strong>UI Kits\'ten yararlanın</strong> — iOS ve Android için hazır unsur kütüphaneleri işi hızlandırır, ama sadece kit kullanan uygulamalar herkesinkiyle aynı görünme riski taşır.'],ordered:true},
+      {type:'img',src:'images/TR/five-mobile-principles.png',alt:'Mobil tasarımın beş prensibi'},
+    ]},
+    {t:'🎬 Prototipleme ve Animasyon',cards:[
+      {type:'list',h:'Yedi etkileşim ayarı',p:'Son olarak, her öğrenciyi mutlu eden an: tasarımı <strong>yanıt verir</strong> hale getirmek. Figma bir keyframe prensibiyle animasyon yapar — bir unsuru iki durumda çizersiniz ve Figma geçişi doldurur. Prototype sekmesindeki her etkileşim yedi ayarla yapılandırılır ve bunları isimleriyle bilmek, bir öğrencinin prototipini hızlıca hata ayıklamanızı sağlar ("Trigger\'ın doğru, ama Destination\'ı kontrol et"):',items:['<strong>Trigger</strong> — geçişi neyin başlattığı (bir tıklama, hover veya kaydırma).','<strong>Delay</strong> — animasyon başlamadan önce ne kadar bekleneceği.','<strong>Action</strong> — ne olacağı (bir ekrana git, bir overlay aç).','<strong>Destination</strong> — geçişin götürdüğü frame.','<strong>Animation</strong> — geçiş efekti (Instant, Dissolve, Smart animate…).','<strong>Curve</strong> — yumuşatma stili (linear, ease in and out…).','<strong>Duration</strong> — milisaniye cinsinden süre (400 ms hızlı hissettirir; 800 ms gösterişlidir).'],ordered:true},
+      {type:'text',b:'Ayar listeleri yalnızca belirli bir noktaya kadar yardımcı olur — etkileşimler <strong>görmeniz</strong> gereken şeylerdir. Figma\'da prototip yanıtlarının nasıl göründüğünü görmek ve etkileşimleri kendiniz nasıl ekleyeceğinizi öğrenmek için bu videoyu izleyin:'},
+      {type:'video',h:'▶ Bir Figma Prototipine Etkileşim Ekleme',id:'-d6zNGeF59M'},
+      {type:'warn',txt:'Animasyonlar <strong>UX\'i geliştirmeli, engellememelidir</strong> — pürüzsüz, hızlı, sezgisel. Bir öğrenci bir düğmeye beş efekt üst üste koyduğunda, bisikleti hatırlatın: bu sürüşü daha iyi mi yapıyor, yoksa sadece boyayı daha gürültülü mü yapıyor?'},
+      {type:'good',txt:'Bu modüldeki her şey, tam olarak kendi <strong>Digital Skill Test</strong>\'inizde kullanacağınız şeydir: tıklanabilir, animasyonlu ekranlara sahip bir mobil uygulama prototipi. Çalışırken, birlikte inşa edin.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Bir uygulama güzel görünüyor ama kullanıcılar ödeme düğmesini bulamıyor. Bu ne tür bir sorundur?',opts:['Bir UI sorunu','Bir UX sorunu','Bir branding sorunu','Bir tipografi sorunu'],c:1,fb:'UX kullanım kolaylığıyla ilgilidir. Güzel ama kafa karıştırıcı = kötü kullanıcı deneyimi.'},
+    {q:'Prototipler neden görseller için gri dikdörtgenlerle siyah-beyaz başlar?',opts:['Figma belleğini korumak için','Herhangi bir görsel tasarım onaylanmadan önce yapıyı ve UX\'i test etmek için','Çünkü müşteriler griyi tercih eder','Daha ucuz taslaklar basmak için'],c:1,fb:'Prototip önce yapıyı, unsur yerleşimini ve akışı doğrular; renk ve grafikler onaydan sonra gelir.'},
+    {q:'Bir mobil ekranda en önemli düğmeler nerede oturmalıdır?',opts:['Sol üst köşe','Dikey olarak ortalanmış','Altta, başparmak erişimi içinde','Bir hamburger menüde'],c:2,fb:'"Başparmaklar her şeyi kontrol eder" — önemli eylemler, başparmakların doğal olarak dinlendiği alta aittir.'},
+    {q:'Mobil tasarım hangi boşluk aralıklarını kullanır?',opts:['5px adımlar','8px adımlar (8, 16, 24, 32)','10px adımlar','Rastgele, hisse göre'],c:1,fb:'Mobil tasarımcılar, tutarlı bir ritim ve kullanılabilirlik için 8 piksel aralıklarla çalışır.'},
+    {q:'Figma prototiplemede, "Trigger" ayarı neyi tanımlar?',opts:['Animasyonun hızını','Geçişi neyin başlattığını (tıklama, hover, kaydırma)','Hedef ekranı','Yumuşatma eğrisini'],c:1,fb:'Trigger, etkileşimi başlatan kullanıcı eylemidir; Destination nereye götürdüğü, Duration ne kadar sürdüğüdür.'},
+   ]
+  },
+  {id:5,emoji:'🖨️',title:'Baskı Tasarımı',desc:'Bleed ve trim, 300 DPI, RGB ve CMYK karşılaştırması, iç mekan posterleri, kitap kapakları ve sosyal posterler.',obj:'Baskıya özel kuralları, basılmadan önce her klasik öğrenci hatasını yakalayacak kadar iyi anlamak.',color:'#F97316',
+   sections:[
+    {t:'👀 Bu Modülde Neler Var',cards:[
+      {type:'text',b:'Bu modülde kurs ekranı terk eder ve <strong>kağıt</strong> için tasarım yapar — <strong>kursun 8. Modülü, "Baskı tasarımına giriş" (Ders 29-32)</strong>: kartvizitler, iç mekan posterleri, kitap kapakları ve sosyal posterler. Baskı, ekranların olmadığı bir şekilde affetmezdir — yakınlaştırma yok, arka ışık yok ve kesim baskısından sonra geri alma yok. Buradaki neredeyse her klasik öğrenci hatası — çok küçük metin, baskıda soluk çıkan renkler, kenarda kesilen tasarımlar — <strong>ekranda görünmezdir</strong> ve sadece kağıtta ortaya çıkar. Baskının fiziksel kurallarını anlamak, bir öğrencinin dosyası Figma\'dan çıkmadan önce bu hataları yakalamanızı sağlayan şeydir.'},
+    ]},
+    {t:'📏 Baskı Kuralları',cards:[
+      {type:'text',h:'Baskının zorlukları',b:'Baskı için tasarlamak, ekranlar için tasarlamaktan farklıdır ve sürprizlerin çoğunu iki zorluk yaratır. Birincisi <strong>renk</strong>: bir yazıcı kağıt üzerinde mürekkepleri karıştırır, bu yüzden parlayan bir ekranda gördüğünüz canlı renkler basıldıktan sonra genellikle daha soluk çıkar — renkler ve kontrast bu yolculuktan değişmeden çıkamaz. İkincisi <strong>kesim</strong>: baskıdan sonra her kart ve poster bir kesim baskısıyla kırpılır ve baskılar her zaman bir veya iki milimetre kayar. Tam olarak kenarda biten bir tasarım çirkin beyaz şeritlerle sonuçlanabilir. Her iki sorun da tasarım aşamasında çözülür — baskıya uygun renkler seçerek ve arka planı kesim çizgisinin ötesine uzatarak.'},
+      {type:'text',h:'Boyutlar ve matematik',b:'Yazıcılar <strong>300 DPI</strong>\'de (inç başına nokta) çalışır — bu, kağıdın her inçine kaç mürekkep noktasının sığdığıdır. Bu, bir ekranın gerektirdiğinden çok daha yoğundur, çünkü insanlar basılı kartları gözlerinden santimetrelerce uzaklıkta tutar; daha azı bulanık görünmeye başlar. Pratikte bu, santimetre başına kabaca <strong>118 piksel</strong> anlamına gelir, bu yüzden standart 90×50 mm kartvizit 1062×591 px bir tasarıma dönüşür.<br><br>Çalışma çerçevesi biraz daha büyük yapılır — <strong>1110×638 px</strong> — ve kenar etrafındaki bu ekstra halka <strong>bleed marjıdır</strong>: kesim baskısının yiyebileceği bölge. Arka plan, bleed dahil tüm çerçeveyi doldurmalıdır, metin ve logolar ise iç kırpma alanının içinde güvenle kalmalıdır. Öğrenciler bunu ilk baskı projelerinde, kursun baskı modülünü açan ders olan <strong>Ders 29\'un kartvizitinde</strong> hemen uygular — ve bleed\'i kontrol etmek, bir kartı incelerken yapmanız gereken ilk şeydir.'},
+    ]},
+    {t:'🌗 RGB ve CMYK Karşılaştırması ve Kontrast',cards:[
+      {type:'text',b:'Ekran renkleri baskıda neden soluk çıkar? Çünkü ekranlar ve yazıcılar rengi zıt şekillerde oluşturur. Bir ekran <em>ışık ekler</em>: tüm renklerini karıştırırsanız beyaz elde edersiniz. Bir yazıcı mürekkeplerle <em>ışığı çıkarır</em>: tüm mürekkeplerini karıştırırsanız siyah elde edersiniz. Bu iki sistemin adları var — ekranlar için <strong>RGB</strong> ve baskı için <strong>CMYK</strong> — ve öğrenciler ikisi arasındaki farkı anladığı anda, soluk çıktılar bir gizem olmaktan çıkar.'},
+      {type:'twocol',left:{h:'RGB (ekranlar)',items:['<strong>Işıktan</strong> oluşan renkler','Katkı (Additive): hepsi karışırsa = beyaz','Figma\'nın çalıştığı sistem','Basıldığında soluk görünebilir']},right:{h:'CMYK (baskı)',items:['<strong>Mürekkeplerden</strong> oluşan renkler','Çıkarma (Subtractive): hepsi karışırsa = siyah','Yazıcıların kalibre olduğu sistem','Doğru baskı rengi için gereklidir']}},
+      {type:'text',h:'Figma\'nın RGB\'siyle çalışma',b:'Figma, CMYK\'yı yerel olarak desteklemez. Kursun pratik çözümü: basılan sonucun ekranla eşleşmesi için bir <strong>CMYK Renk Çemberi</strong> referans dosyasından renkleri damlalıkla alma. Ve <strong>kontrastı</strong> Figma\'nın denetleyicisiyle kontrol edin (renk panelindeki yin-yang ikonu — AA ikonu zayıf kontrastı otomatik düzeltir), çünkü yazıcılar kontrastı "yer".'},
+    ]},
+    {t:'🖼️ İç Mekan Posterleri ve Kitap Kapakları',cards:[
+      {type:'text',h:'İç mekan posterleri',b:'Fiziksel kurallar yerine oturduktan sonra, baskı modülü en sanatsal projesine, <strong>Ders 30\'a ("İç mekan posteri: konseptten göz alıcı duvar sanatına")</strong> geçer — kartvizit dersinden hemen sonra, böylece öğrenciler zaten bleed, DPI ve CMYK\'yı bilir ve yaratıcı tarafa odaklanabilir: gerçek bir odayı süslemek için tasarlanmış posterler. İç mekan posterleri <strong>metin ve el çizimi grafikler içerir — fotoğraf değil</strong> — ve odanın renklerine, stiline ve amacına uymalıdır; bu, Modül 1\'deki kompozisyon ve tipografi becerilerinin fiziksel bir nesneye uygulandığı yerdir. Baskı boyutları bir şablondan gelir (A3 optimal; A1, Figma\'yı yavaşlatabilir). Kurstan teknikler: bağımsız stillendirme için her kelime ayrı yazılır, <strong>dinamik vuruşlar (dynamic strokes)</strong> (Frequency, Wiggle, Smoothen), fırça vuruşları ve mükemmel simetrik süslemeler için Figma Draw modunda <strong>Radial repeat</strong>.'},
+      {type:'img',src:'images/TR/interior-posters.png',alt:'İç mekan posteri örnekleri'},
+      {type:'text',h:'Kitap kapağı anatomisi',b:'<strong>Ders 31 ("Kitap kapağı tasarımı: hikayeleri görsel başyapıtlara dönüştürme")</strong> zorluğu artırır: bir kapak, ön yüzden daha fazlasıdır. Bir <strong>ön kapak, arka kapak ve sırt</strong> (sayfa sayısından hesaplanan kendi genişliğiyle), metin ve logolar için bir <strong>güvenli/canlı alan (safe/live area)</strong>, <strong>kenar boşlukları</strong>, <strong>bleed</strong> ve kırpma boyutları vardır. Kimse bu sayıları ezberlemez — profesyoneller onları oluşturur. Şablonlar <a href="https://kdp.amazon.com/cover-calculator" target="_blank"><strong>Amazon Kapak Dosyası Hesaplayıcısından</strong></a> gelir: ciltleme, kağıt, kırpma boyutu ve sayfa sayısı girin → tasarlamak için doğru boyutlandırılmış, işaretlenmiş bir şablon indirin.'},
+      {type:'img',src:'images/TR/book-cover-anatomy.png',alt:'Kitap kapağı anatomisi'},
+    ]},
+    {t:'📢 Sosyal Posterler',cards:[
+      {type:'list',h:'Dört hedef',p:'Baskı modülü, genç bir tasarımcıdan en çok şeyi isteyen poster türü olan <strong>Ders 32\'yle ("Sosyal farkındalık posteri: değişime ilham veren tasarım")</strong> kapanır — önceki üç baskı dersinden her şeyi kullanan bir proje. Bir sosyal reklam bir ürün satmaz — insanları durup düşündürür ve her tasarım kararı buna hizmet etmelidir. Her sosyal poster dört hedefin peşindedir:',items:['<strong>Bilgilendirmek</strong> — canlı bir gerçek veya fikir iletmek (okyanusu kirleten plastik gibi).','<strong>Duygu uyandırmak</strong> — şok, kaygı, sempati veya umut; izleyici kayıtsız kalmamalıdır.','<strong>Harekete çağırmak</strong> — insanlara ne yapacaklarını söylemek (plastiği azaltın, atığı ayırın).','<strong>Değerleri şekillendirmek</strong> — izleyicinin neyin önemli olduğuna dair inancını etkilemek.'],ordered:true,after:'İyi bir sosyal poster, bir saniyede etkisini gösteren bir <strong>"görsel vuruştur"</strong>.'},
+      {type:'img',src:'images/TR/four-goals.png',alt:'Bir sosyal posterin dört hedefi'},
+      {type:'text',h:'Tasarım kuralları',b:'Bir sosyal poster, bir yabancı onu bir saniyede anladığında işe yarar — bu yüzden her tasarım seçimi hız ve etkiye hizmet eder. Kurs, öğrencilere üç alanda kasıtlı kararlar vermeyi öğretir:<br><br><strong>Mesaj.</strong> Bir fikir — bir poster. Üç şey söylemeye çalışırsanız, izleyici hiçbirini almaz. Metni minimum tutun: kısa bir slogan, en fazla bir gerçek veya bir bağlantı.<br><br><strong>Görsellik.</strong> Posteri tek bir güçlü <strong>görsel metafor</strong> etrafında inşa edin — siyah plastik torbalardan yapılmış akciğerler, herhangi bir paragraftan daha fazlasını kirlilik hakkında söyler. O nesneye tüm dikkati verin: yüksek kontrastlı, hakim, ortalanmış bir unsur ve onunla rekabet eden her ayrıntıyı kaldırın.<br><br><strong>Renk.</strong> Renkler, metin okunmadan önce bile duygu taşır — <strong>kırmızı</strong> alarm sinyali verir, <strong>siyah</strong> tehdit sinyali verir, <strong>mavi ve yeşil</strong> yaşam ve umut sinyali verir. Mesajla eşleşen ilişkilendirmeyi seçin.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Bir baskı tasarımı neden bleed marjlarına ihtiyaç duyar?',opts:['Müşterinin notları için yer bırakmak için','Kesim baskıları hafifçe kayar — arka plan kırpma çizgisinin ötesine uzanmalıdır','Dosyayı daha küçük yapmak için','Çünkü Figma bunu gerektirir'],c:1,fb:'Baskılar kesim sırasında kayar; arka plan bleed\'i doldurur böylece beyaz şeritler görünmez, önemli içerik ise kırpma alanının içinde kalır.'},
+    {q:'RGB ve CMYK\'da tüm renkleri karıştırdığınızda ne olur?',opts:['İkisinde de beyaz','İkisinde de siyah','RGB → beyaza yakın, CMYK → siyah','RGB → siyah, CMYK → beyaz'],c:2,fb:'RGB katkılı ışıktır (hepsi = beyaz); CMYK çıkarmalı mürekkeptir (hepsi = siyah). Bu yüzden RGB tasarımlar soluk basılabilir.'},
+    {q:'Bunlardan hangisi bir iç mekan posterine aittir?',opts:['Yüksek çözünürlüklü bir fotoğraf','Metin ve el çizimi grafikler','Bir QR kodu','Bir ürün fiyatı'],c:1,fb:'İç mekan posterleri tipografi ve el çizimi grafiklerden oluşturulur — fotoğraflardan değil.'},
+    {q:'Baskı tasarımı neden tipik bir ekran çözünürlüğü yerine 300 DPI\'de oluşturulur?',opts:['Bu Figma\'nın varsayılan dışa aktarma ayarıdır','Baskı, yakından net görünmek için çok daha fazla inç başına noktaya ihtiyaç duyar — ekran çözünürlüğü kağıtta bulanık görünür','Dosyayı daha küçük yapar','Sadece CMYK kullanıldığında gereklidir'],c:1,fb:'İnsanlar basılı malzemeyi gözlerinden santimetrelerce uzaklıkta tutar — 300 nokta/inç, ekran çözünürlüğünün bulanık görüneceği yerde onu net tutar.'},
+    {q:'Bir sosyal poster aynı anda üç mesaj sıkıştırıyor. Bu hangi kuralı ihlal eder?',opts:['Minimum metin','Bir fikir — bir poster','Kontrast ve odak','Renk ilişkilendirmeleri'],c:1,fb:'Poster başına bir fikir — bir sosyal reklam bir ders değil, tek bir "görsel vuruş" indirmelidir.'},
+   ]
+  },
+  {id:6,emoji:'🚀',title:'Portfolyo ve Behance',desc:'Vaka çalışmaları, projeleri Behance\'e yükleme ve her tasarımcının bilmesi gereken yükleme özellikleri.',obj:'Öğrencilere Behance\'de gerçek vaka çalışmaları yayınlamada rehberlik etmek — kursun kariyer bitiş çizgisi.',color:'#6366F1',
+   sections:[
+    {t:'👀 Bu Modülde Neler Var',cards:[
+      {type:'text',b:'Bu modül kursun bitiş çizgisidir: öğrencilerin inşa ettiği her şeyi <strong>Behance\'de profesyonel bir portfolyoya</strong> dönüştürmek. Portfolyo, öğrencilerin (ve ebeveynlerinin) kurs bittikten sonra sakladıkları şeydir — tek bir paylaşılabilir bağlantının ardında her projenin kanıtı, çalışan tasarımcıların kendilerini sunma şekliyle sunulur. Sizin için de bu, en çok <strong>sınıf lojistiği</strong> olan modüldür: hesap kaydı, bir yaş gereksinimi ve kesin yükleme ayarlarının tümü bir derste doğru gitmelidir, bu yüzden tam sayıları önceden bilmek işleri sakin tutar.'},
+    ]},
+    {t:'🌍 Behance ve Vaka Çalışmaları',cards:[
+      {type:'text',h:'Behance neden önemli',b:'Behance, yaratıcı profesyonellerin yaşadığı küresel platformdur: <strong>tek bir bağlantının ardında bir portfolyo</strong>, doğrudan müşteri keşfi ve göz atılacak sonsuz ilham. Orada yayınlamak bir öğrenciye hiçbir notun söyleyemeyeceği bir şey söyler: <em>çalışman şimdi profesyonel tasarımcıların çalışmasıyla aynı yerde var.</em>'},
+      {type:'img',src:'images/TR/why-behance.png',alt:'Behance tasarımcılar için neden önemli'},
+      {type:'text',h:'İyi bir vaka çalışmasının anatomisi',b:'Behance\'deki projeler sadece görüntü yığınları değildir — bir projenin nasıl yapıldığının hikayesinin görseller kadar önemli olduğu <strong>vaka çalışmaları</strong> olarak sunulurlar. İyi bir vaka çalışmasının bir <strong>kapak görüntüsü</strong>, bir proje açıklaması, <strong>süreç materyalleri</strong> (taslaklar, konseptler, hatta ortaya çıkarılan modüler ızgara), <strong>nihai görseller</strong> (Modül 3\'ten mockup\'lar burada karşılığını alır) ve iletişim bilgileri vardır. Öğrencilerin kursta oluşturduğu marka kitabı zaten bu şekli takip eder — süreç çalışmalarını çöp değil, gösterilmeye değer içerik olarak görmelerini öğretin.'},
+      {type:'warn',txt:'Kayıt için <strong>13+</strong> yaş gerekir — daha küçük öğrenciler ebeveyn izni gerektirir (izin, dersten önce grup sohbeti üzerinden toplanır). Hesaplar, Figma için kullanılan aynı Google hesabıyla oluşturulur.'},
+    ]},
+    {t:'📤 Yükleme Özellikleri',cards:[
+      {type:'text',h:'Hatırlanması gereken sayılar',b:'Behance formatlar konusunda titizdir ve bunları doğru yapmak, bir öğrencinin sayfasını bozuk değil profesyonel görünmesini sağlar. Figma\'daki sunum çerçeveleri tam olarak <strong>1400 px genişliğinde</strong> olmalıdır (yükseklik 800 px ve üzeri). Özel küçük resim çerçevesi <strong>202×158 px</strong>\'dir. Behance\'in Styles tab\'ında, üst üste yığılmış görüntülerin kesintisiz bir şekilde tek bir sürekli sayfaya birleşmesi için <strong>Content Spacing\'i 0\'a</strong> ayarlayın. Etiketler 10 ile sınırlıdır; kategorizasyon gereklidir; görünürlük Herkes olarak ayarlanır.'},
+      {type:'good',txt:'Portfolyo yayınlandığında, öğrenciler kursun tüm yayını tamamlamış olur: "grafik tasarım nedir?"den gerçek, bitmiş çalışmaların herkese açık bir sayfasına. Bu eğitimin son modülü odağı <em>ne</em> öğreteceğinizden <em>nasıl</em> öğreteceğinize kaydırır.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Behance\'de bir vaka çalışması nedir?',opts:['Proje hakkında yasal bir belge','Bir projenin nasıl yapıldığının hikayesini anlatan bir mini sunum','Ücretli bir reklam alanı','Kullanılan araçların bir listesi'],c:1,fb:'Vaka çalışmaları, nihai görsellerin yanı sıra projenin hikayesini — görev, süreç, sonuçlar — anlatır.'},
+    {q:'Bir Behance yüklemesi için bir Figma çerçevesi ne kadar geniş olmalıdır?',opts:['1080 px','1200 px','1400 px','1920 px'],c:2,fb:'Tam olarak 1400 px genişliğinde — yükseklik esnektir (800+ px).'},
+    {q:'13 yaşından küçük öğrenciler Behance\'e kaydolmadan önce ne kontrol edilmelidir?',opts:['Quiz puanları','Ebeveyn izni','Yazma hızları','Ücretli bir abonelik'],c:1,fb:'Behance kullanıcıların 13+ olmasını gerektirir; daha küçük öğrenciler grup sohbeti üzerinden toplanan ebeveyn onayına ihtiyaç duyar.'},
+    {q:'Behance\'in Styles tab\'ında neden Content Spacing 0\'a ayarlanır?',opts:['Dosya boyutunu azaltmak için','Böylece üst üste yığılmış görüntüler beyaz boşluklar olmadan kesintisiz birleşir','Yorumları etkinleştirmek için','Daha fazla etiketin kilidini açmak için'],c:1,fb:'Sıfır içerik boşluğu, yüklenen görüntüler arasındaki boşlukları kaldırır, böylece vaka çalışması tek bir sürekli sayfa gibi okunur.'},
+    {q:'Bir tasarımcı için Behance\'in en büyük gücü nedir?',opts:['Ücretsiz stok fotoğraflar','Müşterilerin sizi doğrudan bulabileceği tek bir bağlantının ardındaki bir portfolyo','Otomatik logo oluşturma','Yerleşik baskı hizmetleri'],c:1,fb:'Behance, bir tasarımcının çalışmasını tek bir paylaşılabilir portfolyo bağlantısına dönüştürür — ve müşteriler tasarımcıları doğrudan platformda keşfedebilir.'},
+   ]
+  },
+  {id:7,emoji:'🧑‍🏫',title:'Harika Bir Ders Nasıl Yürütülür',desc:'Ayna ders yapısı, teori-ve-pratik aşaması ve gerçekten öğreten geri bildirim nasıl verilir.',obj:'Güçlü bir Kodland dersinin şeklinde ustalaşmak — ısınmadan kapanışa kadar — ayrıca yaratıcı bir kursun en çok gerektirdiği iki beceri: esnek pratik ve spesifik geri bildirim. <strong>Bu, konudan bağımsız olarak nasıl öğrettiğinizle ilgilidir.</strong>',color:'#EF4444',
+   sections:[
+    {t:'👀 Bu Modülde Neler Var',cards:[
+      {type:'text',b:'Figma\'yı, renk teorisini ve her mockup numarasını mükemmel bilebilirsiniz ve yine de yapısı yoksa zayıf bir ders yürütebilirsiniz. Çocuklar <strong>tahmin edilebilir bir ritim</strong> içinde en iyi öğrenir — her ders aynı tanıdık yayı takip ettiğinde daha hızlı yerleşirler, daha fazlasını akılda tutarlar ve motive kalırlar. Bu modül o yayı öğretir: Kodland\'ın "ayna" tasarımına sahip ders yapısı (bir dersin <em>bitiş</em> şeklinin <em>başlangıç</em> şeklini yansıtması), kalbindeki teori-ve-pratik aşaması ve — tasarım yaratıcı, kişisel bir konu olduğu için — sadece övmek yerine <strong>gerçekten öğreten geri bildirim</strong> nasıl verilir. Bu alışkanlıklar öğreteceğiniz her derse uygulanır.'},
+      {type:'tip',txt:'Tutarlılık önemli olan şeydir. Öğrenciler ritminizi öğrendiğinde, "şimdi ne olacak?" diye enerji harcamayı bırakır ve bunu tasarlamaya harcarlar. İkinci doğa haline gelene kadar aynı yapıyı her seferinde çalıştırın — sizin için ve onlar için.'},
+    ]},
+    {t:'🌅 Başlangıç: dört aşama',cards:[
+      {type:'text',h:'1 · Isınma — enerji ve odağı aktive etme',b:'Öğrencinin beynini "ders moduna" geçiren hafif bir şeyle açın: hızlı bir soru, ufak bir meydan okuma, hafta içinde fark edilen havalı bir tasarım. Hedef enerji ve dikkattir, değerlendirme değil. "Şimdi başlıyoruz" sinyali verir ve dikkati dağılmış bir çocuğu oturuma çeker.'},
+      {type:'text',h:'2 · Önceki Ders Tekrarı — hatırlama ve pekiştirme',b:'Geçen sefer öğrenilenleri kısaca gözden geçirin. Geri getirme (retrieval) — öğrenciye yeniden dinletmek yerine <em>hatırlatmak</em> — var olan en güçlü hafıza araçlarından biridir. İki dakikalık bir "güçlü bir odak noktasını ne yapar?" sorusu, yeniden açıklamanın yapabileceğinden daha fazlasını yapar.'},
+      {type:'text',h:'3 · Ödev Kontrolü — ödevi birlikte inceleme',b:'Ödevi öğrenciyle <em>birlikte</em> gözden geçirin — bu kursta bu, yaptıkları bir tasarıma bakmak anlamına gelir. Burada yanlış anlamaları yakalar, çabayı takdir eder ve ödevin gerçekten önemli olduğunu gösterirsiniz. Bu ayrıca dersin iki önemli <strong>geri bildirim anından</strong> biridir (aşağıdaki geri bildirim bölümüne bakın): "güzel poster!" ile yetinmeyin — neyin işe yaradığını ve daha ileriye ne itileceğini özellikle söyleyin. Kontrolü atlamak çocuklara ödevin isteğe bağlı olduğunu öğretir.'},
+      {type:'text',h:'4 · Ders Hedefi — açık hedefler belirleme',b:'Bugünün ne hakkında olduğunu açıkça belirtin: "bugün tek bir açık odak noktası olan bir poster tasarlayacağız." Açık bir hedef, derse yön verir ve öğrenciye hedefleyecek somut bir şey verir.'},
+    ]},
+    {t:'🎨 Orta bölüm: teori ve pratik',cards:[
+      {type:'text',h:'5 · Teori ve Pratik — dersin kalbi',b:'Ders hedefi ve kapanış aşamaları arasında, yeni materyalin öğretildiği ve hemen kullanıldığı en uzun aşama yer alır. Teoriyi <strong>küçük parçalar halinde</strong> tutun — bir kavram, sonra onunla uygulamalı çalışma — ve <strong>önce modelleyin</strong>: öğrenciler kendi ekranlarında denemeden önce tekniği kendi ekranınızda gösterin. Bir tasarım kursunda pratik aşaması öğrencilerin gerçekten yarattığı yerdir, bu yüzden bu zamanı şiddetle koruyun; çocukların sadece sizi tasarlarken izlediği bir ders, hiç kimsenin tasarlamadığı bir derstir.'},
+      {type:'hi',h:'Esnek olun — hedefler içinde özgürlük',b:'Bu, yaratıcı bir kurs için en önemli uyarlamadır: <strong>öğrenme hedefleri karşılandığı sürece öğrencilerin istediklerini tasarlamasına izin verin</strong>. Ders planı "bir müzik festivali için bir poster yap" diyorsa ama öğrenciniz bir video oyununa saplantılıysa, oyun posterini yapmalarına izin verin — hâlâ bir odak noktasına, dengeli bir kompozisyona ve okunabilir tipografiye ihtiyaç duyar, ders gerçekte bununla ilgilidir. Önemsedikleri bir şeyi tasarlayan bir öğrenci daha çok çalışır, daha çok hatırlar ve <em>kendisininmiş</em> gibi hissettiren bir portfolyo inşa etmeye başlar. Temayı uyarlayın, hedefi asla.'},
+      {type:'warn',txt:'Esneklik, standartların yokluğu değildir. Öğrenci ne tasarlamayı seçerse seçsin, bunu dersin öğrenme hedeflerine bağlı tutun — özgürlüğün işe yaramasını sağlayan anlaşma budur.'},
+    ]},
+    {t:'🏁 Sonuç: ayna',cards:[
+      {type:'hi',h:'Sonuç, başlangıcı tersten yansıtır',b:'Kapanış dört aşaması, açılış aşamalarını tersten yansıtır — ders başladığı şekilde biter ve öğrencilere tatmin edici bir <strong>kapanış ve ritim</strong> hissi verir. Bu "döngüsel" şekil, bir dersin sadece zaman dolduğunda durmak yerine tamamlanmış hissettirmesini sağlayan şeydir.'},
+      {type:'text',h:'6 · Ders Özeti — eğitmen + öğrenci temelli',b:'Kapsananları özetleyin — ama sadece onlara söylemeyin. <em>Öğrencinin</em> de kendi sözleriyle özetlemesini sağlayın. Onların özeti gerçekte neyin yerleştiğini ortaya çıkarır ve ikinci bir geri getirme anı olarak işlev görür.'},
+      {type:'text',h:'7 · Ödev Ataması — açık talimatlar',b:'Ne tasarlanacağı ve nasıl tasarlanacağı konusunda çok açık talimatlarla ödev verin. Belirsiz ödev, yapılmayacak ödevdir. Bu, dersi açan Ödev Kontrolüyle eşleşir.'},
+      {type:'text',h:'8 · Sonraki Ders Önizlemesi — merak inşa etme',b:'Sırada ne olduğunu ipuçlarıyla verin: "bir dahaki sefere, tasarımınızı gerçek bir kahve fincanına koyacağız!" Bir çengel, oturumlar boyunca beklenti ve ileri momentum inşa eder — başlangıçtaki Ders Hedefiyle eşleşir.'},
+      {type:'text',h:'9 · Kapanış — enerjiyle bitirme',b:'Yüksek bir notla bitirin: öğrencinin bugün yarattığını kutlayın, çabalarını takdir edin ve onları iyi hissederek yolcu edin. Son 30 saniye, tüm dersi nasıl hatırladıklarını şekillendirir.'},
+    ]},
+    {t:'💬 Gerçekten öğreten geri bildirim (sadece övmek değil)',cards:[
+      {type:'text',h:'"Harika iş!" sorunu',b:'Tasarım kişiseldir — bir öğrencinin posteri ekrandaki <em>kendi</em> zevkidir, bu yüzden geri bildirim burada başka herhangi bir konudan daha ağır iner. Bu, genel övgüyü gerçek bir soruna dönüştürür: <strong>"Harika iş!", "Çok güzel!", "Beğendim!"</strong> nazik hissettirir, ama hiçbir şey öğretmez — öğrenci ne işe yaradığını ne de tekrar ne yapacağını öğrenir. Spesifik geri bildirim ikisini de yapar: <strong>tam olarak neyi sevdiğinizi ve neden işe yaradığını söyleyin</strong>, Modül 1-6\'daki tasarım dilini kullanarak.'},
+      {type:'twocol',left:{h:'❌ Genel (kaçının)',items:['"Harika iş!"','"Çok güzel!"','"Beğendim!"','"Güzel renkler!"','"Aferin, sonraki slayt!"']},right:{h:'✅ Spesifik (bunu hedefleyin)',items:['"Kırmızı düğme koyu arka plana karşı gerçekten göze çarpıyor — bu güçlü bir kontrast."','"Başlığın gördüğüm ilk şey. Net bir odak noktası oluşturdun."','"Bu iki font iyi eşleşiyor: kalın başlık dikkat çekiyor ve gövde metni okunabilir kalıyor."','"Fiyatı fotoğrafın yanına koymak onları gruplandırıyor — iyi bir yakınlık kullanımı."']}},
+      {type:'text',h:'Ezmeden düzeltme',b:'Düzeltilmesi gereken bir şey olduğunda, bir spesifik güçlü noktayı bir somut iyileştirmeyle eşleştirin: <em>"Palet güzel çalışıyor — şimdi metne biraz daha nefes alacak alan verelim ki okunması daha kolay olsun."</em> Öğrenci hem neyi koruması gerektiğini <strong>hem de</strong> neyi değiştireceğini duyar ve ikisi de belirsizlikte kaybolmaz.'},
+      {type:'good',txt:'Bunu nerede kullanmalı: her dersin iki geri bildirim anı — başlangıçtaki <strong>Ödev Kontrolü</strong> ve ortadaki <strong>Pratik</strong> aşaması.'},
+    ]},
+    {t:'💡 Bu yapı neden işe yarar',cards:[
+      {type:'twocol',left:{h:'🧠 Bilişsel Rahatlık',items:['Tahmin edilebilir bir format zihinsel yükü azaltır','Öğrenciler ne bekleyeceklerini bilir','Odak, ders şeklini çözmeye değil tasarlamaya gider']},right:{h:'🔁 Hatırlama Artışı',items:['BAŞLANGIÇtaki tekrar geçen seferi pekiştirir','SONdaki özet bugünü pekiştirir','İki hafıza kontrol noktası → çok daha iyi hatırlama']}},
+      {type:'twocol',left:{h:'🎯 Açık Amaç',items:['Hedefi önceden belirtmek motivasyon inşa eder','Sonraki dersi önizlemek momentum yaratır','Öğrenci her zaman burada neden olduğunu bilir']},right:{h:'✅ Sorumluluk Döngüsü',items:['Başlangıçtaki ödev kontrolü...','...sondaki ödev atamasıyla eşleşir','Öğrenciler dersler arasındaki sürekliliği hisseder']}},
+      {type:'good',txt:'Eşleşmeye dikkat edin: ısınma ↔ kapanış, tekrar ↔ özet, ödev kontrolü ↔ ödev ataması, ders hedefi ↔ sonraki ders önizlemesi — merkezde teori ve pratik ile. Her açılış aşamasının bir kapanış eşi vardır. Bu simetri, yapının "döngüsel" ve akılda kalıcı olmasını sağlayan şeydir.'},
+    ]},
+    {t:'🙋 Her çocuğu dahil tutmak',cards:[
+      {type:'text',h:'Altın kural',b:'Eğitmenin konuştuğu ve öğrencinin dinlediği bir ders zayıf bir derstir. Göreviniz, öğrenciyi mümkün olduğunca <strong>yapmaya, söylemeye ve düşünmeye</strong> yönlendirmektir — ve bir tasarım kursunda bu, ellerinin araçların üzerinde olması demektir. Bu dört tekniği sürekli olarak, her aşamada kullanın.'},
+      {type:'twocol',left:{h:'❓ Açık Sorular',items:['"Bu renkleri değiştirirsek ne olacağını düşünüyorsun?"','"Bu başlığı nasıl daha çok öne çıkarırdın?"','Evet/hayır sorularından kaçının — gerçek tasarım düşüncesine davet edin']},right:{h:'🖥️ Ekran Paylaşımı',items:['Öğrencinin ekranını paylaşmasını isteyin','Kendi tasarımlarını size anlatmalarına izin verin','Ödev kontrolü ve pratik sırasında harika — sahiplenme inşa eder']}},
+      {type:'twocol',left:{h:'📖 Slayt Okuma',items:['Öğrencileri slayt metnini yüksek sesle okumaya davet edin','Kendi sözleriyle açıklamalarını isteyin','Kavramayı artırır ve onları aktif tutar']},right:{h:'🌟 Övgü ve Cesaretlendirme',items:['Spesifik olun — işe yarayan tasarım kararını adlandırın','Sadece güzel sonuçları değil, çabayı ve seçimleri övün','Momentum boyunca korumak için enerji kullanın']}},
+      {type:'warn',txt:'Pasif ders tuzağına dikkat edin: sürtünme olmadığı için pürüzsüz hissettirir, ama öğrenci pek az şey öğrenir. Öğrenci bir şey yapmadan veya söylemeden bir veya iki dakikadan fazla konuşuyorsanız, sözü ona geri verin.'},
+    ]},
+    {t:'🎯 Bunu uygulamaya koymak',cards:[
+      {type:'hi',h:'Yapı sizi özgürleştirir, kısıtlamaz',b:'Yeni eğitmenler bazen sabit bir yapının dersleri robotik yapacağından korkar. Doğrusu tam tersidir: aşamalar otomatik hale geldiğinde, "sırada ne var?" konusunda endişelenmeyi bırakır ve tüm dikkatinizi öğrenci için özgür bırakırsınız — onların soruları, tasarımları, enerjileri. Yapı, sizin orada olmanızı sağlayan iskelettir.'},
+      {type:'tip',txt:'İlk dersleriniz için aşamaların zihinsel (veya somut) bir kontrol listesini tutun. Birkaç hafta sonra ritim otomatik hale gelir — ve onunla birlikte, bu eğitim tamamlanmış olur: geriye kalan tek şey, Digital Skill Test\'te öğrendiklerinizi göstermektir.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Kodland ders yapısı neden bir "ayna" veya "döngüsel" format olarak tanımlanır?',opts:['Kapanış aşamaları açılış aşamalarını tersten yansıtır, böylece ders başladığı şekilde biter','Eğitmen ve öğrenci yarı yolda rol değiştirir','Slaytlar iki kez, ileri sonra geri gösterilir','Her ders önceki dersi tam olarak tekrarlar'],c:0,fb:'Sonuç, başlangıcı tersten yansıtır (ısınma↔kapanış, tekrar↔özet, ödev kontrolü↔ödev ataması), kapanış ve ritim sağlar.'},
+    {q:'Bir öğrenci ödev posterini gösteriyor. Hangi yanıt en iyi geri bildirimdir?',opts:['"Harika iş, bayıldım!"','"Başlığın gördüğüm ilk şey — net bir odak noktası oluşturdun. Şimdi metne biraz daha nefes alacak alan verelim."','"Güzel, ama bir dahaki sefere daha çok çalış."','"Mükemmel, bugünün konusuna geçelim."'],c:1,fb:'Spesifik geri bildirim neyin ve nedenin işe yaradığını (odak noktası) adlandırır ve onu bir somut iyileştirmeyle eşleştirir — genel övgü hiçbir şey öğretmez.'},
+    {q:'Ders planı "bir müzik festivali posteri tasarla" diyor, ama öğrenciniz favori video oyunu hakkında bir poster yapmak istiyor. Ne yaparsınız?',opts:['İzin verin — tasarım hâlâ dersin öğrenme hedeflerini (odak noktası, kompozisyon, tipografi) karşıladığı sürece','Reddedin: ders planı tam olarak takip edilmelidir','İzin verin ve istedikleri her şeyi yapabilmeleri için ders hedeflerini bırakın','Ceza olarak her iki posteri de yapmalarını sağlayın'],c:0,fb:'Temayla esnek olun, hedeflerle asla. Sevdiği bir şeyi tasarlayan bir öğrenci daha çok çalışır ve daha çok öğrenir — öğrenme hedefleri karşılandığı sürece.'},
+    {q:'Bir ders boyunca "sorumluluk döngüsünü" oluşturan aşama çifti hangisidir?',opts:['Başlangıçtaki Ödev Kontrolü ve sondaki Ödev Ataması','Isınma ve Ders Hedefi','Teori ve Pratik','Ders Özeti ve Kapanış'],c:0,fb:'Başlangıçta ödevi kontrol etmek ve sonda vermek döngüyü kapatır ve dersler arasında süreklilik inşa eder.'},
+    {q:'Bir eğitmen pürüzsüz bir ders veriyor ama öğrenci onu tasarlarken izlerken konuşmanın çoğunu o yapıyor. Bu neden bir uyarı işaretidir?',opts:['Pasif bir ders sürtünmesiz hissettirir ama öğrenci pek az öğrenir — bir tasarım kursunda öğrencinin elleri araçların üzerinde olmalıdır','Materyal kapsandıysa bir sorun değildir','Yapının doğru takip edildiği anlamına gelir','Pürüzsüzlük her zaman harika bir dersi gösterir'],c:0,fb:'Katılım hedeftir. Sadece eğitmenin tasarladığı bir ders, hiç kimsenin tasarlamayı öğrenmediği bir derstir — araçları öğrenciye geri verin.'},
+    {q:'Bir eğitmen zaman kazanmak için Önceki Ders Tekrarını atlıyor. Pedagojik olarak ana maliyet nedir?',opts:['Bir geri getirme anını kaybederler — öğrencilerin önceki öğrenmeyi hatırlamasını sağlamak, onu pekiştirmenin en güçlü yollarından biridir','Hedef belirtildiği sürece hiçbir şey','Ödev daha sonra verilemez','Ders zamanı aşacaktır'],c:0,fb:'Tekrar, güçlü bir hafıza aracı olan geri getirmeyi zorlar. Yapının iki pekiştirme kontrol noktasından biridir (diğeri Ders Özetidir).'},
+   ]
+  },
+];
+
+// ─── PROGRESS ───────────────────────────────────────────────────────────────
+const PROG_KEY='kl-gd-progress';
+function getProgress(){
+  try{ return JSON.parse(localStorage.getItem(PROG_KEY)||'{}'); }catch(e){ return {}; }
+}
+function saveProgress(p){ localStorage.setItem(PROG_KEY, JSON.stringify(p)); }
+function isPassed(id){ const p=getProgress(); return p[id]?.passed===true; }
+function getScore(id){ const p=getProgress(); return p[id]?.score||0; }
+function setResult(id, pct, passed){
+  const p=getProgress();
+  p[id]={passed:passed||p[id]?.passed===true, score:Math.max(pct,p[id]?.score||0)};
+  saveProgress(p);
+}
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let currentModule=null, quizData=[], qi=0, score=0;
+const TOTAL=MODULES.length;
+
+// ─── HOME ─────────────────────────────────────────────────────────────────
+function renderHome(){
+  const done = MODULES.filter(m=>isPassed(m.id)).length;
+  document.getElementById('pnum').textContent=done+'/'+TOTAL;
+  document.getElementById('pfill').style.width=(done/TOTAL*100)+'%';
+  const tag=document.getElementById('ntag');
+  if(done>0){tag.style.display='inline';tag.textContent=done===TOTAL?'🏆 Hepsi tamamlandı!':done+'/'+TOTAL+' tamamlandı';}else tag.style.display='none';
+  const g=document.getElementById('mgrid'); g.innerHTML='';
+
+  // Module 0 — welcome card, always unlocked, no quiz, not counted in progress
+  const m0=document.createElement('div');
+  m0.className='mc';
+  m0.innerHTML=`<div class="mc-stripe" style="background:${MODULE0.color}"></div>
+  <div class="mc-body">
+    <div class="mc-top"><div class="mc-num">Modül 0 · Buradan Başlayın</div><div class="mc-em">${MODULE0.emoji}</div></div>
+    <div class="mc-title">${MODULE0.title}</div>
+    <div class="mc-desc">${MODULE0.desc}</div>
+    <div class="mc-foot"><span class="badge btr">📖 Oku</span><span class="stag">Quiz yok</span></div>
+  </div>`;
+  m0.onclick=openModule0;
+  g.appendChild(m0);
+
+  MODULES.forEach((m,i)=>{
+    const prev = i===0 ? true : isPassed(MODULES[i-1].id);
+    const isDone = isPassed(m.id);
+    const locked = !prev;
+    const el=document.createElement('div');
+    el.className='mc'+(locked?' locked':'')+(isDone?' done':'');
+    const pct=getScore(m.id);
+    const badge=isDone?'<span class="badge bd">✓ Tamamlandı</span>':locked?'<span class="badge bl">🔒 Kilitli</span>':'<span class="badge bs">Başla</span>';
+    const stag=isDone?`<span class="stag">Puan: <b>${pct}%</b></span>`:locked?`<span class="stag">Modül ${m.id-1}\'i tamamla</span>`:'<span class="stag">Quiz var</span>';
+    el.innerHTML=`<div class="mc-stripe" style="background:${m.color}"></div>
+    <div class="mc-body">
+      <div class="mc-top"><div class="mc-num">Modül ${m.id}</div><div class="mc-em">${m.emoji}</div></div>
+      <div class="mc-title">${m.title}</div>
+      <div class="mc-desc">${m.desc}</div>
+      <div class="mc-foot">${badge}${stag}</div>
+    </div>`;
+    if(!locked) el.onclick=()=>openModule(m);
+    g.appendChild(el);
+  });
+
+  // DST card
+  const allDone=MODULES.every(m=>isPassed(m.id));
+  const dstEl=document.createElement('div');
+  dstEl.className='mc'+(allDone?'':' locked');
+  dstEl.innerHTML=`<div class="mc-stripe" style="background:linear-gradient(90deg,var(--lime),var(--pink))"></div>
+  <div class="mc-body">
+    <div class="mc-top"><div class="mc-num">Son Aşama</div><div class="mc-em">🏆</div></div>
+    <div class="mc-title">Digital Skill Test</div>
+    <div class="mc-desc">Eğitmen hazırlığınızı tamamlamak için Figma\'da bir uygulama prototipi oluşturun ve gönderin.</div>
+    <div class="mc-foot"><span class="badge ${allDone?'bd':'bl'}">${allDone?'Hazır':'🔒 Kilitli'}</span><span class="stag">Pratik değerlendirme</span></div>
+  </div>`;
+  if(allDone) dstEl.onclick=showDST;
+  g.appendChild(dstEl);
+}
+
+// ─── MODULE CONTENT ───────────────────────────────────────────────────────
+function openModule(m){
+  currentModule=m.id;
+  let html=`<div class="meyebrow">Modül ${m.id} / ${TOTAL}</div><div class="mh1">${m.emoji} ${m.title}</div><div class="mobj" style="border-left-color:${m.color}"><strong>Hedef:</strong> ${m.obj}</div>`;
+  m.sections.forEach(s=>{html+=`<div class="sch">${s.t}</div>`;s.cards.forEach(c=>{html+=rc(c);});});
+  const lbl=isPassed(m.id)?'🔄 Quizi Tekrar Al':'📝 Quizi Al →';
+  html+=`<hr class="divider"><button class="ctabtn" onclick="startQuiz(${m.id})">${lbl}</button>`;
+  document.getElementById('cbody').innerHTML=html;
+  showScreen('screen-content');
+  window.scrollTo(0,0);
+}
+
+function rc(c){
+  if(c.type==='text')return`<div class="card">${c.h?`<h4>${c.h}</h4>`:''}<p>${c.b}</p></div>`;
+  if(c.type==='hi')return`<div class="card hi">${c.h?`<h4>${c.h}</h4>`:''}<p>${c.b}</p></div>`;
+  if(c.type==='table'){
+    const head=c.head.map(h=>`<th>${h}</th>`).join('');
+    const rows=c.rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('');
+    return`<div class="card">${c.h?`<h4>${c.h}</h4>`:''}<div class="tbl-wrap"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  }
+  if(c.type==='facts'){
+    const items=c.items.map(i=>`<div class="fact"><div class="fact-ic">${i.ic}</div><div class="fact-t">${i.t}</div></div>`).join('');
+    return`<div class="facts">${items}</div>`;
+  }
+  if(c.type==='prog'){
+    const mods=c.mods.map(m=>`<div class="prog-mod"><div class="prog-h"><span class="prog-n">Modül ${m.n}</span><span class="prog-t">${m.t}</span></div><ul class="prog-ls">${m.lessons.map(l=>`<li>${l}</li>`).join('')}</ul><div class="prog-res">🎯 <strong>Modül sonuçları:</strong> ${m.res}</div></div>`).join('');
+    return`<div class="prog">${mods}</div>`;
+  }
+  if(c.type==='qa'){
+    const items=c.items.map(i=>`<div class="qa-row"><div class="qa-k">✅ ${i.k}</div><div class="qa-v">${i.v}</div></div>`).join('');
+    return`<div class="card"><h4>${c.h}</h4>${items}</div>`;
+  }
+  if(c.type==='warn')return`<div class="callout cw"><span class="ci">⚠️</span><span>${c.txt}</span></div>`;
+  if(c.type==='tip')return`<div class="callout ct"><span class="ci">💡</span><span>${c.txt}</span></div>`;
+  if(c.type==='good')return`<div class="callout cg"><span class="ci">✅</span><span>${c.txt}</span></div>`;
+  if(c.type==='img')return`<img class="mod-img" src="${c.src}" alt="${c.alt||''}" loading="lazy">`;
+  if(c.type==='video'){
+    const wlink='https://www.youtube.com/watch?v='+c.id+(c.start?('&t='+c.start+'s'):'');
+    return`<div class="card video-card"><h4>${c.h}</h4><a class="yt-lite" href="${wlink}" target="_blank" style="background-image:url('https://i.ytimg.com/vi/${c.id}/hqdefault.jpg')" title="${c.h}"><div class="yt-play"></div></a><a class="video-link" href="${wlink}" target="_blank">▶ YouTube\'da İzle →</a><div class="video-note">Not: Video İngilizce yüklenirse, lütfen altyazıları veya otomatik çeviri özelliğini açıp tercih ettiğiniz dili seçin.</div></div>`;
+  }
+  if(c.type==='list'){
+    const tag=c.ordered?'ol':'ul';
+    const li=c.items.map(i=>`<li>${i}</li>`).join('');
+    return`<div class="card"><h4>${c.h}</h4>${c.p?`<p style="margin-bottom:8px">${c.p}</p>`:''}<${tag}>${li}</${tag}>${c.after?`<p style="margin-top:10px">${c.after}</p>`:''}</div>`;
+  }
+  if(c.type==='twocol'){
+    const li=items=>items.map(i=>`<li>${i}</li>`).join('');
+    return`<div class="two-col"><div class="card"><h4>${c.left.h}</h4><ul>${li(c.left.items)}</ul></div><div class="card hi"><h4 style="color:var(--hi-t)">${c.right.h}</h4><ul>${li(c.right.items)}</ul></div></div>`;
+  }
+  return'';
+}
+
+// ─── QUIZ ─────────────────────────────────────────────────────────────────
+// Fisher-Yates shuffle — uniform, unlike sort(()=>Math.random()-.5), which is
+// biased and can leave the correct answer in a near-fixed position.
+function shuf(a){
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function startQuiz(id){
+  currentModule=id;
+  const m=MODULES.find(x=>x.id===id);
+  // Shuffle question order AND the position of each question's options,
+  // so the correct answer never sits in a predictable slot.
+  quizData=shuf([...m.quiz]).map(q=>{
+    const order=shuf(q.opts.map((_,i)=>i));
+    return {q:q.q, opts:order.map(i=>q.opts[i]), c:order.indexOf(q.c), fb:q.fb};
+  });
+  qi=0; score=0;
+  renderQ(); showScreen('screen-quiz');
+  window.scrollTo(0,0);
+}
+function renderQ(){
+  const q=quizData[qi];
+  document.getElementById('qfill').style.width=(qi/quizData.length*100)+'%';
+  document.getElementById('qcount').textContent=`Soru ${qi+1} / ${quizData.length}`;
+  document.getElementById('qtext').textContent=q.q;
+  const el=document.getElementById('qopts'); el.innerHTML='';
+  q.opts.forEach((o,idx)=>{const b=document.createElement('button');b.className='qopt';b.textContent=o;b.onclick=()=>answerQ(idx);el.appendChild(b);});
+  document.getElementById('qfb').className='qfb';
+  document.getElementById('qnxt').className='qnxt';
+}
+function answerQ(idx){
+  if(document.querySelector('.qopt.answered')) return;
+  const q=quizData[qi]; const ok=idx===q.c;
+  if(ok)score++;
+  document.querySelectorAll('.qopt').forEach((b,i)=>{b.classList.add('answered');if(i===q.c)b.classList.add('correct');else if(i===idx&&!ok)b.classList.add('wrong');});
+  const fb=document.getElementById('qfb');
+  fb.className='qfb show '+(ok?'ok':'bad');
+  fb.innerHTML=(ok?'✓ Doğru! ':'✗ Tam değil — ')+q.fb;
+  const nx=document.getElementById('qnxt');
+  nx.className='qnxt show';
+  nx.textContent=qi===quizData.length-1?'Sonuçları Gör':'İleri →';
+}
+function nextQ(){
+  qi++;
+  if(qi<quizData.length){renderQ();window.scrollTo(0,0);return;}
+  const pct=Math.round(score/quizData.length*100);
+  const passed=pct>=70;
+  setResult(currentModule, pct, passed);
+  showResults(pct, passed);
+}
+
+// ─── RESULTS ──────────────────────────────────────────────────────────────
+function showResults(pct, passed){
+  const m=MODULES.find(x=>x.id===currentModule);
+  let acts='';
+  if(passed&&m.id<TOTAL) acts+=`<button class="bdark" onclick="openModule(MODULES.find(x=>x.id==${m.id+1}))">Sonraki Modül →</button>`;
+  if(passed&&m.id===TOTAL) acts+='<button class="bdark" onclick="showComplete()">🏆 Sertifikayı Görüntüle</button>';
+  acts+=`<button class="bline" onclick="openModule(MODULES.find(x=>x.id==${m.id}))">📖 Modül ${m.id}\'i Gözden Geçir</button>`;
+  acts+=`<button class="bline" onclick="startQuiz(${m.id})">Quizi Tekrar Al</button>`;
+  const sub=`${score}/${quizData.length} soruyu doğru yanıtladınız.`+(passed?' Bir sonraki modülün kilidi açıldı.':' Devam etmek için en az %70 puan almanız gerekiyor.');
+  document.getElementById('rbody').innerHTML=`<div class="remi">${passed?'🎉':'😅'}</div><div class="rtitle">${passed?'Geçtiniz!':'Çalışmaya Devam Edin'}</div><div class="rpct ${passed?'pass':'fail'}">${pct}%</div><div class="rsub">${sub}</div>${acts}`;
+  showScreen('screen-results');
+  window.scrollTo(0,0);
+  setTimeout(renderHome, 100);
+}
+
+// ─── COMPLETE ─────────────────────────────────────────────────────────────
+function showComplete(){
+  const avg=Math.round(MODULES.map(m=>getScore(m.id)).reduce((a,b)=>a+b,0)/TOTAL);
+  document.getElementById('compbody').innerHTML=`<div style="font-size:72px">🏆</div><h1 style="font-family:'Nunito',sans-serif;font-size:32px;font-weight:900;letter-spacing:-.5px;margin-top:14px;color:var(--text)">Eğitim Tamamlandı!</h1><p style="color:var(--text2);margin-top:8px;font-size:15px;line-height:1.65">${TOTAL} modülün tümüne hakim oldunuz — tebrikler! Digital Skill Test için hazırsınız.</p><div class="cert"><div class="clbl2">Tamamlama Sertifikası</div><h2>Grafik Tasarım Eğitmen Eğitimi</h2><p>Kodland · ${TOTAL} modülün tümü · Ortalama puan: ${avg}%</p><div class="cmods">${MODULES.map(m=>`<div class="cmod" style="background:${m.color}20;color:${m.color}">${m.emoji}</div>`).join('')}</div></div><button class="bdark" style="margin-bottom:10px" onclick="showDST()">🎯 Digital Skill Test\'i Al →</button><button class="bline" onclick="goHome()">← Panele Geri Dön</button>`;
+  showScreen('screen-complete');
+  window.scrollTo(0,0);
+}
+
+// ─── DST ─────────────────────────────────────────────────────────────────
+function showDST(){
+  showScreen('screen-dst');
+  window.scrollTo(0,0);
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────
+function exitQuiz(){ const m=MODULES.find(x=>x.id===currentModule); if(m) openModule(m); else goHome(); }
+function goHome(){ renderHome(); showScreen('screen-home'); window.scrollTo(0,0); }
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ─── AUTH ────────────────────────────────────────────────────────────────
+const AUTH_KEY='kl-gd-auth';
+const AUTH_HASH=405719967;
+function _h(s){let x=5381;for(let i=0;i<s.length;i++){x=((x<<5)+x+s.charCodeAt(i))|0;}return x>>>0;}
+function tryLogin(){
+  const u=document.getElementById('login-user').value.trim();
+  const p=document.getElementById('login-pass').value;
+  if(_h(u+':'+p)===AUTH_HASH){
+    localStorage.setItem(AUTH_KEY,'1');
+    document.getElementById('login-err').style.display='none';
+    renderHome();
+    showScreen('screen-home');
+    window.scrollTo(0,0);
+  } else {
+    document.getElementById('login-err').style.display='block';
+  }
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────
+if(localStorage.getItem(AUTH_KEY)==='1'){
+  renderHome();
+  showScreen('screen-home');
+} else {
+  showScreen('screen-login');
+}
+
+// ─── DEV MODE (Shift+D × 3 to toggle) ───────────────────────────────────────
+(function(){
+  let _dSeq = 0, _dTimer = null;
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'D' && e.shiftKey){
+      clearTimeout(_dTimer);
+      _dSeq++;
+      _dTimer = setTimeout(() => _dSeq = 0, 1200);
+      if(_dSeq >= 3){ _dSeq = 0; toggleDevMode(); }
+    }
+  });
+
+  function toggleDevMode(){
+    const active = localStorage.getItem('kl-gd-devmode') === '1';
+    if(!active){
+      const p = {};
+      MODULES.forEach(m => { p[m.id] = { passed: true, score: 100 }; });
+      localStorage.setItem(PROG_KEY, JSON.stringify(p));
+      localStorage.setItem('kl-gd-devmode','1');
+      showDevBadge(true);
+      renderHome();
+      alert('🔓 Dev mode ON — all modules unlocked');
+    } else {
+      localStorage.removeItem('kl-gd-devmode');
+      localStorage.removeItem(PROG_KEY);
+      showDevBadge(false);
+      renderHome();
+      alert('🔒 Dev mode OFF — progress cleared');
+    }
+  }
+
+  function showDevBadge(on){
+    let b = document.getElementById('dev-badge');
+    if(!b){
+      b = document.createElement('div');
+      b.id = 'dev-badge';
+      b.style.cssText = 'position:fixed;bottom:12px;right:12px;background:#f03d9e;color:#fff;font-family:Nunito,sans-serif;font-weight:900;font-size:12px;padding:4px 10px;border-radius:20px;z-index:9999;pointer-events:none;letter-spacing:.5px';
+      b.textContent = '🔓 DEV MODE';
+      document.body.appendChild(b);
+    }
+    b.style.display = on ? 'block' : 'none';
+  }
+
+  if(localStorage.getItem('kl-gd-devmode') === '1') {
+    showDevBadge(true);
+  }
+})();
+// ─────────────────────────────────────────────────────────────────────────────
+
+</script>
+
+<footer style="text-align:center;padding:20px 24px;font-size:11px;color:var(--text2);border-top:1px solid var(--border);margin-top:auto;line-height:1.7;opacity:0.7;">
+  © 2026 Kodland. Designed and developed by Ayberk Temizci for internal tutor training purposes.<br>
+  This material is the exclusive property of Kodland. Unauthorized duplication, distribution, or use outside of Kodland's internal training program is strictly prohibited.
+</footer>
+</body>
+</html>

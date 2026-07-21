@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pelatihan Tutor Desain Grafis — Kodland</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#C4F046;--lime-d:#AEDD2E;--pink:#F03D9E;--pink-d:#D4308A;
+  --ink:#111111;--ink2:#3A3A3A;--muted:#7A7A8A;
+  --bg:#E8FABD;--surface:#FFFFFF;--surface2:#F4FCD3;--border:#D8F07A;
+  --text:var(--ink);--text2:var(--ink2);--text-muted:var(--muted);
+  --nav-bg:rgba(255,255,255,0.94);--nav-b:#DDFAA0;
+  --shadow:0 2px 12px rgba(0,0,0,.07);--shadow-h:0 8px 28px rgba(0,0,0,.13);
+  --code-bg:#111820;--code-text:#C9E4FF;
+  --cw-bg:#FFF7F0;--cw-b:#FED7AA;--cw-t:#9A3412;
+  --ct-bg:#F0F9FF;--ct-b:#BAE6FD;--ct-t:#0C4A6E;
+  --cg-bg:#F0FDF4;--cg-b:#BBF7D0;--cg-t:#14532D;
+  --hi-bg:#FFF0F8;--hi-b:#F9A8D4;--hi-t:#831843;
+  --opt-h:#F4FCD3;
+  --ok-bg:#F0FDF4;--ok-b:#86EFAC;--ok-t:#15803D;
+  --no-bg:#FEF2F2;--no-b:#FECACA;--no-t:#B91C1C;
+  --r:14px;--rsm:8px;--rpill:999px;
+}
+[data-theme="dark"]{
+  --bg:#0E1210;--surface:#181F15;--surface2:#1E2A18;--border:#2A3D22;
+  --text:#F0FAD8;--text2:#B8D89A;--text-muted:#6B8A5A;
+  --nav-bg:rgba(14,18,16,0.94);--nav-b:#2A3D22;
+  --shadow:0 2px 16px rgba(0,0,0,.5);--shadow-h:0 8px 28px rgba(0,0,0,.5);
+  --cw-bg:rgba(249,115,22,.1);--cw-b:rgba(249,115,22,.3);--cw-t:#FB923C;
+  --ct-bg:rgba(14,165,233,.1);--ct-b:rgba(14,165,233,.3);--ct-t:#38BDF8;
+  --cg-bg:rgba(34,197,94,.1);--cg-b:rgba(34,197,94,.3);--cg-t:#4ADE80;
+  --hi-bg:rgba(240,61,158,.08);--hi-b:rgba(240,61,158,.3);--hi-t:#F472B6;
+  --opt-h:#1E2A18;
+  --ok-bg:rgba(34,197,94,.1);--ok-b:rgba(34,197,94,.4);--ok-t:#4ADE80;
+  --no-bg:rgba(239,68,68,.1);--no-b:rgba(239,68,68,.4);--no-t:#F87171;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;overflow-x:hidden;transition:background .25s,color .25s}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:62px;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:2px solid var(--nav-b);position:sticky;top:0;z-index:100;transition:background .25s,border-color .25s}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+.logo-mark{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;letter-spacing:-.5px;color:var(--ink);line-height:1;white-space:nowrap}
+[data-theme="dark"] .logo-mark{color:var(--lime)}
+.logo-sub{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--pink);white-space:nowrap;line-height:1}
+.logo-div{width:1px;height:16px;background:var(--border);margin:0 4px}
+.nav-r{display:flex;align-items:center;gap:8px}
+.tbtn{width:38px;height:38px;border-radius:var(--rpill);background:var(--surface);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all .15s;flex-shrink:0}
+.tbtn:hover{background:var(--lime);border-color:var(--lime-d)}
+.pbtn{display:flex;align-items:center;gap:5px;padding:8px 16px;border-radius:var(--rpill);background:var(--surface);border:2px solid var(--border);color:var(--text2);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap;text-decoration:none}
+.pbtn:hover{background:var(--lime);border-color:var(--lime-d);color:var(--ink)}
+/* HERO */
+.hero{padding:52px 40px 36px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;inset:0;bottom:30%;background:radial-gradient(ellipse 70% 55% at 50% 0%,var(--lime) 0%,transparent 70%);opacity:.45;pointer-events:none}
+[data-theme="dark"] .hero::before{background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(196,240,70,.15) 0%,transparent 70%);opacity:1}
+.hero-inner{position:relative;max-width:600px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:2px solid var(--border);border-radius:var(--rpill);padding:5px 14px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;color:var(--text2);margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px}
+.hero h1{font-family:'Nunito',sans-serif;font-size:clamp(28px,5vw,46px);font-weight:900;line-height:1.1;letter-spacing:-1px;color:var(--text);margin-bottom:14px}
+.h-pill{display:inline-block;background:var(--pink);color:#fff;border-radius:var(--rpill);padding:1px 18px;margin:0 2px;font-size:.93em}
+[data-theme="dark"] .h-pill{background:var(--lime);color:var(--ink)}
+.hero p{color:var(--text2);font-size:15px;line-height:1.65;margin-bottom:28px}
+.prog-strip{display:inline-flex;align-items:center;gap:14px;background:var(--surface);border:2px solid var(--border);border-radius:var(--rpill);padding:10px 20px;box-shadow:var(--shadow);max-width:360px;width:100%}
+.pnum{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--text);line-height:1;flex-shrink:0}
+.ptrack{flex:1;height:8px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rpill);overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,var(--lime),var(--pink));border-radius:var(--rpill);transition:width .6s cubic-bezier(.34,1.56,.64,1)}
+.plbl{font-size:12px;color:var(--text-muted);font-weight:600;flex-shrink:0}
+/* GRID */
+.msec{padding:8px 32px 70px;max-width:1060px;margin:0 auto;width:100%}
+.slbl{font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:16px;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.mc{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;box-shadow:var(--shadow)}
+.mc:hover:not(.locked){transform:translateY(-4px);box-shadow:var(--shadow-h)}
+.mc.locked{opacity:.45;cursor:not-allowed}
+.mc.done{border-color:var(--lime-d)}
+[data-theme="dark"] .mc.done{border-color:rgba(196,240,70,.4)}
+.mc-stripe{height:6px}
+.mc-body{padding:20px}
+.mc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mc-num{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text-muted)}
+.mc-em{font-size:22px}
+.mc-title{font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;letter-spacing:-.2px;color:var(--text);margin-bottom:5px}
+.mc-desc{font-size:13px;color:var(--text2);line-height:1.55}
+.mc-foot{margin-top:15px;display:flex;align-items:center;justify-content:space-between}
+.badge{font-family:'Nunito',sans-serif;font-size:11px;font-weight:900;letter-spacing:.3px;padding:4px 12px;border-radius:var(--rpill);text-transform:uppercase}
+.bd{background:var(--lime);color:var(--ink);border:1.5px solid var(--lime-d)}
+.bs{background:var(--pink);color:#fff;border:1.5px solid var(--pink-d)}
+.bl{background:var(--surface2);color:var(--text-muted);border:1.5px solid var(--border)}
+.btr{background:#FFF7E6;color:#B45309;border:1.5px solid #FDE68A}
+[data-theme="dark"] .btr{background:rgba(245,158,11,.1);color:#FBB040;border-color:rgba(245,158,11,.3)}
+[data-theme="dark"] .bd{background:rgba(196,240,70,.18);color:var(--lime);border-color:rgba(196,240,70,.4)}
+[data-theme="dark"] .bs{background:rgba(240,61,158,.18);color:var(--pink);border-color:rgba(240,61,158,.4)}
+.stag{font-size:12px;color:var(--text-muted);font-weight:600}
+.stag b{color:var(--text)}
+/* CONTENT */
+.cbody{padding:36px 40px 60px;max-width:800px;margin:0 auto;width:100%;flex:1}
+.meyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:8px}
+.mh1{font-family:'Nunito',sans-serif;font-size:clamp(24px,4vw,34px);font-weight:900;letter-spacing:-.6px;line-height:1.12;color:var(--text);margin-bottom:14px}
+.mobj{background:var(--surface);border:2px solid var(--border);border-left:5px solid var(--acc,var(--lime));border-radius:0 var(--rsm) var(--rsm) 0;padding:12px 16px;font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:32px}
+.mobj strong{color:var(--text)}
+.sch{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;margin:28px 0 12px;color:var(--text);display:flex;align-items:center;gap:8px}
+.sch::after{content:'';flex:1;height:2px;background:var(--border);border-radius:2px}
+.card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:10px;box-shadow:var(--shadow)}
+.card h4{font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:var(--text);margin-bottom:7px}
+.card p,.card li{font-size:14px;color:var(--text2);line-height:1.7}
+.card ul,.card ol{padding-left:17px}
+.card li{margin-bottom:4px}
+.card p strong,.card li strong{color:var(--text)}
+.card a{color:var(--pink);font-weight:600}
+.callout a{color:inherit;font-weight:700;text-decoration:underline}
+.tbl-wrap{overflow-x:auto;margin-top:4px}
+.card table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.55}
+.card th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);font-family:'Nunito',sans-serif;font-size:12.5px;color:var(--text)}
+.card td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.card tr:last-child td{border-bottom:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:14px}
+.fact{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rsm);padding:16px 12px;text-align:center;box-shadow:var(--shadow)}
+.fact-ic{font-size:26px;margin-bottom:7px}
+.fact-t{font-size:12.5px;color:var(--text2);line-height:1.55}
+.fact-t b,.fact-t strong{color:var(--text)}
+.prog{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.prog-mod{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rsm);padding:14px 16px;box-shadow:var(--shadow)}
+.prog-h{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.prog-n{background:var(--lime);color:var(--ink);font-family:'Nunito',sans-serif;font-weight:900;font-size:11px;border-radius:var(--rpill);padding:3px 10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.prog-t{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--text)}
+.prog-ls{padding-left:17px;margin-bottom:9px}
+.prog-ls li{font-size:13px;color:var(--text2);line-height:1.65}
+.prog-res{font-size:12.5px;color:var(--text2);background:var(--surface2);border-radius:var(--rsm);padding:9px 11px;line-height:1.55}
+.qa-row{padding:10px 0;border-bottom:1px solid var(--border)}
+.qa-row:last-child{border-bottom:none;padding-bottom:2px}
+.qa-k{font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--text);margin-bottom:3px}
+.qa-v{font-size:13.5px;color:var(--text2);line-height:1.6}
+.card code{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--surface2);border:1.5px solid var(--border);border-radius:5px;padding:2px 7px;color:var(--pink)}
+[data-theme="dark"] .card code{color:var(--lime)}
+.card.hi{background:var(--hi-bg);border-color:var(--hi-b)}
+.card.hi h4{color:var(--hi-t)}
+.card.hi p,.card.hi li{color:var(--hi-t);opacity:.88}
+.card.hi code{background:rgba(240,61,158,.1);border-color:rgba(240,61,158,.25);color:var(--pink)}
+.callout{display:flex;gap:10px;border-radius:var(--rsm);padding:12px 15px;margin-bottom:10px;font-size:13.5px;line-height:1.65;border:1.5px solid}
+.ci{font-size:15px;flex-shrink:0;margin-top:1px}
+.cw{background:var(--cw-bg);border-color:var(--cw-b);color:var(--cw-t)}
+.ct{background:var(--ct-bg);border-color:var(--ct-b);color:var(--ct-t)}
+.cg{background:var(--cg-bg);border-color:var(--cg-b);color:var(--cg-t)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.two-col{grid-template-columns:1fr}}
+.divider{border:none;border-top:2px solid var(--border);margin:28px 0}
+.ctabtn{display:block;width:100%;padding:16px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;cursor:pointer;transition:all .15s;margin-bottom:40px;margin-top:4px;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.ctabtn:hover{background:var(--pink);transform:translateY(-2px);box-shadow:0 6px 20px rgba(240,61,158,.35)}
+[data-theme="dark"] .ctabtn{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .ctabtn:hover{background:var(--pink);color:#fff}
+@media(max-width:640px){.cbody,.msec,.hero{padding-left:18px;padding-right:18px}}
+/* IMAGES & VIDEO */
+.mod-img{max-width:100%;border-radius:var(--rsm);border:1.5px solid var(--border);margin:10px 0 12px;display:block}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:var(--rsm);display:block;background:#000;margin-top:10px}
+.yt-lite{position:relative;display:block;width:100%;aspect-ratio:16/9;background-size:cover;background-position:center;border-radius:var(--rsm);cursor:pointer;margin-top:10px;overflow:hidden;background-color:#000}
+.yt-lite:hover .yt-play{background:#f00;transform:scale(1.08)}
+.yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:rgba(33,33,33,.85);border-radius:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;pointer-events:none}
+.yt-play::after{content:'';display:block;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent #fff;margin-left:4px}
+.video-link{display:inline-block;margin-top:10px;font-size:13px;color:var(--pink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+/* QUIZ */
+.qbody{padding:36px 40px;max-width:680px;margin:0 auto;width:100%;flex:1}
+.qpt{height:7px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rpill);margin-bottom:36px;overflow:hidden}
+.qpf{height:100%;background:linear-gradient(90deg,var(--lime),var(--pink));border-radius:var(--rpill);transition:width .4s ease}
+.qctr{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:10px}
+.qtxt{font-family:'Nunito',sans-serif;font-size:21px;font-weight:900;letter-spacing:-.3px;line-height:1.35;margin-bottom:26px;color:var(--text)}
+.qopts{display:flex;flex-direction:column;gap:10px}
+.qopt{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:14px 18px;cursor:pointer;font-size:14px;color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s;text-align:left;line-height:1.5;box-shadow:var(--shadow)}
+.qopt:hover:not(.answered){background:var(--opt-h);border-color:var(--lime-d)}
+.qopt.correct{background:var(--ok-bg);border-color:var(--ok-b);color:var(--ok-t)}
+.qopt.wrong{background:var(--no-bg);border-color:var(--no-b);color:var(--no-t)}
+.qopt.answered{cursor:default}
+.qfb{display:none;margin-top:14px;border-radius:var(--rsm);padding:13px 16px;font-size:14px;line-height:1.6;border:2px solid}
+.qfb.show{display:block}
+.qfb.ok{background:var(--ok-bg);border-color:var(--ok-b);color:var(--ok-t)}
+.qfb.bad{background:var(--no-bg);border-color:var(--no-b);color:var(--no-t)}
+.qnxt{display:none;margin-top:18px;width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;cursor:pointer;transition:all .15s}
+.qnxt.show{display:block}
+.qnxt:hover{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .qnxt{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .qnxt:hover{background:var(--pink);color:#fff}
+/* RESULTS */
+.rbody{padding:60px 40px;max-width:520px;margin:0 auto;text-align:center;flex:1}
+.remi{font-size:64px;margin-bottom:14px}
+.rtitle{font-family:'Nunito',sans-serif;font-size:30px;font-weight:900;letter-spacing:-.4px;color:var(--text)}
+.rpct{font-family:'Nunito',sans-serif;font-size:62px;font-weight:900;line-height:1;margin:14px 0 6px}
+.rpct.pass{color:var(--lime-d)}
+.rpct.fail{color:var(--pink)}
+[data-theme="dark"] .rpct.pass{color:var(--lime)}
+.rsub{color:var(--text2);font-size:15px;line-height:1.65;margin-bottom:30px}
+.bdark{display:block;width:100%;padding:14px 24px;margin-bottom:10px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;cursor:pointer;transition:all .15s}
+.bdark:hover{background:var(--pink)}
+[data-theme="dark"] .bdark{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .bdark:hover{background:var(--pink);color:#fff}
+.bline{display:block;width:100%;padding:13px 24px;margin-bottom:10px;background:transparent;color:var(--text2);border:2px solid var(--border);border-radius:var(--rpill);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.bline:hover{background:var(--surface2);color:var(--text);border-color:var(--lime-d)}
+/* CERT */
+.compbody{padding:60px 40px;max-width:600px;margin:0 auto;text-align:center;flex:1}
+.cert{background:var(--surface);border:3px solid var(--lime-d);border-radius:20px;padding:32px 28px;margin:28px 0;box-shadow:0 0 40px rgba(196,240,70,.18);position:relative;overflow:hidden}
+.cert::before{content:'';position:absolute;top:-60px;right:-60px;width:160px;height:160px;border-radius:50%;background:var(--lime);opacity:.1;pointer-events:none}
+.clbl2{font-family:'Nunito',sans-serif;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:var(--pink);margin-bottom:12px}
+.cert h2{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.3px;color:var(--text)}
+.cert p{color:var(--text2);margin-top:6px;font-size:14px}
+.cmods{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap}
+.cmod{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+/* DST */
+.dst-body{padding:40px 40px 60px;max-width:780px;margin:0 auto;flex:1}
+.dst-badge{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:var(--ink);border:2px solid var(--lime-d);border-radius:var(--rpill);padding:5px 14px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+[data-theme="dark"] .dst-badge{background:rgba(196,240,70,.18);color:var(--lime);border-color:rgba(196,240,70,.4)}
+.dst-h1{font-family:'Nunito',sans-serif;font-size:clamp(22px,4vw,32px);font-weight:900;letter-spacing:-.6px;line-height:1.12;color:var(--text);margin-bottom:10px}
+.dst-sub{font-size:15px;color:var(--text2);line-height:1.7}
+.dst-section-label{font-family:'Nunito',sans-serif;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin:28px 0 14px}
+.dst-task{display:flex;gap:16px;margin-bottom:18px;align-items:flex-start}
+.dst-task-num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+[data-theme="dark"] .dst-task-num{background:var(--lime);color:var(--ink)}
+.dst-task-body{flex:1;background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow)}
+.dst-task-body h3{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;color:var(--text);margin-bottom:6px}
+.dst-task-body p{font-size:14px;color:var(--text2);line-height:1.65}
+.dst-task-body p strong{color:var(--text)}
+.dst-link-btn{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:10px 18px;background:var(--ink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;cursor:pointer;text-decoration:none;transition:all .15s}
+.dst-link-btn:hover{background:var(--pink);transform:translateY(-1px)}
+[data-theme="dark"] .dst-link-btn{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .dst-link-btn:hover{background:var(--pink);color:#fff}
+.dst-warn{background:var(--cw-bg);border:2px solid var(--cw-b);border-radius:var(--rsm);padding:14px 18px;color:var(--cw-t);font-size:13.5px;line-height:1.7;margin:24px 0}
+.dst-warn ul{padding-left:18px;margin-top:6px}
+.dst-warn strong{font-weight:800}
+.dst-submit-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:24px 24px;box-shadow:var(--shadow)}
+.dst-submit-title{font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:var(--text);margin-bottom:10px}
+@media(max-width:640px){.dst-body{padding-left:18px;padding-right:18px}.dst-task{flex-direction:column}.dst-task-num{margin-bottom:-8px}}
+/* LOGIN */
+.login-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
+.login-wrap::before{content:'';position:absolute;inset:0;bottom:40%;background:radial-gradient(ellipse 70% 55% at 50% 0%,var(--lime) 0%,transparent 70%);opacity:.45;pointer-events:none}
+[data-theme="dark"] .login-wrap::before{background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(196,240,70,.15) 0%,transparent 70%);opacity:1}
+.login-card{position:relative;background:var(--surface);border:2px solid var(--border);border-radius:20px;padding:40px 36px;max-width:400px;width:100%;box-shadow:var(--shadow-h);text-align:center}
+.login-card .lgi{font-size:44px;margin-bottom:12px}
+.login-card h1{font-family:'Nunito',sans-serif;font-size:23px;font-weight:900;letter-spacing:-.4px;color:var(--text);margin-bottom:8px}
+.login-card .lsub{font-size:13.5px;color:var(--text2);line-height:1.6;margin-bottom:24px}
+.login-input{width:100%;padding:13px 16px;margin-bottom:12px;border:2px solid var(--border);border-radius:12px;background:var(--surface2);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;transition:border-color .15s}
+.login-input:focus{outline:none;border-color:var(--lime-d)}
+.login-input::placeholder{color:var(--text-muted)}
+.login-err{display:none;margin:0 0 12px;padding:10px 14px;border-radius:var(--rsm);background:var(--no-bg);border:1.5px solid var(--no-b);color:var(--no-t);font-size:13px;font-weight:600}
+/* skip & modals */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:var(--surface);border:2px solid var(--border);border-radius:20px;padding:32px 28px;max-width:440px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal h3{font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:var(--text);margin-bottom:10px}
+.modal p{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:24px}
+.modal-btns{display:flex;gap:10px}
+.modal-yes{flex:1;padding:13px;background:var(--pink);color:#fff;border:none;border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;cursor:pointer;transition:all .15s}
+.modal-yes:hover{background:var(--pink-d)}
+.modal-no{flex:1;padding:13px;background:var(--surface2);color:var(--text2);border:2px solid var(--border);border-radius:var(--rpill);font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s}
+.modal-no:hover{background:var(--border);color:var(--text)}
+.skip-row{text-align:center;padding:0 32px 48px}
+.skip-btn{background:none;border:none;color:var(--text-muted);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:color .15s}
+.skip-btn:hover{color:var(--text2)}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="screen-login" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Pelatihan Desain Grafis</span>
+    </a>
+    <div class="nav-r">
+      <a class="pbtn" href="index.html">🌐 Wilayah</a>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="lgi">🔐</div>
+      <h1>Akses Pelatihan Tutor</h1>
+      <p class="lsub">Pelatihan ini hanya untuk kandidat tutor Kodland. Masukkan kredensial bersama yang Anda terima untuk membuka modul-modulnya.</p>
+      <input class="login-input" id="login-user" type="text" placeholder="Nama pengguna" autocomplete="off">
+      <input class="login-input" id="login-pass" type="password" placeholder="Kata sandi" onkeydown="if(event.key==='Enter')tryLogin()">
+      <div class="login-err" id="login-err">Nama pengguna atau kata sandi salah.</div>
+      <button class="bdark" onclick="tryLogin()" style="margin-bottom:0">Buka Pelatihan →</button>
+    </div>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="screen-home" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Pelatihan Desain Grafis</span>
+    </a>
+    <div class="nav-r">
+      <span id="ntag" style="font-size:13px;color:var(--text-muted);font-weight:600;display:none"></span>
+      <a class="pbtn" id="btn-change-region" href="index.html">🌐 Wilayah</a>
+      <button class="tbtn" id="tb0" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">🎨 Program Pelatihan Tutor</div>
+      <h1>Bersiap untuk mengajar<br><span class="h-pill">Desain Grafis</span><br>kepada anak-anak</h1>
+      <p>Kerjakan seluruh 7 modul dan lulus setiap kuis untuk menyelesaikan persiapan tutor Anda. Raih skor 70%+ untuk membuka modul berikutnya.</p>
+      <div class="prog-strip">
+        <div class="pnum" id="pnum">0/7</div>
+        <div class="ptrack"><div class="pfill" id="pfill" style="width:0%"></div></div>
+        <div class="plbl">modul selesai</div>
+      </div>
+    </div>
+  </div>
+  <div class="msec">
+    <div class="slbl">Modul Anda</div>
+    <div class="grid" id="mgrid"></div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div id="screen-content" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Pelatihan Desain Grafis</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Modul</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="cbody" id="cbody"></div>
+</div>
+
+<!-- QUIZ -->
+<div id="screen-quiz" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Pelatihan Desain Grafis</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="exitQuiz()">← Keluar Kuis</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="qbody">
+    <div class="qpt"><div class="qpf" id="qfill"></div></div>
+    <div class="qctr" id="qcount"></div>
+    <div class="qtxt" id="qtext"></div>
+    <div class="qopts" id="qopts"></div>
+    <div class="qfb" id="qfb"></div>
+    <button class="qnxt" id="qnxt" onclick="nextQ()">Lanjut →</button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="screen-results" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Pelatihan Desain Grafis</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Modul</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="rbody" id="rbody"></div>
+</div>
+
+<!-- COMPLETE -->
+<div id="screen-complete" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Pelatihan Desain Grafis</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Dasbor</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="compbody" id="compbody"></div>
+</div>
+
+<!-- DST SCREEN -->
+<div id="screen-dst" class="screen">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="goHome()">
+      <span class="logo-mark">kodland</span>
+      <span class="logo-div"></span>
+      <span class="logo-sub">Pelatihan Desain Grafis</span>
+    </a>
+    <div class="nav-r">
+      <button class="pbtn" onclick="goHome()">← Modul</button>
+      <button class="tbtn" onclick="toggleTheme()"></button>
+    </div>
+  </nav>
+  <div class="dst-body">
+    <div class="dst-badge">🎯 Digital Skill Test</div>
+    <div class="dst-h1">Bangun Prototipe Aplikasi!</div>
+    <p class="dst-sub">Selama kursus berlangsung, siswa akan menghabiskan cukup banyak waktu menggunakan aplikasi Figma dan berbagai fiturnya. Tugas Anda adalah membuat prototipe layar utama (home screen) sebuah aplikasi. Anda bebas berkreasi dengan tema aplikasi tersebut, selama layar utama Anda memenuhi kriteria berikut:</p>
+
+    <div class="dst-section-label">Persyaratan</div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">1</div>
+      <div class="dst-task-body">
+        <h3>Tunjukkan font Anda</h3>
+        <p>Layar utama harus menyebutkan <strong>nama font</strong>. Font tersebut harus secara gaya sesuai dengan ilustrasinya.</p>
+      </div>
+    </div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">2</div>
+      <div class="dst-task-body">
+        <h3>Gambar ilustrasi vektor</h3>
+        <p>Halaman harus menampilkan <strong>ilustrasi vektor sederhana yang digambar di Figma menggunakan Pen tool</strong>.</p>
+      </div>
+    </div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">3</div>
+      <div class="dst-task-body">
+        <h3>Tambahkan tombol utama yang interaktif</h3>
+        <p>Halaman harus menyertakan <strong>tombol utama (home button) yang berubah warna saat kursor diarahkan ke atasnya (hover)</strong>. Ingat bahwa fitur ini harus diimplementasikan menggunakan <strong>Components</strong>. Anda dapat menggunakan tutorial ini sebagai panduan:</p>
+        <a class="dst-link-btn" href="https://www.youtube.com/watch?v=yNAsvYWuI70" target="_blank">▶ Tutorial Components →</a>
+      </div>
+    </div>
+
+    <div class="dst-task">
+      <div class="dst-task-num">4</div>
+      <div class="dst-task-body">
+        <h3>Tampilkan di iPhone</h3>
+        <p>Prototipe harus ditampilkan pada <strong>iPhone 14/15/16</strong>. Pastikan untuk mengikuti dimensinya.</p>
+      </div>
+    </div>
+
+    <div class="dst-section-label">Membagikan hasil Anda</div>
+    <div class="dst-task">
+      <div class="dst-task-num">5</div>
+      <div class="dst-task-body">
+        <h3>Bagikan link prototipe Figma Anda</h3>
+        <p>Terakhir, bagikan hasil Anda dengan mengirimkan <strong>link ke prototipe Figma Anda</strong>, seperti yang ditunjukkan pada contoh ini:</p>
+        <a class="dst-link-btn" href="https://www.figma.com/proto/Rcm51N8axdIpC4J8QEbnWr/Test-Example?node-id=1-3&amp;p=f&amp;t=76xC6Pae7kMP0Cfv-1&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1" target="_blank">🔗 Lihat Contoh Prototipe →</a>
+        <p style="margin-top:12px">Di sini Anda dapat menemukan tutorial tentang cara membagikan link Figma:</p>
+        <a class="dst-link-btn" href="https://www.youtube.com/watch?v=sPpqBITEZGE" target="_blank">▶ Cara Membagikan Link Figma →</a>
+      </div>
+    </div>
+
+    <div class="dst-warn">
+      <strong>⚠️ Penting — harap dibaca dengan cermat</strong>
+      <ul>
+        <li>Jika Anda melanggar beberapa persyaratan utama sekaligus, kemungkinan <strong>tidak akan ada kesempatan untuk merevisi</strong> proyek tersebut.</li>
+        <li>Proyek <strong>TIDAK</strong> boleh disalin sebagian atau seluruhnya dari internet — melakukan hal itu akan langsung menimbulkan keraguan terhadap kejujuran dan profesionalisme Anda.</li>
+        <li>🚫 <strong>Penggunaan AI adalah alasan penolakan langsung.</strong> Menyelesaikan proyek akhir secara mandiri tidak hanya membuktikan bahwa Anda memiliki keterampilan untuk mengajar — tetapi juga menunjukkan bahwa Anda menghargai proses belajar Anda sendiri.</li>
+      </ul>
+    </div>
+
+    <div class="dst-submit-card">
+      <div class="dst-submit-title">📤 Cara mengirimkan</div>
+      <p style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:14px">Lengkapi Skill Test Form dan tempelkan link proyek Anda sebagai jawaban pertanyaan terakhir.</p>
+      <a class="dst-link-btn" href="https://forms.gle/6Qj8TDXMuAEhn7D4A" target="_blank">Buka Skill Test Form →</a>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;padding-bottom:20px">
+      <p style="font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:var(--text);margin-bottom:6px">Semoga berhasil! 🍀</p>
+      <p style="font-size:13px;color:var(--text-muted)">Tim Kodland mendukung Anda.</p>
+      <button class="bline" onclick="goHome()" style="max-width:260px;margin:20px auto 0">← Kembali ke Dasbor</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// THEME
+(function(){
+  const s=localStorage.getItem('kl-theme');
+  const sys=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+  const t=s||sys;
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  setIcons(t);
+})();
+function setIcons(t){ document.querySelectorAll('.tbtn').forEach(b=>b.textContent=t==='dark'?'☀️':'🌙'); }
+function toggleTheme(){
+  const d=document.documentElement.getAttribute('data-theme')==='dark';
+  const n=d?'light':'dark';
+  n==='dark'?document.documentElement.setAttribute('data-theme','dark'):document.documentElement.removeAttribute('data-theme');
+  localStorage.setItem('kl-theme',n); setIcons(n);
+}
+
+// ─── MODULE 0 (welcome / no quiz) ────────────────────────────────────────────
+const MODULE0={emoji:'👋',color:'#64748B',title:'Selamat Datang di Kursus Desain Grafis!',desc:'Apa isi kursus ini, metodologi dan tujuannya — serta bagaimana pelatihan ini menyiapkan Anda untuk mengajarkannya.',
+ sections:[
+  {t:'🎓 Tentang Kursus',cards:[
+    {type:'text',h:'Apa isi kursus ini?',b:'Kursus Desain Grafis memperkenalkan siswa pada dunia desain profesional melalui <strong>proyek-proyek praktik langsung</strong>. Selama program berlangsung, mereka akan mengembangkan kreativitas, pemikiran visual, dan keterampilan digital sambil menggunakan alat desain standar industri.'},
+    {type:'hi',h:'🪅 Konsep kursus: Magang di sebuah agensi desain',b:'Siswa akan mendapatkan kesempatan unik: magang desain grafis di salah satu agensi paling populer di dunia — <strong>Kodland Art Labs</strong>. Namun, sebelum mereka dapat memulai, mereka harus menunjukkan keterampilan dan kualitas yang penting untuk menjadi desainer yang sukses.<br><br>Selama magang, mereka akan mengerjakan tugas dari brand-brand global, mensimulasikan skenario dunia nyata. Proyek-proyek yang dikerjakan siswa selama kursus akan meningkatkan kepercayaan diri mereka dan menjadi dasar bagi portofolio profesional yang akan menjadi elemen kunci dari personal brand mereka.'},
+    {type:'facts',items:[
+      {ic:'🙂',t:'<strong>Usia siswa</strong><br>13+ tahun'},
+      {ic:'🎓',t:'<strong>Tingkat kesulitan</strong><br>Menengah'},
+      {ic:'🕐',t:'<strong>Durasi kursus</strong><br>40 pelajaran'},
+      {ic:'⏱',t:'<strong>Durasi pelajaran</strong><br>90 menit (grup) atau 50 menit (individu)'},
+      {ic:'🛠️',t:'<strong>Program yang dipelajari</strong><br>Figma, Photopea'},
+    ]},
+    {type:'text',h:'Apa yang akan dipelajari siswa?',b:'Pada akhir kursus, siswa akan mampu:'},
+    {type:'facts',items:[
+      {ic:'🎨',t:'<strong>Membuat desain grafis</strong><br>banner, poster, kemasan, dan lainnya'},
+      {ic:'🏷️',t:'<strong>Mengembangkan identitas brand</strong><br>logo, font, warna, dan brand book'},
+      {ic:'📱',t:'<strong>Merancang prototipe aplikasi</strong><br>layar yang dapat diklik dan dianimasikan di Figma'},
+      {ic:'🚀',t:'<strong>Membangun portofolio profesional</strong><br>dipublikasikan di Behance untuk menampilkan karya mereka'},
+    ]},
+    {type:'text',h:'📚 Program kursus',b:'Berikut adalah gambaran ringkas dari 40 pelajaran yang akan dilalui siswa — dan apa yang didapatkan dari setiap modul:'},
+    {type:'prog',mods:[
+      {n:1,t:'Pengantar desain grafis di Figma',lessons:['<strong>L1.</strong> Apa itu desain grafis? Mengenal Figma.','<strong>L2.</strong> Mempelajari Figma: Membuat layout pertama kita.','<strong>L3.</strong> Mempelajari Figma: Plugin dan grafik vektor.','<strong>L4.</strong> Membangun portofolio Anda sendiri.'],res:'Siswa belajar bekerja dengan grafik vektor dan membuat banner pertama mereka.'},
+      {n:2,t:'Alat-alat seorang desainer grafis',lessons:['<strong>L5.</strong> Memahami teori warna.','<strong>L6.</strong> Font dan tipografi.','<strong>L7.</strong> Dasar-dasar komposisi.','<strong>L8.</strong> Grid modular. Komposisi kompleks.'],res:'Siswa belajar cara memilih warna dan font untuk proyek mereka, serta cara membangun komposisi layout.'},
+      {n:3,t:'Membangun identitas acara di Photopea',lessons:['<strong>L9.</strong> Dasar-dasar bekerja di Photopea; Membuat komposisi bertema luar angkasa.','<strong>L10.</strong> Retouching dan pengeditan foto.','<strong>L11.</strong> Mengembangkan desain kreatif untuk sebuah acara.','<strong>L12.</strong> Mengembangkan komponen utama identitas acara tersebut.'],res:'Siswa belajar dasar-dasar pengolahan gambar. Mereka juga belajar cara mengedit foto dan mengembangkan desain untuk acara.'},
+      {n:4,t:'Proyek pertama kita! Mengembangkan sebuah logo',lessons:['<strong>L13.</strong> Memahami branding.','<strong>L14.</strong> Proses mengerjakan proyek desain. Dasar-dasar merancang logo.','<strong>L15.</strong> Mengerjakan sebuah logo.','<strong>L16.</strong> Mockup. Memahami periklanan.'],res:'Siswa belajar tahapan-tahapan penting dalam mengerjakan proyek desain apa pun. Mereka juga mengembangkan logo, dan menunjukkan bagaimana logo tersebut dapat terlihat pada produk merchandise.'},
+      {n:5,t:'Mengembangkan identitas brand',lessons:['<strong>L17.</strong> Komponen utama identitas korporat. Merancang sebuah logo.','<strong>L18.</strong> Memilih font dan warna.','<strong>L19.</strong> Merancang presentasi, Bagian 1.','<strong>L20.</strong> Merancang presentasi, Bagian 2. Memahami infografis.','<strong>L21.</strong> Brand book dan Guidelines.'],res:'Siswa membuat brand book mereka sendiri dan belajar peran apa yang dimainkannya dalam desain grafis.'},
+      {n:6,t:'Merancang untuk media sosial',lessons:['<strong>L22.</strong> Mengerjakan animasi untuk halaman media sosial.','<strong>L23.</strong> Merancang profil media sosial, Bagian 1.','<strong>L24.</strong> Merancang profil media sosial, Bagian 2.'],res:'Siswa belajar cara merancang untuk media sosial, dan mengapa cabang desain ini begitu berbeda. Mereka juga mengembangkan gaya mereka sendiri untuk desain profil media sosial.'},
+      {n:7,t:'Desain Web',lessons:['<strong>L25.</strong> Membuat landing page, Bagian 1.','<strong>L26.</strong> Membuat landing page, Bagian 2.','<strong>L27.</strong> Membuat prototipe aplikasi, Bagian 1.','<strong>L28.</strong> Membuat prototipe aplikasi, Bagian 2.'],res:'Siswa mempelajari rahasia desain web, dan menerapkan pengetahuan ini untuk membuat situs web mereka sendiri.'},
+      {n:8,t:'Pengantar desain cetak',lessons:['<strong>L29.</strong> Desain kartu nama: menciptakan kesan pertama yang berkesan.','<strong>L30.</strong> Poster interior: dari konsep menjadi karya seni dinding yang menarik.','<strong>L31.</strong> Desain sampul buku: mengubah cerita menjadi mahakarya visual.','<strong>L32.</strong> Poster kesadaran sosial: desain yang menginspirasi perubahan.'],res:'Siswa mengenal proyek desain cetak dan membuat empat karya: kartu nama, poster interior, sampul buku, dan poster sosial. Sepanjang proses ini, mereka menunjukkan kreativitas, menerapkan fitur baru Figma, dan menggunakan jaringan neural (neural network).'},
+      {n:9,t:'Pengembangan proyek desain',lessons:['<strong>L33.</strong> Mengembangkan sebuah ide menjadi konsep konkret dan rencana proyek.','<strong>L34.</strong> Menetapkan arah visual dan gaya proyek.','<strong>L35.</strong> Menyesuaikan detail dan menerapkan perubahan yang diperlukan.','<strong>L36.</strong> Menyelesaikan perakitan akhir dan menyerahkan proyek yang telah selesai.'],res:'Setelah menyelesaikan modul ini, siswa akan mampu mengembangkan konsep desain dan rencana proyek yang jelas, menetapkan gaya visual yang koheren, menyempurnakan detail desain melalui penyesuaian berulang, serta berhasil merakit dan menyerahkan hasil akhir karya mereka.'},
+      {n:10,t:'Membangun brand pribadi',lessons:['<strong>L37.</strong> Bimbingan karier. Membuat profil Behance.','<strong>L38.</strong> Mengisi profil Behance dan mengorganisir proyek.','<strong>L39.</strong> Menyiapkan presentasi diri.','<strong>L40.</strong> Kelulusan, presentasi diri.'],res:'Di akhir kursus, siswa mengumpulkan semua proyek mereka dan membuat portofolio di platform desain grafis khusus.'},
+    ]},
+    {type:'text',h:'Alat apa yang akan digunakan siswa?',b:'Sepanjang kursus, siswa akan bekerja dengan <strong>Figma</strong>, <strong>Photopea</strong>, dan <strong>Behance</strong>. Mereka juga akan belajar dasar-dasar <strong>teori warna, komposisi, tipografi, branding, desain media sosial</strong>, dan prinsip dasar <strong>UI/UX</strong>.<br><br>Dalam mini kursus ini, Anda akan diperkenalkan pada alat-alat ini dan konsep inti desain grafis, memberikan Anda pengetahuan dan kepercayaan diri untuk mengajarkan kursus ini dengan sukses sejak pelajaran pertama Anda.'},
+  ]},
+  {t:'🧭 Tentang Pelatihan Ini',cards:[
+    {type:'text',h:'Apa isi mini kursus ini?',b:'Pelatihan ini terdiri dari <strong>7 modul singkat ditambah Digital Skill Test akhir</strong>, yang dirancang untuk menyiapkan Anda mengajar kursus ini dengan percaya diri. <strong>Modul 1–6</strong> membahas konsep dan alat desain yang akan Anda ajarkan — dasar-dasar teknis dan standar kualitas yang diharapkan di kelas. <strong>Modul 7</strong> berfokus pada hal yang sama pentingnya: <strong>bagaimana cara mengajar</strong> — struktur pelajaran Kodland yang baik dan bagaimana memberikan feedback yang membantu siswa berkembang. Setiap modul diakhiri dengan kuis singkat — raih skor <strong>70% atau lebih tinggi</strong> untuk membuka modul berikutnya, dan selesaikan ketujuhnya untuk mencapai Digital Skill Test.'},
+    {type:'good',txt:'Sekarang saatnya untuk mulai! Buka <strong>Modul 1</strong> dan temukan apa itu desain grafis sebenarnya.'},
+  ]},
+ ]};
+
+function openModule0(){
+  let html=`<div class="meyebrow">Modul 0 · Mulai di Sini · Tanpa Kuis</div><div class="mh1">${MODULE0.emoji} ${MODULE0.title}</div><div class="mobj" style="border-left-color:${MODULE0.color}"><strong>Tujuan:</strong> Memahami apa itu kursus Desain Grafis, metodologi dan tujuannya, sebelum masuk ke modul-modul konten.</div>`;
+  MODULE0.sections.forEach(s=>{html+=`<div class="sch">${s.t}</div>`;s.cards.forEach(c=>{html+=rc(c);});});
+  html+=`<hr class="divider"><button class="ctabtn" onclick="openModule(MODULES[0])">Ke Modul 1 →</button>`;
+  document.getElementById('cbody').innerHTML=html;
+  showScreen('screen-content');
+  window.scrollTo(0,0);
+}
+
+// ─── MODULES ─────────────────────────────────────────────────────────────────
+const MODULES=[
+  {id:1,emoji:'🎨',title:'Dasar-Dasar Desain Grafis',desc:'Apa itu desain grafis (dan apa yang bukan), ditambah inti teori: warna, tipografi, komposisi, identitas korporat, branding, dan logo.',obj:'Membangun dasar teori yang menjadi sandaran setiap pelajaran dalam kursus — warna, tipografi, komposisi, identitas, dan branding.',color:'#2B8EF0',
+   sections:[
+    {t:'👀 Apa yang Dibahas Modul Ini',cards:[
+      {type:'text',b:'Dalam modul ini Anda akan mengetahui apa sebenarnya desain grafis itu dan mengeksplorasi konsep-konsep inti yang diandalkan setiap desainer untuk mengubah ide menjadi visual yang beresonansi dengan audiens. Menguasai dasar ini adalah yang akan memberi Anda kepercayaan diri untuk membimbing siswa Anda melalui keputusan kreatif mereka sendiri — membantu mereka melihat bahwa di balik setiap warna, layout, atau brand selalu ada alasan, bukan pilihan acak.'},
+    ]},
+    {t:'🎨 Apa Itu Desain Grafis?',cards:[
+      {type:'text',b:'Desain grafis adalah proses menciptakan visual yang membantu orang memahami informasi atau ide melalui gambar, teks, dan warna. Ia memadukan kreativitas dengan logika — seorang desainer mengubah ide menjadi visual fungsional yang menarik perhatian dan menyampaikan pesan yang jelas. Ini ada di sekitar kita: logo, sampul buku, poster film, aplikasi, kemasan, media sosial.'},
+      {type:'hi',h:'⚠️ Ini BUKAN Kursus Menggambar',b:'Ini adalah aturan yang harus diulang sepanjang metodologi: <strong>jangan pernah memberi tahu siswa bahwa kursus ini melibatkan menggambar</strong>. Desain adalah tentang menyusun gambar, teks, dan warna — bukan melukis. Concept art, pemodelan 3D, animasi, dan ilustrasi 2D adalah profesi yang terkait tetapi terpisah, dan penting untuk memperjelas perbedaan ini sejak hari pertama agar siswa memiliki ekspektasi yang tepat.'},
+      {type:'twocol',left:{h:'✅ Desain grafis',items:['Logo & identitas brand','Poster & banner','Ikon & meme','Sampul buku','Halaman media sosial']},right:{h:'❌ Bukan desain grafis',items:['Model 3D (3D Artist)','Concept karakter (Concept Artist)','Gerakan (Animator)','Lokasi game (Level Designer)','Ilustrasi 2D (2D Artist)']}},
+      {type:'img',src:'images/IND/graphic-design.png',alt:'Contoh-contoh desain grafis'},
+      {type:'text',b:'Modul 1 juga memperkenalkan siswa pada profesi lain yang mengandalkan desain grafis: <strong>Web Designer, Photo Artist, dan Presentation Designer</strong>.'},
+    ]},
+    {t:'🧠 Konsep Desain Grafis',cards:[
+      {type:'text',b:'Setelah Anda mengetahui apa itu desain grafis (dan apa yang bukan), sekarang saatnya membahas semua konsep inti yang harus diketahui setiap desainer grafis. Segala sesuatu dari sini hingga akhir modul — warna, tipografi, komposisi, branding, dan identitas korporat — adalah perangkat konseptual di balik setiap proyek dalam kursus, jadi luangkan waktu untuk memahami masing-masingnya.'},
+    ]},
+    {t:'🌈 Warna',cards:[
+      {type:'text',b:'Desainer perlu memahami teori warna karena warna tidak hanya membuat sebuah desain tampak menarik — ia menyampaikan informasi, membangkitkan emosi, dan mengarahkan perhatian penonton. Konsep ini memiliki bobot besar sepanjang kursus: siswa akan mempraktikkannya sejak awal di <strong>Pelajaran 5 ("Memahami teori warna")</strong>, pelajaran yang membuka modul alat-alat desainer, dan kembali dengan kekuatan penuh di <strong>Modul 5 (Pelajaran 17–18)</strong>, saat teori warna menjadi inti dalam merancang logo dan memilih warna brand. Karena seringnya konsep ini muncul kembali, Anda harus memahami betul ide-ide berikut.'},
+      {type:'list',h:'Roda warna',p:'Seniman dan pendidik asal Swiss <strong>Johannes Itten</strong> mengembangkan roda warna untuk memvisualisasikan bagaimana warna-warna saling berhubungan, membantu desainer membangun komposisi warna yang seimbang. Roda ini dibagi menjadi dua belas sektor, masing-masing mewakili warna primer atau nuansa warna.',items:['<strong>Warna primer</strong> — merah, kuning, dan biru — tidak dapat dibuat dengan mencampur warna lain.','<strong>Warna sekunder</strong> — hijau, oranye, dan ungu — berada di antara warna primer dan dihasilkan dengan mencampur dua warna primer yang bersebelahan.','<strong>Warna tersier</strong> berasal dari campuran warna primer dengan warna sekunder di sebelahnya.']},
+      {type:'img',src:'images/IND/colour-wheel.png',alt:'Roda warna'},
+      {type:'list',h:'Sifat-sifat warna',p:'Setiap warna dapat dijelaskan melalui tiga karakteristik:',items:['<strong>Hue</strong> — warna itu sendiri (merah, biru, hijau).','<strong>Saturation</strong> — intensitas atau kepekatannya (merah sangat jenuh, abu-abu tidak).','<strong>Brightness</strong> — seberapa terang atau gelap warna tersebut.']},
+      {type:'img',src:'images/IND/properties-colour.png',alt:'Sifat-sifat warna: hue, saturation, dan brightness'},
+      {type:'tip',txt:'Konsep-konsep ini akan diajarkan kepada siswa secara digital, di dalam <strong>Figma</strong>, di mana mereka juga akan belajar bagaimana warna dijelaskan melalui kode — <strong>HEX</strong> untuk penggunaan umum, <strong>RGB</strong> untuk layar, dan <strong>CMYK</strong> untuk cetak. Modul berikutnya membahas cara menjelajahi palet warna dan alat-alat ini di Figma.'},
+      {type:'text',h:'Hubungan antar warna',b:'Setelah siswa memahami dasar-dasar palet warna digital, saatnya menjelajahi bagaimana warna saling berhubungan, karena pekerjaan desain sebenarnya adalah tentang mengombinasikannya secara efektif.<br><br><strong>Kontras</strong> mewakili perbedaan antara warna, yang didorong oleh hue, saturation, atau brightness-nya. Semakin tinggi kontrasnya, semakin dua warna itu saling menonjol.<br><br><strong>Warna komplementer</strong> berada saling berhadapan pada roda warna, menghasilkan kombinasi yang berani, hidup, dan ekspresif yang menarik perhatian. <strong>Warna analog</strong>, sebaliknya, bersebelahan pada roda dan memiliki nuansa dasar yang sama; perannya dalam desain adalah menciptakan harmoni, kesatuan visual, dan keseimbangan tanpa menghasilkan kontras yang kuat.'},
+      {type:'img',src:'images/IND/relations-colours.png',alt:'Hubungan antar warna: kontras, komplementer, dan warna analog'},
+      {type:'text',h:'60-30-10',b:'Setelah Anda memahami dasar-dasar warna dan cara warna bekerja bersama, mari jelajahi salah satu prinsip desain yang paling banyak digunakan. Anda mungkin telah menemuinya setiap hari tanpa menyadarinya — ia memainkan peran penting dalam menciptakan logo yang seimbang dan identitas visual yang mudah diingat.<br><br>60-30-10 adalah aturan proporsi klasik untuk membangun palet warna yang seimbang secara visual: <strong>60% warna dominan</strong> (latar belakang), <strong>30% warna sekunder</strong> (struktur atau elemen pendukung), dan <strong>10% warna aksen</strong> (detail yang mencolok).'},
+      {type:'img',src:'images/IND/rules-of-colour-selection.png',alt:'Aturan pemilihan warna'},
+      {type:'good',txt:'<strong>Cukup teorinya, saatnya bersenang-senang!</strong> Saat ini kita memiliki alat yang membuat proses ini jauh lebih mudah, menghasilkan palet warna yang sudah mengikuti aturan-aturan ini — yang kita perlu tahu hanyalah apa yang ingin kita sampaikan. Siswa akan mencoba ini dengan <a href="https://coolors.co/a5978b-5c4742-8d5b4c-d0fcb3-5a2a27" target="_blank"><strong>Coolors</strong></a>, jadi ada baiknya Anda juga menjelajahinya sendiri.'},
+    ]},
+    {t:'🔤 Tipografi',cards:[
+      {type:'text',b:'Selain warna, tipografi adalah konsep esensial lain dalam desain grafis. Sama seperti warna, ini bukan sekadar masalah gaya — jenis huruf membawa karakter dan membentuk bagaimana sebuah pesan diterima. Gunakan bagian ini untuk membantu siswa mengenali berbagai keluarga font.'},
+      {type:'table',head:['Kategori','Mengapa ini menyampaikan kesan ini?','Penggunaan utama'],rows:[['<strong>Serif</strong>','Digunakan selama berabad-abad dalam buku dan dokumen resmi, font serif diasosiasikan dengan tradisi, keandalan, dan kepercayaan.','Buku, koran, dokumen resmi, brand mewah'],['<strong>Sans Serif</strong>','Tampilannya yang bersih dan penggunaannya yang luas dalam teknologi membuatnya terasa modern, sederhana, dan mudah dibaca.','Aplikasi, situs web, user interface, video game'],['<strong>Handwritten</strong>','Meniru tulisan tangan manusia, menciptakan kesan personal, ramah, dan kreatif.','Undangan, sertifikat, kartu ucapan, logo buatan tangan'],['<strong>Decorative</strong>','Dirancang untuk menonjol dan memperkuat tema tertentu, bukan untuk mendukung teks yang panjang.','Judul, iklan, sampul, dan poster']]},
+      {type:'img',src:'images/IND/four-font-categories.png',alt:'Empat kategori font'},
+      {type:'text',h:'Hierarki dan pemasangan font',b:'Tipografi yang baik tetap mudah dibaca sambil memperkuat pesan dan karakter sebuah desain. Tugas utamanya adalah membangun <strong>hierarki visual</strong> — mengarahkan mata ke hal yang paling penting melalui ukuran, ketebalan, warna, dan penempatan, sehingga judul yang tebal secara alami menonjol sebelum teks isi yang lebih kecil. Itulah juga sebabnya kebanyakan brand memasangkan beberapa font daripada mengandalkan satu saja: font judul yang tebal dipasangkan dengan font isi yang bersih dan mudah dibaca menciptakan kontras sambil menjaga konsistensi keseluruhan.'},
+    ]},
+    {t:'📐 Komposisi',cards:[
+      {type:'text',b:'Komposisi adalah konsep kunci lain dalam desain grafis. Ia menciptakan harmoni antara berbagai elemen sebuah desain dan mengarahkan perhatian penonton ke informasi yang paling penting, membantu menyampaikan pesan secara jelas, terorganisir, dan menarik secara visual.'},
+      {type:'text',h:'Titik fokus',b:'Salah satu tujuan utama komposisi adalah menciptakan <strong>titik fokus (focal point)</strong> — area yang menarik perhatian penonton lebih dulu.'},
+      {type:'tip',txt:'<strong>Bagaimana ini diajarkan dalam kursus:</strong> tepat seperti yang akan Anda pelajari sekarang — dengan menunjukkan berbagai contoh, seperti poster film-film terkenal di bawah ini, dan <strong>menganalisis titik fokusnya bersama-sama</strong>. Biasakan "membaca" sebuah poster dengan lantang: ke mana mata Anda tertuju pertama kali, dan mengapa?'},
+      {type:'img',src:'images/IND/focal-points-1.png',alt:'Titik fokus'},
+      {type:'text',b:'Meskipun titik tengah geometris sebuah gambar secara alami menarik mata, titik fokus juga dapat dibangun menggunakan <strong>kontras, warna, ukuran, atau bentuk</strong>. Sebuah desain dapat memiliki lebih dari satu titik fokus, selama hierarki visual mengarahkan penonton dari satu elemen ke elemen berikutnya.'},
+      {type:'img',src:'images/IND/focal-points-2.png',alt:'Membangun titik fokus dengan kontras, warna, ukuran, dan bentuk'},
+      {type:'text',b:'Teknik yang banyak digunakan untuk ini adalah <strong>rule of thirds</strong>, yang membagi ruang menjadi sembilan bagian yang sama menggunakan dua garis horizontal dan dua garis vertikal; menempatkan elemen penting di dekat titik potong garis-garis ini menghasilkan komposisi yang lebih seimbang dan dinamis — serupa dengan yang ditunjukkan gambar di bawah.'},
+      {type:'img',src:'images/IND/focal-points-3.png',alt:'Rule of thirds'},
+      {type:'good',txt:'Konsep ini menjadi sangat berguna begitu siswa mulai merancang <strong>poster, banner, atau mengedit foto</strong>, di mana Anda akan ingin menunjukkan kepada mereka bahwa Anda memahami betapa pentingnya harmoni dalam sebuah komposisi.'},
+    ]},
+    {t:'🏷️ Branding',cards:[
+      {type:'text',b:'Untuk menutup panduan dasar desain grafis ini, kita beralih ke <strong>branding</strong> — sebuah konsep yang menjadi sentral mulai dari Modul 4 kursus dan seterusnya, jadi penting untuk memahaminya dengan jelas sekarang, sekaligus bagaimana ia berbeda dari konsep-konsep yang sering dikaitkan dengannya.'},
+      {type:'text',h:'Apa itu brand',b:'Sebuah brand adalah <strong>segala sesuatu yang terkait dengan sebuah perusahaan, bukan hanya namanya</strong> — ia memberi tahu orang apa yang harus diharapkan dan membedakannya dari pesaing. Branding berfungsi seperti kepribadian sebuah perusahaan, dan itulah yang membangun kepercayaan. Hampir apa saja bisa memiliki brand: produk, perusahaan, layanan, tokoh, tempat, ide, gerakan, game, dan film.'},
+      {type:'img',src:'images/IND/what-a-brand-is.png',alt:'Apa itu brand'},
+      {type:'text',h:'Apa yang bisa menjadi bagian dari sebuah brand',b:'Logo, tipografi, skema warna, pola, bentuk produk, kemasan, karakter, kampanye iklan, bahkan suara. Contoh yang layak digunakan di kelas: <strong>Toblerone Matterhorn</strong>, desain stud-and-tube Lego (dipatenkan pada 1958), <strong>Louis Vuitton Monogram</strong> (1896), <strong>tanda tangan Disney</strong>, dan <strong>truk Natal Coca-Cola</strong>.'},
+    ]},
+    {t:'💼 Identitas Korporat',cards:[
+      {type:'text',h:'Apa itu identitas korporat?',b:'Jika sebuah brand adalah kepribadian perusahaan, identitas korporat adalah <strong>"pakaiannya"</strong> — elemen visual yang membangun citra unik: <strong>logo</strong> (bagian utamanya), <strong>font</strong>, <strong>warna brand</strong>, dan <strong>elemen grafis</strong> seperti ilustrasi, pola, dan ikon. Identitas yang konsisten adalah yang membangun pengenalan (recognition) dan kepercayaan seiring waktu.'},
+      {type:'img',src:'images/IND/corporate-identity.png',alt:'Elemen identitas korporat'},
+      {type:'text',h:'Logo — jantung dari identitas',b:'Logo adalah simbol visual dan grafis yang langsung mengidentifikasi sebuah perusahaan, brand, atau proyek — landasan identitas korporat, berperan sebagai representasi paling terlihat dan paling mudah diingat di benak konsumen. Karena membawa bobot yang begitu besar, penting untuk mengetahui tiga bentuk utama sebuah logo: <strong>symbol logo</strong>, sebuah ikon yang berfungsi tanpa teks apa pun (pikirkan apel Apple); <strong>wordmark</strong>, nama brand yang ditulis dalam font khas brand tersebut (seperti Google atau Coca-Cola); dan <strong>combination logo</strong>, yang menggabungkan simbol dan teks menjadi satu komposisi yang harmonis — jenis yang paling fleksibel, karena bagian-bagiannya juga dapat digunakan secara terpisah.'},
+      {type:'img',src:'images/IND/symbol-wordmark-combination-logo.png',alt:'Tiga jenis logo: symbol, wordmark, dan combination'},
+      {type:'good',txt:'<strong>Di mana siswa akan menerapkan konsep-konsep ini:</strong> di Modul 5 kursus, siswa memilih sebuah brand terkenal (Apple, PlayStation, Coca-Cola, atau Nike), menetapkan misi, nilai, dan target audiensnya, serta merancang identitas korporat untuk lini produk yang benar-benar baru — logo terlebih dahulu, lalu font, warna, dan elemen grafis. Semua yang dipelajari dalam modul ini — teori warna, tipografi, komposisi, branding — bersatu dalam proyek tersebut, dan dalam pesanan logo serta kemasan bergaya klien yang dikerjakan siswa sepanjang jalan.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Seorang siswa bertanya apakah kursus ini akan mengajarkan mereka menggambar karakter. Apa yang harus Anda katakan?',opts:['Ya — menggambar adalah bagian inti dari desain grafis','Tidak — kursus ini tentang desain (menyusun gambar, teks, dan warna), bukan menggambar','Hanya pada modul-modul selanjutnya','Hanya jika mereka membeli tablet grafis'],c:1,fb:'Metodologi secara eksplisit menyatakan untuk tidak pernah menyajikan kursus ini sebagai kursus menggambar. Desain adalah tentang komunikasi melalui gambar, teks, dan warna.'},
+    {q:'Apa tiga warna primer pada roda warna?',opts:['Merah, hijau, biru','Merah, kuning, biru','Cyan, magenta, kuning','Oranye, hijau, ungu'],c:1,fb:'Merah, kuning, dan biru adalah warna primer — warna-warna ini tidak bisa didapatkan dengan mencampur warna lain.'},
+    {q:'Kategori font mana yang paling baik untuk teks isi pada aplikasi atau situs web?',opts:['Decorative','Handwritten / Cursive','Serif (Antiqua)','Sans-serif (Grotesque)'],c:3,fb:'Font sans-serif menawarkan keterbacaan terbaik dan menjadi standar untuk UI, aplikasi, situs web, dan game.'},
+    {q:'Apa yang dimaksud dengan "rule of thirds"?',opts:['Menggunakan tepat tiga warna','Membagi kanvas menjadi 9 bagian dan menempatkan titik fokus di titik potongnya','Sepertiga dari desain harus kosong','Teks harus mengisi sepertiga dari poster'],c:1,fb:'Kanvas dibagi menjadi tiga bagian di kedua arah; keempat titik potongnya adalah titik fokus alami.'},
+    {q:'Jika sebuah brand adalah kepribadian perusahaan, apa itu identitas korporat?',opts:['Pendaftaran hukumnya','"Pakaiannya" — elemen visual (logo, font, warna, grafis) yang menciptakan citra unik','Anggaran periklanannya','Katalog produknya'],c:1,fb:'Identitas korporat adalah "pakaian" brand: logo, font, warna brand, dan elemen grafis yang bekerja sama membangun pengenalan dan kepercayaan.'},
+   ]
+  },
+  {id:2,emoji:'🧭',title:'Dasar-Dasar Figma',desc:'Apa itu Figma, vektor vs raster, membuat akun, alat-alat dasar, ilustrasi, font, grid modular, dan plugin.',obj:'Mendapatkan pengalaman langsung dengan Figma — alat utama kursus — mulai dari membuat akun hingga menggambar, grid, dan plugin.',color:'#22C55E',
+   sections:[
+    {t:'👀 Apa yang Dibahas Modul Ini',cards:[
+      {type:'text',b:'Dalam modul ini Anda akan mendapatkan pengalaman langsung dengan <strong>Figma</strong> — alat desain gratis berbasis browser tempat sebagian besar kursus ini berlangsung. Anda akan membuat akun, mempelajari alat-alat dasar, menggambar ilustrasi pertama Anda, menginstal font, mengatur grid modular, dan menemukan plugin. Siswa membuka Figma di pelajaran pertama mereka dan menggunakannya di hampir setiap proyek setelah itu — meme, stiker, logo, kemasan, landing page — jadi <strong>kefasihan Anda di sini secara langsung membentuk seberapa lancar setiap pelajaran berjalan: saat siswa terjebak pada suatu alat, Anda ingin mendiagnosisnya dalam hitungan detik, bukan menit.</strong>'},
+    ]},
+    {t:'🖥️ Apa Itu Figma?',cards:[
+      {type:'text',b:'Figma adalah alat utama kursus ini — dan sebagian besar industri desain. Ia gratis, berjalan sepenuhnya di browser, dan mendukung <strong>kolaborasi multi-pengguna secara real-time</strong>, yang penting di kelas: Anda dapat membuka file seorang siswa dan membimbingnya langsung di dalam desainnya sendiri. Figma juga menawarkan <strong>Components</strong> (rancang sekali, gunakan berulang kali), <strong>Plugins</strong>, dan <strong>Animated Prototypes</strong>. Semua yang dibuat siswa dalam kursus — dari meme hingga brand book lengkap — terjadi di sini.<br><br>Namun, sebelum melanjutkan ke tutorial Figma, ada satu konsep yang perlu Anda ketahui terlebih dahulu: perbedaan antara <strong>grafik vektor dan raster</strong>. Ini menjelaskan mengapa Figma bekerja seperti itu — dan inilah alasan mengapa, di modul-modul selanjutnya, kursus ini juga menggunakan program pengeditan lain, <strong>Photopea</strong>.'},
+    ]},
+    {t:'🔺 Vektor vs Raster',cards:[
+      {type:'text',b:'Komputer dapat menggambarkan sebuah gambar dalam dua cara yang sangat berbeda. <strong>Grafik raster</strong> menyimpan grid piksel berwarna — sempurna untuk foto dan detail yang kaya, tetapi begitu diperbesar, kotak-kotaknya mulai terlihat. <strong>Grafik vektor</strong> menyimpan matematika sebagai gantinya: titik, garis, dan kurva yang digambar ulang oleh komputer pada ukuran berapa pun. Figma adalah <strong>editor vektor</strong>, dan itu adalah fakta teknis paling penting tentangnya — itulah sebabnya sebuah logo yang dibuat di Figma tetap tajam sempurna baik dicetak pada pulpen atau billboard.'},
+      {type:'twocol',left:{h:'Grafik raster',items:['Terdiri dari <strong>piksel</strong>','Format: JPEG, PNG','Terbaik untuk foto & detail kaya','Buram saat diperbesar','Ukuran file lebih besar']},right:{h:'Grafik vektor',items:['Terdiri dari <strong>matematika</strong>: titik, garis, kurva','Skalanya tanpa kehilangan kualitas','File kecil, mudah diedit','Terbaik untuk logo & ikon','Yang dihasilkan Figma']}},
+      {type:'img',src:'images/IND/raster-vector-graphics.png',alt:'Perbedaan antara grafik raster dan vektor'},
+      {type:'tip',txt:'Ajarkan ini dengan demonstrasi, bukan definisi: perbesar sebuah foto sampai piksel-pikselnya terlihat, lalu perbesar sebuah bentuk di Figma dan lihat bagaimana ia tetap tajam. Ini juga menjelaskan sebuah keputusan dalam kursus yang akan disadari siswa nanti — ketika tiba waktunya mengedit foto, kelas beralih ke editor <strong>raster</strong>, Photopea (Modul 3 pelatihan ini).'},
+    ]},
+    {t:'🚀 Membuat Akun & Menginstal Figma',cards:[
+      {type:'text',b:'Pada pelajaran pertama Anda akan memandu siswa melalui alur ini secara langsung, jadi cobalah sendiri terlebih dahulu. Buka <strong>figma.com</strong> dan klik <strong>Get started for free</strong>. Anda bisa mendaftar dengan email dan kata sandi, atau langsung dengan <strong>akun Google</strong> — opsi yang disarankan dalam kursus, karena ini menyederhanakan login siswa. Verifikasi email, pilih paket gratis <strong>Starter</strong>, dan Anda sudah masuk.<br><br>Figma berjalan penuh di browser, tetapi ada juga <strong>aplikasi desktop</strong> untuk Windows dan macOS (dari figma.com/downloads) — berguna saat versi browser mengalami gangguan di tengah pelajaran. Panduan resmi langkah demi langkah: <a href="https://help.figma.com/hc/en-us/articles/360039811114-Create-a-Figma-account" target="_blank">Create a Figma account →</a>'},
+    ]},
+    {t:'🛠️ Pelajari Alat-Alat Dasar',cards:[
+      {type:'text',b:'Setelah akun Anda siap, saatnya untuk mulai praktik. Frame, bentuk, teks, Fill, dan Stroke — ini adalah gerakan yang diulang siswa di setiap proyek, dan yang akan Anda demonstrasikan di layar puluhan kali. Tonton tutorial ini dan <strong>ikuti langsung di dalam Figma sambil menonton</strong> — mem-pause dan mengulang setiap langkah jauh lebih efektif daripada hanya menonton secara pasif, dan ini mencerminkan persis bagaimana Anda akan meminta siswa untuk belajar: coba langsung, jangan hanya menonton.'},
+      {type:'video',h:'▶ Tutorial Dasar-Dasar Figma',id:'jQ1sfKIl50E'},
+    ]},
+    {t:'✏️ Menggambar Ilustrasi di Figma',cards:[
+      {type:'text',b:'Setelah bentuk-bentuk dasar dikuasai dengan nyaman, langkah berikutnya adalah menggabungkan dan melengkungkannya menjadi <strong>ilustrasi</strong> — keterampilan di balik stiker, logo, dan seni vektor yang dibuat siswa sepanjang kursus (dan ilustrasi vektor yang Anda perlukan untuk Digital Skill Test Anda sendiri). Alat utamanya adalah <strong>Pen tool</strong>: ia menempatkan anchor point yang saling terhubung membentuk bentuk apa pun yang Anda bayangkan, dan mengklik kembali ke anchor pertama menutup path tersebut. Mulailah dari sana, lalu jelajahi <strong>brush</strong> untuk garis yang lebih longgar dan organik.'},
+      {type:'video',h:'▶ Menggambar dengan Pen Tool',id:'cke01gWWwyo'},
+      {type:'video',h:'▶ Menggambar dengan Brush',id:'AUSZHj17bzY'},
+    ]},
+    {t:'🔤 Menginstal Font di Figma',cards:[
+      {type:'text',b:'Di sinilah teori tipografi dari Modul 1 menjadi praktis: ketika siswa merancang undangan, poster, dan logo, font default akan cepat habis, dan mereka akan menginginkan font dengan <em>karakter</em> yang tepat. Font berasal dari sumber seperti <strong>Google Fonts, 1001fonts, dan DaFont</strong>. Alurnya: unduh font, ekstrak arsipnya (klik kanan → Extract All), pilih file font dan klik kanan → <strong>Install</strong>. Agar Figma di browser dapat mengenali font yang terinstal secara lokal, siswa juga perlu menginstal aplikasi bantu kecil <strong>Font Installer</strong>. Font yang baru diinstal menunjukkan tanda <strong>"New"</strong>; filter "All fonts" memisahkan Google Fonts dari "Installed by you".'},
+      {type:'warn',txt:'Ajarkan tentang <strong>lisensi font</strong>: gratis/open-source, creative (non-komersial), commercial (harus dibeli), dan subscription. Siswa harus memeriksa lisensi sebelum menggunakan font yang diunduh — kebiasaan profesional yang penting dibangun sejak dini.'},
+    ]},
+    {t:'🏗️ Grid Modular',cards:[
+      {type:'text',b:'Setelah Anda menguasai fungsi-fungsi dasar Figma dengan baik, <strong>grid modular menjadi bagian penting dari pekerjaan desain</strong> — itulah sebabnya ini adalah topik yang harus Anda kuasai, bukan hanya sekadar diketahui. Siswa bertemu dengan grid di <strong>Pelajaran 8 kursus ("Grid modular. Komposisi kompleks")</strong>, pelajaran yang menutup modul alat-alat desainer, dan sejak itu grid diam-diam menjadi kekuatan di balik proyek-proyek besar mereka: presentasi dan brand book pada modul identitas brand, dan terutama <strong>landing page serta prototipe aplikasi pada modul Desain Web (Pelajaran 25–28)</strong>.'},
+      {type:'text',h:'Apa dan mengapa',b:'Grid modular adalah sistem <strong>kolom, baris, dan margin</strong> yang mengatur sebuah layout. Grid berbasis sel cocok untuk cetak; <strong>grid kolom</strong> cocok untuk situs web dan aplikasi (tanpa garis horizontal, karena tinggi layar bervariasi). Manfaat yang langsung dirasakan siswa: gaya yang seragam, kecepatan snap-to-guide, estetika yang proporsional, dan hierarki yang lebih jelas — dan di dunia nyata, front-end developer membangun langsung dari grid desainer.'},
+      {type:'video',h:'▶ Mengaturnya di Figma',id:'HcQ6Hd7y-ew',start:267},
+    ]},
+    {t:'🧩 Plugin',cards:[
+      {type:'text',b:'Bagian terakhir dari perangkat Figma: <strong>plugin</strong>, add-on kecil yang memperluas fungsi Figma dengan fitur tambahan. Plugin digunakan terus-menerus dalam kursus — <strong>foto stok</strong> (Unsplash, Pixabay), <strong>palet warna</strong>, <strong>bentuk dekoratif</strong> (Blobs, Hero Patterns), <strong>penghapusan latar belakang</strong> (Icons8 Background Remover), dan <strong>gradien</strong> (Generative Gradients) — karena plugin menghindarkan siswa dari harus keluar Figma untuk tugas-tugas rutin dan menjaga pelajaran tetap berjalan.<br><br>Untuk mengaksesnya, buka tombol <strong>Actions</strong> di toolbar bawah atau tekan <code>Ctrl/Cmd + K</code>, beralih ke tab <strong>Plugins &amp; Widgets</strong>, cari, dan klik <strong>Run</strong>. Plugin yang telah digunakan tersimpan otomatis di tab tersebut; hapus salah satunya melalui menu tiga titiknya.'},
+      {type:'warn',txt:'Beberapa plugin komunitas berbayar atau terbatas versi trial, dan plugin apa pun bisa mengalami gangguan di tengah pelajaran — metodologi menyarankan untuk <strong>melewati plugin yang bermasalah dan lanjutkan</strong>. Jangan pernah biarkan plugin yang bermasalah menghabiskan sepuluh menit waktu kelas.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Mengapa logo yang dibuat di Figma tetap tajam pada ukuran berapa pun?',opts:['Figma mengekspor pada resolusi yang sangat tinggi','Figma membuat grafik vektor — bentuk matematis yang berskala tanpa kehilangan kualitas','Figma mengompresi gambar secara otomatis','Logo selalu berukuran file kecil'],c:1,fb:'Figma adalah editor vektor: bentuknya adalah matematika, bukan piksel, sehingga dapat diskalakan tanpa batas tanpa menjadi buram.'},
+    {q:'Jenis gambar mana yang terbaik untuk foto yang detail?',opts:['Vektor','Raster (terdiri dari piksel)','SVG','Wireframe'],c:1,fb:'Grafik raster (JPEG, PNG) terdiri dari piksel dan mampu menangani detail fotografis; vektor cocok untuk logo dan ikon.'},
+    {q:'Saat menggambar dengan Pen tool, bagaimana cara menutup sebuah bentuk?',opts:['Tekan Escape','Klik dua kali di mana saja','Klik kembali pada anchor point pertama','Tekan Ctrl+S'],c:2,fb:'Mengklik kembali anchor point pertama menutup path menjadi sebuah bentuk yang lengkap.'},
+    {q:'Sebuah font yang terinstal di komputer Anda tidak muncul di Figma pada browser. Apa yang kurang?',opts:['Paket Figma berbayar','Aplikasi bantu Font Installer yang memungkinkan Figma mengakses font lokal','Restart sistem','Font tersebut harus berasal dari Google Fonts'],c:1,fb:'Figma di browser memerlukan aplikasi kecil Font Installer untuk membaca font yang terinstal secara lokal; muat ulang halaman setelah menginstal.'},
+    {q:'Apa itu plugin di Figma?',opts:['Template berbayar','Add-on yang memperluas Figma dengan fitur tambahan (foto stok, palet, penghapusan latar belakang), diakses melalui Actions / Ctrl+K','Aplikasi eksternal yang menggantikan alat Figma','Nama lain Figma untuk font'],c:1,fb:'Plugin memperluas Figma dari dalam — ditemukan melalui tombol Actions atau Ctrl/Cmd+K di bawah Plugins & Widgets.'},
+   ]
+  },
+  {id:3,emoji:'🖌️',title:'Photopea & Desain Raster',desc:'Alternatif Photoshop gratis: dasar-dasar interface, pengeditan dan retouching foto, mockup, dan Smart Object.',obj:'Menjadi nyaman dengan Photopea dan memahami alur kerja raster yang digunakan siswa di Modul 3 kursus.',color:'#F59E0B',
+   sections:[
+    {t:'👀 Apa yang Dibahas Modul Ini',cards:[
+      {type:'text',b:'Dalam modul ini Anda akan mengenal alat kedua dalam kursus: <strong>Photopea</strong>, sebuah editor raster gratis berbasis browser. Ingat perbedaan vektor-vs-raster dari modul sebelumnya? Ini adalah konsekuensinya dalam praktik — bentuk matematis Figma sangat sempurna untuk logo, tetapi tidak dapat me-retouch foto atau membuat kolase. Segala hal berbasis piksel dalam kursus ini ada di sini: pengeditan foto, retouching, dan <strong>mockup</strong> yang digunakan siswa untuk mempresentasikan setiap proyek berikutnya seperti seorang profesional. Dan karena Photopea hampir identik dengan Photoshop, semua yang dipelajari siswa (dan Anda) di sini akan langsung berlaku pada alat standar industri.'},
+    ]},
+    {t:'🖥️ Mengenal Photopea',cards:[
+      {type:'text',b:'Photopea tampak dan berperilaku seperti Photoshop, berjalan gratis di browser tanpa instalasi, dan dapat membuka file PSD — itulah sebabnya kursus ini memilihnya. Tugas kelas pertama dalam kursus adalah tugas praktis: menginstal ad-blocker agar iklan pada alat gratis ini tidak mengganggu siswa.<br><br>Siswa mengenal interface dengan membuat <strong>karya seni bertema luar angkasa dari nol sepenuhnya</strong> — layer, brush, filter, dan blending mode, tanpa gambar eksternal sama sekali. Ini adalah proyek pembuka yang cerdas: pada akhirnya, mereka telah menyentuh setiap bagian utama dari interface tanpa pernah merasa sedang melakukan "tur interface". Sepanjang proses, mereka belajar aturan emas kerja raster, yang akan Anda ulangi sepanjang modul: <strong>bagian-bagian yang terpisah diletakkan pada layer yang terpisah</strong>. Sebuah desain di mana segalanya berada pada satu layer tidak dapat digeser, diwarnai ulang, atau diperbaiki — layer adalah yang membuat sebuah desain tetap dapat diedit. Tonton video ini untuk mempelajari interface-nya sendiri:'},
+      {type:'video',h:'▶ Dasar-Dasar Interface Photopea',id:'yhR8Ea2z1qI'},
+    ]},
+    {t:'📸 Pengeditan Foto & Retouching',cards:[
+      {type:'text',b:'Setelah interface dikuasai, kursus beralih ke keterampilan raster yang sesungguhnya: <strong>mengedit foto dengan penuh selera</strong>. Dua alat memungkinkan ini tanpa pernah merusak gambar asli. <strong>Adjustment layer</strong> mengubah warna dan cahaya sebagai layer terpisah yang berada di atas foto — matikan dan gambar aslinya tetap utuh. <strong>Mask</strong> mengontrol di mana sebuah efek berlaku dengan cara melukis: <strong>hitam menyembunyikan, putih menampilkan</strong>. Bersama-sama, keduanya mengalahkan eraser setiap saat, karena tidak ada yang pernah dihapus secara permanen — kesalahan hanya perlu dilukis ulang.<br><br>Aturan selera yang dipelajari siswa (dan yang harus diperkuat dalam feedback): retouching harus tetap terlihat <em>tidak kentara</em>. Pertahankan tekstur kulit yang natural — jangan pernah membuatnya blur rata — dan koreksi warna agar foto tampak seperti versi yang lebih baik dari dirinya sendiri, bukan seperti filter. Video ini membahas seluruh alurnya:'},
+      {type:'video',h:'▶ Pengeditan Foto & Retouching di Photopea',id:'liDH6FlbtSc'},
+      {type:'tip',txt:'Metafora yang mudah dipahami anak-anak: sebuah mask adalah <strong>stensil</strong> yang dipegang di atas foto. Melukis hitam menutup lubang pada stensil; melukis putih membukanya kembali. Tidak ada apa pun di bawahnya yang pernah berubah.'},
+    ]},
+    {t:'📦 Mockup & Smart Object',cards:[
+      {type:'text',b:'Modul ini ditutup dengan keterampilan yang akan digunakan kembali siswa sepanjang sisa kursus: <strong>mockup</strong> — template PSD yang menunjukkan sebuah desain dalam kehidupan nyata (tiket, kaos, kartu nama, kemasan). Mengapa ini penting: <strong>kemudahan penggunaan</strong> (desain diganti dengan penggantian layer yang sederhana), <strong>presentasi profesional</strong> — sebuah logo yang mengambang di kanvas putih tidak mengatakan banyak, tetapi logo yang sama pada foto cangkir kopi langsung terlihat nyata bagi klien dan orang tua — serta <strong>penghematan waktu</strong>. Mekanisme di balik pergantian ini adalah <strong>Smart Object</strong>: sebuah layer khusus yang menyimpan desain; ganti isinya dan setiap salinan di seluruh mockup akan terupdate sekaligus. Tonton video ini untuk melihat cara kerjanya:'},
+      {type:'video',h:'▶ Membuat Mockup Smart Object di Photopea',id:'9lzT277iPZU'},
+      {type:'good',txt:'Dalam kursus, siswa mengakhiri Modul 3 dengan mengadaptasi satu desain ke beberapa mockup — alur kerja pengiriman ke klien yang klasik. Dari titik ini, harapkan (dan dorong) mockup pada setiap presentasi proyek, hingga portofolio Behance di akhir kursus.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Mengapa kursus beralih ke Photopea untuk modul ini?',opts:['Figma berhenti menjadi gratis','Pengeditan foto dan kolase memerlukan editor raster, sedangkan Figma bersifat vektor','Photopea membuat logo yang lebih baik','Siswa harus belajar coding'],c:1,fb:'Photopea adalah editor raster gratis (alternatif Photoshop) — alat yang tepat untuk pengeditan foto, yang kurang ditangani baik oleh Figma yang berbasis vektor.'},
+    {q:'Pada layer mask di Photopea, apa yang dilakukan saat melukis dengan warna hitam?',opts:['Menampilkan bagian layer tersebut','Menyembunyikan bagian layer tersebut','Menghapus layer secara permanen','Membalik warnanya'],c:1,fb:'Hitam menyembunyikan, putih menampilkan — dan semuanya bersifat non-destruktif, berbeda dengan eraser.'},
+    {q:'Bagaimana cara memperbarui desain di dalam sebuah mockup PSD?',opts:['Menggambar ulang mockup dari nol','Ganti isi Smart Object dan simpan — semua salinan akan terupdate','Ekspor mockup sebagai SVG terlebih dahulu','Gunakan Spot Healing Brush'],c:1,fb:'Mockup menggunakan Smart Object: klik dua kali pada smart layer (atau Replace Contents), tempel desain Anda, simpan, dan mockup akan terupdate di semua tempat.'},
+    {q:'Alat Photopea mana yang memungkinkan Anda memilih area berdasarkan warnanya?',opts:['Magic Selection','Rectangular Selection','Quick Selection','Magnetic Selection'],c:0,fb:'Magic Selection memilih area dengan warna serupa dalam satu klik — ideal untuk mengisolasi area berwarna rata.'},
+    {q:'Penyesuaian Photopea mana yang memungkinkan Anda mewarnai sebuah gambar menggunakan satu warna sambil memberi kontrol lebih besar atas hasil akhirnya?',opts:['Black & White','Saturation','Gradient Map'],c:0,fb:'Penyesuaian Black & White mengubah gambar sambil memungkinkan Anda mengontrol bagaimana setiap warna asli diterjemahkan — memberikan kontrol yang jauh lebih besar atas hasil akhirnya.'},
+   ]
+  },
+  {id:4,emoji:'📱',title:'UX/UI dan Desain Web',desc:'UX vs UI, landing page dan prototipe, prinsip desain mobile, dan animasi prototipe di Figma.',obj:'Menguasai modul web/aplikasi: dari prototipe landing page hitam-putih hingga alur mobile yang teranimasi di Figma.',color:'#EC4899',
+   sections:[
+    {t:'👀 Apa yang Dibahas Modul Ini',cards:[
+      {type:'text',b:'Dalam modul ini Anda akan belajar bagaimana situs web dan aplikasi dirancang: perbedaan antara <strong>UX dan UI</strong>, bagaimana landing page disusun, mengapa profesional membuat prototipe hitam-putih terlebih dahulu, aturan <strong>desain mobile</strong>, dan bagaimana Figma mengubah layar statis menjadi <strong>prototipe yang dapat diklik dan teranimasi</strong>. Bagi siswa ini adalah salah satu bagian paling menarik dari kursus — desain mereka akhirnya <em>berperilaku</em> seperti produk nyata yang mereka gunakan setiap hari. Dan ini penting dua kali lipat bagi Anda: <strong>Digital Skill Test tutor di akhir pelatihan ini adalah prototipe aplikasi</strong>, yang dibuat dengan konsep-konsep ini secara tepat.'},
+    ]},
+    {t:'🧭 UX vs UI',cards:[
+      {type:'text',b:'Setiap layar yang dirancang siswa dinilai berdasarkan dua kualitas yang berbeda, dan kursus mengajarkannya dengan analogi sepeda. <strong>UX (User Experience)</strong> adalah seberapa mudah dan menyenangkan sesuatu untuk digunakan — sadel yang nyaman dan perjalanan yang lancar. <strong>UI (User Interface)</strong> adalah bagaimana tampilannya — warna, gaya, cahaya. Sebuah sepeda yang terlihat keren tapi menyakitkan untuk dikendarai memiliki <strong>masalah UX</strong>; yang nyaman dikendarai tapi terlihat membosankan memiliki <strong>masalah UI</strong>. Keduanya baik = desain yang hebat. Simpan analogi ini — ia mengubah perbedaan industri yang abstrak menjadi sesuatu yang bisa didiagnosis oleh anak berusia sepuluh tahun ("apakah ini masalah sadel atau masalah cat?").'},
+      {type:'img',src:'images/IND/UX-UI.png',alt:'UX vs UI dijelaskan'},
+      {type:'text',h:'Seperti apa desain yang berkualitas',b:'Siswa belajar mengenali tiga tanda kualitas: <strong>kesederhanaan dan kejelasan</strong> — hal-hal esensial dapat dijangkau hanya dengan beberapa klik; <strong>navigasi yang logis</strong> — tombol dan menu berada di tempat yang diharapkan pengguna; dan <strong>elemen konvensional</strong> — tombol terlihat seperti tombol, link terlihat seperti link. Mengejutkan pengguna itu cocok untuk seni, bukan untuk interface.'},
+      {type:'img',src:'images/IND/quality-design.png',alt:'Tanda-tanda desain yang berkualitas'},
+      {type:'text',h:'Komposisi, ditinjau kembali untuk layar',b:'Prinsip komposisi dari Modul 1 kembali di sini, diadaptasi untuk interface: <strong>proximity (kedekatan)</strong> — elemen yang berkaitan diletakkan berdekatan, dan white space melakukan pengelompokan; <strong>similarity (kesamaan)</strong> — warna, ukuran, atau bentuk yang serupa terbaca sebagai satu kelompok; <strong>symmetry (simetri)</strong> — menyampaikan keteraturan; dan <strong>design pattern (pola desain)</strong> — perilaku familiar yang dibawa pengguna dari setiap situs lain (klik logo → halaman utama, navigasi di bagian atas). Saat layar seorang siswa "terasa berantakan", salah satu dari empat hal ini hampir selalu menjadi alasannya — sebutkan secara spesifik dalam feedback Anda.'},
+      {type:'img',src:'images/IND/composition-principles-interfaces.png',alt:'Prinsip komposisi untuk interface'},
+    ]},
+    {t:'🌐 Landing Page & Prototipe',cards:[
+      {type:'text',b:'Proyek web pertama dalam kursus adalah <strong>landing page</strong> — sebuah situs web satu halaman dengan satu tujuan: membujuk pengunjung untuk melakukan satu tindakan (membeli, memesan, mendaftar). Namun siswa tidak mulai dengan warna dan foto. Mereka mulai dengan <strong>prototipe</strong>: sebuah draf layout yang menunjukkan struktur dan fungsi <em>tanpa</em> detail desain — persegi panjang abu-abu menggantikan gambar, tanpa warna, tanpa font mewah.'},
+      {type:'hi',h:'⚠️ Hitam-putih terlebih dahulu',b:'Prototipe adalah dasarnya. <strong>Grafik dan warna hanya ditambahkan setelah prototipe disetujui</strong> — ini adalah alur kerja profesional yang harus diinternalisasi siswa, dan penting untuk menjelaskan <em>alasannya</em>: warna itu menggoda. Layar yang cantik menyembunyikan struktur yang rusak, sedangkan layar abu-abu justru mengungkapkannya. Struktur dulu, kecantikan kemudian.'},
+      {type:'text',h:'Anatomi sebuah landing page',b:'Karena sebuah landing page ada untuk membujuk, bagian-bagiannya tidak sembarangan — masing-masing menjawab pertanyaan yang terbentuk di kepala pengunjung, sesuai urutan pertanyaan itu muncul. Itulah cerita yang harus diajarkan, dari atas ke bawah:<br><br><strong>Header</strong> (logo, navigasi, tombol aksi) menjawab <em>"di mana saya?"</em> — ia mengidentifikasi situs dan memberikan orientasi. <strong>Hero</strong>, layar besar pertama dengan headline dan tombol call-to-action, menjawab <em>"apa ini dan apa yang harus saya lakukan?"</em> — pengunjung harus memahami tawarannya dalam hitungan detik. <strong>Bagian konten</strong>, yang disusun pada grid kolom dari Modul 2, menjawab <em>"mengapa saya harus peduli?"</em> dengan menguraikan manfaatnya satu per satu. <strong>Testimoni</strong> menjawab <em>"apakah saya bisa mempercayai ini?"</em> dengan bukti sosial — orang-orang nyata yang memberikan kesaksian atas produk tersebut. <strong>FAQ</strong> menghilangkan keraguan terakhir, menambah kredibilitas. Dan <strong>footer</strong> (kontak dan link) menangkap siapa pun yang mencapai bagian bawah dan masih menginginkan sesuatu.<br><br>Saat Anda mengulas landing page seorang siswa, telusurilah sebagai percakapan itu: apakah setiap pertanyaan pengunjung terjawab, secara berurutan? Sebuah bagian yang tidak menjawab pertanyaan apa pun bisa dihapus — momen feedback yang bagus. Setelah prototipe disetujui, siswa mendandaninya dengan <strong>gaya UI</strong> — Minimalism, Classic, Grunge, Glassmorphism — dan desain nyata sering mencampur beberapa gaya sekaligus.'},
+      {type:'img',src:'images/IND/landing-anatomy.png',alt:'Anatomi sebuah landing page'},
+    ]},
+    {t:'📲 Prinsip Desain Mobile',cards:[
+      {type:'text',b:'Dari situs web, kursus beralih ke aplikasi — dan merancang untuk ponsel bukanlah merancang untuk monitor kecil. Ponsel dipegang dengan satu tangan, dilihat hanya dalam beberapa detik, dan dikendalikan dengan jempol, yang memberikan aturan tersendiri bagi desain mobile. Cara yang bagus untuk mengajarkan ini adalah dengan meminta siswa mengecek aplikasi-aplikasi yang sudah mereka sukai:'},
+      {type:'list',h:'Lima prinsip',items:['<strong>Jempol mengendalikan segalanya</strong> — tempatkan tombol penting (Add, Back, Buy) di bagian bawah layar, dalam jangkauan jempol.','<strong>Orang memindai, bukan membaca</strong> — gunakan judul singkat, ikon, dan warna kontras untuk aksi penting (merah "Pay", hijau "Confirm").','<strong>Minimalisme adalah kunci</strong> — 3–5 warna utama, tidak lebih dari 2 font, dan tombol yang cukup besar untuk disentuh dengan nyaman.','<strong>Gunakan sistem grid dan spasi yang konsisten</strong> — desainer mobile mengatur jarak semuanya dalam kelipatan 8 piksel (8, 16, 24, 32).','<strong>Manfaatkan UI Kits</strong> — pustaka elemen siap pakai untuk iOS dan Android mempercepat pekerjaan, tetapi aplikasi yang hanya mengandalkan kit berisiko terlihat sama seperti aplikasi orang lain.'],ordered:true},
+      {type:'img',src:'images/IND/five-mobile-principles.png',alt:'Lima prinsip desain mobile'},
+    ]},
+    {t:'🎬 Prototyping & Animasi',cards:[
+      {type:'list',h:'Tujuh pengaturan interaksi',p:'Akhirnya, momen yang membuat setiap siswa senang: membuat desain <strong>merespons</strong>. Figma menganimasikan berdasarkan prinsip keyframe — Anda menggambar sebuah elemen dalam dua keadaan dan Figma mengisi transisinya. Setiap interaksi pada tab Prototype dikonfigurasi dengan tujuh pengaturan, dan mengetahui nama-namanya adalah yang memungkinkan Anda men-debug prototipe siswa dengan cepat ("Trigger Anda sudah benar, tapi periksa Destination-nya"):',items:['<strong>Trigger</strong> — apa yang memulai transisi (klik, hover, atau swipe).','<strong>Delay</strong> — berapa lama harus menunggu sebelum animasi dimulai.','<strong>Action</strong> — apa yang terjadi (navigasi ke sebuah layar, membuka overlay).','<strong>Destination</strong> — frame tujuan dari transisi tersebut.','<strong>Animation</strong> — efek transisinya (Instant, Dissolve, Smart animate…).','<strong>Curve</strong> — gaya easing-nya (linear, ease in and out…).','<strong>Duration</strong> — durasinya dalam milidetik (400 ms terasa cepat; 800 ms lebih dramatis).'],ordered:true},
+      {type:'text',b:'Daftar pengaturan saja hanya membantu sampai batas tertentu — interaksi adalah sesuatu yang harus <strong>dilihat</strong>. Tonton video ini untuk melihat bagaimana respons prototipe terlihat di Figma dan pelajari cara menambahkan interaksi Anda sendiri:'},
+      {type:'video',h:'▶ Menambahkan Interaksi ke Prototipe Figma',id:'-d6zNGeF59M'},
+      {type:'warn',txt:'Animasi harus <strong>meningkatkan UX, bukan menghambatnya</strong> — halus, cepat, intuitif. Ketika seorang siswa menumpuk lima efek pada satu tombol, kembalikan analogi sepeda: apakah ini membuat perjalanannya lebih baik, atau hanya membuat catnya lebih berisik?'},
+      {type:'good',txt:'Semua yang ada dalam modul ini adalah persis apa yang akan Anda gunakan dalam <strong>Digital Skill Test</strong> Anda sendiri: sebuah prototipe aplikasi mobile dengan layar yang dapat diklik dan teranimasi. Sambil belajar, ikutlah membangunnya.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Sebuah aplikasi terlihat indah tetapi pengguna tidak dapat menemukan tombol checkout. Ini adalah masalah apa?',opts:['Masalah UI','Masalah UX','Masalah branding','Masalah tipografi'],c:1,fb:'UX adalah tentang kemudahan penggunaan. Indah tetapi membingungkan = pengalaman pengguna yang buruk.'},
+    {q:'Mengapa prototipe dimulai dengan hitam-putih menggunakan persegi panjang abu-abu untuk gambar?',opts:['Untuk menghemat memori Figma','Untuk menguji struktur dan UX sebelum desain visual apa pun disetujui','Karena klien lebih suka abu-abu','Untuk mencetak draf lebih murah'],c:1,fb:'Prototipe memvalidasi struktur, penempatan elemen, dan alur terlebih dahulu; warna dan grafik menyusul setelah disetujui.'},
+    {q:'Di mana tombol-tombol paling penting harus ditempatkan pada layar mobile?',opts:['Pojok kiri atas','Di tengah secara vertikal','Di bagian bawah, dalam jangkauan jempol','Di dalam menu hamburger'],c:2,fb:'"Jempol mengendalikan segalanya" — aksi-aksi penting berada di bawah, tempat jempol secara alami beristirahat.'},
+    {q:'Kelipatan spasi apa yang digunakan desain mobile?',opts:['Langkah 5px','Langkah 8px (8, 16, 24, 32)','Langkah 10px','Acak, berdasarkan perasaan'],c:1,fb:'Desainer mobile bekerja dalam kelipatan 8 piksel untuk ritme dan kegunaan yang konsisten.'},
+    {q:'Dalam prototyping Figma, apa yang didefinisikan oleh pengaturan "Trigger"?',opts:['Kecepatan animasinya','Apa yang memulai transisi (klik, hover, swipe)','Layar tujuannya','Kurva easing-nya'],c:1,fb:'Trigger adalah aksi pengguna yang memulai interaksi; Destination adalah ke mana ia mengarah, Duration adalah berapa lama waktunya.'},
+   ]
+  },
+  {id:5,emoji:'🖨️',title:'Desain Cetak',desc:'Bleed dan trim, 300 DPI, RGB vs CMYK, poster interior, sampul buku, dan poster sosial.',obj:'Memahami aturan khusus cetak dengan cukup baik untuk menangkap setiap kesalahan klasik siswa sebelum tercetak.',color:'#F97316',
+   sections:[
+    {t:'👀 Apa yang Dibahas Modul Ini',cards:[
+      {type:'text',b:'Dalam modul ini kursus meninggalkan layar dan mulai merancang untuk <strong>kertas</strong> — <strong>Modul 8 kursus, "Pengantar desain cetak" (Pelajaran 29–32)</strong>: kartu nama, poster interior, sampul buku, dan poster sosial. Cetak tidak memberi ampun dengan cara yang tidak dilakukan layar — tidak ada zoom, tidak ada backlight, dan tidak ada undo setelah mesin pemotong bekerja. Hampir setiap kesalahan klasik siswa di sini — teks terlalu kecil, warna yang tercetak kusam, desain yang terpotong di tepinya — <strong>tidak terlihat di layar</strong> dan hanya muncul di atas kertas. Memahami aturan fisik percetakan adalah yang memungkinkan Anda menangkap kesalahan-kesalahan itu sebelum file seorang siswa meninggalkan Figma.'},
+    ]},
+    {t:'📏 Aturan Cetak',cards:[
+      {type:'text',h:'Tantangan-tantangan cetak',b:'Merancang untuk cetak berbeda dari merancang untuk layar, dan dua tantangan menyebabkan sebagian besar kejutan. Yang pertama adalah <strong>warna</strong>: printer mencampur tinta di atas kertas, sehingga warna cerah yang Anda lihat pada layar yang menyala sering muncul lebih kusam setelah dicetak — warna dan kontras sederhana tidak bertahan tanpa berubah dalam perjalanannya. Yang kedua adalah <strong>pemotongan</strong>: setelah dicetak, setiap kartu dan poster dipotong oleh mesin pemotong, dan mesin selalu bergeser satu atau dua milimeter. Sebuah desain yang berakhir tepat di tepinya bisa berakhir dengan garis putih yang jelek. Kedua masalah ini diselesaikan pada tahap desain — dengan memilih warna yang ramah cetak dan memperluas latar belakang melewati garis potong.'},
+      {type:'text',h:'Ukuran dan matematikanya',b:'Printer bekerja pada <strong>300 DPI</strong> (dots per inch) — itu adalah berapa banyak titik tinta yang muat dalam setiap inci kertas. Ini jauh lebih rapat daripada yang dibutuhkan layar, karena orang memegang kartu cetak hanya beberapa sentimeter dari mata mereka; kurang dari itu mulai terlihat kabur. Dalam praktiknya ini berarti sekitar <strong>118 piksel per sentimeter</strong>, sehingga kartu nama standar 90×50 mm menjadi desain berukuran 1062×591 px.<br><br>Frame kerjanya dibuat sedikit lebih besar — <strong>1110×638 px</strong> — dan cincin tambahan di sekeliling tepinya itulah <strong>margin bleed</strong>: zona yang boleh "dimakan" oleh mesin pemotong. Latar belakang harus mengisi seluruh frame termasuk bleed, sementara teks dan logo harus tetap aman di dalam area trim bagian dalam. Siswa menerapkan ini langsung pada proyek cetak pertama mereka, <strong>kartu nama pada Pelajaran 29</strong> — pelajaran yang membuka modul cetak kursus — dan memeriksa bleed adalah hal pertama yang harus Anda lakukan saat mengulas salah satunya.'},
+    ]},
+    {t:'🌗 RGB vs CMYK & Kontras',cards:[
+      {type:'text',b:'Mengapa warna layar tercetak kusam? Karena layar dan printer membangun warna dengan cara yang berlawanan. Layar <em>menambahkan cahaya</em>: campurkan semua warnanya dan Anda mendapatkan putih. Printer <em>mengurangi cahaya</em> dengan tinta: campurkan semua tintanya dan Anda mendapatkan hitam. Kedua sistem ini memiliki nama — <strong>RGB</strong> untuk layar dan <strong>CMYK</strong> untuk cetak — dan begitu siswa memahami perbedaan di antara keduanya, hasil cetak yang pudar berhenti menjadi misteri.'},
+      {type:'twocol',left:{h:'RGB (layar)',items:['Warna terdiri dari <strong>cahaya</strong>','Aditif: semua tercampur = putih','Yang digunakan Figma','Bisa terlihat pudar saat dicetak']},right:{h:'CMYK (cetak)',items:['Warna terdiri dari <strong>tinta</strong>','Subtraktif: semua tercampur = hitam','Yang menjadi kalibrasi printer','Diperlukan untuk warna cetak yang akurat']}},
+      {type:'text',h:'Mengatasi RGB Figma',b:'Figma tidak mendukung CMYK secara native. Trik dalam kursus: gunakan eyedropper untuk mengambil warna dari file referensi <strong>CMYK Colour Wheel</strong> agar hasil cetak sesuai dengan tampilan di layar. Dan periksa <strong>kontras</strong> dengan pemeriksa Figma (ikon yin-yang pada panel warna — ikon AA secara otomatis memperbaiki kontras yang lemah), karena printer "memakan" kontras.'},
+    ]},
+    {t:'🖼️ Poster Interior & Sampul Buku',cards:[
+      {type:'text',h:'Poster interior',b:'Dengan aturan fisik sudah dipahami, modul cetak beralih ke proyeknya yang paling artistik pada <strong>Pelajaran 30 ("Poster interior: dari konsep menjadi karya seni dinding yang menarik")</strong> — tepat setelah pelajaran kartu nama, sehingga siswa sudah mengetahui bleed, DPI, dan CMYK dan dapat fokus pada sisi kreatifnya: poster yang dirancang untuk menghias sebuah ruangan sungguhan. Poster interior menampilkan <strong>teks dan grafis yang digambar tangan — bukan foto</strong> — dan harus sesuai dengan warna, gaya, dan tujuan ruangan tersebut; di sinilah keterampilan komposisi dan tipografi dari Modul 1 diterapkan pada sebuah objek fisik. Ukuran cetak berasal dari sebuah template (A3 optimal; A1 bisa memperlambat Figma). Teknik dari kursus: setiap kata diketik secara terpisah agar dapat diberi gaya secara independen, <strong>dynamic stroke</strong> (Frequency, Wiggle, Smoothen), sapuan brush, dan <strong>Radial repeat</strong> pada mode Figma Draw untuk ornamen yang simetris sempurna.'},
+      {type:'img',src:'images/IND/interior-posters.png',alt:'Contoh-contoh poster interior'},
+      {type:'text',h:'Anatomi sampul buku',b:'<strong>Pelajaran 31 ("Desain sampul buku: mengubah cerita menjadi mahakarya visual")</strong> meningkatkan tingkat kesulitannya: sebuah sampul lebih dari hanya bagian depan. Ia memiliki <strong>sampul depan, sampul belakang, dan punggung buku (spine)</strong> (dengan lebarnya sendiri yang dihitung dari jumlah halaman), <strong>area aman/live area</strong> untuk teks dan logo, <strong>margin</strong>, <strong>bleed</strong>, dan ukuran trim. Tidak ada yang menghafal angka-angka itu — para profesional menghasilkannya secara otomatis. Template berasal dari <a href="https://kdp.amazon.com/cover-calculator" target="_blank"><strong>Amazon Cover File Calculator</strong></a>: masukkan binding, jenis kertas, ukuran trim, dan jumlah halaman → unduh template berukuran tepat dengan tanda-tanda yang sudah ditentukan untuk mulai merancang.'},
+      {type:'img',src:'images/IND/book-cover-anatomy.png',alt:'Anatomi sampul buku'},
+    ]},
+    {t:'📢 Poster Sosial',cards:[
+      {type:'list',h:'Empat tujuan',p:'Modul cetak ditutup dengan <strong>Pelajaran 32 ("Poster kesadaran sosial: desain yang menginspirasi perubahan")</strong> dan jenis poster yang menuntut paling banyak dari seorang desainer muda — sebuah proyek yang mengandalkan semua yang dipelajari dari tiga pelajaran cetak sebelumnya. Sebuah iklan sosial tidak menjual produk — ia membuat orang berhenti dan berpikir, dan setiap keputusan desain harus melayani tujuan itu. Setiap poster sosial mengejar empat tujuan:',items:['<strong>Menginformasikan</strong> — menyampaikan satu fakta atau ide yang jelas (seperti plastik yang mencemari lautan).','<strong>Membangkitkan emosi</strong> — kejut, kekhawatiran, simpati, atau harapan; penonton tidak boleh tetap tak acuh.','<strong>Ajakan bertindak (call to action)</strong> — beri tahu orang apa yang harus dilakukan (mengurangi plastik, memilah sampah).','<strong>Membentuk nilai</strong> — mempengaruhi apa yang dianggap penting oleh audiens.'],ordered:true,after:'Sebuah poster sosial yang baik adalah <strong>"pukulan visual"</strong> yang mengena dalam satu detik.'},
+      {type:'img',src:'images/IND/four-goals.png',alt:'Empat tujuan sebuah poster sosial'},
+      {type:'text',h:'Aturan desain',b:'Sebuah poster sosial berhasil ketika orang asing memahaminya dalam satu detik — sehingga setiap pilihan desain melayani kecepatan dan dampak. Kursus mengajarkan siswa untuk membuat keputusan yang disengaja dalam tiga bidang:<br><br><strong>Pesan.</strong> Satu ide — satu poster. Jika Anda mencoba mengatakan tiga hal, penonton tidak akan mengingat satu pun. Jaga teks seminimal mungkin: sebuah slogan singkat, ditambah paling banyak satu fakta atau sebuah link.<br><br><strong>Imagery.</strong> Bangun poster di sekitar satu <strong>metafora visual</strong> yang kuat — paru-paru yang terbuat dari kantong plastik hitam mengatakan lebih banyak tentang polusi daripada paragraf apa pun. Beri objek itu semua perhatian: satu elemen dominan yang terpusat dengan kontras tinggi, dan hilangkan setiap detail yang bersaing dengannya.<br><br><strong>Warna.</strong> Warna membawa emosi sebelum teksnya sendiri dibaca — <strong>merah</strong> menandakan bahaya, <strong>hitam</strong> menandakan ancaman, <strong>biru dan hijau</strong> menandakan kehidupan dan harapan. Pilih asosiasi yang sesuai dengan pesannya.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Mengapa sebuah desain cetak memerlukan margin bleed?',opts:['Untuk memberi ruang bagi catatan klien','Mesin pemotong bergeser sedikit — latar belakang harus melewati garis trim','Untuk membuat file lebih kecil','Karena Figma mengharuskannya'],c:1,fb:'Mesin bergeser saat memotong; latar belakang mengisi bleed agar tidak muncul garis putih, sementara konten penting tetap berada di dalam area trim.'},
+    {q:'Apa yang terjadi jika Anda mencampur semua warna pada RGB dan pada CMYK?',opts:['Putih pada keduanya','Hitam pada keduanya','RGB → putih(ish), CMYK → hitam','RGB → hitam, CMYK → putih'],c:2,fb:'RGB adalah cahaya aditif (semua = putih); CMYK adalah tinta subtraktif (semua = hitam). Itulah sebabnya desain RGB bisa tercetak pudar.'},
+    {q:'Mana dari berikut ini yang cocok pada sebuah poster interior?',opts:['Foto beresolusi tinggi','Teks dan grafis yang digambar tangan','Sebuah kode QR','Harga produk'],c:1,fb:'Poster interior dibuat dari tipografi dan grafis yang digambar tangan — bukan foto.'},
+    {q:'Mengapa desain cetak dibuat pada 300 DPI dibandingkan resolusi layar yang umum?',opts:['Itu adalah setting ekspor default Figma','Cetak memerlukan jauh lebih banyak titik per inci agar terlihat tajam dari jarak dekat — resolusi layar akan terlihat buram di atas kertas','Itu membuat file lebih kecil','Itu hanya diperlukan saat menggunakan CMYK'],c:1,fb:'Orang memegang materi cetak hanya beberapa sentimeter dari mata mereka — 300 titik per inci membuatnya tetap tajam di mana resolusi layar akan terlihat kabur.'},
+    {q:'Sebuah poster sosial memadatkan tiga pesan sekaligus. Aturan apa yang dilanggarnya?',opts:['Teks minimal','Satu ide — satu poster','Kontras dan fokus','Asosiasi warna'],c:1,fb:'Satu ide per poster — sebuah iklan sosial harus mendaratkan satu "pukulan visual", bukan sebuah ceramah.'},
+   ]
+  },
+  {id:6,emoji:'🚀',title:'Portofolio & Behance',desc:'Studi kasus, mengunggah proyek ke Behance, dan spesifikasi unggahan yang harus diketahui setiap desainer.',obj:'Membimbing siswa dalam mempublikasikan studi kasus nyata di Behance — garis akhir karier dalam kursus.',color:'#6366F1',
+   sections:[
+    {t:'👀 Apa yang Dibahas Modul Ini',cards:[
+      {type:'text',b:'Modul ini adalah garis akhir kursus: mengubah segala sesuatu yang dibuat siswa menjadi <strong>portofolio profesional di Behance</strong>. Portofolio ini adalah yang tetap dimiliki siswa (dan orang tua mereka) setelah kursus berakhir — bukti dari setiap proyek, di balik satu link yang dapat dibagikan, dipresentasikan sebagaimana para desainer profesional mempresentasikan diri mereka. Bagi Anda, ini juga modul dengan <strong>logistik kelas</strong> terbanyak: pendaftaran akun, persyaratan usia, dan pengaturan unggahan yang tepat semuanya harus berjalan dengan benar dalam satu pelajaran, sehingga mengetahui angka-angka pastinya sebelumnya adalah yang membuatnya tetap tenang.'},
+    ]},
+    {t:'🌍 Behance & Studi Kasus',cards:[
+      {type:'text',h:'Mengapa Behance',b:'Behance adalah platform global tempat para profesional kreatif hidup: sebuah <strong>portofolio di balik satu link</strong>, penemuan klien secara langsung, dan inspirasi tanpa akhir untuk dijelajahi. Mempublikasikan di sana memberi tahu seorang siswa sesuatu yang tidak bisa diberikan oleh nilai apa pun: <em>karya Anda kini ada di tempat yang sama dengan karya para desainer profesional.</em>'},
+      {type:'img',src:'images/IND/why-behance.png',alt:'Mengapa Behance penting bagi desainer'},
+      {type:'text',h:'Anatomi studi kasus yang baik',b:'Proyek di Behance bukan sekadar kumpulan gambar — proyek-proyek ini dipresentasikan sebagai <strong>studi kasus</strong>, di mana kisah tentang bagaimana sebuah proyek dibuat sama pentingnya dengan visualnya. Studi kasus yang baik memiliki <strong>gambar sampul</strong>, deskripsi proyek, <strong>materi proses</strong> (sketsa, konsep, bahkan grid modular yang diperlihatkan), <strong>visual akhir</strong> (mockup dari Modul 3 berguna di sini), dan informasi kontak. Brand book yang dibuat siswa dalam kursus sudah mengikuti bentuk ini — ajarkan mereka untuk melihat pekerjaan proses mereka bukan sebagai coretan, tetapi sebagai konten yang layak ditampilkan.'},
+      {type:'warn',txt:'Pendaftaran memerlukan usia <strong>13+</strong> — siswa yang lebih muda memerlukan izin orang tua (persetujuan dikumpulkan melalui grup chat sebelum pelajaran). Akun dibuat dengan akun Google yang sama yang digunakan untuk Figma.'},
+    ]},
+    {t:'📤 Spesifikasi Unggahan',cards:[
+      {type:'text',h:'Angka-angka yang harus diingat',b:'Behance sangat ketat mengenai format, dan mendapatkannya dengan benar adalah yang membuat halaman siswa terlihat profesional daripada rusak. Frame presentasi di Figma harus tepat <strong>1400 px lebar</strong> (tinggi mulai dari 800 px ke atas). Frame thumbnail custom adalah <strong>202×158 px</strong>. Di Styles tab Behance, atur <strong>Content Spacing ke 0</strong> agar gambar yang disusun bergabung secara mulus menjadi satu halaman yang menyatu. Tag dibatasi hingga 10; kategorisasi diwajibkan; visibilitas diatur ke Everyone.'},
+      {type:'good',txt:'Dengan portofolio yang telah dipublikasikan, siswa telah melalui seluruh perjalanan kursus: dari "apa itu desain grafis?" hingga sebuah halaman publik berisi karya nyata yang telah selesai. Modul terakhir pelatihan ini mengalihkan fokus dari <em>apa</em> yang akan Anda ajarkan menjadi <em>bagaimana</em> Anda akan mengajarkannya.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Apa itu studi kasus di Behance?',opts:['Sebuah dokumen hukum tentang proyek','Sebuah mini-presentasi yang menceritakan kisah bagaimana sebuah proyek dibuat','Sebuah slot iklan berbayar','Sebuah daftar alat yang digunakan'],c:1,fb:'Studi kasus menceritakan kisah sebuah proyek — tugas, proses, hasil — bersama dengan visual akhirnya.'},
+    {q:'Berapa lebar sebuah frame Figma untuk unggahan Behance?',opts:['1080 px','1200 px','1400 px','1920 px'],c:2,fb:'Tepat 1400 px lebar — tingginya fleksibel (800+ px).'},
+    {q:'Apa yang harus diperiksa sebelum siswa di bawah 13 tahun mendaftar di Behance?',opts:['Skor kuis mereka','Izin orang tua','Kecepatan mengetik mereka','Sebuah subscription berbayar'],c:1,fb:'Behance mewajibkan pengguna berusia 13+; siswa yang lebih muda memerlukan persetujuan orang tua, yang dikumpulkan melalui grup chat.'},
+    {q:'Mengapa mengatur Content Spacing ke 0 pada Styles tab Behance?',opts:['Untuk mengurangi ukuran file','Agar gambar yang disusun bergabung secara mulus tanpa jarak putih','Untuk mengaktifkan komentar','Untuk membuka lebih banyak tag'],c:1,fb:'Content spacing nol menghilangkan jarak antar gambar yang diunggah sehingga studi kasus terbaca sebagai satu halaman yang menyatu.'},
+    {q:'Apa kekuatan terbesar Behance bagi seorang desainer?',opts:['Foto stok gratis','Sebuah portofolio di balik satu link tempat klien dapat menemukan Anda secara langsung','Pembuatan logo otomatis','Layanan pencetakan bawaan'],c:1,fb:'Behance mengubah karya seorang desainer menjadi satu link portofolio yang dapat dibagikan — dan klien dapat menemukan desainer secara langsung di platform tersebut.'},
+   ]
+  },
+  {id:7,emoji:'🧑‍🏫',title:'Cara Menjalankan Pelajaran yang Hebat',desc:'Struktur pelajaran cermin, tahap teori-dan-praktik, dan cara memberikan feedback yang benar-benar mengajarkan sesuatu.',obj:'Menguasai bentuk sebuah pelajaran Kodland yang kuat — dari pemanasan hingga penutup — plus dua keterampilan yang paling dibutuhkan oleh kursus kreatif: praktik yang fleksibel dan feedback yang spesifik. <strong>Ini tentang bagaimana Anda mengajar, terlepas dari topiknya.</strong>',color:'#EF4444',
+   sections:[
+    {t:'👀 Apa yang Dibahas Modul Ini',cards:[
+      {type:'text',b:'Anda bisa memahami Figma, teori warna, dan setiap trik mockup dengan sempurna, tetapi tetap menjalankan pelajaran yang lemah jika tidak memiliki struktur. Anak-anak belajar paling baik dalam <strong>ritme yang dapat diprediksi</strong> — mereka lebih cepat tenang, lebih banyak mengingat, dan tetap termotivasi saat setiap pelajaran mengikuti alur yang sama dan familiar. Modul ini mengajarkan alur tersebut: struktur pelajaran Kodland dengan desain "cermin"-nya (cara sebuah pelajaran <em>berakhir</em> mencerminkan cara ia <em>dimulai</em>), tahap teori-dan-praktik di intinya, dan — karena desain adalah subjek yang kreatif dan personal — cara memberikan <strong>feedback yang benar-benar mengajarkan</strong> alih-alih hanya memuji. Kebiasaan-kebiasaan ini berlaku untuk setiap pelajaran yang akan Anda ajarkan.'},
+      {type:'tip',txt:'Konsistensi adalah intinya. Begitu siswa mempelajari ritme Anda, mereka berhenti menghabiskan energi untuk memikirkan "apa yang terjadi sekarang?" dan menghabiskannya untuk merancang sebagai gantinya. Jalankan struktur yang sama setiap kali sampai menjadi kebiasaan alami — bagi Anda dan bagi mereka.'},
+    ]},
+    {t:'🌅 Awal: empat fase',cards:[
+      {type:'text',h:'1 · Warm-Up — mengaktifkan energi & fokus',b:'Mulailah dengan sesuatu yang ringan yang mengalihkan otak siswa ke "mode pelajaran": sebuah pertanyaan cepat, tantangan kecil, sebuah desain menarik yang terlihat selama seminggu. Tujuannya adalah energi dan perhatian, bukan penilaian. Ini menandakan "kita mulai sekarang" dan menarik anak yang teralihkan perhatiannya ke dalam sesi.'},
+      {type:'text',h:'2 · Previous Lesson Revision — mengingat & mengonsolidasikan',b:'Ulas secara singkat apa yang dipelajari pada pertemuan sebelumnya. Retrieval — membuat siswa <em>mengingat</em> alih-alih mendengarkan ulang — adalah salah satu alat memori terkuat yang ada. Pertanyaan dua menit seperti "apa yang membuat sebuah titik fokus kuat?" berdampak lebih besar daripada menjelaskan ulang.'},
+      {type:'text',h:'3 · HW Check — mengulas pekerjaan rumah bersama',b:'Tinjau pekerjaan rumah <em>bersama</em> siswa — dalam kursus ini, itu berarti melihat sebuah desain yang mereka buat. Di sinilah Anda menangkap kesalahpahaman, memuji upaya mereka, dan menunjukkan bahwa pekerjaan rumah memang penting. Ini juga salah satu dari dua <strong>momen feedback</strong> kunci dalam pelajaran (lihat bagian feedback di bawah): jangan puas dengan "poster yang bagus!" — katakan secara spesifik apa yang berhasil dan apa yang perlu didorong lebih jauh. Melewatkan pengecekan ini mengajarkan anak-anak bahwa pekerjaan rumah itu opsional.'},
+      {type:'text',h:'4 · Lesson Goal — menetapkan tujuan yang jelas',b:'Nyatakan dengan jelas apa yang akan dibahas hari ini: "hari ini kita akan merancang sebuah poster dengan satu titik fokus yang jelas." Tujuan yang jelas memberikan arah pada pelajaran dan memberikan siswa sesuatu yang konkret untuk dikejar.'},
+    ]},
+    {t:'🎨 Bagian tengah: teori & praktik',cards:[
+      {type:'text',h:'5 · Theory & Practice — inti dari pelajaran',b:'Di antara Lesson Goal dan fase-fase penutup terdapat tahap terlama, tempat materi baru diajarkan dan langsung dipraktikkan. Sampaikan teori dalam <strong>bagian-bagian kecil</strong> — satu konsep, lalu langsung praktik dengannya — dan <strong>contohkan dulu</strong>: demonstrasikan teknik di layar Anda sebelum siswa mencobanya sendiri. Dalam sebuah kursus desain, tahap praktik adalah saat siswa benar-benar berkarya, jadi lindungi waktu itu dengan sungguh-sungguh; sebuah pelajaran di mana anak-anak hanya menonton Anda merancang adalah pelajaran di mana tidak ada seorang pun yang merancang.'},
+      {type:'hi',h:'Bersikaplah fleksibel — kebebasan di dalam tujuan pembelajaran',b:'Ini adalah adaptasi paling penting untuk kursus yang kreatif: <strong>biarkan siswa merancang apa yang mereka inginkan, selama tujuan pembelajarannya terpenuhi</strong>. Jika rencana pelajaran mengatakan "buat poster untuk festival musik" tetapi siswa Anda terobsesi dengan sebuah video game, biarkan mereka membuat poster game tersebut — tetap saja perlu ada titik fokus, komposisi yang seimbang, dan tipografi yang mudah dibaca, yang sebenarnya menjadi inti dari pelajaran tersebut. Seorang siswa yang merancang sesuatu yang mereka pedulikan bekerja lebih giat, mengingat lebih banyak, dan mulai membangun portofolio yang terasa seperti <em>milik mereka</em>. Adaptasikan temanya, jangan pernah tujuannya.'},
+      {type:'warn',txt:'Fleksibilitas bukan berarti tidak ada standar. Apa pun yang dipilih siswa untuk dirancang, pegang pada tujuan pembelajaran pelajaran tersebut — itulah kesepakatan yang membuat kebebasan itu berhasil.'},
+    ]},
+    {t:'🏁 Akhir: cerminnya',cards:[
+      {type:'hi',h:'Akhir mencerminkan awal, secara terbalik',b:'Empat fase penutup mencerminkan fase pembuka secara terbalik — pelajaran berakhir dengan cara yang sama seperti dimulai, memberikan siswa rasa <strong>penutupan dan ritme</strong> yang memuaskan. Bentuk "melingkar" ini adalah yang membuat sebuah pelajaran terasa lengkap alih-alih hanya berhenti ketika waktu habis.'},
+      {type:'text',h:'6 · Lesson Summary — berbasis tutor + siswa',b:'Rangkum apa yang telah dibahas — tetapi jangan hanya memberi tahu mereka. Biarkan <em>siswa</em> juga merangkum dengan kata-kata mereka sendiri. Rangkuman mereka mengungkapkan apa yang benar-benar diserap dan berfungsi sebagai momen retrieval kedua.'},
+      {type:'text',h:'7 · HW Assignment — instruksi yang jelas',b:'Berikan pekerjaan rumah dengan instruksi yang sangat jelas tentang apa yang harus dirancang dan bagaimana caranya. Pekerjaan rumah yang tidak jelas adalah pekerjaan rumah yang tidak akan dikerjakan. Ini berpasangan dengan HW Check yang membuka pelajaran.'},
+      {type:'text',h:'8 · Next Lesson Preview — membangun rasa ingin tahu',b:'Berikan bocoran tentang apa yang akan datang selanjutnya: "lain kali, kita akan menaruh desainmu pada cangkir kopi sungguhan!" Sebuah pancingan membangun antisipasi dan momentum maju di antar sesi — ini berpasangan dengan Lesson Goal dari awal.'},
+      {type:'text',h:'9 · Wrap-Up — tutup dengan energi',b:'Akhiri dengan hal yang positif: rayakan apa yang telah dibuat siswa hari ini, akui usaha mereka, dan kirim mereka pergi dengan perasaan baik. 30 detik terakhir membentuk bagaimana mereka mengingat seluruh pelajaran.'},
+    ]},
+    {t:'💬 Feedback yang mengajarkan (bukan hanya memuji)',cards:[
+      {type:'text',h:'Masalah dengan "kerja bagus!"',b:'Desain itu personal — poster seorang siswa adalah selera <em>mereka</em> di atas layar, sehingga feedback berdampak lebih besar di sini dibandingkan subjek lainnya. Itulah yang membuat pujian generik menjadi masalah nyata: <strong>"Kerja bagus!", "Cantik sekali!", "Aku suka!"</strong> terasa baik hati, tetapi tidak mengajarkan apa pun — siswa tidak belajar apa yang berhasil maupun apa yang harus dilakukan lagi. Feedback yang spesifik melakukan keduanya: <strong>katakan secara tepat apa yang Anda sukai dan mengapa itu berhasil</strong>, menggunakan kosakata desain dari Modul 1–6.'},
+      {type:'twocol',left:{h:'❌ Generik (hindari)',items:['"Kerja bagus!"','"Cantik sekali!"','"Aku suka!"','"Warnanya bagus!"','"Bagus, slide selanjutnya!"']},right:{h:'✅ Spesifik (tujuan yang benar)',items:['"Tombol merah itu sangat menonjol di latar belakang gelap — itu kontras yang kuat."','"Judulmu adalah hal pertama yang aku lihat. Kamu membangun titik fokus yang jelas."','"Kedua font ini berpasangan dengan baik: judul tebal menarik perhatian dan teks isi tetap mudah dibaca."','"Menempatkan harga dekat foto mengelompokkan keduanya — penggunaan proximity yang baik."']}},
+      {type:'text',h:'Mengoreksi tanpa menghancurkan',b:'Ketika ada sesuatu yang perlu diperbaiki, pasangkan satu kekuatan spesifik dengan satu perbaikan konkret: <em>"Paletnya bekerja dengan indah — sekarang mari beri lebih banyak ruang bagi teks agar lebih mudah dibaca."</em> Siswa mendengar apa yang harus dipertahankan <strong>dan</strong> apa yang harus diubah, dan tidak ada yang hilang dalam ketidakjelasan.'},
+      {type:'good',txt:'Di mana menggunakan ini: dua momen feedback dalam setiap pelajaran — <strong>HW Check</strong> di awal dan tahap <strong>Practice</strong> di tengah.'},
+    ]},
+    {t:'💡 Mengapa struktur ini bekerja',cards:[
+      {type:'twocol',left:{h:'🧠 Kemudahan Kognitif',items:['Format yang dapat diprediksi menurunkan beban mental','Siswa tahu apa yang diharapkan','Fokus tertuju pada merancang, bukan memecahkan bentuk pelajarannya']},right:{h:'🔁 Peningkatan Retensi',items:['Revisi di AWAL mengonsolidasikan pertemuan sebelumnya','Rangkuman di AKHIR mengonsolidasikan hari ini','Dua titik pemeriksaan memori → daya ingat yang jauh lebih baik']}},
+      {type:'twocol',left:{h:'🎯 Tujuan yang Jelas',items:['Menyatakan tujuan di awal membangun motivasi','Melihat sekilas pelajaran selanjutnya menciptakan momentum','Siswa selalu tahu mengapa mereka di sini']},right:{h:'✅ Siklus Akuntabilitas',items:['Pengecekan PR di awal...','...berpasangan dengan pemberian PR di akhir','Siswa merasakan kontinuitas antar pelajaran']}},
+      {type:'good',txt:'Perhatikan pasangannya: warm-up ↔ wrap-up, revision ↔ summary, HW check ↔ HW assignment, lesson goal ↔ next-lesson preview — dengan teori &amp; praktik di tengahnya. Setiap fase pembuka memiliki pasangan penutupnya. Simetri itulah yang membuat struktur ini "melingkar" dan mudah diingat.'},
+    ]},
+    {t:'🙋 Menjaga setiap anak tetap terlibat',cards:[
+      {type:'text',h:'Aturan emasnya',b:'Sebuah pelajaran di mana tutor berbicara dan siswa mendengarkan adalah pelajaran yang lemah. Tugas Anda adalah membuat siswa <strong>melakukan, mengatakan, dan berpikir</strong> sebanyak mungkin — dan dalam sebuah kursus desain, itu berarti tangan mereka berada di atas alat-alatnya. Gunakan empat teknik ini terus-menerus, di setiap fase.'},
+      {type:'twocol',left:{h:'❓ Pertanyaan Terbuka',items:['"Menurutmu apa yang akan terjadi jika kita menukar warna-warna ini?"','"Bagaimana caramu membuat judul ini lebih menonjol?"','Hindari pertanyaan ya/tidak — undang pemikiran desain yang sesungguhnya']},right:{h:'🖥️ Berbagi Layar',items:['Minta siswa membagikan layar mereka','Biarkan mereka menuntun Anda melalui desain mereka sendiri','Bagus saat HW check &amp; practice — membangun rasa kepemilikan']}},
+      {type:'twocol',left:{h:'📖 Membaca Slide',items:['Undang siswa untuk membaca teks slide dengan lantang','Minta mereka menjelaskannya dengan kata-kata mereka sendiri','Meningkatkan pemahaman dan menjaga mereka tetap aktif']},right:{h:'🌟 Pujian &amp; Dorongan',items:['Bersikaplah spesifik — sebutkan keputusan desain yang berhasil','Puji usaha dan pilihan, bukan hanya hasil yang cantik','Gunakan energi untuk menjaga momentum tetap tinggi sepanjang waktu']}},
+      {type:'warn',txt:'Waspadai jebakan pelajaran yang pasif: terasa lancar karena tidak ada friksi, tetapi siswa tidak banyak belajar. Jika Anda telah berbicara lebih dari satu atau dua menit tanpa siswa melakukan atau mengatakan sesuatu, kembalikan kepada mereka.'},
+    ]},
+    {t:'🎯 Menerapkannya dalam praktik',cards:[
+      {type:'hi',h:'Struktur membebaskan Anda, bukan membatasi Anda',b:'Tutor baru terkadang khawatir bahwa struktur yang tetap akan membuat pelajaran terasa kaku seperti robot. Justru kebalikannya benar: begitu fase-fase itu menjadi otomatis, Anda berhenti mengkhawatirkan "selanjutnya apa?" dan memiliki seluruh perhatian Anda bebas untuk siswa — pertanyaan mereka, desain mereka, energi mereka. Struktur adalah perancah yang memungkinkan Anda benar-benar hadir.'},
+      {type:'tip',txt:'Simpan daftar periksa mental (atau tertulis) dari fase-fase ini untuk pelajaran-pelajaran pertama Anda. Setelah beberapa minggu ritmenya menjadi otomatis — dan dengan itu, pelatihan ini selesai: yang tersisa hanyalah menunjukkan apa yang telah Anda pelajari dalam Digital Skill Test.'},
+    ]},
+   ],
+   quiz:[
+    {q:'Mengapa struktur pelajaran Kodland disebut sebagai format "cermin" atau "melingkar"?',opts:['Fase-fase penutup mencerminkan fase-fase pembuka secara terbalik, sehingga pelajaran berakhir dengan cara yang sama seperti dimulai','Tutor dan siswa bertukar peran di tengah pelajaran','Slide ditampilkan dua kali, maju lalu mundur','Setiap pelajaran mengulang pelajaran sebelumnya secara persis'],c:0,fb:'Akhir mencerminkan awal secara terbalik (warm-up↔wrap-up, revision↔summary, HW check↔HW assignment), memberikan penutupan dan ritme.'},
+    {q:'Seorang siswa menunjukkan poster pekerjaan rumahnya. Respons mana yang merupakan feedback terbaik?',opts:['"Kerja bagus, aku suka!"','"Judulmu adalah hal pertama yang aku lihat — kamu membangun titik fokus yang jelas. Sekarang mari beri lebih banyak ruang bagi teks agar lebih mudah dibaca."','"Bagus, tapi coba lebih keras lain kali."','"Sempurna, ayo lanjut ke topik hari ini."'],c:1,fb:'Feedback yang spesifik menyebutkan apa yang berhasil dan mengapa (titik fokus) dan memasangkannya dengan satu perbaikan konkret — pujian generik tidak mengajarkan apa pun.'},
+    {q:'Rencana pelajaran mengatakan "rancang poster festival musik", tetapi siswa Anda ingin membuat poster tentang video game favoritnya. Apa yang Anda lakukan?',opts:['Biarkan mereka — selama desainnya tetap memenuhi tujuan pembelajaran (titik fokus, komposisi, tipografi)','Tolak: rencana pelajaran harus diikuti dengan tepat','Biarkan mereka, dan hapus tujuan pembelajarannya agar mereka bisa membuat apa saja','Suruh mereka membuat kedua poster sebagai hukuman'],c:0,fb:'Bersikaplah fleksibel dengan temanya, jangan pernah dengan tujuannya. Seorang siswa yang merancang sesuatu yang mereka sukai bekerja lebih giat dan belajar lebih banyak — selama tujuan pembelajarannya terpenuhi.'},
+    {q:'Pasangan fase mana yang membentuk "siklus akuntabilitas" sepanjang sebuah pelajaran?',opts:['HW Check di awal dan HW Assignment di akhir','Warm-Up dan Lesson Goal','Theory dan Practice','Lesson Summary dan Wrap-Up'],c:0,fb:'Memeriksa pekerjaan rumah di awal dan memberikannya di akhir menutup siklus tersebut dan membangun kontinuitas antar pelajaran.'},
+    {q:'Seorang tutor menyampaikan pelajaran yang lancar tetapi melakukan sebagian besar pembicaraan sementara siswa hanya menonton mereka merancang. Mengapa ini menjadi tanda peringatan?',opts:['Pelajaran yang pasif terasa lancar tetapi siswa belajar sedikit — dalam kursus desain, tangan siswa yang seharusnya berada di atas alat-alatnya','Ini bukan masalah selama materinya tercakup','Ini berarti strukturnya diikuti dengan benar','Kelancaran selalu menunjukkan pelajaran yang hebat'],c:0,fb:'Keterlibatan adalah tujuannya. Sebuah pelajaran di mana hanya tutor yang merancang adalah pelajaran di mana tidak ada yang belajar merancang — kembalikan alat-alatnya kepada siswa.'},
+    {q:'Seorang tutor melewatkan Previous Lesson Revision untuk menghemat waktu. Apa biaya utamanya, secara pedagogis?',opts:['Mereka kehilangan momen retrieval — membuat siswa mengingat pembelajaran sebelumnya adalah salah satu cara terkuat untuk mengonsolidasikannya','Tidak ada masalah, selama tujuannya dinyatakan','Pekerjaan rumah tidak bisa diberikan nanti','Pelajaran akan berjalan lewat waktu'],c:0,fb:'Revision memaksa retrieval, sebuah alat memori yang kuat. Ini adalah salah satu dari dua titik pemeriksaan konsolidasi dalam struktur tersebut (yang lainnya adalah Lesson Summary).'},
+   ]
+  },
+];
+
+// ─── PROGRESS ───────────────────────────────────────────────────────────────
+const PROG_KEY='kl-gd-progress';
+function getProgress(){
+  try{ return JSON.parse(localStorage.getItem(PROG_KEY)||'{}'); }catch(e){ return {}; }
+}
+function saveProgress(p){ localStorage.setItem(PROG_KEY, JSON.stringify(p)); }
+function isPassed(id){ const p=getProgress(); return p[id]?.passed===true; }
+function getScore(id){ const p=getProgress(); return p[id]?.score||0; }
+function setResult(id, pct, passed){
+  const p=getProgress();
+  p[id]={passed:passed||p[id]?.passed===true, score:Math.max(pct,p[id]?.score||0)};
+  saveProgress(p);
+}
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let currentModule=null, quizData=[], qi=0, score=0;
+const TOTAL=MODULES.length;
+
+// ─── HOME ─────────────────────────────────────────────────────────────────
+function renderHome(){
+  const done = MODULES.filter(m=>isPassed(m.id)).length;
+  document.getElementById('pnum').textContent=done+'/'+TOTAL;
+  document.getElementById('pfill').style.width=(done/TOTAL*100)+'%';
+  const tag=document.getElementById('ntag');
+  if(done>0){tag.style.display='inline';tag.textContent=done===TOTAL?'🏆 Semua selesai!':done+'/'+TOTAL+' selesai';}else tag.style.display='none';
+  const g=document.getElementById('mgrid'); g.innerHTML='';
+
+  // Module 0 — welcome card, always unlocked, no quiz, not counted in progress
+  const m0=document.createElement('div');
+  m0.className='mc';
+  m0.innerHTML=`<div class="mc-stripe" style="background:${MODULE0.color}"></div>
+  <div class="mc-body">
+    <div class="mc-top"><div class="mc-num">Modul 0 · Mulai di Sini</div><div class="mc-em">${MODULE0.emoji}</div></div>
+    <div class="mc-title">${MODULE0.title}</div>
+    <div class="mc-desc">${MODULE0.desc}</div>
+    <div class="mc-foot"><span class="badge btr">📖 Baca</span><span class="stag">Tanpa kuis</span></div>
+  </div>`;
+  m0.onclick=openModule0;
+  g.appendChild(m0);
+
+  MODULES.forEach((m,i)=>{
+    const prev = i===0 ? true : isPassed(MODULES[i-1].id);
+    const isDone = isPassed(m.id);
+    const locked = !prev;
+    const el=document.createElement('div');
+    el.className='mc'+(locked?' locked':'')+(isDone?' done':'');
+    const pct=getScore(m.id);
+    const badge=isDone?'<span class="badge bd">✓ Selesai</span>':locked?'<span class="badge bl">🔒 Terkunci</span>':'<span class="badge bs">Mulai</span>';
+    const stag=isDone?`<span class="stag">Skor: <b>${pct}%</b></span>`:locked?`<span class="stag">Selesaikan Modul ${m.id-1}</span>`:'<span class="stag">Ada kuis</span>';
+    el.innerHTML=`<div class="mc-stripe" style="background:${m.color}"></div>
+    <div class="mc-body">
+      <div class="mc-top"><div class="mc-num">Modul ${m.id}</div><div class="mc-em">${m.emoji}</div></div>
+      <div class="mc-title">${m.title}</div>
+      <div class="mc-desc">${m.desc}</div>
+      <div class="mc-foot">${badge}${stag}</div>
+    </div>`;
+    if(!locked) el.onclick=()=>openModule(m);
+    g.appendChild(el);
+  });
+
+  // DST card
+  const allDone=MODULES.every(m=>isPassed(m.id));
+  const dstEl=document.createElement('div');
+  dstEl.className='mc'+(allDone?'':' locked');
+  dstEl.innerHTML=`<div class="mc-stripe" style="background:linear-gradient(90deg,var(--lime),var(--pink))"></div>
+  <div class="mc-body">
+    <div class="mc-top"><div class="mc-num">Tahap Akhir</div><div class="mc-em">🏆</div></div>
+    <div class="mc-title">Digital Skill Test</div>
+    <div class="mc-desc">Bangun prototipe aplikasi di Figma dan kirimkan untuk menyelesaikan persiapan tutor Anda.</div>
+    <div class="mc-foot"><span class="badge ${allDone?'bd':'bl'}">${allDone?'Siap':'🔒 Terkunci'}</span><span class="stag">Penilaian praktik</span></div>
+  </div>`;
+  if(allDone) dstEl.onclick=showDST;
+  g.appendChild(dstEl);
+}
+
+// ─── MODULE CONTENT ───────────────────────────────────────────────────────
+function openModule(m){
+  currentModule=m.id;
+  let html=`<div class="meyebrow">Modul ${m.id} dari ${TOTAL}</div><div class="mh1">${m.emoji} ${m.title}</div><div class="mobj" style="border-left-color:${m.color}"><strong>Tujuan:</strong> ${m.obj}</div>`;
+  m.sections.forEach(s=>{html+=`<div class="sch">${s.t}</div>`;s.cards.forEach(c=>{html+=rc(c);});});
+  const lbl=isPassed(m.id)?'🔄 Ulangi Kuis':'📝 Ikuti Kuis →';
+  html+=`<hr class="divider"><button class="ctabtn" onclick="startQuiz(${m.id})">${lbl}</button>`;
+  document.getElementById('cbody').innerHTML=html;
+  showScreen('screen-content');
+  window.scrollTo(0,0);
+}
+
+function rc(c){
+  if(c.type==='text')return`<div class="card">${c.h?`<h4>${c.h}</h4>`:''}<p>${c.b}</p></div>`;
+  if(c.type==='hi')return`<div class="card hi">${c.h?`<h4>${c.h}</h4>`:''}<p>${c.b}</p></div>`;
+  if(c.type==='table'){
+    const head=c.head.map(h=>`<th>${h}</th>`).join('');
+    const rows=c.rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('');
+    return`<div class="card">${c.h?`<h4>${c.h}</h4>`:''}<div class="tbl-wrap"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  }
+  if(c.type==='facts'){
+    const items=c.items.map(i=>`<div class="fact"><div class="fact-ic">${i.ic}</div><div class="fact-t">${i.t}</div></div>`).join('');
+    return`<div class="facts">${items}</div>`;
+  }
+  if(c.type==='prog'){
+    const mods=c.mods.map(m=>`<div class="prog-mod"><div class="prog-h"><span class="prog-n">Modul ${m.n}</span><span class="prog-t">${m.t}</span></div><ul class="prog-ls">${m.lessons.map(l=>`<li>${l}</li>`).join('')}</ul><div class="prog-res">🎯 <strong>Hasil modul:</strong> ${m.res}</div></div>`).join('');
+    return`<div class="prog">${mods}</div>`;
+  }
+  if(c.type==='qa'){
+    const items=c.items.map(i=>`<div class="qa-row"><div class="qa-k">✅ ${i.k}</div><div class="qa-v">${i.v}</div></div>`).join('');
+    return`<div class="card"><h4>${c.h}</h4>${items}</div>`;
+  }
+  if(c.type==='warn')return`<div class="callout cw"><span class="ci">⚠️</span><span>${c.txt}</span></div>`;
+  if(c.type==='tip')return`<div class="callout ct"><span class="ci">💡</span><span>${c.txt}</span></div>`;
+  if(c.type==='good')return`<div class="callout cg"><span class="ci">✅</span><span>${c.txt}</span></div>`;
+  if(c.type==='img')return`<img class="mod-img" src="${c.src}" alt="${c.alt||''}" loading="lazy">`;
+  if(c.type==='video'){
+    const wlink='https://www.youtube.com/watch?v='+c.id+(c.start?('&t='+c.start+'s'):'');
+    return`<div class="card video-card"><h4>${c.h}</h4><a class="yt-lite" href="${wlink}" target="_blank" style="background-image:url('https://i.ytimg.com/vi/${c.id}/hqdefault.jpg')" title="${c.h}"><div class="yt-play"></div></a><a class="video-link" href="${wlink}" target="_blank">▶ Watch on YouTube →</a><div class="video-note" style="font-size:11px;color:var(--text-muted);margin-top:4px">Catatan: Jika video dimuat dalam bahasa Inggris, aktifkan teks atau fitur terjemahan otomatis dan pilih bahasa pilihan Anda.</div></div>`;
+  }
+  if(c.type==='list'){
+    const tag=c.ordered?'ol':'ul';
+    const li=c.items.map(i=>`<li>${i}</li>`).join('');
+    return`<div class="card"><h4>${c.h}</h4>${c.p?`<p style="margin-bottom:8px">${c.p}</p>`:''}<${tag}>${li}</${tag}>${c.after?`<p style="margin-top:10px">${c.after}</p>`:''}</div>`;
+  }
+  if(c.type==='twocol'){
+    const li=items=>items.map(i=>`<li>${i}</li>`).join('');
+    return`<div class="two-col"><div class="card"><h4>${c.left.h}</h4><ul>${li(c.left.items)}</ul></div><div class="card hi"><h4 style="color:var(--hi-t)">${c.right.h}</h4><ul>${li(c.right.items)}</ul></div></div>`;
+  }
+  return'';
+}
+
+// ─── QUIZ ─────────────────────────────────────────────────────────────────
+// Fisher-Yates shuffle — uniform, unlike sort(()=>Math.random()-.5), which is
+// biased and can leave the correct answer in a near-fixed position.
+function shuf(a){
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function startQuiz(id){
+  currentModule=id;
+  const m=MODULES.find(x=>x.id===id);
+  // Shuffle question order AND the position of each question's options,
+  // so the correct answer never sits in a predictable slot.
+  quizData=shuf([...m.quiz]).map(q=>{
+    const order=shuf(q.opts.map((_,i)=>i));
+    return {q:q.q, opts:order.map(i=>q.opts[i]), c:order.indexOf(q.c), fb:q.fb};
+  });
+  qi=0; score=0;
+  renderQ(); showScreen('screen-quiz');
+  window.scrollTo(0,0);
+}
+function renderQ(){
+  const q=quizData[qi];
+  document.getElementById('qfill').style.width=(qi/quizData.length*100)+'%';
+  document.getElementById('qcount').textContent=`Pertanyaan ${qi+1} dari ${quizData.length}`;
+  document.getElementById('qtext').textContent=q.q;
+  const el=document.getElementById('qopts'); el.innerHTML='';
+  q.opts.forEach((o,idx)=>{const b=document.createElement('button');b.className='qopt';b.textContent=o;b.onclick=()=>answerQ(idx);el.appendChild(b);});
+  document.getElementById('qfb').className='qfb';
+  document.getElementById('qnxt').className='qnxt';
+}
+function answerQ(idx){
+  if(document.querySelector('.qopt.answered')) return;
+  const q=quizData[qi]; const ok=idx===q.c;
+  if(ok)score++;
+  document.querySelectorAll('.qopt').forEach((b,i)=>{b.classList.add('answered');if(i===q.c)b.classList.add('correct');else if(i===idx&&!ok)b.classList.add('wrong');});
+  const fb=document.getElementById('qfb');
+  fb.className='qfb show '+(ok?'ok':'bad');
+  fb.innerHTML=(ok?'✓ Benar! ':'✗ Belum tepat — ')+q.fb;
+  const nx=document.getElementById('qnxt');
+  nx.className='qnxt show';
+  nx.textContent=qi===quizData.length-1?'Lihat Hasil':'Lanjut →';
+}
+function nextQ(){
+  qi++;
+  if(qi<quizData.length){renderQ();window.scrollTo(0,0);return;}
+  const pct=Math.round(score/quizData.length*100);
+  const passed=pct>=70;
+  setResult(currentModule, pct, passed);
+  showResults(pct, passed);
+}
+
+// ─── RESULTS ──────────────────────────────────────────────────────────────
+function showResults(pct, passed){
+  const m=MODULES.find(x=>x.id===currentModule);
+  let acts='';
+  if(passed&&m.id<TOTAL) acts+=`<button class="bdark" onclick="openModule(MODULES.find(x=>x.id==${m.id+1}))">Modul Berikutnya →</button>`;
+  if(passed&&m.id===TOTAL) acts+='<button class="bdark" onclick="showComplete()">🏆 Lihat Sertifikat</button>';
+  acts+=`<button class="bline" onclick="openModule(MODULES.find(x=>x.id==${m.id}))">📖 Ulas Modul ${m.id}</button>`;
+  acts+=`<button class="bline" onclick="startQuiz(${m.id})">Ulangi Kuis</button>`;
+  const sub=`Anda menjawab ${score}/${quizData.length} dengan benar.`+(passed?' Modul berikutnya telah terbuka.':' Anda memerlukan setidaknya 70% untuk melanjutkan.');
+  document.getElementById('rbody').innerHTML=`<div class="remi">${passed?'🎉':'😅'}</div><div class="rtitle">${passed?'Anda Lulus!':'Terus Belajar'}</div><div class="rpct ${passed?'pass':'fail'}">${pct}%</div><div class="rsub">${sub}</div>${acts}`;
+  showScreen('screen-results');
+  window.scrollTo(0,0);
+  setTimeout(renderHome, 100);
+}
+
+// ─── COMPLETE ─────────────────────────────────────────────────────────────
+function showComplete(){
+  const avg=Math.round(MODULES.map(m=>getScore(m.id)).reduce((a,b)=>a+b,0)/TOTAL);
+  document.getElementById('compbody').innerHTML=`<div style="font-size:72px">🏆</div><h1 style="font-family:'Nunito',sans-serif;font-size:32px;font-weight:900;letter-spacing:-.5px;margin-top:14px;color:var(--text)">Pelatihan Selesai!</h1><p style="color:var(--text2);margin-top:8px;font-size:15px;line-height:1.65">Anda telah menguasai seluruh ${TOTAL} modul — selamat! Anda siap untuk Digital Skill Test.</p><div class="cert"><div class="clbl2">Sertifikat Kelulusan</div><h2>Pelatihan Tutor Desain Grafis</h2><p>Kodland · Seluruh ${TOTAL} modul · Skor rata-rata: ${avg}%</p><div class="cmods">${MODULES.map(m=>`<div class="cmod" style="background:${m.color}20;color:${m.color}">${m.emoji}</div>`).join('')}</div></div><button class="bdark" style="margin-bottom:10px" onclick="showDST()">🎯 Ikuti Digital Skill Test →</button><button class="bline" onclick="goHome()">← Kembali ke Dasbor</button>`;
+  showScreen('screen-complete');
+  window.scrollTo(0,0);
+}
+
+// ─── DST ─────────────────────────────────────────────────────────────────
+function showDST(){
+  showScreen('screen-dst');
+  window.scrollTo(0,0);
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────
+function exitQuiz(){ const m=MODULES.find(x=>x.id===currentModule); if(m) openModule(m); else goHome(); }
+function goHome(){ renderHome(); showScreen('screen-home'); window.scrollTo(0,0); }
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ─── AUTH ────────────────────────────────────────────────────────────────
+const AUTH_KEY='kl-gd-auth';
+const AUTH_HASH=405719967;
+function _h(s){let x=5381;for(let i=0;i<s.length;i++){x=((x<<5)+x+s.charCodeAt(i))|0;}return x>>>0;}
+function tryLogin(){
+  const u=document.getElementById('login-user').value.trim();
+  const p=document.getElementById('login-pass').value;
+  if(_h(u+':'+p)===AUTH_HASH){
+    localStorage.setItem(AUTH_KEY,'1');
+    document.getElementById('login-err').style.display='none';
+    renderHome();
+    showScreen('screen-home');
+    window.scrollTo(0,0);
+  } else {
+    document.getElementById('login-err').style.display='block';
+  }
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────
+if(localStorage.getItem(AUTH_KEY)==='1'){
+  renderHome();
+  showScreen('screen-home');
+} else {
+  showScreen('screen-login');
+}
+
+// ─── DEV MODE (Shift+D × 3 to toggle) ───────────────────────────────────────
+(function(){
+  let _dSeq = 0, _dTimer = null;
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'D' && e.shiftKey){
+      clearTimeout(_dTimer);
+      _dSeq++;
+      _dTimer = setTimeout(() => _dSeq = 0, 1200);
+      if(_dSeq >= 3){ _dSeq = 0; toggleDevMode(); }
+    }
+  });
+
+  function toggleDevMode(){
+    const active = localStorage.getItem('kl-gd-devmode') === '1';
+    if(!active){
+      const p = {};
+      MODULES.forEach(m => { p[m.id] = { passed: true, score: 100 }; });
+      localStorage.setItem(PROG_KEY, JSON.stringify(p));
+      localStorage.setItem('kl-gd-devmode','1');
+      showDevBadge(true);
+      renderHome();
+      alert('🔓 Dev mode ON — all modules unlocked');
+    } else {
+      localStorage.removeItem('kl-gd-devmode');
+      localStorage.removeItem(PROG_KEY);
+      showDevBadge(false);
+      renderHome();
+      alert('🔒 Dev mode OFF — progress cleared');
+    }
+  }
+
+  function showDevBadge(on){
+    let b = document.getElementById('dev-badge');
+    if(!b){
+      b = document.createElement('div');
+      b.id = 'dev-badge';
+      b.style.cssText = 'position:fixed;bottom:12px;right:12px;background:#f03d9e;color:#fff;font-family:Nunito,sans-serif;font-weight:900;font-size:12px;padding:4px 10px;border-radius:20px;z-index:9999;pointer-events:none;letter-spacing:.5px';
+      b.textContent = '🔓 DEV MODE';
+      document.body.appendChild(b);
+    }
+    b.style.display = on ? 'block' : 'none';
+  }
+
+  if(localStorage.getItem('kl-gd-devmode') === '1') {
+    showDevBadge(true);
+  }
+})();
+// ─────────────────────────────────────────────────────────────────────────────
+
+</script>
+
+<footer style="text-align:center;padding:20px 24px;font-size:11px;color:var(--text2);border-top:1px solid var(--border);margin-top:auto;line-height:1.7;opacity:0.7;">
+  © 2026 Kodland. Designed and developed by Ayberk Temizci for internal tutor training purposes.<br>
+  This material is the exclusive property of Kodland. Unauthorized duplication, distribution, or use outside of Kodland's internal training program is strictly prohibited.
+</footer>
+</body>
+</html>
+
