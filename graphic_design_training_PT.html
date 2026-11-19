@@ -229,18 +229,25 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .dst-submit-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:24px 24px;box-shadow:var(--shadow)}
 .dst-submit-title{font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:var(--text);margin-bottom:10px}
 @media(max-width:640px){.dst-body{padding-left:18px;padding-right:18px}.dst-task{flex-direction:column}.dst-task-num{margin-bottom:-8px}}
-/* LOGIN */
-.login-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
-.login-wrap::before{content:'';position:absolute;inset:0;bottom:40%;background:radial-gradient(ellipse 70% 55% at 50% 0%,var(--lime) 0%,transparent 70%);opacity:.45;pointer-events:none}
-[data-theme="dark"] .login-wrap::before{background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(196,240,70,.15) 0%,transparent 70%);opacity:1}
-.login-card{position:relative;background:var(--surface);border:2px solid var(--border);border-radius:20px;padding:40px 36px;max-width:400px;width:100%;box-shadow:var(--shadow-h);text-align:center}
-.login-card .lgi{font-size:44px;margin-bottom:12px}
-.login-card h1{font-family:'Nunito',sans-serif;font-size:23px;font-weight:900;letter-spacing:-.4px;color:var(--text);margin-bottom:8px}
-.login-card .lsub{font-size:13.5px;color:var(--text2);line-height:1.6;margin-bottom:24px}
-.login-input{width:100%;padding:13px 16px;margin-bottom:12px;border:2px solid var(--border);border-radius:12px;background:var(--surface2);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;transition:border-color .15s}
-.login-input:focus{outline:none;border-color:var(--lime-d)}
-.login-input::placeholder{color:var(--text-muted)}
-.login-err{display:none;margin:0 0 12px;padding:10px 14px;border-radius:var(--rsm);background:var(--no-bg);border:1.5px solid var(--no-b);color:var(--no-t);font-size:13px;font-weight:600}
+/* LESSON MANUALS (Module 0) */
+.manuals{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:14px}
+.manual-btn{position:relative;display:flex;flex-direction:column;gap:6px;padding:18px 18px 16px;border-radius:var(--r);text-decoration:none;color:var(--ink);background:linear-gradient(135deg,var(--lime) 0%,#E6FF9A 100%);border:2px solid var(--lime-d);box-shadow:0 4px 0 var(--lime-d),var(--shadow);transition:transform .15s,box-shadow .15s,background .15s;overflow:hidden}
+.manual-btn::after{content:'';position:absolute;top:-30px;right:-30px;width:90px;height:90px;border-radius:50%;background:var(--pink);opacity:.14;transition:opacity .15s}
+.manual-btn:hover{transform:translateY(-3px);box-shadow:0 7px 0 var(--lime-d),var(--shadow-h)}
+.manual-btn:hover::after{opacity:.3}
+.manual-btn:active{transform:translateY(1px);box-shadow:0 2px 0 var(--lime-d)}
+.manual-n{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:var(--ink);color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.6px;border-radius:var(--rpill);padding:4px 11px}
+.manual-t{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;line-height:1.3;color:var(--ink)}
+.manual-cta{margin-top:4px;font-size:12.5px;font-weight:700;color:var(--pink-d)}
+[data-theme="dark"] .manual-btn{background:linear-gradient(135deg,rgba(196,240,70,.22) 0%,rgba(196,240,70,.08) 100%);border-color:rgba(196,240,70,.5);box-shadow:0 4px 0 rgba(196,240,70,.35),var(--shadow)}
+[data-theme="dark"] .manual-t{color:var(--text)}
+[data-theme="dark"] .manual-n{background:var(--lime);color:var(--ink)}
+[data-theme="dark"] .manual-cta{color:var(--pink)}
+/* VIDEO SLOT (Module 7) */
+.vslot-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;aspect-ratio:16/9;margin-top:10px;border:2px dashed var(--border);border-radius:var(--rsm);background:var(--surface2);color:var(--text-muted);text-align:center;padding:16px}
+.vslot-ic{width:56px;height:40px;border-radius:12px;background:var(--border);display:flex;align-items:center;justify-content:center}
+.vslot-ic::after{content:'';border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent var(--surface);margin-left:3px}
+.vslot-t{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px}
 /* skip & modals */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
 .modal-overlay.show{display:flex}
@@ -258,32 +265,6 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 </style>
 </head>
 <body>
-
-<!-- LOGIN -->
-<div id="screen-login" class="screen">
-  <nav class="nav">
-    <a class="logo" href="#">
-      <span class="logo-mark">kodland</span>
-      <span class="logo-div"></span>
-      <span class="logo-sub">Treinamento de Design Gráfico</span>
-    </a>
-    <div class="nav-r">
-      <a class="pbtn" href="index.html">🌐 Região</a>
-      <button class="tbtn" onclick="toggleTheme()"></button>
-    </div>
-  </nav>
-  <div class="login-wrap">
-    <div class="login-card">
-      <div class="lgi">🔐</div>
-      <h1>Acesso ao Treinamento de Tutores</h1>
-      <p class="lsub">Este treinamento é exclusivo para candidatos a tutor da Kodland. Digite as credenciais compartilhadas que você recebeu para desbloquear os módulos.</p>
-      <input class="login-input" id="login-user" type="text" placeholder="Usuário" autocomplete="off">
-      <input class="login-input" id="login-pass" type="password" placeholder="Senha" onkeydown="if(event.key==='Enter')tryLogin()">
-      <div class="login-err" id="login-err">Usuário ou senha incorretos.</div>
-      <button class="bdark" onclick="tryLogin()" style="margin-bottom:0">Desbloquear Treinamento →</button>
-    </div>
-  </div>
-</div>
 
 <!-- HOME -->
 <div id="screen-home" class="screen">
@@ -477,9 +458,25 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 </div>
 
 <script>
+// ─── SAFE STORAGE (PR #1) ────────────────────────────────────────────────────
+// Inside the LMS iframe the browser treats this site's storage as third-party:
+// Safari and strict privacy settings can block or wipe it. Every value is kept
+// in memory + localStorage + sessionStorage and reads never throw, so the
+// training keeps its progress for the whole visit even when storage is blocked.
+const STORE = (function(){
+  const mem = {};
+  function areas(){ const a = []; try { a.push(window.localStorage); } catch(e){} try { a.push(window.sessionStorage); } catch(e){} return a; }
+  return {
+    get(k){ for (const st of areas()){ try { const v = st.getItem(k); if (v !== null) return v; } catch(e){} } return Object.prototype.hasOwnProperty.call(mem, k) ? mem[k] : null; },
+    getAll(k){ const out = []; for (const st of areas()){ try { const v = st.getItem(k); if (v !== null) out.push(v); } catch(e){} } if (Object.prototype.hasOwnProperty.call(mem, k)) out.push(mem[k]); return out; },
+    set(k, v){ v = String(v); mem[k] = v; for (const st of areas()){ try { st.setItem(k, v); } catch(e){} } },
+    remove(k){ delete mem[k]; for (const st of areas()){ try { st.removeItem(k); } catch(e){} } }
+  };
+})();
+
 // THEME
 (function(){
-  const s=localStorage.getItem('kl-theme');
+  const s=STORE.get('kl-theme');
   const sys=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
   const t=s||sys;
   if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
@@ -490,7 +487,7 @@ function toggleTheme(){
   const d=document.documentElement.getAttribute('data-theme')==='dark';
   const n=d?'light':'dark';
   n==='dark'?document.documentElement.setAttribute('data-theme','dark'):document.documentElement.removeAttribute('data-theme');
-  localStorage.setItem('kl-theme',n); setIcons(n);
+  STORE.set('kl-theme',n); setIcons(n);
 }
 
 // ─── MODULE 0 (welcome / no quiz) ────────────────────────────────────────────
@@ -503,30 +500,38 @@ const MODULE0={emoji:'👋',color:'#64748B',title:'Bem-vindo(a) ao Curso de Desi
       {ic:'🙂',t:'<strong>Idade dos alunos</strong><br>13+ anos'},
       {ic:'🎓',t:'<strong>Nível de complexidade</strong><br>Intermediário'},
       {ic:'🕐',t:'<strong>Duração do curso</strong><br>40 aulas'},
-      {ic:'⏱',t:'<strong>Duração da aula</strong><br>90 min (grupo) ou 50 min (individual)'},
+      {ic:'⏱',t:'<strong>Duração da aula</strong><br>90 minutos no formato em grupo ou 50 minutos no formato individual'},
       {ic:'🛠️',t:'<strong>Programas estudados</strong><br>Figma, Photopea'},
     ]},
     {type:'text',h:'O que os alunos vão aprender?',b:'Ao final do curso, os alunos serão capazes de:'},
     {type:'facts',items:[
       {ic:'🎨',t:'<strong>Criar designs gráficos</strong><br>banners, pôsteres, embalagens e mais'},
-      {ic:'🏷️',t:'<strong>Desenvolver uma identidade de marca</strong><br>logos, fontes, cores e manuais de marca'},
+      {ic:'🏷️',t:'<strong>Desenvolver uma identidade de marca</strong><br>logotipos, fontes, cores e brand books'},
       {ic:'📱',t:'<strong>Projetar um protótipo de aplicativo</strong><br>telas clicáveis e animadas no Figma'},
       {ic:'🚀',t:'<strong>Construir um portfólio profissional</strong><br>publicado no Behance para mostrar seu trabalho'},
     ]},
     {type:'text',h:'📚 Programa do curso',b:'Aqui está uma visão resumida das 40 aulas que os alunos vão percorrer — e o que cada módulo deixa para eles:'},
     {type:'prog',mods:[
-      {n:1,t:'Introdução ao design gráfico no Figma',lessons:['<strong>L1.</strong> O que é design gráfico? Conhecendo o Figma.','<strong>L2.</strong> Estudando o Figma: criando nosso primeiro layout.','<strong>L3.</strong> Estudando o Figma: plugins e gráficos vetoriais.','<strong>L4.</strong> Construindo seu próprio portfólio.'],res:'Os alunos aprendem a trabalhar com gráficos vetoriais e a criar seus primeiros banners.'},
-      {n:2,t:'As ferramentas de um designer gráfico',lessons:['<strong>L5.</strong> Entendendo a teoria das cores.','<strong>L6.</strong> Fontes e tipografia.','<strong>L7.</strong> Os fundamentos da composição.','<strong>L8.</strong> Grids Modulares. Composições complexas.'],res:'Os alunos aprendem a escolher cores e fontes para seus projetos, além de como construir a composição de layouts.'},
-      {n:3,t:'Construindo a identidade de um evento no Photopea',lessons:['<strong>L9.</strong> Os fundamentos do trabalho no Photopea; criando uma composição inspirada no espaço.','<strong>L10.</strong> Retoque e edição de fotos.','<strong>L11.</strong> Desenvolvendo um design criativo para um evento.','<strong>L12.</strong> Desenvolvendo os principais componentes da identidade do evento.'],res:'Os alunos aprendem os fundamentos do processamento de imagens. Também aprendem a editar fotos e desenvolver designs para eventos.'},
-      {n:4,t:'Nosso primeiro projeto! Desenvolvendo um logo',lessons:['<strong>L13.</strong> Entendendo branding.','<strong>L14.</strong> O processo de trabalho em um projeto de design. Os fundamentos da criação de logos.','<strong>L15.</strong> Trabalhando em um logo.','<strong>L16.</strong> Mockups. Entendendo publicidade.'],res:'Os alunos aprendem sobre as etapas essenciais de qualquer projeto de design. Também desenvolvem logos e demonstram como esses logos podem aparecer em produtos promocionais.'},
-      {n:5,t:'Desenvolvendo a identidade de marca',lessons:['<strong>L17.</strong> Os principais componentes da identidade corporativa. Criando um logo.','<strong>L18.</strong> Escolhendo fontes e cores.','<strong>L19.</strong> Criando uma apresentação, Parte 1.','<strong>L20.</strong> Criando uma apresentação, Parte 2. Entendendo infográficos.','<strong>L21.</strong> Manuais de marca e diretrizes.'],res:'Os alunos criam seus manuais de marca e aprendem qual papel eles desempenham no design gráfico.'},
-      {n:6,t:'Design para redes sociais',lessons:['<strong>L22.</strong> Trabalhando em uma animação para uma página de rede social.','<strong>L23.</strong> Criando um perfil de rede social, Parte 1.','<strong>L24.</strong> Criando um perfil de rede social, Parte 2.'],res:'Os alunos aprendem a criar designs para redes sociais e por que esse ramo do design é tão particular. Também desenvolvem seu próprio estilo para design de perfis em redes sociais.'},
-      {n:7,t:'Web Design',lessons:['<strong>L25.</strong> Criando uma landing page, Parte 1.','<strong>L26.</strong> Criando uma landing page, Parte 2.','<strong>L27.</strong> Criando um protótipo de aplicativo, Parte 1.','<strong>L28.</strong> Criando um protótipo de aplicativo, Parte 2.'],res:'Os alunos aprendem os segredos do web design e aplicam esse conhecimento para criar seus próprios sites.'},
-      {n:8,t:'Introdução ao design impresso',lessons:['<strong>L29.</strong> Design de cartão de visita: criando uma primeira impressão memorável.','<strong>L30.</strong> Pôster de decoração: do conceito à arte de parede impactante.','<strong>L31.</strong> Design de capa de livro: transformando histórias em obras visuais.','<strong>L32.</strong> Pôster de conscientização social: um design que inspira mudanças.'],res:'Os alunos se familiarizam com projetos de design impresso e criam quatro peças: um cartão de visita, um pôster de decoração, uma capa de livro e um pôster social. Ao longo do caminho, demonstram sua criatividade, aplicam novos recursos do Figma e usam redes neurais.'},
-      {n:9,t:'Desenvolvimento de projeto de design',lessons:['<strong>L33.</strong> Transformando uma ideia em um conceito concreto e um plano de projeto.','<strong>L34.</strong> Estabelecendo a direção visual e o estilo do projeto.','<strong>L35.</strong> Ajustando detalhes e implementando as mudanças necessárias.','<strong>L36.</strong> Concluindo a montagem final e entregando o projeto finalizado.'],res:'Ao concluir este módulo, os alunos serão capazes de desenvolver um conceito de design claro e um plano de projeto, definir um estilo visual coerente, refinar detalhes de design por meio de ajustes iterativos e montar e entregar com sucesso o resultado final do seu trabalho.'},
-      {n:10,t:'Construindo uma marca própria',lessons:['<strong>L37.</strong> Orientação de carreira. Criando um perfil no Behance.','<strong>L38.</strong> Preenchendo o perfil do Behance e organizando os projetos.','<strong>L39.</strong> Preparando uma autoapresentação.','<strong>L40.</strong> Formatura, autoapresentação.'],res:'Ao final do curso, os alunos reúnem todos os seus projetos e criam um portfólio em uma plataforma dedicada a design gráfico.'},
+      {n:1,t:'Introdução ao design gráfico no Figma',lessons:['<strong>Aula 1.</strong> O que é design gráfico? Conhecendo o Figma.','<strong>Aula 2.</strong> Estudando o Figma: Criando nosso primeiro layout.','<strong>Aula 3.</strong> Estudando o Figma: Plugins e gráficos vetoriais.','<strong>Aula 4.</strong> Construindo seu próprio portfólio.'],res:'Neste módulo, os alunos aprenderão a trabalhar com gráficos vetoriais e a criar seus primeiros banners.'},
+      {n:2,t:'As ferramentas de um designer gráfico',lessons:['<strong>Aula 5.</strong> Entendendo a teoria das cores.','<strong>Aula 6.</strong> Fontes e tipografia.','<strong>Aula 7.</strong> Fundamentos da composição.','<strong>Aula 8.</strong> Grelhas modulares. Composições complexas.'],res:'Neste módulo, os alunos aprenderão a escolher cores e fontes para seus projetos, bem como a construir a composição de layouts.'},
+      {n:3,t:'Construindo a identidade de eventos no Photopea',lessons:['<strong>Aula 9.</strong> Fundamentos do trabalho no Photopea; Criando uma composição inspirada no espaço.','<strong>Aula 10.</strong> Retoque e edição de fotos.','<strong>Aula 11.</strong> Desenvolvendo um design criativo para um evento.','<strong>Aula 12.</strong> Desenvolvendo os principais componentes da identidade visual de um evento.'],res:'Neste módulo, os alunos aprenderão os fundamentos do tratamento de imagem. Também aprenderão a editar fotos e desenvolver designs para eventos.'},
+      {n:4,t:'Nosso primeiro projeto! Desenvolvendo um logotipo',lessons:['<strong>Aula 13.</strong> Entendendo o branding.','<strong>Aula 14.</strong> O processo de trabalho em um projeto de design. Fundamentos da criação de logotipos.','<strong>Aula 15.</strong> Trabalhando na criação de um logotipo.','<strong>Aula 16.</strong> Mockups. Entendendo a publicidade.'],res:'Neste módulo, os alunos aprenderão sobre as etapas essenciais do trabalho em qualquer projeto de design. Eles também desenvolverão logotipos e demonstrarão como esses logotipos podem ser aplicados em produtos promocionais e mercadorias.'},
+      {n:5,t:'Desenvolvendo a identidade de marca',lessons:['<strong>Aula 17.</strong> Principais componentes da identidade corporativa. Escolhendo fontes e cores.','<strong>Aula 18.</strong> Criando uma apresentação, Parte 1.','<strong>Aula 19.</strong> Criando uma apresentação, Parte 2. Entendendo infográficos.','<strong>Aula 20.</strong> Brand books e manuais de marca.'],res:'Neste módulo, os alunos criarão seus próprios brand books e aprenderão qual o papel deles no design gráfico.'},
+      {n:6,t:'Design para redes sociais',lessons:['<strong>Aula 21.</strong> Criando animações no Figma.','<strong>Aula 22.</strong> Trabalhando em uma animação para páginas de redes sociais.','<strong>Aula 23.</strong> Desenvolvendo o design para perfis de redes sociais (Instagram/Facebook).','<strong>Aula 24.</strong> Desenvolvendo o design para perfis de redes sociais (Twitch/YouTube).'],res:'Neste módulo, os alunos aprenderão a criar designs para redes sociais e entenderão por que esse segmento do design é tão único. Eles também desenvolverão seu estilo próprio para o visual de perfis nas redes sociais.'},
+      {n:7,t:'Web Design',lessons:['<strong>Aula 25.</strong> Criando uma landing page, Parte 1.','<strong>Aula 26.</strong> Criando uma landing page, Parte 2.','<strong>Aula 27.</strong> Criando o protótipo de um aplicativo, Parte 1.','<strong>Aula 28.</strong> Criando o protótipo de um aplicativo, Parte 2.'],res:'Neste módulo, os alunos aprenderão os segredos do web design e colocarão em prática esse conhecimento para criar seus próprios sites.'},
+      {n:8,t:'Introdução ao design de impressão',lessons:['<strong>Aula 29.</strong> Design de cartão de visitas: criando uma primeira impressão memorável.','<strong>Aula 30.</strong> Pôster de interior: do conceito à arte de parede atraente.','<strong>Aula 31.</strong> Design de capa de livro: transformando histórias em obras-primas visuais.','<strong>Aula 32.</strong> Pôster de conscientização social: design que inspira mudança.'],res:'Os alunos se familiarizarão com projetos de design de impressão e criarão quatro peças: um cartão de visitas, um pôster de interior, uma capa de livro e um pôster social. Ao longo do processo, eles demonstrarão criatividade, aplicarão novos recursos do Figma e usarão redes neurais.'},
+      {n:9,t:'Desenvolvimento de projeto de design',lessons:['<strong>Aula 33.</strong> Desenvolvendo uma ideia em um conceito concreto e um plano de projeto.','<strong>Aula 34.</strong> Estabelecendo a direção visual e o estilo do projeto.','<strong>Aula 35.</strong> Refinando detalhes e implementando os ajustes necessários.','<strong>Aula 36.</strong> Concluindo a montagem final e entregando o projeto finalizado.'],res:'Ao concluir este módulo, os alunos serão capazes de desenvolver um conceito e plano de projeto de design claro, definir um estilo visual coeso, refinar detalhes do design por meio de ajustes iterativos, e montar e entregar com sucesso um resultado final do seu trabalho.'},
+      {n:10,t:'Construindo uma marca personalizada',lessons:['<strong>Aula 37.</strong> Orientação profissional. Criando um perfil no Behance.','<strong>Aula 38.</strong> Preenchendo o perfil no Behance e organizando projetos.','<strong>Aula 39.</strong> Preparando uma autoapresentação.','<strong>Aula 40.</strong> Formatura, autoapresentação.'],res:'Ao final do curso, os alunos reunirão todos os seus projetos e criarão um portfólio em uma plataforma dedicada de design gráfico.'},
     ]},
     {type:'text',h:'Quais ferramentas os alunos vão usar?',b:'Ao longo do curso, os alunos trabalharão com <strong>Figma</strong>, <strong>Photopea</strong> e <strong>Behance</strong>. Também vão aprender os fundamentos de <strong>teoria das cores, composição, tipografia, branding, design para redes sociais</strong> e princípios básicos de <strong>UI/UX</strong>.<br><br>Neste mini curso, você será apresentado a essas ferramentas e aos conceitos centrais do design gráfico, o que te dará o conhecimento e a confiança para ensinar o curso com sucesso desde a sua primeira aula.'},
+  ]},
+  {t:'📘 Manuais das Aulas',cards:[
+    {type:'text',b:'Para cada aula do curso, você recebe um <strong>manual da aula</strong> — o material de apoio que você usa para preparar e conduzir a aula. Para que você já saiba com o que vai trabalhar, aqui estão os manuais das <strong>três primeiras aulas</strong>. Abra-os e explore como estão organizados.'},
+    {type:'manuals',items:[
+      {n:1,t:'O que é design gráfico? Conhecendo o Figma.',url:'https://wiki.kodland.org/s/8850949e-7375-4ca6-816b-b826b04c1949'},
+      {n:2,t:'Estudando o Figma: Criando nosso primeiro layout.',url:'https://wiki.kodland.org/s/1198809a-26ca-4279-9f87-f514ef35b0e0'},
+      {n:3,t:'Estudando o Figma: Plugins e gráficos vetoriais.',url:'https://wiki.kodland.org/s/0dcc34ab-4b8f-4057-8f9b-bbeaaf8385d0'},
+    ]},
   ]},
   {t:'🧭 Sobre Este Treinamento',cards:[
     {type:'text',h:'Sobre o que é este mini curso?',b:'Este treinamento é composto por <strong>7 módulos curtos mais um Digital Skill Test final</strong>, criado para te preparar a ensinar o curso com confiança. Os <strong>Módulos 1–6</strong> cobrem os conceitos de design e as ferramentas que você vai ensinar — as bases técnicas e os padrões de qualidade esperados em aula. O <strong>Módulo 7</strong> foca em algo igualmente importante: <strong>como ensinar</strong> — a estrutura de uma boa aula Kodland e como dar feedback que realmente ajuda os alunos a crescer. Cada módulo termina com um quiz curto — alcance <strong>70% ou mais</strong> para desbloquear o próximo e conclua todos os sete para chegar ao Digital Skill Test.'},
@@ -535,6 +540,7 @@ const MODULE0={emoji:'👋',color:'#64748B',title:'Bem-vindo(a) ao Curso de Desi
  ]};
 
 function openModule0(){
+  currentModule=null;   // Module 0 time counts only in the training total
   let html=`<div class="meyebrow">Módulo 0 · Comece Aqui · Sem Quiz</div><div class="mh1">${MODULE0.emoji} ${MODULE0.title}</div><div class="mobj" style="border-left-color:${MODULE0.color}"><strong>Objetivo:</strong> Entender o que é o curso de Design Gráfico, sua metodologia e objetivos, antes de avançar para os módulos de conteúdo.</div>`;
   MODULE0.sections.forEach(s=>{html+=`<div class="sch">${s.t}</div>`;s.cards.forEach(c=>{html+=rc(c);});});
   html+=`<hr class="divider"><button class="ctabtn" onclick="openModule(MODULES[0])">Ir para o Módulo 1 →</button>`;
@@ -561,7 +567,7 @@ const MODULES=[
       {type:'text',b:'Agora que você já sabe o que é (e o que não é) design gráfico, é hora de revisar todos os conceitos centrais que todo designer gráfico precisa conhecer. Tudo daqui até o fim do módulo — cor, tipografia, composição, branding e identidade corporativa — é o kit conceitual por trás de todo projeto do curso, então dedique tempo a cada um deles.'},
     ]},
     {t:'🌈 Cor',cards:[
-      {type:'text',b:'Os designers precisam entender teoria das cores porque a cor faz mais do que tornar um design bonito — ela comunica informação, evoca emoção e direciona a atenção do observador. Esse conceito tem peso ao longo de todo o curso: os alunos vão colocá-lo em prática já na <strong>Aula 5 ("Entendendo a teoria das cores")</strong>, a aula que abre o módulo de ferramentas do designer, e ele retorna com força total no <strong>Módulo 5 (Aulas 17–18)</strong>, quando a teoria das cores se torna central na criação de um logo e na escolha das cores da marca. Por isso, é importante estar seguro com as seguintes ideias.'},
+      {type:'text',b:'Os designers precisam entender teoria das cores porque a cor faz mais do que tornar um design bonito — ela comunica informação, evoca emoção e direciona a atenção do observador. Esse conceito tem peso ao longo de todo o curso: os alunos vão colocá-lo em prática já na <strong>Aula 5 ("Entendendo a teoria das cores")</strong>, a aula que abre o módulo de ferramentas do designer, e ele retorna com força total no <strong>Módulo 5 (Aula 17)</strong>, quando a teoria das cores se torna central na escolha das fontes e cores da identidade corporativa. Por isso, é importante estar seguro com as seguintes ideias.'},
       {type:'list',h:'A roda de cores',p:'O artista e educador suíço <strong>Johannes Itten</strong> desenvolveu a roda de cores para visualizar como as cores se relacionam entre si, ajudando os designers a criar composições de cores equilibradas. A roda é dividida em doze setores, cada um representando uma cor primária ou tom de cor.',items:['<strong>Cores primárias</strong> — vermelho, amarelo e azul — não podem ser criadas misturando outras cores.','<strong>Cores secundárias</strong> — verde, laranja e roxo — ficam entre as primárias e são produzidas misturando duas primárias adjacentes.','<strong>Cores terciárias</strong> vêm da mistura de uma cor primária com a cor secundária ao lado dela.']},
       {type:'img',src:'images/PT/colour-wheel.png',alt:'A roda de cores'},
       {type:'list',h:'As propriedades da cor',p:'Toda cor pode ser descrita por três características:',items:['<strong>Matiz (Hue)</strong> — a cor em si (vermelho, azul, verde).','<strong>Saturação</strong> — sua intensidade ou riqueza (o vermelho é bem saturado, o cinza não é).','<strong>Brilho</strong> — quão clara ou escura ela é.']},
@@ -605,11 +611,11 @@ const MODULES=[
     ]},
    ],
    quiz:[
-    {q:'Um aluno pergunta se o curso vai ensiná-lo a desenhar personagens. O que você deve dizer?',opts:['Sim — desenhar é parte central do design gráfico','Não — o curso é sobre design (organizar imagens, texto e cor), não desenho','Somente nos módulos finais','Somente se comprarem uma mesa digitalizadora'],c:1,fb:'A metodologia diz explicitamente para nunca apresentar o curso como um curso de desenho. Design é sobre comunicação por meio de imagens, texto e cor.'},
+    {q:'Um aluno pergunta se o curso vai ensiná-lo a desenhar personagens. O que você deve dizer?',opts:['Sim — desenhar personagens à mão é uma parte central do trabalho de design gráfico','Não — o curso é sobre design (organizar imagens, texto e cor), não sobre desenho','Sim, mas só nos módulos finais, depois que os fundamentos do Figma forem dominados','Depende — com uma mesa digitalizadora, o curso passa a incluir ilustração de personagens'],c:1,fb:'A metodologia diz explicitamente para nunca apresentar o curso como um curso de desenho. Design é sobre comunicação por meio de imagens, texto e cor.'},
     {q:'Quais são as três cores primárias na roda de cores?',opts:['Vermelho, verde, azul','Vermelho, amarelo, azul','Ciano, magenta, amarelo','Laranja, verde, roxo'],c:1,fb:'Vermelho, amarelo e azul são as primárias — elas não podem ser obtidas misturando outras cores.'},
     {q:'Qual categoria de fonte é a melhor escolha para o corpo de texto em um aplicativo ou site?',opts:['Decorativa','Manuscrita / Cursiva','Serifada (Antiqua)','Sem serifa (Grotesque)'],c:3,fb:'As fontes sem serifa oferecem a melhor legibilidade e são o padrão para UI, aplicativos, sites e jogos.'},
-    {q:'O que diz a "regra dos terços"?',opts:['Usar exatamente três cores','Dividir a tela em 9 partes e posicionar pontos focais nas interseções','Um terço do design deve ficar vazio','O texto deve ocupar um terço do pôster'],c:1,fb:'A tela é dividida em terços nos dois sentidos; as quatro interseções são pontos focais naturais.'},
-    {q:'Se uma marca é a personalidade de uma empresa, o que é a identidade corporativa?',opts:['Seu registro legal','Sua "roupa" — os elementos visuais (logo, fontes, cores, gráficos) que criam uma imagem única','Seu orçamento de publicidade','Seu catálogo de produtos'],c:1,fb:'A identidade corporativa é a "roupa" da marca: logo, fontes, cores da marca e elementos gráficos trabalhando juntos para construir reconhecimento e confiança.'},
+    {q:'O que diz a "regra dos terços"?',opts:['Usar no máximo três cores e distribuí-las em partes iguais pela composição','Dividir a tela em 9 partes e posicionar pontos focais nas interseções','Deixar um terço do design vazio para que os elementos principais respirem','Reservar um terço do pôster para o texto e dois terços para as imagens'],c:1,fb:'A tela é dividida em terços nos dois sentidos; as quatro interseções são pontos focais naturais.'},
+    {q:'Se uma marca é a personalidade de uma empresa, o que é a identidade corporativa?',opts:['Seu "registro" — os documentos legais (nome, marca registrada, CNPJ) que protegem a empresa','Sua "roupa" — os elementos visuais (logo, fontes, cores, gráficos) que criam uma imagem única','Sua "voz" — o tom das mensagens (slogans, anúncios, posts) que a empresa publica nas redes','Seu "catálogo" — a linha de produtos (embalagens, preços, coleções) que a empresa oferece'],c:1,fb:'A identidade corporativa é a "roupa" da marca: logo, fontes, cores da marca e elementos gráficos trabalhando juntos para construir reconhecimento e confiança.'},
    ]
   },
   {id:2,emoji:'🧭',title:'Fundamentos do Figma',desc:'O que é o Figma, vetor vs raster, criando uma conta, ferramentas básicas, ilustração, fontes, grids modulares e plugins.',obj:'Colocar a mão na massa no Figma — a ferramenta principal do curso — desde a criação de uma conta até desenho, grids e plugins.',color:'#22C55E',
@@ -643,7 +649,7 @@ const MODULES=[
       {type:'warn',txt:'Ensine sobre <strong>licenças de fontes</strong>: gratuita/de código aberto, criativa (não comercial), comercial (é preciso comprar) e por assinatura. Os alunos devem verificar a licença antes de usar uma fonte baixada — um hábito profissional que vale a pena construir desde cedo.'},
     ]},
     {t:'🏗️ Grids Modulares',cards:[
-      {type:'text',b:'Depois de dominar bem as funções básicas do Figma, os <strong>grids modulares se tornam uma parte essencial do trabalho de design</strong> — por isso este é um tópico que você deve dominar, não apenas reconhecer. Os alunos encontram os grids na <strong>Aula 8 do curso ("Grids Modulares. Composições complexas")</strong>, a aula que encerra o módulo de ferramentas do designer, e a partir daí os grids sustentam silenciosamente seus maiores projetos: as apresentações e manuais de marca do módulo de identidade de marca, e especialmente as <strong>landing pages e protótipos de aplicativo do módulo de Web Design (Aulas 25–28)</strong>.'},
+      {type:'text',b:'Depois de dominar bem as funções básicas do Figma, os <strong>grids modulares se tornam uma parte essencial do trabalho de design</strong> — por isso este é um tópico que você deve dominar, não apenas reconhecer. Os alunos encontram os grids na <strong>Aula 8 do curso ("Grelhas modulares. Composições complexas")</strong>, a aula que encerra o módulo de ferramentas do designer, e a partir daí os grids sustentam silenciosamente seus maiores projetos: as apresentações e manuais de marca do módulo de identidade de marca, e especialmente as <strong>landing pages e protótipos de aplicativo do módulo de Web Design (Aulas 25–28)</strong>.'},
       {type:'text',h:'O que é e por quê',b:'Um grid modular é um sistema de <strong>colunas, linhas e margens</strong> que organiza um layout. Grids baseados em células são ideais para impressos; <strong>grids de coluna</strong> são ideais para sites e aplicativos (sem linhas horizontais, porque a altura das telas varia). Os benefícios que os alunos sentem imediatamente: estilo unificado, velocidade por encaixe automático (snap-to-guide), estética proporcional e hierarquia mais clara — e no mundo real, os desenvolvedores front-end constroem diretamente a partir do grid do designer.'},
       {type:'text',b:'Nota: Para ativar a opção Frame no Figma 2026, clique no ícone Frame. Em seguida, selecione o Frame que melhor se adapta ao seu projeto. Depois de selecionado, as opções de edição aparecerão.<br><br><img class="mod-img" src="images/Grid_figma.png" alt="Ativando a opção Frame no Figma" loading="lazy">'},
       {type:'video',h:'▶ Configurando um Grid no Figma',id:'HcQ6Hd7y-ew'},
@@ -654,11 +660,11 @@ const MODULES=[
     ]},
    ],
    quiz:[
-    {q:'Por que um logo feito no Figma permanece nítido em qualquer tamanho?',opts:['O Figma exporta em resolução muito alta','O Figma cria gráficos vetoriais — formas matemáticas que escalam sem perda de qualidade','O Figma comprime imagens automaticamente','Logos sempre são arquivos pequenos'],c:1,fb:'O Figma é um editor vetorial: as formas são matemática, não pixels, então escalam infinitamente sem borrar.'},
-    {q:'Qual tipo de imagem é melhor para fotografias detalhadas?',opts:['Vetor','Raster (feita de pixels)','SVG','Wireframe'],c:1,fb:'Gráficos raster (JPEG, PNG) são feitos de pixels e lidam bem com detalhe fotográfico; vetores são ideais para logos e ícones.'},
-    {q:'Ao desenhar com a Pen tool, como você fecha uma forma?',opts:['Pressionar Escape','Dar duplo clique em qualquer lugar','Clicar novamente no primeiro ponto de ancoragem','Pressionar Ctrl+S'],c:2,fb:'Clicar de volta no primeiro ponto de ancoragem fecha o traçado formando uma forma completa.'},
-    {q:'Uma fonte instalada no seu computador não aparece no Figma no navegador. O que está faltando?',opts:['Um plano pago do Figma','O aplicativo auxiliar Font Installer, que permite ao Figma acessar fontes locais','Reiniciar o sistema','A fonte precisa ser do Google Fonts'],c:1,fb:'O Figma no navegador precisa do pequeno aplicativo Font Installer para ler fontes instaladas localmente; recarregue a página depois de instalar.'},
-    {q:'O que são plugins no Figma?',opts:['Templates pagos','Complementos que estendem o Figma com funções extras (fotos de banco, paletas, remoção de fundo), abertos via Actions / Ctrl+K','Aplicativos externos que substituem as ferramentas do Figma','O nome que o Figma dá às fontes'],c:1,fb:'Os plugins estendem o Figma por dentro — encontrados pelo botão Actions ou por Ctrl/Cmd+K em Plugins & Widgets.'},
+    {q:'Por que um logo feito no Figma permanece nítido em qualquer tamanho?',opts:['O Figma exporta sempre em altíssima resolução — pixels suficientes para qualquer tamanho','O Figma cria gráficos vetoriais — formas matemáticas que escalam sem perda de qualidade','O Figma comprime as imagens automaticamente — e a compressão preserva os detalhes finos','Logos são arquivos pequenos — e arquivos pequenos nunca perdem qualidade ao ampliar'],c:1,fb:'O Figma é um editor vetorial: as formas são matemática, não pixels, então escalam infinitamente sem borrar.'},
+    {q:'Qual tipo de imagem é melhor para fotografias detalhadas?',opts:['Vetorial (feita de pontos, linhas e curvas)','Raster (feita de uma grade de pixels)','SVG (formato vetorial escalável)','Wireframe (esboço estrutural em cinza)'],c:1,fb:'Gráficos raster (JPEG, PNG) são feitos de pixels e lidam bem com detalhe fotográfico; vetores são ideais para logos e ícones.'},
+    {q:'Ao desenhar com a Pen tool, como você fecha uma forma?',opts:['Pressionar Escape logo após o último ponto','Dar duplo clique em qualquer ponto do canvas','Clicar novamente no primeiro ponto de ancoragem','Pressionar Enter depois do último ponto traçado'],c:2,fb:'Clicar de volta no primeiro ponto de ancoragem fecha o traçado formando uma forma completa.'},
+    {q:'Uma fonte instalada no seu computador não aparece no Figma no navegador. O que está faltando?',opts:['Um plano pago do Figma, que libera o uso de fontes instaladas no computador','O aplicativo auxiliar Font Installer, que permite ao Figma acessar fontes locais','Reiniciar o computador, para que o sistema registre a nova fonte no navegador','Converter a fonte para o Google Fonts, o único catálogo que o Figma reconhece'],c:1,fb:'O Figma no navegador precisa do pequeno aplicativo Font Installer para ler fontes instaladas localmente; recarregue a página depois de instalar.'},
+    {q:'O que são plugins no Figma?',opts:['Templates pagos da comunidade (layouts, kits de UI, mockups) que substituem o design do zero, comprados na loja do Figma','Complementos que estendem o Figma com funções extras (fotos de banco, paletas, remoção de fundo), abertos via Actions / Ctrl+K','Aplicativos externos (Photopea, Canva, Behance) que substituem as ferramentas do Figma e são abertos em outra aba','Fontes extras (Google Fonts, DaFont, 1001fonts) que o Figma instala automaticamente pelo menu Actions / Ctrl+K'],c:1,fb:'Os plugins estendem o Figma por dentro — encontrados pelo botão Actions ou por Ctrl/Cmd+K em Plugins & Widgets.'},
    ]
   },
   {id:3,emoji:'🖌️',title:'Photopea e Design Raster',desc:'A alternativa gratuita ao Photoshop: fundamentos da interface, edição e retoque de fotos, mockups e Smart Objects.',obj:'Se sentir confortável no Photopea e entender os fluxos de trabalho raster que os alunos usam no Módulo 3 do curso.',color:'#F59E0B',
@@ -682,9 +688,9 @@ const MODULES=[
     ]},
    ],
    quiz:[
-    {q:'Por que o curso muda para o Photopea neste módulo?',opts:['O Figma deixou de ser gratuito','Edição de fotos e colagens precisam de um editor raster, e o Figma é vetorial','O Photopea faz logos melhores','Os alunos precisam aprender a programar'],c:1,fb:'O Photopea é um editor raster gratuito (uma alternativa ao Photoshop) — a ferramenta certa para edição de fotos, algo que o Figma, baseado em vetores, faz mal.'},
-    {q:'Em uma máscara de camada no Photopea, o que pintar com preto faz?',opts:['Revela aquela parte da camada','Oculta aquela parte da camada','Apaga a camada permanentemente','Inverte as cores'],c:1,fb:'Preto oculta, branco revela — e tudo isso de forma não destrutiva, diferente da borracha.'},
-    {q:'Como você atualiza um design dentro de um mockup PSD?',opts:['Redesenhar o mockup do zero','Substituir o conteúdo do Smart Object e salvar — todas as cópias se atualizam','Exportar o mockup como SVG primeiro','Usar o Spot Healing Brush'],c:1,fb:'Os mockups usam Smart Objects: dê duplo clique na camada inteligente (ou Replace Contents), cole seu design, salve, e o mockup se atualiza em todos os lugares.'},
+    {q:'Por que o curso muda para o Photopea neste módulo?',opts:['O Figma deixou de ser gratuito, e o Photopea é a alternativa sem custo para a turma','Edição de fotos e colagens precisam de um editor raster, e o Figma é vetorial','O Photopea cria logos vetoriais mais nítidos do que os gerados pelo Figma','O Photopea tem colaboração em tempo real, e o Figma não permite editar em grupo'],c:1,fb:'O Photopea é um editor raster gratuito (uma alternativa ao Photoshop) — a ferramenta certa para edição de fotos, algo que o Figma, baseado em vetores, faz mal.'},
+    {q:'Em uma máscara de camada no Photopea, o que pintar com preto faz?',opts:['Revela aquela parte da camada, sem destruir nada','Oculta aquela parte da camada, sem destruir nada','Apaga aquela parte da camada de forma permanente','Inverte as cores daquela parte da camada'],c:1,fb:'Preto oculta, branco revela — e tudo isso de forma não destrutiva, diferente da borracha.'},
+    {q:'Como você atualiza um design dentro de um mockup PSD?',opts:['Redesenhar o mockup do zero com o novo design — cada cópia precisa ser refeita','Substituir o conteúdo do Smart Object e salvar — todas as cópias se atualizam','Exportar o design como SVG e arrastá-lo sobre o mockup — ele se ajusta sozinho','Usar o Spot Healing Brush sobre o design antigo e colar o novo por cima dele'],c:1,fb:'Os mockups usam Smart Objects: dê duplo clique na camada inteligente (ou Replace Contents), cole seu design, salve, e o mockup se atualiza em todos os lugares.'},
     {q:'Qual ferramenta do Photopea permite selecionar áreas com base na sua cor?',opts:['Magic Selection','Rectangular Selection','Quick Selection','Magnetic Selection'],c:0,fb:'A Magic Selection seleciona áreas de cor semelhante com um clique — ideal para isolar regiões de cor uniforme.'},
     {q:'Qual ajuste do Photopea permite colorir uma imagem usando uma única cor, dando mais controle sobre o resultado final?',opts:['Black & White','Saturation','Gradient Map'],c:0,fb:'O ajuste Black & White converte a imagem permitindo controlar como cada cor original é traduzida — dando muito mais controle sobre o resultado final.'},
    ]
@@ -723,16 +729,16 @@ const MODULES=[
    ],
    quiz:[
     {q:'Um aplicativo parece bonito, mas os usuários não conseguem encontrar o botão de finalizar compra. Que tipo de problema é esse?',opts:['Um problema de UI','Um problema de UX','Um problema de branding','Um problema de tipografia'],c:1,fb:'UX é sobre facilidade de uso. Bonito, mas confuso = má experiência do usuário.'},
-    {q:'Por que os protótipos começam em preto e branco, com retângulos cinza no lugar das imagens?',opts:['Para economizar memória do Figma','Para testar a estrutura e a UX antes que qualquer design visual seja aprovado','Porque os clientes preferem cinza','Para imprimir rascunhos mais baratos'],c:1,fb:'O protótipo valida estrutura, posicionamento de elementos e fluxo primeiro; cor e gráficos vêm depois da aprovação.'},
-    {q:'Onde devem ficar os botões mais importantes em uma tela mobile?',opts:['No canto superior esquerdo','Centralizados verticalmente','Na parte inferior, dentro do alcance do polegar','Em um menu hambúrguer'],c:2,fb:'"Os polegares controlam tudo" — ações-chave pertencem à parte inferior, onde os polegares naturalmente descansam.'},
+    {q:'Por que os protótipos começam em preto e branco, com retângulos cinza no lugar das imagens?',opts:['Para economizar memória do Figma enquanto o arquivo ainda tem muitas telas','Para testar a estrutura e a UX antes que qualquer design visual seja aprovado','Porque os clientes aprovam mais rápido um layout neutro do que um colorido','Para que os rascunhos possam ser impressos mais baratos durante a revisão'],c:1,fb:'O protótipo valida estrutura, posicionamento de elementos e fluxo primeiro; cor e gráficos vêm depois da aprovação.'},
+    {q:'Onde devem ficar os botões mais importantes em uma tela mobile?',opts:['No canto superior esquerdo, onde a leitura começa','Centralizados verticalmente, no meio exato da tela','Na parte inferior, dentro do alcance do polegar','Dentro de um menu hambúrguer, para limpar a tela'],c:2,fb:'"Os polegares controlam tudo" — ações-chave pertencem à parte inferior, onde os polegares naturalmente descansam.'},
     {q:'Quais incrementos de espaçamento o design mobile usa?',opts:['Passos de 5px','Passos de 8px (8, 16, 24, 32)','Passos de 10px','Aleatório, por sensação'],c:1,fb:'Designers mobile trabalham em incrementos de 8 pixels para manter ritmo e usabilidade consistentes.'},
-    {q:'Na prototipagem do Figma, o que define o ajuste "Trigger"?',opts:['A velocidade da animação','O que inicia a transição (clique, hover, deslize)','A tela de destino','A curva de aceleração'],c:1,fb:'O Trigger é a ação do usuário que inicia a interação; o Destination é para onde ela leva, o Duration é quanto tempo dura.'},
+    {q:'Na prototipagem do Figma, o que define o ajuste "Trigger"?',opts:['A velocidade da animação (400 ms, 800 ms…)','O que inicia a transição (clique, hover, deslize)','O frame de destino para onde a transição leva','A curva de aceleração (linear, ease in and out…)'],c:1,fb:'O Trigger é a ação do usuário que inicia a interação; o Destination é para onde ela leva, o Duration é quanto tempo dura.'},
    ]
   },
-  {id:5,emoji:'🖨️',title:'Design para Impressão',desc:'Sangria e corte, 300 DPI, RGB vs CMYK, pôsteres de decoração, capas de livro e pôsteres sociais.',obj:'Entender as regras específicas de impressão o suficiente para identificar todo erro clássico de aluno antes que vá para a gráfica.',color:'#F97316',
+  {id:5,emoji:'🖨️',title:'Design para Impressão',desc:'Sangria e corte, 300 DPI, RGB vs CMYK, pôsteres de interior, capas de livro e pôsteres sociais.',obj:'Entender as regras específicas de impressão o suficiente para identificar todo erro clássico de aluno antes que vá para a gráfica.',color:'#F97316',
    sections:[
     {t:'👀 O Que Este Módulo Aborda',cards:[
-      {type:'text',b:'Neste módulo o curso deixa a tela e projeta para <strong>papel</strong> — <strong>Módulo 8 do curso, "Introdução ao design impresso" (Aulas 29–32)</strong>: cartões de visita, pôsteres de decoração, capas de livro e pôsteres sociais. A impressão é implacável de uma forma que as telas não são — não há zoom, não há retroiluminação e não há desfazer depois da prensa de corte. Praticamente todo erro clássico de aluno aqui — texto pequeno demais, cores que ficam sem vida na impressão, designs cortados na borda — é <strong>invisível na tela</strong> e só aparece no papel. Entender as regras físicas da impressão é o que permite identificar esses erros antes que o arquivo de um aluno saia do Figma.'},
+      {type:'text',b:'Neste módulo o curso deixa a tela e projeta para <strong>papel</strong> — <strong>Módulo 8 do curso, "Introdução ao design de impressão" (Aulas 29–32)</strong>: cartões de visita, pôsteres de interior, capas de livro e pôsteres sociais. A impressão é implacável de uma forma que as telas não são — não há zoom, não há retroiluminação e não há desfazer depois da prensa de corte. Praticamente todo erro clássico de aluno aqui — texto pequeno demais, cores que ficam sem vida na impressão, designs cortados na borda — é <strong>invisível na tela</strong> e só aparece no papel. Entender as regras físicas da impressão é o que permite identificar esses erros antes que o arquivo de um aluno saia do Figma.'},
     ]},
     {t:'📏 Regras de Impressão',cards:[
       {type:'text',h:'Os desafios da impressão',b:'Projetar para impressão é diferente de projetar para telas, e dois desafios causam a maioria das surpresas. O primeiro é a <strong>cor</strong>: uma impressora mistura tintas no papel, então as cores vibrantes que você vê em uma tela iluminada costumam sair sem vida depois de impressas — cor e contraste simplesmente não sobrevivem intactos a essa jornada. O segundo é o <strong>corte</strong>: depois de impresso, todo cartão e pôster é cortado por uma guilhotina, e a lâmina sempre desvia um milímetro ou dois. Um design que termina exatamente na borda pode ficar com margens brancas indesejadas. Ambos os problemas são resolvidos na etapa de design — escolhendo cores adequadas para impressão e estendendo o fundo além da linha de corte.'},
@@ -744,22 +750,22 @@ const MODULES=[
       {type:'text',h:'Contornando o RGB do Figma',b:'O Figma não suporta CMYK nativamente. O truque do curso: usar o conta-gotas (eyedropper) em cores de um arquivo de referência chamado <strong>CMYK Colour Wheel</strong> para que o resultado impresso seja fiel ao da tela. E verificar o <strong>contraste</strong> com o verificador do Figma (o ícone yin-yang no painel de cores — o ícone AA corrige automaticamente contraste fraco), porque as impressoras reduzem o contraste. Além disso, você pode tentar usar plugins gratuitos e comparar as cores antes de exportar seu projeto.<br><br><a class="yt-lite" href="https://www.youtube.com/watch?v=1DQvEsJmSSk" target="_blank" style="background-image:url(\'https://i.ytimg.com/vi/1DQvEsJmSSk/hqdefault.jpg\')" title="Comparando cores com plugins gratuitos"><span class="yt-play"></span></a><a class="video-link" href="https://www.youtube.com/watch?v=1DQvEsJmSSk" target="_blank">▶ Ver no YouTube →</a><div class="video-note">Nota: Se o vídeo carregar em inglês, ative as legendas ou o recurso de tradução automática e selecione seu idioma preferido.</div>'},
     ]},
     {t:'🖼️ Pôsteres de Decoração e Capas de Livro',cards:[
-      {type:'text',h:'Pôsteres de decoração',b:'Com as regras físicas estabelecidas, o módulo de impressão avança para seu projeto mais artístico na <strong>Aula 30 ("Pôster de decoração: do conceito à arte de parede impactante")</strong> — logo depois da aula de cartão de visita, então os alunos já conhecem sangria, DPI e CMYK e podem focar no lado criativo: pôsteres projetados para decorar um ambiente real. Os pôsteres de decoração usam <strong>texto e gráficos desenhados à mão — não fotografias</strong> — e devem combinar com as cores, o estilo e o propósito do ambiente; é aqui que as habilidades de composição e tipografia do Módulo 1 são aplicadas a um objeto físico. Os tamanhos de impressão seguem um formato padrão (A3 é o ideal; A1 pode deixar o Figma lento). Técnicas do curso: cada palavra digitada separadamente para estilização independente, <strong>traços dinâmicos</strong> (Frequency, Wiggle, Smoothen), pinceladas, e <strong>Radial repeat</strong> no modo Figma Draw para ornamentos perfeitamente simétricos.'},
-      {type:'img',src:'images/PT/interior-posters.png',alt:'Exemplos de pôsteres de decoração'},
-      {type:'text',h:'Anatomia da capa de livro',b:'A <strong>Aula 31 ("Design de capa de livro: transformando histórias em obras visuais")</strong> aumenta a dificuldade: uma capa é mais do que apenas a parte frontal. Ela tem <strong>capa frontal, contracapa e lombada</strong> (com sua própria largura calculada a partir do número de páginas), uma <strong>área segura/útil</strong> para texto e logos, <strong>margens</strong>, <strong>sangria</strong> e tamanhos de corte. Ninguém memoriza esses números — profissionais usam geradores/calculadoras. Os modelos vêm da <a href="https://kdp.amazon.com/cover-calculator" target="_blank"><strong>Amazon Cover File Calculator</strong></a>: informe encadernação, papel, tamanho de corte e número de páginas → baixe um modelo com o tamanho e as marcações corretas para projetar.'},
+      {type:'text',h:'Pôsteres de interior',b:'Com as regras físicas estabelecidas, o módulo de impressão avança para seu projeto mais artístico na <strong>Aula 30 ("Pôster de interior: do conceito à arte de parede atraente")</strong> — logo depois da aula de cartão de visita, então os alunos já conhecem sangria, DPI e CMYK e podem focar no lado criativo: pôsteres projetados para decorar um ambiente real. Os pôsteres de interior usam <strong>texto e gráficos desenhados à mão — não fotografias</strong> — e devem combinar com as cores, o estilo e o propósito do ambiente; é aqui que as habilidades de composição e tipografia do Módulo 1 são aplicadas a um objeto físico. Os tamanhos de impressão seguem um formato padrão (A3 é o ideal; A1 pode deixar o Figma lento). Técnicas do curso: cada palavra digitada separadamente para estilização independente, <strong>traços dinâmicos</strong> (Frequency, Wiggle, Smoothen), pinceladas, e <strong>Radial repeat</strong> no modo Figma Draw para ornamentos perfeitamente simétricos.'},
+      {type:'img',src:'images/PT/interior-posters.png',alt:'Exemplos de pôsteres de interior'},
+      {type:'text',h:'Anatomia da capa de livro',b:'A <strong>Aula 31 ("Design de capa de livro: transformando histórias em obras-primas visuais")</strong> aumenta a dificuldade: uma capa é mais do que apenas a parte frontal. Ela tem <strong>capa frontal, contracapa e lombada</strong> (com sua própria largura calculada a partir do número de páginas), uma <strong>área segura/útil</strong> para texto e logos, <strong>margens</strong>, <strong>sangria</strong> e tamanhos de corte. Ninguém memoriza esses números — profissionais usam geradores/calculadoras. Os modelos vêm da <a href="https://kdp.amazon.com/cover-calculator" target="_blank"><strong>Amazon Cover File Calculator</strong></a>: informe encadernação, papel, tamanho de corte e número de páginas → baixe um modelo com o tamanho e as marcações corretas para projetar.'},
       {type:'img',src:'images/PT/book-cover-anatomy.png',alt:'Anatomia da capa de livro'},
     ]},
     {t:'📢 Pôsteres Sociais',cards:[
-      {type:'list',h:'Quatro objetivos',p:'O módulo de impressão se encerra com a <strong>Aula 32 ("Pôster de conscientização social: um design que inspira mudanças")</strong> e o tipo de pôster que mais exige de um jovem designer — um projeto que utiliza todo o conhecimento das três aulas anteriores de impressão. Um anúncio social não vende um produto — ele faz as pessoas pararem e pensarem, e toda decisão de design precisa servir a esse propósito. Todo pôster social busca quatro objetivos:',items:['<strong>Informar</strong> — transmitir um fato ou ideia marcante (como o plástico poluindo o oceano).','<strong>Evocar emoção</strong> — choque, ansiedade, empatia ou esperança; o observador não pode ficar indiferente.','<strong>Chamar à ação</strong> — dizer às pessoas o que fazer (reduzir o plástico, separar o lixo).','<strong>Moldar valores</strong> — influenciar o que o público acredita ser importante.'],ordered:true,after:'Um bom pôster social é uma <strong>"marca visual"</strong> que impacta instantaneamente.'},
+      {type:'list',h:'Quatro objetivos',p:'O módulo de impressão se encerra com a <strong>Aula 32 ("Pôster de conscientização social: design que inspira mudança")</strong> e o tipo de pôster que mais exige de um jovem designer — um projeto que utiliza todo o conhecimento das três aulas anteriores de impressão. Um anúncio social não vende um produto — ele faz as pessoas pararem e pensarem, e toda decisão de design precisa servir a esse propósito. Todo pôster social busca quatro objetivos:',items:['<strong>Informar</strong> — transmitir um fato ou ideia marcante (como o plástico poluindo o oceano).','<strong>Evocar emoção</strong> — choque, ansiedade, empatia ou esperança; o observador não pode ficar indiferente.','<strong>Chamar à ação</strong> — dizer às pessoas o que fazer (reduzir o plástico, separar o lixo).','<strong>Moldar valores</strong> — influenciar o que o público acredita ser importante.'],ordered:true,after:'Um bom pôster social é uma <strong>"marca visual"</strong> que impacta instantaneamente.'},
       {type:'img',src:'images/PT/four-goals.png',alt:'Os quatro objetivos de um pôster social'},
       {type:'text',h:'Regras de design',b:'Um pôster social funciona quando o público o entende em um segundo — então toda escolha de design deve focar na clareza e no impacto. O curso ensina os alunos a tomar decisões deliberadas em três áreas:<br><br><strong>Mensagem.</strong> Uma ideia — um pôster. Se você tenta dizer três coisas, o observador não retém nenhuma delas. Mantenha o texto mínimo: um slogan curto, e, no máximo, um fato ou um link.<br><br><strong>Imagem.</strong> Construa o pôster em torno de uma única <strong>metáfora visual</strong> forte — pulmões feitos de sacos plásticos pretos dizem mais sobre poluição do que qualquer parágrafo. Dê a esse objeto toda a atenção: um elemento dominante e centralizado, com alto contraste, e remova todo detalhe que compita com ele.<br><br><strong>Cor.</strong> As cores carregam emoção antes mesmo que o texto seja lido — o <strong>vermelho</strong> sinaliza alarme, o <strong>preto</strong> sinaliza ameaça, o <strong>azul e o verde</strong> sinalizam vida e esperança. Escolha a associação que combina com a mensagem.'},
     ]},
    ],
    quiz:[
-    {q:'Por que um design impresso precisa de margens de sangria (bleed)?',opts:['Para deixar espaço para anotações do cliente','As prensas de corte desviam ligeiramente — o fundo precisa se estender além da linha de corte','Para deixar o arquivo menor','Porque o Figma exige isso'],c:1,fb:'As prensas desviam durante o corte; o fundo preenche a sangria para que nenhuma tira branca apareça, enquanto o conteúdo importante fica dentro da área de corte.'},
+    {q:'Por que um design impresso precisa de margens de sangria (bleed)?',opts:['Para deixar espaço livre nas bordas — o cliente usa essa área para anotações e aprovações','As prensas de corte desviam ligeiramente — o fundo precisa se estender além da linha de corte','Para reduzir o tamanho do arquivo — a gráfica comprime a área de sangria antes de imprimir','Porque o Figma exige essa margem — sem ela, o frame não pode ser exportado como PDF'],c:1,fb:'As prensas desviam durante o corte; o fundo preenche a sangria para que nenhuma tira branca apareça, enquanto o conteúdo importante fica dentro da área de corte.'},
     {q:'O que acontece quando você mistura todas as cores em RGB vs em CMYK?',opts:['Branco em ambos','Preto em ambos','RGB → branco(ish), CMYK → preto','RGB → preto, CMYK → branco'],c:2,fb:'RGB é luz aditiva (tudo = branco); CMYK é tinta subtrativa (tudo = preto). É por isso que designs em RGB podem sair desbotados na impressão.'},
-    {q:'Qual destes elementos pertence a um pôster de decoração?',opts:['Uma fotografia em alta resolução','Texto e gráficos desenhados à mão','Um código QR','O preço de um produto'],c:1,fb:'Os pôsteres de decoração são construídos com tipografia e gráficos desenhados à mão — não fotografias.'},
-    {q:'Por que o design para impressão é criado a 300 DPI em vez de uma resolução de tela típica?',opts:['É a configuração de exportação padrão do Figma','A impressão precisa de muito mais pontos por polegada para parecer nítida de perto — a resolução de tela ficaria borrada no papel','Isso deixa o arquivo menor','Só é necessário ao usar CMYK'],c:1,fb:'As pessoas seguram material impresso a centímetros dos olhos — 300 pontos por polegada mantém a nitidez onde a resolução de tela pareceria borrada.'},
+    {q:'Qual destes elementos pertence a um pôster de interior?',opts:['Uma fotografia de produto em alta resolução','Texto e gráficos desenhados à mão','Um código QR com link para uma loja','O preço e a oferta de um produto'],c:1,fb:'Os pôsteres de interior são construídos com tipografia e gráficos desenhados à mão — não fotografias.'},
+    {q:'Por que o design para impressão é criado a 300 DPI em vez de uma resolução de tela típica?',opts:['É a configuração de exportação padrão do Figma — qualquer outro valor gera erro quando o arquivo é enviado para a gráfica','A impressão precisa de muito mais pontos por polegada para parecer nítida de perto — a resolução de tela ficaria borrada no papel','Quanto mais pontos por polegada, menor fica o arquivo — o que acelera o envio e o processamento na gráfica','Só é necessário quando o arquivo está em CMYK — designs em RGB saem nítidos no papel em qualquer resolução'],c:1,fb:'As pessoas seguram material impresso a centímetros dos olhos — 300 pontos por polegada mantém a nitidez onde a resolução de tela pareceria borrada.'},
     {q:'Um pôster social tenta encaixar três mensagens ao mesmo tempo. Qual regra ele quebra?',opts:['Texto minimalista','Uma ideia — um pôster','Contraste e foco','Associações de cor'],c:1,fb:'Uma ideia por pôster — um anúncio social precisa causar uma única "marca visual", não dar uma aula.'},
    ]
   },
@@ -780,11 +786,11 @@ const MODULES=[
     ]},
    ],
    quiz:[
-    {q:'O que é um estudo de caso no Behance?',opts:['Um documento legal sobre o projeto','Uma mini-apresentação contando a história de como um projeto foi feito','Um espaço publicitário pago','Uma lista das ferramentas usadas'],c:1,fb:'Os estudos de caso contam a história do projeto — tarefa, processo, resultados — junto com as imagens finais.'},
+    {q:'O que é um estudo de caso no Behance?',opts:['Um documento legal que registra a autoria e os direitos sobre o projeto','Uma mini-apresentação contando a história de como um projeto foi feito','Um espaço publicitário pago que destaca o projeto na página inicial','Uma lista técnica das ferramentas e plugins usados em cada etapa'],c:1,fb:'Os estudos de caso contam a história do projeto — tarefa, processo, resultados — junto com as imagens finais.'},
     {q:'Qual deve ser a largura de um frame do Figma para upload no Behance?',opts:['1080 px','1200 px','1400 px','1920 px'],c:2,fb:'Exatamente 1400 px de largura — a altura é flexível (800+ px).'},
-    {q:'O que deve ser verificado antes que alunos com menos de 13 anos se cadastrem no Behance?',opts:['Suas notas no quiz','Autorização dos pais','Sua velocidade de digitação','Uma assinatura paga'],c:1,fb:'O Behance exige que os usuários tenham 13+ anos; alunos mais jovens precisam de consentimento dos pais, coletado pelo grupo de chat.'},
-    {q:'Por que definir o Content Spacing como 0 na Styles tab do Behance?',opts:['Para reduzir o tamanho do arquivo','Para que as imagens empilhadas se conectem sem espaços em branco','Para habilitar comentários','Para desbloquear mais tags'],c:1,fb:'Content spacing zerado remove os espaços entre as imagens enviadas para que o estudo de caso seja lido como uma única página contínua.'},
-    {q:'Qual é a maior força do Behance para um designer?',opts:['Fotos de banco de imagens gratuitas','Um portfólio atrás de um único link onde os clientes podem te encontrar diretamente','Geração automática de logos','Serviços de impressão integrados'],c:1,fb:'O Behance transforma o trabalho de um designer em um único link de portfólio compartilhável — e clientes podem descobrir designers diretamente na plataforma.'},
+    {q:'O que deve ser verificado antes que alunos com menos de 13 anos se cadastrem no Behance?',opts:['As notas deles nos quizzes do curso','A autorização dos pais ou responsáveis','Uma assinatura paga do Behance Pro','Um portfólio com pelo menos três projetos'],c:1,fb:'O Behance exige que os usuários tenham 13+ anos; alunos mais jovens precisam de consentimento dos pais, coletado pelo grupo de chat.'},
+    {q:'Por que definir o Content Spacing como 0 na Styles tab do Behance?',opts:['Para reduzir o tamanho dos arquivos enviados ao Behance','Para que as imagens empilhadas se conectem sem espaços em branco','Para habilitar os comentários de outros usuários no projeto','Para desbloquear mais tags além do limite padrão de 10'],c:1,fb:'Content spacing zerado remove os espaços entre as imagens enviadas para que o estudo de caso seja lido como uma única página contínua.'},
+    {q:'Qual é a maior força do Behance para um designer?',opts:['Um banco de fotos gratuito que os designers podem usar livremente em qualquer projeto','Um portfólio atrás de um único link onde os clientes podem te encontrar diretamente','Um gerador automático de logos que cria identidades completas a partir de um briefing','Um serviço de impressão integrado que envia os projetos direto para uma gráfica parceira'],c:1,fb:'O Behance transforma o trabalho de um designer em um único link de portfólio compartilhável — e clientes podem descobrir designers diretamente na plataforma.'},
    ]
   },
   {id:7,emoji:'🧑‍🏫',title:'Como Conduzir uma Ótima Aula',desc:'A estrutura de aula em espelho, a etapa de teoria e prática, e como dar um feedback que realmente ensina.',obj:'Dominar a estrutura de uma boa aula Kodland — do aquecimento ao encerramento — além das duas habilidades que um curso criativo mais exige: prática flexível e feedback específico. <strong>Isso é sobre como você ensina, independente do tema.</strong>',color:'#EF4444',
@@ -798,11 +804,13 @@ const MODULES=[
       {type:'text',h:'2 · Revisão da Aula Anterior — recordar e consolidar',b:'Revise brevemente o que foi aprendido na última vez. A recuperação (retrieval) — fazer o aluno <em>recordar</em> em vez de apenas ouvir de novo — é uma das ferramentas de memória mais fortes que existem. Dois minutos de "o que faz um bom ponto focal?" fazem mais do que qualquer nova explicação conseguiria.'},
       {type:'text',h:'3 · Verificação da Tarefa — revisar o dever de casa juntos',b:'Percorra o dever de casa <em>com</em> o aluno — neste curso, isso significa olhar um design que ele fez. É aqui que você identifica mal-entendidos, elogia o esforço e mostra que o dever de casa realmente importa. É também um dos dois <strong>momentos-chave de feedback</strong> da aula (veja a seção de feedback abaixo): não se contente com "pôster bonito!" — diga especificamente o que funciona e o que pode ser melhorado. Pular essa verificação ensina às crianças que o dever de casa é opcional.'},
       {type:'text',h:'4 · Objetivo da Aula — definir metas claras',b:'Diga claramente sobre o que é a aula de hoje: "hoje vamos criar um pôster com um ponto focal bem definido." Um objetivo claro dá direção à aula e dá ao aluno algo concreto para almejar.'},
+      {type:'videoslot',h:'▶ Vídeo: O início — quatro fases',id:''},
     ]},
     {t:'🎨 O meio: teoria e prática',cards:[
       {type:'text',h:'5 · Teoria e Prática — o coração da aula',b:'Entre o objetivo da aula e as fases de encerramento fica a etapa mais longa, onde o novo conteúdo é ensinado e imediatamente aplicado. Mantenha a teoria em <strong>pequenos blocos</strong> — um conceito, seguido de prática com ele — e <strong>demonstre primeiro</strong>: mostre a técnica na sua tela antes que os alunos a tentem na deles. Em um curso de design, a etapa de prática é onde os alunos realmente criam, então proteja esse tempo com firmeza; uma aula em que as crianças só assistiram você projetar é uma aula em que ninguém projetou.'},
       {type:'hi',h:'Seja flexível — liberdade dentro dos objetivos',b:'Esta é a adaptação mais importante para um curso criativo: <strong>deixe os alunos projetarem o que quiserem, desde que os objetivos de aprendizagem sejam atendidos</strong>. Se o plano de aula diz "faça um pôster para um festival de música" mas seu aluno está obcecado por um videogame, deixe-o fazer o pôster do jogo — ele ainda vai precisar de um ponto focal, composição equilibrada e tipografia legível, que é o que a aula realmente busca ensinar. Um aluno projetando algo que ama trabalha mais, retém mais e começa a construir um portfólio que parece <em>seu</em>. Adapte o tema, nunca o objetivo.'},
       {type:'warn',txt:'Flexibilidade não é ausência de padrões. Seja o que for que o aluno escolha projetar, mantenha-o alinhado aos objetivos de aprendizagem da aula — esse é o acordo que faz a liberdade funcionar.'},
+      {type:'videoslot',h:'▶ Vídeo: O meio — teoria e prática',id:''},
     ]},
     {t:'🏁 O fim: o espelho',cards:[
       {type:'hi',h:'O fim reflete o início, mas de forma invertida',b:'As quatro fases de encerramento refletem as de abertura na ordem inversa — a aula termina da forma como começou, dando aos alunos uma sensação satisfatória de <strong>encerramento e ritmo</strong>. Esse formato "circular" é o que faz uma aula parecer completa em vez de simplesmente parar quando o tempo acaba.'},
@@ -810,12 +818,14 @@ const MODULES=[
       {type:'text',h:'7 · Tarefa de Casa — instruções claras',b:'Passe o dever de casa com instruções cristalinas sobre o que projetar e como. Dever de casa vago é dever de casa que não será feito. Isso combina com a Verificação da Tarefa que abriu a aula.'},
       {type:'text',h:'8 · Prévia da Próxima Aula — criar curiosidade',b:'Antecipe o que vem a seguir: "na próxima vez, vamos colocar seu design em uma xícara de café de verdade!" Um gancho cria expectativa e engajamento entre as sessões — combina com o Objetivo da Aula do início.'},
       {type:'text',h:'9 · Encerramento — terminar com energia',b:'Termine em alta: celebre o que o aluno criou hoje, reconheça o esforço dele e faça com que ele termine a aula sentindo-se bem. Os últimos 30 segundos moldam como ele vai lembrar da aula toda.'},
+      {type:'videoslot',h:'▶ Vídeo: O fim — o espelho',id:''},
     ]},
     {t:'💬 Feedback que ensina (não só elogia)',cards:[
       {type:'text',h:'O problema com "ótimo trabalho!"',b:'Design é pessoal — o pôster de um aluno é <em>o gosto pessoal dele</em> refletido na tela, então o feedback pesa mais aqui do que em qualquer outro assunto. Isso torna o elogio genérico um problema real: <strong>"Ótimo trabalho!", "Que lindo!", "Eu gostei!"</strong> parecem gentis, mas não ensinam nada — o aluno não aprende nem o que funcionou nem o que repetir. O feedback específico faz as duas coisas: <strong>diga exatamente o que você gosta e por que funciona</strong>, usando o vocabulário de design dos Módulos 1–6.'},
       {type:'twocol',left:{h:'❌ Genérico (evite)',items:['"Ótimo trabalho!"','"Que lindo!"','"Eu gostei!"','"Belas cores!"','"Muito bem, próximo slide!"']},right:{h:'✅ Específico (busque isto)',items:['"O botão vermelho realmente se destaca no fundo escuro — isso é um contraste forte."','"Seu título é a primeira coisa que eu vejo. Você criou um ponto focal claro."','"Essas duas fontes combinam bem: o título em negrito chama a atenção e o corpo do texto permanece legível."','"Colocar o preço perto da foto cria um agrupamento — bom uso de proximidade."']}},
       {type:'text',h:'Corrigir sem desmotivar',b:'Quando algo precisa ser corrigido, combine um ponto forte específico com uma melhoria concreta: <em>"A paleta funciona muito bem — agora vamos dar mais espaço para o texto respirar, para que fique mais fácil de ler."</em> O aluno ouve o que manter <strong>e</strong> o que mudar, e nada se perde em comentários vagos.'},
       {type:'good',txt:'Onde usar isso: os dois momentos de feedback de toda aula — a <strong>Verificação da Tarefa</strong> no início e a etapa de <strong>Prática</strong> no meio.'},
+      {type:'videoslot',h:'▶ Vídeo: Feedback que ensina (não só elogia)',id:''},
     ]},
     {t:'💡 Por que essa estrutura funciona',cards:[
       {type:'twocol',left:{h:'🧠 Facilidade Cognitiva',items:['Um formato previsível reduz a carga mental','Os alunos sabem o que esperar','O foco vai para projetar, não para decifrar a estrutura da aula']},right:{h:'🔁 Reforço de Retenção',items:['A revisão no INÍCIO consolida a última vez','O resumo no FIM consolida o dia de hoje','Dois pontos de checagem de memória → muito melhor retenção']}},
@@ -834,22 +844,93 @@ const MODULES=[
     ]},
    ],
    quiz:[
-    {q:'Por que a estrutura de aula da Kodland é descrita como um formato "espelho" ou "circular"?',opts:['As fases de encerramento refletem as de abertura ao contrário, então a aula termina da forma como começou','O tutor e o aluno trocam de papel na metade da aula','Os slides são mostrados duas vezes, para frente e para trás','Toda aula repete exatamente a aula anterior'],c:0,fb:'O fim espelha o início ao contrário (aquecimento↔encerramento, revisão↔resumo, verificação da tarefa↔tarefa de casa), dando encerramento e ritmo.'},
-    {q:'Um aluno mostra o pôster do dever de casa. Qual é a melhor resposta de feedback?',opts:['"Ótimo trabalho, eu amei!"','"Seu título é a primeira coisa que eu vejo — você criou um ponto focal claro. Agora vamos dar mais espaço para o texto respirar."','"Está bom, mas se esforce mais na próxima vez."','"Perfeito, vamos para o tema de hoje."'],c:1,fb:'O feedback específico nomeia o que funciona e por quê (ponto focal) e o combina com uma melhoria concreta — o elogio genérico não ensina nada.'},
-    {q:'O plano de aula diz "crie um pôster de festival de música", mas seu aluno quer fazer um pôster sobre seu videogame favorito. O que você faz?',opts:['Deixe-o — desde que o design ainda atenda aos objetivos de aprendizagem da aula (ponto focal, composição, tipografia)','Recuse: o plano de aula precisa ser seguido exatamente','Deixe-o, e abandone os objetivos da aula para que ele possa fazer qualquer coisa','Faça-o fazer os dois pôsteres como punição'],c:0,fb:'Seja flexível com o tema, nunca com os objetivos. Um aluno projetando algo que ama trabalha mais e aprende mais — desde que as metas de aprendizagem sejam atendidas.'},
-    {q:'Qual par de fases forma o "ciclo de responsabilidade" ao longo de uma aula?',opts:['Verificação da Tarefa no início e Tarefa de Casa no fim','Aquecimento e Objetivo da Aula','Teoria e Prática','Resumo da Aula e Encerramento'],c:0,fb:'Verificar o dever de casa no início e passá-lo no fim fecha o ciclo e constrói continuidade entre as aulas.'},
-    {q:'Um tutor conduz uma aula tranquila, mas fez a maior parte da fala enquanto o aluno apenas assistia ele projetar. Por que isso é um sinal de alerta?',opts:['Uma aula passiva parece sem atrito, mas o aluno aprende pouco — em um curso de design, as mãos do aluno devem estar nas ferramentas','Não é um problema, desde que o conteúdo tenha sido coberto','Significa que a estrutura foi seguida corretamente','Tranquilidade sempre indica uma ótima aula'],c:0,fb:'Engajamento é o objetivo. Uma aula em que só o tutor projetou é uma aula em que ninguém aprendeu a projetar — devolva as ferramentas ao aluno.'},
-    {q:'Um tutor pula a Revisão da Aula Anterior para economizar tempo. Qual é o principal custo, pedagogicamente?',opts:['Ele perde um momento de recuperação (retrieval) — fazer os alunos recordarem o aprendizado anterior é uma das formas mais fortes de consolidá-lo','Nada, desde que o objetivo seja declarado','O dever de casa não pode ser passado depois','A aula vai passar do tempo'],c:0,fb:'A revisão força a recuperação (retrieval), uma poderosa ferramenta de memória. É um dos dois pontos de consolidação da estrutura (o outro é o Resumo da Aula).'},
+    {q:'Por que a estrutura de aula da Kodland é descrita como um formato "espelho" ou "circular"?',opts:['As fases de encerramento refletem as de abertura ao contrário, então a aula termina da forma como começou','O tutor e o aluno trocam de papel na metade, então o aluno conduz a segunda parte da aula','Os slides são mostrados duas vezes, primeiro para frente e depois de trás para frente, para fixar o conteúdo','Toda aula repete exatamente a estrutura e o conteúdo da aula anterior, para reforçar a memória'],c:0,fb:'O fim espelha o início ao contrário (aquecimento↔encerramento, revisão↔resumo, verificação da tarefa↔tarefa de casa), dando encerramento e ritmo.'},
+    {q:'Um aluno mostra o pôster do dever de casa. Qual é a melhor resposta de feedback?',opts:['"Ótimo trabalho, eu amei de verdade! Ficou muito bonito e caprichado — continue assim que você vai longe."','"Seu título é a primeira coisa que eu vejo — você criou um ponto focal claro. Agora vamos dar mais espaço para o texto respirar."','"Está bom, mas ainda falta alguma coisa que eu não sei dizer bem o quê. Tente se esforçar mais na próxima vez."','"Perfeito, não precisa mudar absolutamente nada! Agora vamos deixar isso de lado e seguir para o tema de hoje."'],c:1,fb:'O feedback específico nomeia o que funciona e por quê (ponto focal) e o combina com uma melhoria concreta — o elogio genérico não ensina nada.'},
+    {q:'O plano de aula diz "crie um pôster de festival de música", mas seu aluno quer fazer um pôster sobre seu videogame favorito. O que você faz?',opts:['Deixe-o — desde que o design ainda atenda aos objetivos de aprendizagem da aula (ponto focal, composição, tipografia)','Recuse — o plano de aula precisa ser seguido exatamente, porque o tema do festival foi definido pela metodologia','Deixe-o — e libere também os objetivos da aula, para que ele crie com total liberdade e sem nenhuma restrição','Peça que faça os dois pôsteres — primeiro o do festival, como pede o plano, e depois o do jogo como tarefa extra'],c:0,fb:'Seja flexível com o tema, nunca com os objetivos. Um aluno projetando algo que ama trabalha mais e aprende mais — desde que as metas de aprendizagem sejam atendidas.'},
+    {q:'Qual par de fases forma o "ciclo de responsabilidade" ao longo de uma aula?',opts:['Verificação da Tarefa no início e Tarefa de Casa no fim','Revisão da Aula Anterior no início e Resumo da Aula no fim','Aquecimento no início e Encerramento no fim','Objetivo da Aula no início e Prévia da Próxima Aula no fim'],c:0,fb:'Verificar o dever de casa no início e passá-lo no fim fecha o ciclo e constrói continuidade entre as aulas.'},
+    {q:'Um tutor conduz uma aula tranquila, mas fez a maior parte da fala enquanto o aluno apenas assistia ele projetar. Por que isso é um sinal de alerta?',opts:['Uma aula passiva parece sem atrito, mas o aluno aprende pouco — em um curso de design, as mãos do aluno devem estar nas ferramentas','Não é um problema — se todo o conteúdo planejado foi coberto sem atrito, o objetivo da aula foi cumprido','Não é um problema — significa que a estrutura foi seguida e que o aluno prestou atenção o tempo todo','É um sinal de alerta só porque demonstrar tudo na tela do tutor consome tempo demais e atrasa a aula'],c:0,fb:'Engajamento é o objetivo. Uma aula em que só o tutor projetou é uma aula em que ninguém aprendeu a projetar — devolva as ferramentas ao aluno.'},
+    {q:'Um tutor pula a Revisão da Aula Anterior para economizar tempo. Qual é o principal custo, pedagogicamente?',opts:['Ele perde um momento de recuperação (retrieval) — fazer os alunos recordarem o aprendizado anterior é uma das formas mais fortes de consolidá-lo','Nenhum custo real — desde que o objetivo da aula seja declarado, os alunos se orientam sozinhos no conteúdo novo','O dever de casa não pode mais ser passado no fim, porque na estrutura a revisão é a fase que o libera','A aula vai passar do tempo, porque a revisão é a fase que define o ritmo de todas as outras fases da aula'],c:0,fb:'A revisão força a recuperação (retrieval), uma poderosa ferramenta de memória. É um dos dois pontos de consolidação da estrutura (o outro é o Resumo da Aula).'},
    ]
   },
 ];
 
-// ─── PROGRESS ───────────────────────────────────────────────────────────────
+// ─── PROGRESS (memory + localStorage + sessionStorage — PR #1) ──────────────
 const PROG_KEY='kl-gd-progress';
-function getProgress(){
-  try{ return JSON.parse(localStorage.getItem(PROG_KEY)||'{}'); }catch(e){ return {}; }
+// Progress only moves forward: a module passed anywhere stays passed, best score wins.
+function mergeP(a, b){
+  a = a || {}; b = b || {};
+  const out = Object.assign({}, b, a);
+  Object.keys(b).forEach(k => {
+    const x = a[k], y = b[k];
+    if (y && typeof y === 'object' && ('passed' in y || 'score' in y)){
+      const xo = (x && typeof x === 'object') ? x : {};
+      out[k] = Object.assign({}, y, xo, { passed: !!(xo.passed || y.passed), score: Math.max(Number(xo.score) || 0, Number(y.score) || 0) });
+    }
+  });
+  return out;
 }
-function saveProgress(p){ localStorage.setItem(PROG_KEY, JSON.stringify(p)); }
+let P = {};
+function loadP(){ P = {}; STORE.getAll(PROG_KEY).forEach(raw => { try { P = mergeP(P, JSON.parse(raw || '{}') || {}); } catch(e){} }); }
+function getProgress(){ return P; }
+function saveProgress(p){ if (p) P = p; STORE.set(PROG_KEY, JSON.stringify(P)); lmsSync(); }
+loadP();
+
+// ─── LMS BRIDGE (PR #1) ──────────────────────────────────────────────────────
+// Talks to the LMS (parent frame) via postMessage. Outside an iframe it does nothing.
+// Training -> LMS: {source:'kodland-training', training, lang, event:'ready'|'progress'|'completed', progress, done, total, score}
+// The LMS unlocks the test (DST) when it receives 'completed' ("Material first, then the test" on).
+// LMS -> Training (optional): {source:'kodland-lms', event:'progress', progress:{...}} restores saved progress.
+const TRAINING_ID = 'gd-tutor-training';
+const TRAINING_LANG = 'pt';
+const IN_LMS = (function(){ try { return window.parent !== window; } catch(e){ return true; } })();
+let lmsReady = false, completedSent = false;
+const allModulesDone = () => MODULES.every(m => P[m.id] && P[m.id].passed);
+function lmsSummary(){
+  const list = MODULES, done = list.filter(m => P[m.id] && P[m.id].passed).length;
+  const score = Math.round(list.map(m => (P[m.id] && Number(P[m.id].score)) || 0).reduce((a, b) => a + b, 0) / (list.length || 1));
+  return { progress:P, done, total:list.length, score };
+}
+function lmsSend(event){
+  try { if (!IN_LMS || !lmsReady || P.dev) return;
+    window.parent.postMessage(Object.assign({ source:'kodland-training', training:TRAINING_ID, lang:TRAINING_LANG, event }, lmsSummary()), '*'); } catch(e){}
+}
+// 'completed' is sent once per page load, as soon as every module is passed (also on load, if it was already done).
+function lmsSync(){ if (!lmsReady) return; lmsSend('progress'); if (!completedSent && !P.dev && allModulesDone()){ completedSent = true; lmsSend('completed'); } }
+addEventListener('message', e => {
+  try { if (!IN_LMS || e.source !== window.parent) return;
+    const d = e.data; if (!d || d.source !== 'kodland-lms' || d.event !== 'progress' || !d.progress || typeof d.progress !== 'object') return;
+    P = mergeP(P, d.progress); STORE.set(PROG_KEY, JSON.stringify(P)); lmsSync();
+    if (document.getElementById('screen-home').classList.contains('active')) renderHome(); } catch(err){}
+});
+// Progress carried in the URL (?p=...) by a language/region switch: merge it, then clean the URL.
+function takeUrlProgress(){
+  try { const q = new URLSearchParams(location.search), raw = q.get('p'); if (!raw) return;
+    try { P = mergeP(P, JSON.parse(raw)); STORE.set(PROG_KEY, JSON.stringify(P)); } catch(e){}
+    q.delete('p'); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q.toString() : '') + location.hash); } catch(e){}
+}
+function progressParam(){ return 'p=' + encodeURIComponent(JSON.stringify(P)) + (DEV_ALLOWED ? '&dev=1' : ''); }
+
+// ─── DEVELOPER MODE: reviewers only (PR #2) ─────────────────────────────────
+// Shift+D works only when the page is opened with ?dev=1. Turning developer mode
+// off restores the real progress saved before it was turned on, so it can never
+// be used to skip modules.
+const DEV_ALLOWED = /[?&]dev=1(&|$)/.test(location.search);
+const DEV_BACKUP = PROG_KEY + '-devbackup';
+function restoreRealProgress(){
+  const b = STORE.get(DEV_BACKUP); let real = {};
+  try { real = b ? (JSON.parse(b) || {}) : {}; } catch(e){ real = {}; }
+  delete real.dev; P = real; STORE.remove(DEV_BACKUP);
+}
+
+// ─── TIME PER MODULE adapter (PR #3 / #4 — read by shared/td-time.js) ───────
+window.TD_TIME_ADAPTER = {
+  training: () => TRAINING_ID,
+  lang: () => TRAINING_LANG,
+  modules: () => MODULES.map(m => m.id),
+  current: () => { const s = document.querySelector('.screen.active'); return (s && (s.id === 'screen-content' || s.id === 'screen-quiz') && currentModule) ? currentModule : ''; },
+  done: () => allModulesDone(),
+  send: ev => lmsSend(ev)
+};
 function isPassed(id){ const p=getProgress(); return p[id]?.passed===true; }
 function getScore(id){ const p=getProgress(); return p[id]?.score||0; }
 function setResult(id, pct, passed){
@@ -959,6 +1040,15 @@ function rc(c){
     const wlink='https://www.youtube.com/watch?v='+c.id+(c.start?('&t='+c.start+'s'):'');
     return`<div class="card video-card"><h4>${c.h}</h4><a class="yt-lite" href="${wlink}" target="_blank" style="background-image:url('https://i.ytimg.com/vi/${c.id}/hqdefault.jpg')" title="${c.h}"><div class="yt-play"></div></a><a class="video-link" href="${wlink}" target="_blank">▶ Ver no YouTube →</a><div class="video-note" style="font-size:11px;color:var(--text-muted);margin-top:4px">Nota: Se o vídeo carregar em inglês, ative as legendas ou o recurso de tradução automática e selecione seu idioma preferido.</div></div>`;
   }
+  if(c.type==='manuals'){
+    const btns=c.items.map(i=>`<a class="manual-btn" href="${i.url}" target="_blank" rel="noopener"><span class="manual-n">📘 Aula ${i.n}</span><span class="manual-t">${i.t}</span><span class="manual-cta">Abrir o manual →</span></a>`).join('');
+    return`<div class="manuals">${btns}</div>`;
+  }
+  // Video slot: set c.id to a YouTube video ID to show the video; empty id shows a placeholder box.
+  if(c.type==='videoslot'){
+    if(c.id) return rc({type:'video',h:c.h,id:c.id,start:c.start});
+    return`<div class="card video-card"><h4>${c.h}</h4><div class="vslot-ph"><div class="vslot-ic"></div><div class="vslot-t">Vídeo em breve</div></div></div>`;
+  }
   if(c.type==='list'){
     const tag=c.ordered?'ol':'ul';
     const li=c.items.map(i=>`<li>${i}</li>`).join('');
@@ -1062,36 +1152,19 @@ function showScreen(id){
   document.getElementById(id).classList.add('active');
 }
 
-// ─── AUTH ────────────────────────────────────────────────────────────────
-const AUTH_KEY='kl-gd-auth';
-const AUTH_HASH=405719967;
-function _h(s){let x=5381;for(let i=0;i<s.length;i++){x=((x<<5)+x+s.charCodeAt(i))|0;}return x>>>0;}
-function tryLogin(){
-  const u=document.getElementById('login-user').value.trim();
-  const p=document.getElementById('login-pass').value;
-  if(_h(u+':'+p)===AUTH_HASH){
-    localStorage.setItem(AUTH_KEY,'1');
-    document.getElementById('login-err').style.display='none';
-    renderHome();
-    showScreen('screen-home');
-    window.scrollTo(0,0);
-  } else {
-    document.getElementById('login-err').style.display='block';
-  }
-}
+// ─── INIT (open access, no password) ────────────────────────────────────────
+takeUrlProgress();
+STORE.remove('kl-gd-devmode');   // flag of the old developer mode (no backup); replaced by P.dev
+if (P.dev && !DEV_ALLOWED){ restoreRealProgress(); STORE.set(PROG_KEY, JSON.stringify(P)); }
+lmsReady = true; lmsSend('ready'); lmsSync();
+renderHome();
+showScreen('screen-home');
 
-// ─── INIT ────────────────────────────────────────────────────────────────
-if(localStorage.getItem(AUTH_KEY)==='1'){
-  renderHome();
-  showScreen('screen-home');
-} else {
-  showScreen('screen-login');
-}
-
-// ─── DEV MODE (Shift+D × 3 to toggle) ───────────────────────────────────────
+// ─── DEV MODE (only with ?dev=1 — Shift+D × 3 to toggle) ────────────────────
 (function(){
   let _dSeq = 0, _dTimer = null;
   document.addEventListener('keydown', function(e){
+    if(!DEV_ALLOWED) return;
     if(e.key === 'D' && e.shiftKey){
       clearTimeout(_dTimer);
       _dSeq++;
@@ -1101,21 +1174,21 @@ if(localStorage.getItem(AUTH_KEY)==='1'){
   });
 
   function toggleDevMode(){
-    const active = localStorage.getItem('kl-gd-devmode') === '1';
-    if(!active){
-      const p = {};
-      MODULES.forEach(m => { p[m.id] = { passed: true, score: 100 }; });
-      localStorage.setItem(PROG_KEY, JSON.stringify(p));
-      localStorage.setItem('kl-gd-devmode','1');
+    if(!DEV_ALLOWED) return;
+    if(!P.dev){
+      STORE.set(DEV_BACKUP, JSON.stringify(P));   // real progress, restored when dev mode is turned off
+      MODULES.forEach(m => { if(!isPassed(m.id)) P[m.id] = { passed: true, score: 100 }; });
+      P.dev = true;
+      saveProgress();
       showDevBadge(true);
       renderHome();
       alert('🔓 Dev mode ON — all modules unlocked');
     } else {
-      localStorage.removeItem('kl-gd-devmode');
-      localStorage.removeItem(PROG_KEY);
+      restoreRealProgress();
+      saveProgress();
       showDevBadge(false);
       renderHome();
-      alert('🔒 Dev mode OFF — progress cleared');
+      alert('🔒 Dev mode OFF — real progress restored');
     }
   }
 
@@ -1131,13 +1204,16 @@ if(localStorage.getItem(AUTH_KEY)==='1'){
     b.style.display = on ? 'block' : 'none';
   }
 
-  if(localStorage.getItem('kl-gd-devmode') === '1') {
+  if(P.dev) {
     showDevBadge(true);
   }
 })();
 // ─────────────────────────────────────────────────────────────────────────────
 
 </script>
+<!-- PR #3 / #4: active time per module (LMS + TD time sheet) and content gate before each quiz -->
+<script src="shared/td-time.js"></script>
+<script src="shared/td-gate.js"></script>
 
 <footer style="text-align:center;padding:20px 24px;font-size:11px;color:var(--text2);border-top:1px solid var(--border);margin-top:auto;line-height:1.7;opacity:0.7;">
   © 2026 Kodland. Designed and developed by Ayberk Temizci for internal tutor training purposes.<br>
