@@ -242,6 +242,19 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .login-input:focus{outline:none;border-color:var(--lime-d)}
 .login-input::placeholder{color:var(--text-muted)}
 .login-err{display:none;margin:0 0 12px;padding:10px 14px;border-radius:var(--rsm);background:var(--no-bg);border:1.5px solid var(--no-b);color:var(--no-t);font-size:13px;font-weight:600}
+/* AUTOQA CHECKLIST (QA module) */
+.ck{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px;box-shadow:var(--shadow)}
+.ck-h{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.ck-badge{background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;letter-spacing:.5px;border-radius:var(--rpill);padding:4px 12px}
+.ck-ht{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--text)}
+.ck-l{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0;margin:0}
+@media(max-width:600px){.ck-l{grid-template-columns:1fr}}
+.ck-i{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rsm);padding:10px 12px}
+.ck-n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ck-ic{font-size:20px;flex-shrink:0;line-height:1}
+.ck-tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ck-tx b{font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--text);line-height:1.3}
+.ck-tx small{font-size:12.5px;color:var(--text2);line-height:1.4}
 /* skip & modals */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
 .modal-overlay.show{display:flex}
@@ -304,9 +317,9 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
     <div class="hero-inner">
       <div class="eyebrow">🎨 Programa de Entrenamiento para Tutores</div>
       <h1>Prepárate para enseñar<br><span class="h-pill">Diseño Gráfico</span><br>a niños y adolescentes</h1>
-      <p>Recorre los 7 módulos y aprueba cada quiz para completar tu preparación como tutor. Obtén 70% o más para desbloquear el siguiente módulo.</p>
+      <p>Recorre los 8 módulos y aprueba cada quiz para completar tu preparación como tutor. Obtén 70% o más para desbloquear el siguiente módulo.</p>
       <div class="prog-strip">
-        <div class="pnum" id="pnum">0/7</div>
+        <div class="pnum" id="pnum">0/8</div>
         <div class="ptrack"><div class="pfill" id="pfill" style="width:0%"></div></div>
         <div class="plbl">módulos completados</div>
       </div>
@@ -530,7 +543,7 @@ const MODULE0={emoji:'👋',color:'#64748B',title:'¡Bienvenido al Curso de Dise
     {type:'text',h:'¿Qué herramientas usarán los estudiantes?',b:'A lo largo del curso, los estudiantes trabajarán con <strong>Figma</strong>, <strong>Photopea</strong> y <strong>Behance</strong>. También aprenderán los fundamentos de la <strong>teoría del color, la composición, la tipografía, el branding, el diseño para redes sociales</strong> y los principios básicos de <strong>UI/UX</strong>.<br><br>En este mini curso, te presentaremos estas herramientas y los conceptos centrales del diseño gráfico, dándote el conocimiento y la confianza para enseñar el curso con éxito desde tu primera lección.'},
   ]},
   {t:'🧭 Sobre Este Entrenamiento',cards:[
-    {type:'text',h:'¿De qué trata este mini curso?',b:'Este entrenamiento consta de <strong>7 módulos cortos más un Digital Skill Test final</strong>, diseñado para prepararte para enseñar el curso con confianza. Los <strong>Módulos 1 al 6</strong> cubren los conceptos y herramientas de diseño que enseñarás — los fundamentos técnicos y los estándares de calidad esperados en clase. El <strong>Módulo 7</strong> se enfoca en algo igual de importante: <strong>cómo enseñar</strong> — la estructura de una gran lección de Kodland y cómo dar feedback que realmente ayude a los estudiantes a crecer. Cada módulo termina con un quiz corto — obtén <strong>70% o más</strong> para desbloquear el siguiente, y completa los siete para llegar al Digital Skill Test.'},
+    {type:'text',h:'¿De qué trata este mini curso?',b:'Este entrenamiento consta de <strong>8 módulos cortos más un Digital Skill Test final</strong>, diseñado para prepararte para enseñar el curso con confianza. Los <strong>Módulos 1 al 6</strong> cubren los conceptos y herramientas de diseño que enseñarás — los fundamentos técnicos y los estándares de calidad esperados en clase. El <strong>Módulo 7</strong> se enfoca en algo igual de importante: <strong>cómo enseñar</strong> — la estructura de una gran lección de Kodland y cómo dar feedback que realmente ayude a los estudiantes a crecer. El <strong>Módulo 8</strong> muestra qué revisa el equipo de Calidad en las lecciones de Diseño Gráfico, para que sepas cómo es una lección perfecta. Cada módulo termina con un quiz corto — obtén <strong>70% o más</strong> para desbloquear el siguiente, y completa los ocho para llegar al Digital Skill Test.'},
     {type:'good',txt:'¡Ahora es momento de comenzar! Ve al <strong>Módulo 1</strong> y descubre de qué se trata el diseño gráfico.'},
   ]},
  ]};
@@ -831,7 +844,7 @@ const MODULES=[
     ]},
     {t:'🎯 Poniéndolo en práctica',cards:[
       {type:'hi',h:'La estructura te da libertad, no te limita',b:'Los tutores nuevos a veces temen que una estructura fija haga que las lecciones se vuelvan robóticas. Es todo lo contrario: una vez que las fases se vuelven automáticas, dejas de preocuparte por "¿qué sigue?" y tienes toda tu atención disponible para el estudiante — sus preguntas, sus diseños, su energía. La estructura es el andamio que te permite estar presente.'},
-      {type:'tip',txt:'Lleva una lista mental (o literal) de las fases para tus primeras lecciones. Después de algunas semanas el ritmo se vuelve automático — y con eso, este entrenamiento está completo: solo queda demostrar lo que aprendiste en el Digital Skill Test.'},
+      {type:'tip',txt:'Lleva una lista mental (o literal) de las fases para tus primeras lecciones. Después de algunas semanas el ritmo se vuelve automático. Antes del Digital Skill Test queda un módulo: los estándares de calidad con los que el equipo de QA revisa las lecciones de Diseño Gráfico.'},
     ]},
    ],
    quiz:[
@@ -841,6 +854,41 @@ const MODULES=[
     {q:'¿Qué par de fases forma el "ciclo de responsabilidad" a lo largo de una lección?',opts:['La revisión de tarea (HW Check) al inicio y la asignación de tarea (HW Assignment) al final','Warm-Up y Lesson Goal','Theory y Practice','Lesson Summary y Wrap-Up'],c:0,fb:'Revisar la tarea al inicio y asignarla al final cierra el ciclo y genera continuidad entre lecciones.'},
     {q:'Un tutor da una lección fluida pero habló la mayor parte del tiempo mientras el estudiante lo veía diseñar. ¿Por qué es esto una señal de alerta?',opts:['Una lección pasiva se siente sin friction pero el estudiante aprende poco — en un curso de diseño, las manos del estudiante deben estar sobre las herramientas','No es un problema si se cubrió el material','Significa que la estructura se siguió correctamente','La fluidez siempre indica una gran lección'],c:0,fb:'El involucramiento es la meta. Una lección en la que solo el tutor diseñó es una lección en la que nadie aprendió a diseñar — devuélvele las herramientas al estudiante.'},
     {q:'Un tutor se salta la Revisión de la Lección Anterior para ahorrar tiempo. ¿Cuál es el principal costo, pedagógicamente?',opts:['Pierden un momento de recuperación de memoria — hacer que los estudiantes recuerden lo aprendido antes es una de las formas más poderosas de consolidarlo','Nada, siempre que se plantee el objetivo','La tarea no se puede asignar después','La lección se extenderá más de lo previsto'],c:0,fb:'La revisión obliga a la recuperación de memoria, una herramienta poderosa. Es uno de los dos puntos de consolidación de la estructura (el otro es el Resumen de la Lección).'},
+   ]
+  },
+  {id:8,emoji:'🔍',title:'Estándares de Calidad: Qué Revisa QA',desc:'Qué evalúa el equipo de Calidad en las lecciones de Diseño Gráfico — y cómo preparar una lección que cumpla cada criterio.',obj:'Saber exactamente qué evalúa el equipo de Calidad en las lecciones de Diseño Gráfico, para que cada lección que des cumpla el estándar desde el primer día.',color:'#14B8A6',
+   sections:[
+    {t:'👀 Qué Revisa QA',cards:[
+      {type:'text',b:'El equipo de Calidad revisa las lecciones con <strong>6 criterios</strong>. Si cumples los seis, tu lección cumple el estándar.'},
+      {type:'checklist',badge:'QA',h:'Lo que buscan los revisores',items:[
+        {ic:'📖',t:'Sigue la narrativa',d:'Los estudiantes son pasantes en Kodland Art Labs — el manual muestra cómo usarla'},
+        {ic:'🧩',t:'Usa FigJam',d:'Si el manual incluye un tablero, úsalo activamente en clase'},
+        {ic:'🖥️',t:'Clase desde BackOffice / Plataforma',d:'Solo materiales oficiales — y nunca omitas la Reflexión'},
+        {ic:'🎨',t:'Demuestra y acompaña',d:'Muestra el proyecto paso a paso; ayuda y responde preguntas'},
+        {ic:'💬',t:'Feedback de calidad',d:'Desde el Módulo 3: claro y amable — un punto fuerte + una mejora concreta'},
+        {ic:'📧',t:'Recordatorio del correo',d:'En el Módulo 5: necesitarán acceso a su correo electrónico'},
+      ]},
+      {type:'warn',txt:'El error más común: quedarse sin tiempo y omitir la <strong>Reflexión</strong>. Protege los últimos minutos de cada lección.'},
+    ]},
+    {t:'✅ Un Ejemplo Real: el Checklist de M1L1',cards:[
+      {type:'text',b:'Cada lección tiene su propio <strong>checklist de AutoQA</strong>: los momentos que un revisor espera ver. Este es el de la primera lección — prepárala con el manual abierto al lado.'},
+      {type:'checklist',badge:'M1L1',h:'Introducción al diseño gráfico en Figma',items:[
+        {ic:'🎬',t:'Curso y narrativa',d:'Pasantía en Kodland Art Labs — el meme es el primer paso'},
+        {ic:'🤝',t:'Presentaciones y acuerdos',d:'Los estudiantes se presentan y acuerdan las reglas de clase'},
+        {ic:'🖥️',t:'BackOffice y Plataforma',d:'Clase desde el BackOffice; practican el <b>Submit</b>'},
+        {ic:'🎯',t:'Meta personal',d:'Cada estudiante comparte su meta en el chat'},
+        {ic:'🎨',t:'¿Qué es el diseño gráfico?',d:'Ejemplos: imágenes, texto y color comunican ideas'},
+        {ic:'🔑',t:'Acceso a Figma',d:'Registro o inicio de sesión — ayuda a quien se trabe'},
+        {ic:'😂',t:'Tarea práctica: un meme',d:'Demo → crean → publican en el chat → <b>Submit</b>'},
+        {ic:'🪞',t:'Reflexión y cierre',d:'Resumen, impresiones, tarea, chat del grupo'},
+      ]},
+    ]},
+   ],
+   quiz:[
+    {q:'El manual de una lección incluye un tablero de FigJam, pero tienes poco tiempo. ¿Qué espera QA?',opts:['Que uses el tablero activamente durante la lección, como indica el manual','Que menciones el tablero y compartas el enlace para que lo abran en casa','Que reemplaces el tablero por tus propias diapositivas con el mismo contenido','Que lo omitas — los tableros de FigJam son un extra que QA no revisa'],c:0,fb:'Si el manual incluye un tablero de FigJam, los revisores esperan que lo uses activamente durante la clase.'},
+    {q:'Según los criterios de QA, ¿qué etapa de la lección nunca se debe omitir?',opts:['El Warm-Up al inicio de la lección','La revisión de tarea al inicio de la lección','La Reflexión al final de la lección','El adelanto de la próxima lección al final'],c:2,fb:'El tutor imparte la lección desde el BackOffice/Plataforma y no omite la etapa de Reflexión.'},
+    {q:'¿Qué significa "seguir la narrativa del curso"?',opts:['Conectar la teoría y la práctica de cada lección con la pasantía en Kodland Art Labs, como explica el manual','Contar a los estudiantes una historia nueva y distinta en cada lección para mantener su curiosidad','Leer en voz alta la historia del diseño gráfico al inicio de cada lección, como explica el manual','Dejar que los estudiantes inventen su propia agencia y sus clientes para cada proyecto del curso'],c:0,fb:'Los estudiantes son pasantes en la agencia Kodland Art Labs; el manual de cada lección explica cómo conectar su teoría y práctica con esa historia.'},
+    {q:'¿Qué comentario sobre el proyecto de un estudiante cumple el criterio de feedback de QA?',opts:['"¡Buen trabajo, se ve muy lindo! Me encantan los colores que elegiste, ¡sigue así!"','"El contraste de tu título funciona muy bien — ahora agranda el precio para que también resalte."','"No está mal, pero le falta algo. Míralo otra vez e intenta mejorarlo un poco."','"Está perfecto así, no hay que cambiar nada. Pasemos directo a la siguiente parte."'],c:1,fb:'El feedback de calidad es claro y constructivo: nombra un punto fuerte y da una recomendación concreta, de forma amable.'},
    ]
   },
 ];
@@ -959,6 +1007,10 @@ function rc(c){
   if(c.type==='video'){
     const wlink='https://www.youtube.com/watch?v='+c.id+(c.start?('&t='+c.start+'s'):'');
     return`<div class="card video-card"><h4>${c.h}</h4><a class="yt-lite" href="${wlink}" target="_blank" style="background-image:url('https://i.ytimg.com/vi/${c.id}/hqdefault.jpg')" title="${c.h}"><div class="yt-play"></div></a><a class="video-link" href="${wlink}" target="_blank">▶ Ver en YouTube →</a><div class="video-note">Nota: Si el video se carga en inglés, activa los subtítulos o la función de traducción automática y selecciona tu idioma preferido.</div></div>`;
+  }
+  if(c.type==='checklist'){
+    const li=c.items.map((i,n)=>`<li class="ck-i"><span class="ck-n">${n+1}</span><span class="ck-ic">${i.ic}</span><span class="ck-tx"><b>${i.t}</b><small>${i.d}</small></span></li>`).join('');
+    return`<div class="ck"><div class="ck-h"><span class="ck-badge">${c.badge}</span><span class="ck-ht">${c.h}</span></div><ol class="ck-l">${li}</ol></div>`;
   }
   if(c.type==='list'){
     const tag=c.ordered?'ol':'ul';

@@ -242,6 +242,19 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .login-input:focus{outline:none;border-color:var(--lime-d)}
 .login-input::placeholder{color:var(--text-muted)}
 .login-err{display:none;margin:0 0 12px;padding:10px 14px;border-radius:var(--rsm);background:var(--no-bg);border:1.5px solid var(--no-b);color:var(--no-t);font-size:13px;font-weight:600}
+/* AUTOQA CHECKLIST (QA module) */
+.ck{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px;box-shadow:var(--shadow)}
+.ck-h{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.ck-badge{background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;letter-spacing:.5px;border-radius:var(--rpill);padding:4px 12px}
+.ck-ht{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--text)}
+.ck-l{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0;margin:0}
+@media(max-width:600px){.ck-l{grid-template-columns:1fr}}
+.ck-i{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rsm);padding:10px 12px}
+.ck-n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ck-ic{font-size:20px;flex-shrink:0;line-height:1}
+.ck-tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ck-tx b{font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--text);line-height:1.3}
+.ck-tx small{font-size:12.5px;color:var(--text2);line-height:1.4}
 /* skip & modals */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
 .modal-overlay.show{display:flex}
@@ -304,9 +317,9 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
     <div class="hero-inner">
       <div class="eyebrow">🎨 Programma di formazione per tutor</div>
       <h1>Preparati a insegnare<br><span class="h-pill">Graphic Design</span><br>ai ragazzi</h1>
-      <p>Segui tutti i 6 moduli e supera ogni quiz per completare la tua preparazione come tutor. Ottieni almeno il 70% per sbloccare il modulo successivo.</p>
+      <p>Segui tutti i 7 moduli e supera ogni quiz per completare la tua preparazione come tutor. Ottieni almeno il 70% per sbloccare il modulo successivo.</p>
       <div class="prog-strip">
-        <div class="pnum" id="pnum">0/6</div>
+        <div class="pnum" id="pnum">0/7</div>
         <div class="ptrack"><div class="pfill" id="pfill" style="width:0%"></div></div>
         <div class="plbl">moduli completati</div>
       </div>
@@ -528,7 +541,7 @@ const MODULE0={emoji:'👋',color:'#64748B',title:'Benvenuto nel corso di Graphi
     {type:'text',h:'Quali strumenti useranno gli studenti?',b:'Durante il corso, gli studenti lavoreranno con <strong>Figma</strong>, <strong>Photopea</strong> e <strong>Behance</strong>. Impareranno anche i fondamenti della <strong>teoria del colore, composizione, tipografia, branding, design per i social media</strong> e i principi base di <strong>UI/UX</strong>.<br><br>In questo mini-corso, ti verranno presentati questi strumenti e i concetti fondamentali del graphic design, dandoti le conoscenze e la sicurezza per insegnare il corso con successo già dalla tua prima lezione.'},
   ]},
   {t:'🧭 Questa formazione',cards:[
-    {type:'text',h:'Di cosa parla questo mini corso?',b:'Questa formazione è composta da <strong>6 moduli brevi più un Digital Skill Test finale</strong>, pensata per prepararti a insegnare il corso con sicurezza. I <strong>Moduli 1–5</strong> trattano i concetti e gli strumenti di design che insegnerai — le basi tecniche e gli standard di qualità richiesti in classe. Il <strong>Modulo 6</strong> si concentra su qualcosa di altrettanto importante: <strong>come insegnare</strong> — la struttura di una buona lezione Kodland e come dare feedback che aiuti gli studenti a crescere. Ogni modulo termina con un breve quiz — ottieni <strong>almeno il 70%</strong> per sbloccare il successivo, e completa tutti e sei per arrivare al Digital Skill Test.'},
+    {type:'text',h:'Di cosa parla questo mini corso?',b:'Questa formazione è composta da <strong>7 moduli brevi più un Digital Skill Test finale</strong>, pensata per prepararti a insegnare il corso con sicurezza. I <strong>Moduli 1–5</strong> trattano i concetti e gli strumenti di design che insegnerai — le basi tecniche e gli standard di qualità richiesti in classe. Il <strong>Modulo 6</strong> si concentra su qualcosa di altrettanto importante: <strong>come insegnare</strong> — la struttura di una buona lezione Kodland e come dare feedback che aiuti gli studenti a crescere. Il <strong>Modulo 7</strong> mostra cosa valuta il team Quality nelle lezioni di Graphic Design, così saprai com\'è una lezione perfetta. Ogni modulo termina con un breve quiz — ottieni <strong>almeno il 70%</strong> per sbloccare il successivo, e completa tutti e sette per arrivare al Digital Skill Test.'},
     {type:'good',txt:'Ora è il momento di iniziare! Vai al <strong>Modulo 1</strong> e scopri di cosa parla davvero il graphic design.'},
   ]},
  ]};
@@ -795,7 +808,7 @@ const MODULES=[
     ]},
     {t:'🎯 Metterlo in pratica',cards:[
       {type:'hi',h:'La struttura ti libera, non ti limita',b:'I nuovi tutor a volte temono che una struttura fissa renda le lezioni robotiche. È vero il contrario: una volta che le fasi diventano automatiche, smetti di preoccuparti di "cosa viene dopo?" e hai tutta la tua attenzione libera per lo studente — le sue domande, i suoi design, la sua energia. La struttura è l\'impalcatura che ti permette di essere presente.'},
-      {type:'tip',txt:'Tieni una checklist mentale (o scritta) delle fasi per le tue prime lezioni. Dopo qualche settimana il ritmo diventa automatico — e con esso, questa formazione è completa: tutto ciò che resta è mostrare ciò che hai imparato nel Digital Skill Test.'},
+      {type:'tip',txt:'Tieni una checklist mentale (o scritta) delle fasi per le tue prime lezioni. Dopo qualche settimana il ritmo diventa automatico. Prima del Digital Skill Test ti manca un ultimo modulo: gli standard di qualità che il team QA usa per valutare le lezioni di Graphic Design.'},
     ]},
    ],
    quiz:[
@@ -805,6 +818,41 @@ const MODULES=[
     {q:'Quale coppia di fasi forma il "ciclo di responsabilità" attraverso una lezione?',opts:['Controllo dei Compiti all\'inizio e Assegnazione Compiti alla fine','Riscaldamento e Obiettivo della Lezione','Teoria e Pratica','Riepilogo della Lezione e Saluto Finale'],c:0,fb:'Controllare i compiti all\'inizio e assegnarli alla fine chiude il ciclo e costruisce continuità tra le lezioni.'},
     {q:'Un tutor conduce una lezione fluida ma ha parlato per la maggior parte del tempo mentre lo studente lo guardava progettare. Perché è un segnale d\'allarme?',opts:['Una lezione passiva sembra senza attrito ma lo studente impara poco — in un corso di design, le mani dello studente dovrebbero essere sugli strumenti','Non è un problema se il materiale è stato trattato','Significa che la struttura è stata seguita correttamente','La fluidità indica sempre una grande lezione'],c:0,fb:'Il coinvolgimento è l\'obiettivo. Una lezione dove solo il tutor ha progettato è una lezione dove nessuno ha imparato a progettare — restituisci gli strumenti allo studente.'},
     {q:'Un tutor salta il Ripasso della Lezione Precedente per risparmiare tempo. Qual è il costo principale, dal punto di vista pedagogico?',opts:['Perde un momento di recupero — far ricordare agli studenti ciò che hanno imparato prima è uno dei modi più efficaci per consolidarlo','Nulla, purché l\'obiettivo sia dichiarato','I compiti non possono essere assegnati più tardi','La lezione andrà oltre il tempo previsto'],c:0,fb:'Il ripasso forza il recupero, un potente strumento di memoria. È uno dei due checkpoint di consolidamento della struttura (l\'altro è il Riepilogo della Lezione).'},
+   ]
+  },
+  {id:7,emoji:'🔍',title:'Standard di qualità: cosa valuta il QA',desc:'Cosa controlla il team Quality nelle lezioni di Graphic Design — e come preparare una lezione che soddisfi ogni criterio.',obj:'Sapere esattamente cosa valuta il team Quality nelle lezioni di Graphic Design, così ogni lezione che insegni rispetta lo standard fin dal primo giorno.',color:'#14B8A6',
+   sections:[
+    {t:'👀 Cosa valuta il QA',cards:[
+      {type:'text',b:'Il team Quality valuta le lezioni con <strong>6 criteri</strong>. Se li rispetti tutti e sei, la tua lezione è allo standard.'},
+      {type:'checklist',badge:'QA',h:'Cosa guardano i revisori',items:[
+        {ic:'📖',t:'Segui la storia',d:'Gli studenti sono stagisti in Kodland Art Labs — il manuale mostra come usarla'},
+        {ic:'🧩',t:'Usa FigJam',d:'Se il manuale include una lavagna, usala attivamente in classe'},
+        {ic:'🖥️',t:'Lezione da BackOffice / Platform',d:'Solo materiali ufficiali — e non saltare mai la Riflessione'},
+        {ic:'🎨',t:'Mostra e supporta',d:'Mostra il progetto passo dopo passo; aiuta e rispondi alle domande'},
+        {ic:'💬',t:'Feedback di qualità',d:'Dal Modulo 3: chiaro e gentile — un punto di forza + un miglioramento concreto'},
+        {ic:'📧',t:'Promemoria email',d:'Nel Modulo 5: gli studenti avranno bisogno di accedere alla loro email'},
+      ]},
+      {type:'warn',txt:'L\'errore più comune: finire il tempo e saltare la <strong>Riflessione</strong>. Proteggi gli ultimi minuti di ogni lezione.'},
+    ]},
+    {t:'✅ Un esempio reale: la checklist di M1L1',cards:[
+      {type:'text',b:'Ogni lezione ha la sua <strong>checklist AutoQA</strong>: i momenti che il revisore si aspetta di vedere. Questa è quella della prima lezione — preparala con il manuale aperto accanto.'},
+      {type:'checklist',badge:'M1L1',h:'Introduzione al Graphic Design in Figma',items:[
+        {ic:'🎬',t:'Corso e storia',d:'Stage in Kodland Art Labs — il meme è il primo passo'},
+        {ic:'🤝',t:'Presentazioni e regole',d:'Gli studenti si presentano e concordano le regole della classe'},
+        {ic:'🖥️',t:'BackOffice e Platform',d:'Lezione dal BackOffice; gli studenti provano il <b>Submit</b>'},
+        {ic:'🎯',t:'Obiettivo personale',d:'Ogni studente condivide il suo obiettivo in chat'},
+        {ic:'🎨',t:'Che cos\'è il graphic design?',d:'Esempi: immagini, testo e colore comunicano idee'},
+        {ic:'🔑',t:'Accesso a Figma',d:'Registrazione o login — aiuta chi si blocca'},
+        {ic:'😂',t:'Compito pratico: un meme',d:'Demo → creano → pubblicano in chat → <b>Submit</b>'},
+        {ic:'🪞',t:'Riflessione e chiusura',d:'Riepilogo, impressioni, compiti, chat del gruppo'},
+      ]},
+    ]},
+   ],
+   quiz:[
+    {q:'Il manuale di una lezione prevede una lavagna FigJam, ma hai poco tempo. Cosa si aspetta il QA?',opts:['Che tu usi attivamente la lavagna durante la lezione, come descrive il manuale','Che tu nomini la lavagna e ne condivida il link così gli studenti la aprono a casa','Che tu sostituisca la lavagna con slide tue, purché il contenuto sia lo stesso','Che tu la salti — le lavagne FigJam sono extra facoltativi che il QA non valuta'],c:0,fb:'Se il manuale prevede una lavagna FigJam, i revisori si aspettano che tu la usi attivamente durante la lezione.'},
+    {q:'Secondo i criteri del QA, quale fase della lezione non va mai saltata?',opts:['Il Riscaldamento all\'inizio della lezione','Il Controllo dei Compiti all\'inizio della lezione','La Riflessione alla fine della lezione','L\'Anticipazione della Prossima Lezione alla fine'],c:2,fb:'Il tutor insegna dal BackOffice/dalla Platform e non salta la fase di Riflessione.'},
+    {q:'Cosa significa "seguire la storia del corso"?',opts:['Collegare la teoria e la pratica di ogni lezione allo stage presso Kodland Art Labs, come spiega il manuale','Raccontare agli studenti una storia nuova e diversa a ogni lezione, così restano curiosi di cosa verrà dopo','Leggere ad alta voce la storia del graphic design all\'inizio di ogni lezione, come spiega il manuale','Lasciare che gli studenti inventino la propria agenzia di design e i propri clienti per ogni progetto del corso'],c:0,fb:'Gli studenti sono stagisti presso l\'agenzia Kodland Art Labs; il manuale di ogni lezione spiega come collegarne la teoria e la pratica a questa storia.'},
+    {q:'Quale commento sul progetto di uno studente soddisfa il criterio del QA sul feedback?',opts:['"Bel lavoro, è davvero carino! Adoro i colori che hai scelto — continua così!"','"Il contrasto del titolo funziona bene — ora ingrandisci il prezzo così risalta anche lui."','"Non è male, ma manca qualcosa. Riguardalo e prova a migliorarlo."','"Perfetto così, non serve cambiare nulla. Passiamo subito alla parte successiva."'],c:1,fb:'Un feedback di qualità è chiaro e costruttivo: nomina un punto di forza e dà una raccomandazione concreta, in modo gentile.'},
    ]
   },
 ];
@@ -923,6 +971,10 @@ function rc(c){
   if(c.type==='video'){
     const wlink='https://www.youtube.com/watch?v='+c.id+(c.start?('&t='+c.start+'s'):'');
     return`<div class="card video-card"><h4>${c.h}</h4><a class="yt-lite" href="${wlink}" target="_blank" style="background-image:url('https://i.ytimg.com/vi/${c.id}/hqdefault.jpg')" title="${c.h}"><div class="yt-play"></div></a><a class="video-link" href="${wlink}" target="_blank">▶ Guarda su YouTube →</a><div class="video-note">Nota: se il video è in inglese, attiva i sottotitoli o la funzione di traduzione automatica e seleziona la lingua che preferisci.</div></div>`;
+  }
+  if(c.type==='checklist'){
+    const li=c.items.map((i,n)=>`<li class="ck-i"><span class="ck-n">${n+1}</span><span class="ck-ic">${i.ic}</span><span class="ck-tx"><b>${i.t}</b><small>${i.d}</small></span></li>`).join('');
+    return`<div class="ck"><div class="ck-h"><span class="ck-badge">${c.badge}</span><span class="ck-ht">${c.h}</span></div><ol class="ck-l">${li}</ol></div>`;
   }
   if(c.type==='list'){
     const tag=c.ordered?'ol':'ul';

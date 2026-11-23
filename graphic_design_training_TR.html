@@ -242,6 +242,19 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .login-input:focus{outline:none;border-color:var(--lime-d)}
 .login-input::placeholder{color:var(--text-muted)}
 .login-err{display:none;margin:0 0 12px;padding:10px 14px;border-radius:var(--rsm);background:var(--no-bg);border:1.5px solid var(--no-b);color:var(--no-t);font-size:13px;font-weight:600}
+/* AUTOQA CHECKLIST (QA module) */
+.ck{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px;box-shadow:var(--shadow)}
+.ck-h{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.ck-badge{background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;letter-spacing:.5px;border-radius:var(--rpill);padding:4px 12px}
+.ck-ht{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--text)}
+.ck-l{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0;margin:0}
+@media(max-width:600px){.ck-l{grid-template-columns:1fr}}
+.ck-i{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rsm);padding:10px 12px}
+.ck-n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ck-ic{font-size:20px;flex-shrink:0;line-height:1}
+.ck-tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ck-tx b{font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--text);line-height:1.3}
+.ck-tx small{font-size:12.5px;color:var(--text2);line-height:1.4}
 /* skip & modals */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
 .modal-overlay.show{display:flex}
@@ -304,9 +317,9 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
     <div class="hero-inner">
       <div class="eyebrow">🎨 Eğitmen Eğitim Programı</div>
       <h1>Çocuklara<br><span class="h-pill">Grafik Tasarım</span><br>öğretmeye hazırlanın</h1>
-      <p>Eğitmen hazırlığınızı tamamlamak için 7 modülün tümünü tamamlayın ve her quizden geçin. Bir sonraki modülün kilidini açmak için %70 ve üzeri puan alın.</p>
+      <p>Eğitmen hazırlığınızı tamamlamak için 8 modülün tümünü tamamlayın ve her quizden geçin. Bir sonraki modülün kilidini açmak için %70 ve üzeri puan alın.</p>
       <div class="prog-strip">
-        <div class="pnum" id="pnum">0/7</div>
+        <div class="pnum" id="pnum">0/8</div>
         <div class="ptrack"><div class="pfill" id="pfill" style="width:0%"></div></div>
         <div class="plbl">modül tamamlandı</div>
       </div>
@@ -530,7 +543,7 @@ const MODULE0={emoji:'👋',color:'#64748B',title:'Grafik Tasarım Kursuna Hoş 
     {type:'text',h:'Öğrenciler hangi araçları kullanacak?',b:'Kurs boyunca öğrenciler <strong>Figma</strong>, <strong>Photopea</strong> ve <strong>Behance</strong> ile çalışacaklar. Ayrıca <strong>renk teorisi, kompozisyon, tipografi, branding, sosyal medya tasarımı</strong> ve temel <strong>UI/UX prensipleri</strong> konularının temellerini öğrenecekler.<br><br>Bu mini kursta, bu araçlarla ve grafik tasarımın temel kavramlarıyla tanışacak, kursu ilk dersinizden itibaren başarıyla öğretmek için gereken bilgi ve özgüveni kazanacaksınız.'},
   ]},
   {t:'🧭 Bu Eğitim Hakkında',cards:[
-    {type:'text',h:'Bu mini kurs ne hakkında?',b:'Bu eğitim, kursu güvenle öğretmenize hazırlamak için tasarlanmış <strong>7 kısa modül ile son bir Digital Skill Test</strong>\'ten oluşur. <strong>1-6. Modüller</strong> öğreteceğiniz tasarım kavramlarını ve araçlarını kapsar — teknik temelleri ve sınıfta beklenen kalite standartlarını. <strong>Modül 7</strong> ise aynı derecede önemli bir konuya odaklanır: <strong>nasıl öğretileceği</strong> — harika bir Kodland dersinin yapısı ve öğrencilerin gelişmesine yardımcı olacak geri bildirimin nasıl verileceği. Her modül kısa bir quiz ile sona erer — bir sonrakinin kilidini açmak için <strong>%70 veya daha yüksek</strong> puan alın ve Digital Skill Test\'e ulaşmak için yedisini de tamamlayın.'},
+    {type:'text',h:'Bu mini kurs ne hakkında?',b:'Bu eğitim, kursu güvenle öğretmenize hazırlamak için tasarlanmış <strong>8 kısa modül ile son bir Digital Skill Test</strong>\'ten oluşur. <strong>1-6. Modüller</strong> öğreteceğiniz tasarım kavramlarını ve araçlarını kapsar — teknik temelleri ve sınıfta beklenen kalite standartlarını. <strong>Modül 7</strong> ise aynı derecede önemli bir konuya odaklanır: <strong>nasıl öğretileceği</strong> — harika bir Kodland dersinin yapısı ve öğrencilerin gelişmesine yardımcı olacak geri bildirimin nasıl verileceği. <strong>Modül 8</strong>, Kalite ekibinin Grafik Tasarım derslerinde neleri değerlendirdiğini gösterir; böylece mükemmel bir dersin nasıl göründüğünü bilirsiniz. Her modül kısa bir quiz ile sona erer — bir sonrakinin kilidini açmak için <strong>%70 veya daha yüksek</strong> puan alın ve Digital Skill Test\'e ulaşmak için sekizini de tamamlayın.'},
     {type:'good',txt:'Şimdi başlama zamanı! <strong>Modül 1</strong>\'e geçin ve grafik tasarımın ne olduğunu keşfedin.'},
   ]},
  ]};
@@ -831,7 +844,7 @@ const MODULES=[
     ]},
     {t:'🎯 Bunu uygulamaya koymak',cards:[
       {type:'hi',h:'Planlı bir ders yapısı, sizi sınırlandırmaz; aksine daha rahat ders anlatmanızı sağlar',b:'Yeni eğitmenler bazen sabit bir yapının dersleri robotik yapacağından korkar. Doğrusu tam tersidir: aşamalar otomatik hale geldiğinde, "sırada ne var?" konusunda endişelenmeyi bırakır ve tüm dikkatinizi öğrenci için özgür bırakırsınız — onların soruları, tasarımları, enerjileri. Yapı, sizin orada olmanızı sağlayan iskelettir.'},
-      {type:'tip',txt:'İlk dersleriniz için aşamaların zihinsel (veya somut) bir kontrol listesini tutun. Birkaç hafta sonra ritim otomatik hale gelir — ve onunla birlikte, bu eğitim tamamlanmış olur: geriye kalan tek şey, Digital Skill Test\'te öğrendiklerinizi göstermektir.'},
+      {type:'tip',txt:'İlk dersleriniz için aşamaların zihinsel (veya somut) bir kontrol listesini tutun. Birkaç hafta sonra ritim otomatik hale gelir. Digital Skill Test\'ten önce geriye tek bir modül kaldı: QA ekibinin Grafik Tasarım derslerini değerlendirirken kullandığı kalite standartları.'},
     ]},
    ],
    quiz:[
@@ -841,6 +854,41 @@ const MODULES=[
     {q:'Bir ders boyunca "sorumluluk döngüsünü" oluşturan aşama çifti hangisidir?',opts:['Başlangıçtaki Ödev Kontrolü ve sondaki Ödev Ataması','Isınma ve Ders Hedefi','Teori ve Pratik','Ders Özeti ve Kapanış'],c:0,fb:'Başlangıçta ödevi kontrol etmek ve sonda vermek döngüyü kapatır ve dersler arasında süreklilik inşa eder.'},
     {q:'Bir eğitmen pürüzsüz bir ders veriyor ama öğrenci onu tasarlarken izlerken konuşmanın çoğunu o yapıyor. Bu neden bir uyarı işaretidir?',opts:['Pasif bir ders sürtünmesiz hissettirir ama öğrenci pek az öğrenir — bir tasarım kursunda öğrencinin elleri araçların üzerinde olmalıdır','Materyal kapsandıysa bir sorun değildir','Yapının doğru takip edildiği anlamına gelir','Pürüzsüzlük her zaman harika bir dersi gösterir'],c:0,fb:'Katılım hedeftir. Sadece eğitmenin tasarladığı bir ders, hiç kimsenin tasarlamayı öğrenmediği bir derstir — araçları öğrenciye geri verin.'},
     {q:'Bir eğitmen zaman kazanmak için Önceki Ders Tekrarını atlıyor. Pedagojik olarak ana maliyet nedir?',opts:['Bir geri getirme anını kaybederler — öğrencilerin önceki öğrenmeyi hatırlamasını sağlamak, onu pekiştirmenin en güçlü yollarından biridir','Hedef belirtildiği sürece hiçbir şey','Ödev daha sonra verilemez','Ders zamanı aşacaktır'],c:0,fb:'Tekrar, güçlü bir hafıza aracı olan geri getirmeyi zorlar. Yapının iki pekiştirme kontrol noktasından biridir (diğeri Ders Özetidir).'},
+   ]
+  },
+  {id:8,emoji:'🔍',title:'Kalite Standartları: QA Neleri Değerlendirir',desc:'Kalite ekibinin Grafik Tasarım derslerinde neleri kontrol ettiği — ve her kriteri karşılayan bir dersin nasıl hazırlanacağı.',obj:'Kalite ekibinin Grafik Tasarım derslerinde tam olarak neleri değerlendirdiğini bilmek; böylece verdiğiniz her ders ilk günden itibaren standardı karşılar.',color:'#14B8A6',
+   sections:[
+    {t:'👀 QA Neleri Değerlendirir',cards:[
+      {type:'text',b:'Kalite ekibi dersleri <strong>6 kritere</strong> göre değerlendirir. Altısını da karşılarsanız dersiniz standardı karşılar.'},
+      {type:'checklist',badge:'QA',h:'Değerlendiricilerin baktığı noktalar',items:[
+        {ic:'📖',t:'Hikayeye sadık kalın',d:'Öğrenciler Kodland Art Labs\'ta stajyer — kılavuz nasıl kullanılacağını gösterir'},
+        {ic:'🧩',t:'FigJam kullanın',d:'Kılavuzda bir tahta varsa derste aktif olarak kullanın'},
+        {ic:'🖥️',t:'BackOffice / Platform üzerinden ders',d:'Yalnızca resmi materyaller — ve Değerlendirme aşamasını asla atlamayın'},
+        {ic:'🎨',t:'Gösterin ve destekleyin',d:'Projeyi adım adım gösterin; yardım edin ve soruları yanıtlayın'},
+        {ic:'💬',t:'Kaliteli geri bildirim',d:'Modül 3\'ten itibaren: açık ve nazik — bir güçlü yön + bir somut öneri'},
+        {ic:'📧',t:'E-posta hatırlatması',d:'Modül 5\'te: öğrencilerin e-postalarına erişmeleri gerekecek'},
+      ]},
+      {type:'warn',txt:'En sık yapılan hata: zamanın yetmemesi ve <strong>Değerlendirme</strong> aşamasının atlanması. Her dersin son dakikalarını koruyun.'},
+    ]},
+    {t:'✅ Gerçek Bir Örnek: M1L1 Kontrol Listesi',cards:[
+      {type:'text',b:'Her dersin kendi <strong>AutoQA kontrol listesi</strong> vardır: değerlendiricinin görmeyi beklediği anlar. İşte ilk dersin listesi — dersi kılavuz yanınızda açıkken hazırlayın.'},
+      {type:'checklist',badge:'M1L1',h:'Figma ile Grafik Tasarıma Giriş',items:[
+        {ic:'🎬',t:'Kurs ve hikaye',d:'Kodland Art Labs stajı — meme ilk adımdır'},
+        {ic:'🤝',t:'Tanışma ve kurallar',d:'Öğrenciler kendini tanıtır ve sınıf kurallarını belirler'},
+        {ic:'🖥️',t:'BackOffice ve Platform',d:'Ders BackOffice üzerinden; öğrenciler <b>Submit</b> dener'},
+        {ic:'🎯',t:'Kişisel hedef',d:'Her öğrenci hedefini sohbette paylaşır'},
+        {ic:'🎨',t:'Grafik tasarım nedir?',d:'Örnekler: görsel, metin ve renk fikir iletir'},
+        {ic:'🔑',t:'Figma\'ya giriş',d:'Kayıt veya giriş — takılan herkese yardım edin'},
+        {ic:'😂',t:'Pratik görev: bir meme',d:'Demo → oluştururlar → sohbette paylaşırlar → <b>Submit</b>'},
+        {ic:'🪞',t:'Değerlendirme ve kapanış',d:'Özet, izlenimler, ev ödevi, grup sohbeti'},
+      ]},
+    ]},
+   ],
+   quiz:[
+    {q:'Bir ders kılavuzunda FigJam tahtası var, ama zamanınız kısıtlı. QA ne bekler?',opts:['Tahtayı, kılavuzda anlatıldığı gibi ders esnasında aktif olarak kullanmanızı','Tahtadan bahsedip öğrencilerin evde açabilmesi için bağlantısını paylaşmanızı','İçerik aynı kaldığı sürece tahtanın yerine kendi slaytlarınızı kullanmanızı','Atlamanızı — FigJam tahtaları QA\'in değerlendirmediği isteğe bağlı eklerdir'],c:0,fb:'Kılavuzda bir FigJam tahtası varsa, değerlendiriciler onu ders esnasında aktif olarak kullanmanızı bekler.'},
+    {q:'QA kriterlerine göre hangi ders aşaması asla atlanmamalıdır?',opts:['Dersin başındaki Isınma aşaması','Dersin başındaki Ödev Kontrolü aşaması','Dersin sonundaki Değerlendirme (Reflection) aşaması','Dersin sonundaki Sonraki Ders Önizlemesi aşaması'],c:2,fb:'Eğitmen, dersi BackOffice/Platform üzerinden yürütür ve Değerlendirme (Reflection) aşamasını atlamaz.'},
+    {q:'"Kursun hikaye anlatımına sadık kalmak" ne anlama gelir?',opts:['Kılavuzda açıklandığı gibi, her dersin teori ve pratiğini Kodland Art Labs stajıyla ilişkilendirmek','Öğrenciler sonrasını merak etsin diye her derste onlara yeni ve farklı bir hikaye anlatmak','Kılavuzda açıklandığı gibi, her dersin başında grafik tasarım tarihini yüksek sesle okumak','Kurstaki her proje için öğrencilerin kendi tasarım ajanslarını ve müşterilerini icat etmesine izin vermek'],c:0,fb:'Öğrenciler Kodland Art Labs ajansında stajyerdir; her dersin kılavuzu, o dersin teori ve pratiğinin bu hikayeyle nasıl ilişkilendirileceğini açıklar.'},
+    {q:'Bir öğrenci projesine yapılan hangi yorum QA geri bildirim kriterini karşılar?',opts:['"Harika iş, gerçekten çok güzel görünüyor! Seçtiğin renklere bayıldım — böyle devam et!"','"Başlığındaki kontrast iyi çalışıyor — şimdi fiyatı da büyüt ki o da öne çıksın."','"Fena değil, ama bir şey eksik. Tekrar bak ve geliştirmeye çalış."','"Olduğu gibi mükemmel, değişiklik gerekmiyor. Hemen bir sonraki bölüme geçelim."'],c:1,fb:'Kaliteli geri bildirim açık ve yapıcıdır: bir güçlü noktayı adlandırır ve arkadaş canlısı bir üslupla somut bir öneri sunar.'},
    ]
   },
 ];
@@ -959,6 +1007,10 @@ function rc(c){
   if(c.type==='video'){
     const wlink='https://www.youtube.com/watch?v='+c.id+(c.start?('&t='+c.start+'s'):'');
     return`<div class="card video-card"><h4>${c.h}</h4><a class="yt-lite" href="${wlink}" target="_blank" style="background-image:url('https://i.ytimg.com/vi/${c.id}/hqdefault.jpg')" title="${c.h}"><div class="yt-play"></div></a><a class="video-link" href="${wlink}" target="_blank">▶ YouTube\'da İzle →</a><div class="video-note">Not: Video İngilizce yüklenirse, lütfen altyazıları veya otomatik çeviri özelliğini açıp tercih ettiğiniz dili seçin.</div></div>`;
+  }
+  if(c.type==='checklist'){
+    const li=c.items.map((i,n)=>`<li class="ck-i"><span class="ck-n">${n+1}</span><span class="ck-ic">${i.ic}</span><span class="ck-tx"><b>${i.t}</b><small>${i.d}</small></span></li>`).join('');
+    return`<div class="ck"><div class="ck-h"><span class="ck-badge">${c.badge}</span><span class="ck-ht">${c.h}</span></div><ol class="ck-l">${li}</ol></div>`;
   }
   if(c.type==='list'){
     const tag=c.ordered?'ol':'ul';

@@ -241,6 +241,19 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .login-input:focus{outline:none;border-color:var(--lime-d)}
 .login-input::placeholder{color:var(--text-muted)}
 .login-err{display:none;margin:0 0 12px;padding:10px 14px;border-radius:var(--rsm);background:var(--no-bg);border:1.5px solid var(--no-b);color:var(--no-t);font-size:13px;font-weight:600}
+/* AUTOQA CHECKLIST (QA module) */
+.ck{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px;box-shadow:var(--shadow)}
+.ck-h{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.ck-badge{background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;letter-spacing:.5px;border-radius:var(--rpill);padding:4px 12px}
+.ck-ht{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--text)}
+.ck-l{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0;margin:0}
+@media(max-width:600px){.ck-l{grid-template-columns:1fr}}
+.ck-i{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rsm);padding:10px 12px}
+.ck-n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ck-ic{font-size:20px;flex-shrink:0;line-height:1}
+.ck-tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ck-tx b{font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--text);line-height:1.3}
+.ck-tx small{font-size:12.5px;color:var(--text2);line-height:1.4}
 /* skip & modals */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
 .modal-overlay.show{display:flex}
@@ -303,9 +316,9 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
     <div class="hero-inner">
       <div class="eyebrow">🎨 Tutor Training Program</div>
       <h1>Prepare to teach<br><span class="h-pill">Graphic Design</span><br>to kids</h1>
-      <p>Work through all 7 modules and pass each quiz to complete your tutor preparation. Score 70%+ to unlock the next module.</p>
+      <p>Work through all 8 modules and pass each quiz to complete your tutor preparation. Score 70%+ to unlock the next module.</p>
       <div class="prog-strip">
-        <div class="pnum" id="pnum">0/7</div>
+        <div class="pnum" id="pnum">0/8</div>
         <div class="ptrack"><div class="pfill" id="pfill" style="width:0%"></div></div>
         <div class="plbl">modules completed</div>
       </div>
@@ -529,7 +542,7 @@ const MODULE0={emoji:'👋',color:'#64748B',title:'Welcome to the Graphic Design
     {type:'text',h:'What tools will students use?',b:'Throughout the course, students will work with <strong>Figma</strong>, <strong>Photopea</strong>, and <strong>Behance</strong>. They will also learn the fundamentals of <strong>colour theory, composition, typography, branding, social media design</strong>, and basic <strong>UI/UX principles</strong>.<br><br>In this mini course, you\'ll be introduced to these tools and the core concepts of graphic design, giving you the knowledge and confidence to teach the course successfully from your very first lesson.'},
   ]},
   {t:'🧭 About This Training',cards:[
-    {type:'text',h:'What is this mini course about?',b:'This training consists of <strong>7 short modules plus a final Digital Skill Test</strong>, designed to prepare you to teach the course with confidence. <strong>Modules 1–6</strong> cover the design concepts and tools you\'ll teach — the technical foundations and the quality standards expected in class. <strong>Module 7</strong> focuses on something just as important: <strong>how to teach</strong> — the structure of a great Kodland lesson and how to give feedback that helps students grow. Each module ends with a short quiz — score <strong>70% or higher</strong> to unlock the next one, and complete all seven to reach the Digital Skill Test.'},
+    {type:'text',h:'What is this mini course about?',b:'This training consists of <strong>8 short modules plus a final Digital Skill Test</strong>, designed to prepare you to teach the course with confidence. <strong>Modules 1–6</strong> cover the design concepts and tools you\'ll teach — the technical foundations and the quality standards expected in class. <strong>Module 7</strong> focuses on something just as important: <strong>how to teach</strong> — the structure of a great Kodland lesson and how to give feedback that helps students grow. <strong>Module 8</strong> shows what the Quality team reviews in Graphic Design lessons, so you know what a perfect lesson looks like. Each module ends with a short quiz — score <strong>70% or higher</strong> to unlock the next one, and complete all eight to reach the Digital Skill Test.'},
     {type:'good',txt:'Now it\'s time to get started! Head to <strong>Module 1</strong> and discover what graphic design is all about.'},
   ]},
  ]};
@@ -830,7 +843,7 @@ const MODULES=[
     ]},
     {t:'🎯 Putting it into practice',cards:[
       {type:'hi',h:'Structure frees you, it doesn\'t restrict you',b:'New tutors sometimes fear a fixed structure will make lessons robotic. The opposite is true: once the phases are automatic, you stop worrying about "what next?" and have all your attention free for the student — their questions, their designs, their energy. The structure is the scaffold that lets you be present.'},
-      {type:'tip',txt:'Keep a mental (or literal) checklist of the phases for your first lessons. After a few weeks the rhythm becomes automatic — and with it, this training is complete: all that\'s left is to show what you\'ve learned in the Digital Skill Test.'},
+      {type:'tip',txt:'Keep a mental (or literal) checklist of the phases for your first lessons. After a few weeks the rhythm becomes automatic. One module is left before the Digital Skill Test: the quality standards the QA team uses to review Graphic Design lessons.'},
     ]},
    ],
    quiz:[
@@ -840,6 +853,41 @@ const MODULES=[
     {q:'Which pair of phases forms the "accountability loop" across a lesson?',opts:['HW Check at the start and HW Assignment at the end','Warm-Up and Lesson Goal','Theory and Practice','Lesson Summary and Wrap-Up'],c:0,fb:'Checking homework at the start and assigning it at the end closes the loop and builds continuity between lessons.'},
     {q:'A tutor delivers a smooth lesson but did most of the talking while the student watched them design. Why is this a warning sign?',opts:['A passive lesson feels frictionless but the student learns little — in a design course, the student\'s hands should be on the tools','It isn\'t a problem if the material was covered','It means the structure was followed correctly','Smoothness always indicates a great lesson'],c:0,fb:'Engagement is the goal. A lesson where only the tutor designed is a lesson where nobody learned to design — hand the tools back to the student.'},
     {q:'A tutor skips the Previous Lesson Revision to save time. What is the main cost, pedagogically?',opts:['They lose a retrieval moment — making students recall prior learning is one of the strongest ways to consolidate it','Nothing, as long as the goal is stated','The homework can\'t be assigned later','The lesson will run over time'],c:0,fb:'Revision forces retrieval, a powerful memory tool. It is one of the structure\'s two consolidation checkpoints (the other is the Lesson Summary).'},
+   ]
+  },
+  {id:8,emoji:'🔍',title:'Quality Standards: What QA Reviews',desc:'What the Quality team checks in Graphic Design lessons — and how to prepare a lesson that meets every criterion.',obj:'Know exactly what the Quality team evaluates in Graphic Design lessons, so every lesson you teach meets the standard from day one.',color:'#14B8A6',
+   sections:[
+    {t:'👀 What QA Checks',cards:[
+      {type:'text',b:'The Quality team reviews lessons with <strong>6 criteria</strong>. Meet all six and your lesson meets the standard.'},
+      {type:'checklist',badge:'QA',h:'What reviewers look for',items:[
+        {ic:'📖',t:'Follow the storyline',d:'Students are interns at Kodland Art Labs — the manual shows how to use it'},
+        {ic:'🧩',t:'Use FigJam',d:'If the manual includes a board, use it actively in class'},
+        {ic:'🖥️',t:'Teach from BackOffice / Platform',d:'Official materials only — and never skip the Reflection'},
+        {ic:'🎨',t:'Demonstrate and support',d:'Show the project step by step; help and answer questions'},
+        {ic:'💬',t:'Quality feedback',d:'From Module 3: clear and kind — one strength + one concrete improvement'},
+        {ic:'📧',t:'Email reminder',d:'In Module 5: students will need access to their email'},
+      ]},
+      {type:'warn',txt:'The most common miss: running out of time and skipping the <strong>Reflection</strong>. Protect the last minutes of every lesson.'},
+    ]},
+    {t:'✅ A Real Example: the M1L1 Checklist',cards:[
+      {type:'text',b:'Every lesson has its own <strong>AutoQA checklist</strong>: the moments a reviewer expects to see. This is the one for the first lesson — prepare it with the manual open beside you.'},
+      {type:'checklist',badge:'M1L1',h:'Introduction to Graphic Design in Figma',items:[
+        {ic:'🎬',t:'Course & storyline',d:'Kodland Art Labs internship — the meme is step one'},
+        {ic:'🤝',t:'Introductions & agreements',d:'Students introduce themselves and agree on class rules'},
+        {ic:'🖥️',t:'BackOffice & Platform',d:'Teach from BackOffice; students practise <b>Submit</b>'},
+        {ic:'🎯',t:'Personal goal',d:'Each student shares a learning goal in the chat'},
+        {ic:'🎨',t:'What is graphic design?',d:'Examples: images, text and colour communicate ideas'},
+        {ic:'🔑',t:'Getting into Figma',d:'Sign up or sign in — help anyone who gets stuck'},
+        {ic:'😂',t:'Practical task: a meme',d:'Demo → students create → post in chat → <b>Submit</b>'},
+        {ic:'🪞',t:'Reflection & wrap-up',d:'Summary, impressions, homework, group chat'},
+      ]},
+    ]},
+   ],
+   quiz:[
+    {q:'A lesson manual includes a FigJam board, but you are short on time. What does QA expect?',opts:['Use the board actively during the lesson, as the manual describes','Mention the board and share its link so students can open it at home','Replace the board with your own slides, as long as the content is the same','Skip it — FigJam boards are optional extras that QA does not review'],c:0,fb:'If the manual includes a FigJam board, reviewers expect you to actively use it during the lesson.'},
+    {q:'According to the QA criteria, which lesson stage must never be skipped?',opts:['The Warm-up at the start of the lesson','The Homework Check at the start of the lesson','The Reflection at the end of the lesson','The Next Lesson Preview at the end of the lesson'],c:2,fb:'The tutor teaches from the BackOffice/Platform and does not skip the Reflection stage.'},
+    {q:'What does "following the course storyline" mean?',opts:['Connecting each lesson\'s theory and practice to the Kodland Art Labs internship, as the manual explains','Telling students a new, different story every lesson so they stay curious about what comes next','Reading the history of graphic design aloud at the start of every lesson, as the manual explains','Letting students invent their own design agency and clients for every project in the course'],c:0,fb:'Students are interns at the Kodland Art Labs agency; the manual of each lesson explains how to connect its theory and practice to that story.'},
+    {q:'Which comment on a student\'s project meets the QA feedback criterion?',opts:['"Great job, it looks really nice! I love the colours you chose — keep it up!"','"The contrast in your title works well — now make the price bigger so it stands out too."','"It\'s not bad, but something is missing. Look at it again and try to improve it."','"Perfect as it is, no changes needed. Let\'s move straight on to the next part."'],c:1,fb:'Quality feedback is clear and constructive: it names a strength and gives a concrete recommendation, in a friendly way.'},
    ]
   },
 ];
@@ -958,6 +1006,10 @@ function rc(c){
   if(c.type==='video'){
     const wlink='https://www.youtube.com/watch?v='+c.id+(c.start?('&t='+c.start+'s'):'');
     return`<div class="card video-card"><h4>${c.h}</h4><a class="yt-lite" href="${wlink}" target="_blank" style="background-image:url('https://i.ytimg.com/vi/${c.id}/hqdefault.jpg')" title="${c.h}"><div class="yt-play"></div></a><a class="video-link" href="${wlink}" target="_blank">▶ Watch on YouTube →</a></div>`;
+  }
+  if(c.type==='checklist'){
+    const li=c.items.map((i,n)=>`<li class="ck-i"><span class="ck-n">${n+1}</span><span class="ck-ic">${i.ic}</span><span class="ck-tx"><b>${i.t}</b><small>${i.d}</small></span></li>`).join('');
+    return`<div class="ck"><div class="ck-h"><span class="ck-badge">${c.badge}</span><span class="ck-ht">${c.h}</span></div><ol class="ck-l">${li}</ol></div>`;
   }
   if(c.type==='list'){
     const tag=c.ordered?'ol':'ul';

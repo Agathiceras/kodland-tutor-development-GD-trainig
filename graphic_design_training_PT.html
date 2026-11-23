@@ -248,6 +248,19 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .vslot-ic{width:56px;height:40px;border-radius:12px;background:var(--border);display:flex;align-items:center;justify-content:center}
 .vslot-ic::after{content:'';border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent var(--surface);margin-left:3px}
 .vslot-t{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px}
+/* AUTOQA CHECKLIST (QA module) */
+.ck{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px;box-shadow:var(--shadow)}
+.ck-h{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.ck-badge{background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;letter-spacing:.5px;border-radius:var(--rpill);padding:4px 12px}
+.ck-ht{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--text)}
+.ck-l{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0;margin:0}
+@media(max-width:600px){.ck-l{grid-template-columns:1fr}}
+.ck-i{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rsm);padding:10px 12px}
+.ck-n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ck-ic{font-size:20px;flex-shrink:0;line-height:1}
+.ck-tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ck-tx b{font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--text);line-height:1.3}
+.ck-tx small{font-size:12.5px;color:var(--text2);line-height:1.4}
 /* skip & modals */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
 .modal-overlay.show{display:flex}
@@ -284,9 +297,9 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
     <div class="hero-inner">
       <div class="eyebrow">🎨 Programa de Treinamento de Tutores</div>
       <h1>Prepare-se para ensinar<br><span class="h-pill">Design Gráfico</span><br>para crianças</h1>
-      <p>Percorra os 7 módulos e passe em cada quiz para concluir sua preparação como tutor. Alcance 70% ou mais para desbloquear o próximo módulo.</p>
+      <p>Percorra os 8 módulos e passe em cada quiz para concluir sua preparação como tutor. Alcance 70% ou mais para desbloquear o próximo módulo.</p>
       <div class="prog-strip">
-        <div class="pnum" id="pnum">0/7</div>
+        <div class="pnum" id="pnum">0/8</div>
         <div class="ptrack"><div class="pfill" id="pfill" style="width:0%"></div></div>
         <div class="plbl">módulos concluídos</div>
       </div>
@@ -534,7 +547,7 @@ const MODULE0={emoji:'👋',color:'#64748B',title:'Bem-vindo(a) ao Curso de Desi
     ]},
   ]},
   {t:'🧭 Sobre Este Treinamento',cards:[
-    {type:'text',h:'Sobre o que é este mini curso?',b:'Este treinamento é composto por <strong>7 módulos curtos mais um Digital Skill Test final</strong>, criado para te preparar a ensinar o curso com confiança. Os <strong>Módulos 1–6</strong> cobrem os conceitos de design e as ferramentas que você vai ensinar — as bases técnicas e os padrões de qualidade esperados em aula. O <strong>Módulo 7</strong> foca em algo igualmente importante: <strong>como ensinar</strong> — a estrutura de uma boa aula Kodland e como dar feedback que realmente ajuda os alunos a crescer. Cada módulo termina com um quiz curto — alcance <strong>70% ou mais</strong> para desbloquear o próximo e conclua todos os sete para chegar ao Digital Skill Test.'},
+    {type:'text',h:'Sobre o que é este mini curso?',b:'Este treinamento é composto por <strong>8 módulos curtos mais um Digital Skill Test final</strong>, criado para te preparar a ensinar o curso com confiança. Os <strong>Módulos 1–6</strong> cobrem os conceitos de design e as ferramentas que você vai ensinar — as bases técnicas e os padrões de qualidade esperados em aula. O <strong>Módulo 7</strong> foca em algo igualmente importante: <strong>como ensinar</strong> — a estrutura de uma boa aula Kodland e como dar feedback que realmente ajuda os alunos a crescer. O <strong>Módulo 8</strong> mostra o que a equipe de Qualidade avalia nas aulas de Design Gráfico, para que você saiba como é uma aula perfeita. Cada módulo termina com um quiz curto — alcance <strong>70% ou mais</strong> para desbloquear o próximo e conclua todos os oito para chegar ao Digital Skill Test.'},
     {type:'good',txt:'Agora é hora de começar! Vá para o <strong>Módulo 1</strong> e descubra o que é o design gráfico.'},
   ]},
  ]};
@@ -804,13 +817,13 @@ const MODULES=[
       {type:'text',h:'2 · Revisão da Aula Anterior — recordar e consolidar',b:'Revise brevemente o que foi aprendido na última vez. A recuperação (retrieval) — fazer o aluno <em>recordar</em> em vez de apenas ouvir de novo — é uma das ferramentas de memória mais fortes que existem. Dois minutos de "o que faz um bom ponto focal?" fazem mais do que qualquer nova explicação conseguiria.'},
       {type:'text',h:'3 · Verificação da Tarefa — revisar o dever de casa juntos',b:'Percorra o dever de casa <em>com</em> o aluno — neste curso, isso significa olhar um design que ele fez. É aqui que você identifica mal-entendidos, elogia o esforço e mostra que o dever de casa realmente importa. É também um dos dois <strong>momentos-chave de feedback</strong> da aula (veja a seção de feedback abaixo): não se contente com "pôster bonito!" — diga especificamente o que funciona e o que pode ser melhorado. Pular essa verificação ensina às crianças que o dever de casa é opcional.'},
       {type:'text',h:'4 · Objetivo da Aula — definir metas claras',b:'Diga claramente sobre o que é a aula de hoje: "hoje vamos criar um pôster com um ponto focal bem definido." Um objetivo claro dá direção à aula e dá ao aluno algo concreto para almejar.'},
-      {type:'videoslot',h:'▶ Vídeo: O início — quatro fases',id:''},
+      {type:'videoslot',h:'▶ Vídeo: O início — quatro fases',src:'https://drive.google.com/file/d/1NnUt7sMqIudtF2BE2JmMgK0tVYuIReun/preview'},
     ]},
     {t:'🎨 O meio: teoria e prática',cards:[
       {type:'text',h:'5 · Teoria e Prática — o coração da aula',b:'Entre o objetivo da aula e as fases de encerramento fica a etapa mais longa, onde o novo conteúdo é ensinado e imediatamente aplicado. Mantenha a teoria em <strong>pequenos blocos</strong> — um conceito, seguido de prática com ele — e <strong>demonstre primeiro</strong>: mostre a técnica na sua tela antes que os alunos a tentem na deles. Em um curso de design, a etapa de prática é onde os alunos realmente criam, então proteja esse tempo com firmeza; uma aula em que as crianças só assistiram você projetar é uma aula em que ninguém projetou.'},
       {type:'hi',h:'Seja flexível — liberdade dentro dos objetivos',b:'Esta é a adaptação mais importante para um curso criativo: <strong>deixe os alunos projetarem o que quiserem, desde que os objetivos de aprendizagem sejam atendidos</strong>. Se o plano de aula diz "faça um pôster para um festival de música" mas seu aluno está obcecado por um videogame, deixe-o fazer o pôster do jogo — ele ainda vai precisar de um ponto focal, composição equilibrada e tipografia legível, que é o que a aula realmente busca ensinar. Um aluno projetando algo que ama trabalha mais, retém mais e começa a construir um portfólio que parece <em>seu</em>. Adapte o tema, nunca o objetivo.'},
       {type:'warn',txt:'Flexibilidade não é ausência de padrões. Seja o que for que o aluno escolha projetar, mantenha-o alinhado aos objetivos de aprendizagem da aula — esse é o acordo que faz a liberdade funcionar.'},
-      {type:'videoslot',h:'▶ Vídeo: O meio — teoria e prática',id:''},
+      {type:'videoslot',h:'▶ Vídeo: O meio — teoria e prática',src:'https://drive.google.com/file/d/1IlbwshrQCK4YXywNRpnvl8Emt-QP6aE2/preview'},
     ]},
     {t:'🏁 O fim: o espelho',cards:[
       {type:'hi',h:'O fim reflete o início, mas de forma invertida',b:'As quatro fases de encerramento refletem as de abertura na ordem inversa — a aula termina da forma como começou, dando aos alunos uma sensação satisfatória de <strong>encerramento e ritmo</strong>. Esse formato "circular" é o que faz uma aula parecer completa em vez de simplesmente parar quando o tempo acaba.'},
@@ -818,15 +831,13 @@ const MODULES=[
       {type:'text',h:'7 · Tarefa de Casa — instruções claras',b:'Passe o dever de casa com instruções cristalinas sobre o que projetar e como. Dever de casa vago é dever de casa que não será feito. Isso combina com a Verificação da Tarefa que abriu a aula.'},
       {type:'text',h:'8 · Prévia da Próxima Aula — criar curiosidade',b:'Antecipe o que vem a seguir: "na próxima vez, vamos colocar seu design em uma xícara de café de verdade!" Um gancho cria expectativa e engajamento entre as sessões — combina com o Objetivo da Aula do início.'},
       {type:'text',h:'9 · Encerramento — terminar com energia',b:'Termine em alta: celebre o que o aluno criou hoje, reconheça o esforço dele e faça com que ele termine a aula sentindo-se bem. Os últimos 30 segundos moldam como ele vai lembrar da aula toda.'},
-      {type:'videoslot',h:'▶ Vídeo: O fim — o espelho',id:''},
+      {type:'videoslot',h:'▶ Vídeo: O fim — o espelho',src:'https://drive.google.com/file/d/19JHLIogzoFhpzrQ1xvijKSUMGz1xU7tW/preview'},
     ]},
     {t:'💬 Feedback que ensina (não só elogia)',cards:[
       {type:'text',h:'O problema com "ótimo trabalho!"',b:'Design é pessoal — o pôster de um aluno é <em>o gosto pessoal dele</em> refletido na tela, então o feedback pesa mais aqui do que em qualquer outro assunto. Isso torna o elogio genérico um problema real: <strong>"Ótimo trabalho!", "Que lindo!", "Eu gostei!"</strong> parecem gentis, mas não ensinam nada — o aluno não aprende nem o que funcionou nem o que repetir. O feedback específico faz as duas coisas: <strong>diga exatamente o que você gosta e por que funciona</strong>, usando o vocabulário de design dos Módulos 1–6.'},
       {type:'twocol',left:{h:'❌ Genérico (evite)',items:['"Ótimo trabalho!"','"Que lindo!"','"Eu gostei!"','"Belas cores!"','"Muito bem, próximo slide!"']},right:{h:'✅ Específico (busque isto)',items:['"O botão vermelho realmente se destaca no fundo escuro — isso é um contraste forte."','"Seu título é a primeira coisa que eu vejo. Você criou um ponto focal claro."','"Essas duas fontes combinam bem: o título em negrito chama a atenção e o corpo do texto permanece legível."','"Colocar o preço perto da foto cria um agrupamento — bom uso de proximidade."']}},
       {type:'text',h:'Corrigir sem desmotivar',b:'Quando algo precisa ser corrigido, combine um ponto forte específico com uma melhoria concreta: <em>"A paleta funciona muito bem — agora vamos dar mais espaço para o texto respirar, para que fique mais fácil de ler."</em> O aluno ouve o que manter <strong>e</strong> o que mudar, e nada se perde em comentários vagos.'},
-      {type:'good',txt:'Onde usar isso: os dois momentos de feedback de toda aula — a <strong>Verificação da Tarefa</strong> no início e a etapa de <strong>Prática</strong> no meio.'},
-      {type:'videoslot',h:'▶ Vídeo: Feedback que ensina (não só elogia)',id:''},
-    ]},
+      {type:'good',txt:'Onde usar isso: os dois momentos de feedback de toda aula — a <strong>Verificação da Tarefa</strong> no início e a etapa de <strong>Prática</strong> no meio.'},    ]},
     {t:'💡 Por que essa estrutura funciona',cards:[
       {type:'twocol',left:{h:'🧠 Facilidade Cognitiva',items:['Um formato previsível reduz a carga mental','Os alunos sabem o que esperar','O foco vai para projetar, não para decifrar a estrutura da aula']},right:{h:'🔁 Reforço de Retenção',items:['A revisão no INÍCIO consolida a última vez','O resumo no FIM consolida o dia de hoje','Dois pontos de checagem de memória → muito melhor retenção']}},
       {type:'twocol',left:{h:'🎯 Propósito Claro',items:['Apresentar o objetivo desde o início constrói motivação','Antecipar a próxima aula cria momentum','O aluno sempre sabe por que está ali']},right:{h:'✅ Ciclo de Responsabilidade',items:['Verificação da tarefa no início...','...combina com a tarefa passada no fim','Os alunos sentem a continuidade entre as aulas']}},
@@ -840,7 +851,7 @@ const MODULES=[
     ]},
     {t:'🎯 Colocando em prática',cards:[
       {type:'hi',h:'A estrutura te liberta, não te limita',b:'Tutores novos às vezes temem que uma estrutura fixa torne as aulas robóticas. O contrário é verdade: uma vez que as fases se tornam automáticas, você para de se preocupar com "e agora?" e tem toda sua atenção livre para o aluno — suas perguntas, seus designs, sua energia. A estrutura é o suporte que permite que você esteja presente.'},
-      {type:'tip',txt:'Mantenha uma lista mental (ou anotada) das fases para suas primeiras aulas. Depois de algumas semanas, o ritmo se torna automático — e com ele, este treinamento está completo: tudo o que resta é mostrar o que você aprendeu no Digital Skill Test.'},
+      {type:'tip',txt:'Mantenha uma lista mental (ou anotada) das fases para suas primeiras aulas. Depois de algumas semanas, o ritmo se torna automático. Antes do Digital Skill Test, falta um módulo: os padrões de qualidade com que a equipe de QA avalia as aulas de Design Gráfico.'},
     ]},
    ],
    quiz:[
@@ -850,6 +861,41 @@ const MODULES=[
     {q:'Qual par de fases forma o "ciclo de responsabilidade" ao longo de uma aula?',opts:['Verificação da Tarefa no início e Tarefa de Casa no fim','Revisão da Aula Anterior no início e Resumo da Aula no fim','Aquecimento no início e Encerramento no fim','Objetivo da Aula no início e Prévia da Próxima Aula no fim'],c:0,fb:'Verificar o dever de casa no início e passá-lo no fim fecha o ciclo e constrói continuidade entre as aulas.'},
     {q:'Um tutor conduz uma aula tranquila, mas fez a maior parte da fala enquanto o aluno apenas assistia ele projetar. Por que isso é um sinal de alerta?',opts:['Uma aula passiva parece sem atrito, mas o aluno aprende pouco — em um curso de design, as mãos do aluno devem estar nas ferramentas','Não é um problema — se todo o conteúdo planejado foi coberto sem atrito, o objetivo da aula foi cumprido','Não é um problema — significa que a estrutura foi seguida e que o aluno prestou atenção o tempo todo','É um sinal de alerta só porque demonstrar tudo na tela do tutor consome tempo demais e atrasa a aula'],c:0,fb:'Engajamento é o objetivo. Uma aula em que só o tutor projetou é uma aula em que ninguém aprendeu a projetar — devolva as ferramentas ao aluno.'},
     {q:'Um tutor pula a Revisão da Aula Anterior para economizar tempo. Qual é o principal custo, pedagogicamente?',opts:['Ele perde um momento de recuperação (retrieval) — fazer os alunos recordarem o aprendizado anterior é uma das formas mais fortes de consolidá-lo','Nenhum custo real — desde que o objetivo da aula seja declarado, os alunos se orientam sozinhos no conteúdo novo','O dever de casa não pode mais ser passado no fim, porque na estrutura a revisão é a fase que o libera','A aula vai passar do tempo, porque a revisão é a fase que define o ritmo de todas as outras fases da aula'],c:0,fb:'A revisão força a recuperação (retrieval), uma poderosa ferramenta de memória. É um dos dois pontos de consolidação da estrutura (o outro é o Resumo da Aula).'},
+   ]
+  },
+  {id:8,emoji:'🔍',title:'Padrões de Qualidade: O Que o QA Avalia',desc:'O que a equipe de Qualidade verifica nas aulas de Design Gráfico — e como preparar uma aula que cumpra cada critério.',obj:'Saber exatamente o que a equipe de Qualidade avalia nas aulas de Design Gráfico, para que toda aula que você der cumpra o padrão desde o primeiro dia.',color:'#14B8A6',
+   sections:[
+    {t:'👀 O Que o QA Avalia',cards:[
+      {type:'text',b:'A equipe de Qualidade avalia as aulas com <strong>6 critérios</strong>. Cumpra os seis e sua aula cumpre o padrão.'},
+      {type:'checklist',badge:'QA',h:'O que os avaliadores observam',items:[
+        {ic:'📖',t:'Siga a narrativa',d:'Os alunos são estagiários da Kodland Art Labs — o manual mostra como usá-la'},
+        {ic:'🧩',t:'Use o FigJam',d:'Se o manual inclui um quadro, use-o ativamente na aula'},
+        {ic:'🖥️',t:'Aula pelo BackOffice / Plataforma',d:'Só materiais oficiais — e nunca pule a Reflexão'},
+        {ic:'🎨',t:'Demonstre e apoie',d:'Mostre o projeto passo a passo; ajude e responda às perguntas'},
+        {ic:'💬',t:'Feedback de qualidade',d:'A partir do Módulo 3: claro e gentil — um ponto forte + uma melhoria concreta'},
+        {ic:'📧',t:'Lembrete do e-mail',d:'No Módulo 5: os alunos vão precisar acessar o e-mail'},
+      ]},
+      {type:'warn',txt:'O erro mais comum: ficar sem tempo e pular a <strong>Reflexão</strong>. Proteja os últimos minutos de cada aula.'},
+    ]},
+    {t:'✅ Um Exemplo Real: o Checklist da M1L1',cards:[
+      {type:'text',b:'Cada aula tem seu próprio <strong>checklist de AutoQA</strong>: os momentos que um avaliador espera ver. Este é o da primeira aula — prepare-a com o manual aberto ao lado.'},
+      {type:'checklist',badge:'M1L1',h:'Introdução ao design gráfico no Figma',items:[
+        {ic:'🎬',t:'Curso e narrativa',d:'Estágio na Kodland Art Labs — o meme é o primeiro passo'},
+        {ic:'🤝',t:'Apresentações e combinados',d:'Os alunos se apresentam e combinam as regras da turma'},
+        {ic:'🖥️',t:'BackOffice e Plataforma',d:'Aula pelo BackOffice; os alunos praticam o <b>Submit</b>'},
+        {ic:'🎯',t:'Meta pessoal',d:'Cada aluno compartilha sua meta no chat'},
+        {ic:'🎨',t:'O que é design gráfico?',d:'Exemplos: imagens, texto e cor comunicam ideias'},
+        {ic:'🔑',t:'Acesso ao Figma',d:'Cadastro ou login — ajude quem travar'},
+        {ic:'😂',t:'Tarefa prática: um meme',d:'Demo → criam → postam no chat → <b>Submit</b>'},
+        {ic:'🪞',t:'Reflexão e encerramento',d:'Resumo, impressões, dever de casa, chat do grupo'},
+      ]},
+    ]},
+   ],
+   quiz:[
+    {q:'O manual de uma aula inclui um quadro do FigJam, mas você está com pouco tempo. O que o QA espera?',opts:['Que você use o quadro ativamente durante a aula, como o manual indica','Que você mencione o quadro e compartilhe o link para abrirem em casa','Que você troque o quadro por seus próprios slides com o mesmo conteúdo','Que você o pule — os quadros do FigJam são um extra que o QA não avalia'],c:0,fb:'Se o manual inclui um quadro do FigJam, os avaliadores esperam que você o use ativamente durante a aula.'},
+    {q:'Segundo os critérios de QA, qual etapa da aula nunca deve ser pulada?',opts:['O Aquecimento no início da aula','A Verificação da Tarefa no início da aula','A Reflexão no final da aula','A Prévia da Próxima Aula no final'],c:2,fb:'O tutor conduz a aula pelo BackOffice/Plataforma e não pula a etapa de Reflexão.'},
+    {q:'O que significa "seguir a narrativa do curso"?',opts:['Conectar a teoria e a prática de cada aula ao estágio na Kodland Art Labs, como o manual explica','Contar aos alunos uma história nova e diferente em cada aula para manter a curiosidade deles','Ler em voz alta a história do design gráfico no início de cada aula, como o manual explica','Deixar os alunos inventarem a própria agência e os clientes para cada projeto do curso'],c:0,fb:'Os alunos são estagiários da agência Kodland Art Labs; o manual de cada aula explica como conectar a teoria e a prática a essa história.'},
+    {q:'Qual comentário sobre o projeto de um aluno cumpre o critério de feedback do QA?',opts:['"Ótimo trabalho, ficou muito bonito! Amei as cores que você escolheu, continue assim!"','"O contraste do seu título funciona muito bem — agora aumente o preço para que ele também se destaque."','"Não está ruim, mas falta alguma coisa. Olhe de novo e tente melhorar um pouco mais."','"Está perfeito assim, não precisa mudar nada. Vamos direto para a próxima parte."'],c:1,fb:'O feedback de qualidade é claro e construtivo: nomeia um ponto forte e dá uma recomendação concreta, de forma gentil.'},
    ]
   },
 ];
@@ -1044,10 +1090,15 @@ function rc(c){
     const btns=c.items.map(i=>`<a class="manual-btn" href="${i.url}" target="_blank" rel="noopener"><span class="manual-n">📘 Aula ${i.n}</span><span class="manual-t">${i.t}</span><span class="manual-cta">Abrir o manual →</span></a>`).join('');
     return`<div class="manuals">${btns}</div>`;
   }
-  // Video slot: set c.id to a YouTube video ID to show the video; empty id shows a placeholder box.
+  // Video slot: c.src = embed URL (e.g. Google Drive .../preview) or c.id = YouTube video ID; neither shows a placeholder box.
   if(c.type==='videoslot'){
+    if(c.src) return`<div class="card video-card"><h4>${c.h}</h4><iframe src="${c.src}" allow="autoplay; fullscreen" allowfullscreen loading="lazy" title="${c.h}"></iframe><div class="callout ct" style="margin:10px 0 0"><span class="ci">💬</span><span><strong>Legendas:</strong> ative as legendas no player (ícone <strong>CC</strong>) e use a opção de <strong>tradução automática</strong> para escolher <strong>Português</strong> ou o seu idioma preferido.</span></div></div>`;
     if(c.id) return rc({type:'video',h:c.h,id:c.id,start:c.start});
     return`<div class="card video-card"><h4>${c.h}</h4><div class="vslot-ph"><div class="vslot-ic"></div><div class="vslot-t">Vídeo em breve</div></div></div>`;
+  }
+  if(c.type==='checklist'){
+    const li=c.items.map((i,n)=>`<li class="ck-i"><span class="ck-n">${n+1}</span><span class="ck-ic">${i.ic}</span><span class="ck-tx"><b>${i.t}</b><small>${i.d}</small></span></li>`).join('');
+    return`<div class="ck"><div class="ck-h"><span class="ck-badge">${c.badge}</span><span class="ck-ht">${c.h}</span></div><ol class="ck-l">${li}</ol></div>`;
   }
   if(c.type==='list'){
     const tag=c.ordered?'ol':'ul';

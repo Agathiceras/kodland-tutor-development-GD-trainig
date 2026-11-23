@@ -241,6 +241,19 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .login-input:focus{outline:none;border-color:var(--lime-d)}
 .login-input::placeholder{color:var(--text-muted)}
 .login-err{display:none;margin:0 0 12px;padding:10px 14px;border-radius:var(--rsm);background:var(--no-bg);border:1.5px solid var(--no-b);color:var(--no-t);font-size:13px;font-weight:600}
+/* AUTOQA CHECKLIST (QA module) */
+.ck{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px;box-shadow:var(--shadow)}
+.ck-h{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.ck-badge{background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;letter-spacing:.5px;border-radius:var(--rpill);padding:4px 12px}
+.ck-ht{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--text)}
+.ck-l{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0;margin:0}
+@media(max-width:600px){.ck-l{grid-template-columns:1fr}}
+.ck-i{display:flex;align-items:center;gap:10px;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--rsm);padding:10px 12px}
+.ck-n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#14B8A6;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ck-ic{font-size:20px;flex-shrink:0;line-height:1}
+.ck-tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ck-tx b{font-family:'Nunito',sans-serif;font-weight:800;font-size:13.5px;color:var(--text);line-height:1.3}
+.ck-tx small{font-size:12.5px;color:var(--text2);line-height:1.4}
 /* skip & modals */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
 .modal-overlay.show{display:flex}
@@ -303,9 +316,9 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
     <div class="hero-inner">
       <div class="eyebrow">🎨 Program Pelatihan Tutor</div>
       <h1>Bersiap untuk mengajar<br><span class="h-pill">Desain Grafis</span><br>kepada anak-anak</h1>
-      <p>Kerjakan seluruh 6 modul dan lulus setiap kuis untuk menyelesaikan persiapan tutor Anda. Raih skor 70%+ untuk membuka modul berikutnya.</p>
+      <p>Kerjakan seluruh 7 modul dan lulus setiap kuis untuk menyelesaikan persiapan tutor Anda. Raih skor 70%+ untuk membuka modul berikutnya.</p>
       <div class="prog-strip">
-        <div class="pnum" id="pnum">0/6</div>
+        <div class="pnum" id="pnum">0/7</div>
         <div class="ptrack"><div class="pfill" id="pfill" style="width:0%"></div></div>
         <div class="plbl">modul selesai</div>
       </div>
@@ -527,7 +540,7 @@ const MODULE0={emoji:'👋',color:'#64748B',title:'Selamat Datang di Kursus Desa
     {type:'text',h:'Alat apa yang akan digunakan siswa?',b:'Sepanjang kursus, siswa akan bekerja dengan <strong>Figma</strong>, <strong>Photopea</strong>, dan <strong>Behance</strong>. Mereka juga akan belajar dasar-dasar <strong>teori warna, komposisi, tipografi, branding, desain media sosial</strong>, dan prinsip dasar <strong>UI/UX</strong>.<br><br>Dalam mini kursus ini, Anda akan diperkenalkan pada alat-alat ini dan konsep inti desain grafis, memberikan Anda pengetahuan dan kepercayaan diri untuk mengajarkan kursus ini dengan sukses sejak pelajaran pertama Anda.'},
   ]},
   {t:'🧭 Tentang Pelatihan Ini',cards:[
-    {type:'text',h:'Apa isi mini kursus ini?',b:'Pelatihan ini terdiri dari <strong>6 modul singkat ditambah Digital Skill Test akhir</strong>, yang dirancang untuk menyiapkan Anda mengajar kursus ini dengan percaya diri. <strong>Modul 1–5</strong> membahas konsep dan alat desain yang akan Anda ajarkan — dasar-dasar teknis dan standar kualitas yang diharapkan di kelas. <strong>Modul 6</strong> berfokus pada hal yang sama pentingnya: <strong>bagaimana cara mengajar</strong> — struktur pelajaran Kodland yang baik dan bagaimana memberikan feedback yang membantu siswa berkembang. Setiap modul diakhiri dengan kuis singkat — raih skor <strong>70% atau lebih tinggi</strong> untuk membuka modul berikutnya, dan selesaikan keenamnya untuk mencapai Digital Skill Test.'},
+    {type:'text',h:'Apa isi mini kursus ini?',b:'Pelatihan ini terdiri dari <strong>7 modul singkat ditambah Digital Skill Test akhir</strong>, yang dirancang untuk menyiapkan Anda mengajar kursus ini dengan percaya diri. <strong>Modul 1–5</strong> membahas konsep dan alat desain yang akan Anda ajarkan — dasar-dasar teknis dan standar kualitas yang diharapkan di kelas. <strong>Modul 6</strong> berfokus pada hal yang sama pentingnya: <strong>bagaimana cara mengajar</strong> — struktur pelajaran Kodland yang baik dan bagaimana memberikan feedback yang membantu siswa berkembang. <strong>Modul 7</strong> menunjukkan apa yang ditinjau oleh tim Quality dalam pelajaran Graphic Design, sehingga Anda tahu seperti apa pelajaran yang sempurna. Setiap modul diakhiri dengan kuis singkat — raih skor <strong>70% atau lebih tinggi</strong> untuk membuka modul berikutnya, dan selesaikan ketujuhnya untuk mencapai Digital Skill Test.'},
     {type:'good',txt:'Sekarang saatnya untuk mulai! Buka <strong>Modul 1</strong> dan temukan apa itu desain grafis sebenarnya.'},
   ]},
  ]};
@@ -794,7 +807,7 @@ const MODULES=[
     ]},
     {t:'🎯 Menerapkannya dalam praktik',cards:[
       {type:'hi',h:'Struktur membebaskan Anda, bukan membatasi Anda',b:'Tutor baru terkadang khawatir bahwa struktur yang tetap akan membuat pelajaran terasa kaku seperti robot. Justru kebalikannya benar: begitu fase-fase itu menjadi otomatis, Anda berhenti mengkhawatirkan "selanjutnya apa?" dan memiliki seluruh perhatian Anda bebas untuk siswa — pertanyaan mereka, desain mereka, energi mereka. Struktur adalah perancah yang memungkinkan Anda benar-benar hadir.'},
-      {type:'tip',txt:'Simpan daftar periksa mandiri (atau tertulis) dari fase-fase ini untuk pelajaran-pelajaran pertama Anda. Setelah beberapa minggu ritmenya menjadi otomatis — dan dengan itu, pelatihan ini selesai: yang tersisa hanyalah menunjukkan apa yang telah Anda pelajari dalam Digital Skill Test.'},
+      {type:'tip',txt:'Simpan daftar periksa mandiri (atau tertulis) dari fase-fase ini untuk pelajaran-pelajaran pertama Anda. Setelah beberapa minggu ritmenya menjadi otomatis. Tinggal satu modul lagi sebelum Digital Skill Test: standar kualitas yang digunakan tim QA untuk meninjau pelajaran Graphic Design.'},
     ]},
    ],
    quiz:[
@@ -804,6 +817,41 @@ const MODULES=[
     {q:'Pasangan fase mana yang membentuk "siklus akuntabilitas" sepanjang sebuah pelajaran?',opts:['HW Check di awal dan HW Assignment di akhir','Warm-Up dan Lesson Goal','Theory dan Practice','Lesson Summary dan Wrap-Up'],c:0,fb:'Memeriksa pekerjaan rumah di awal dan memberikannya di akhir menutup siklus tersebut dan membangun kontinuitas antar pelajaran.'},
     {q:'Seorang tutor menyampaikan pelajaran yang lancar tetapi melakukan sebagian besar pembicaraan sementara siswa hanya menonton mereka merancang. Mengapa ini menjadi tanda peringatan?',opts:['Pelajaran yang pasif terasa lancar tetapi siswa belajar sedikit — dalam kursus desain, tangan siswa yang seharusnya berada di atas alat-alatnya','Ini bukan masalah selama materinya tercakup','Ini berarti strukturnya diikuti dengan benar','Kelancaran selalu menunjukkan pelajaran yang hebat'],c:0,fb:'Keterlibatan adalah tujuannya. Sebuah pelajaran di mana hanya tutor yang merancang adalah pelajaran di mana tidak ada yang belajar merancang — kembalikan alat-alatnya kepada siswa.'},
     {q:'Seorang tutor melewatkan Previous Lesson Revision untuk menghemat waktu. Apa biaya utamanya, secara pedagogis?',opts:['Mereka kehilangan momen retrieval — membuat siswa mengingat pembelajaran sebelumnya adalah salah satu cara terkuat untuk mengonsolidasikannya','Tidak ada masalah, selama tujuannya dinyatakan','Pekerjaan rumah tidak bisa diberikan nanti','Pelajaran akan berjalan lewat waktu'],c:0,fb:'Revision memaksa retrieval, sebuah alat memori yang kuat. Ini adalah salah satu dari dua titik pemeriksaan konsolidasi dalam struktur tersebut (yang lainnya adalah Lesson Summary).'},
+   ]
+  },
+  {id:7,emoji:'🔍',title:'Standar Kualitas: Apa yang Ditinjau QA',desc:'Apa yang diperiksa tim Quality dalam pelajaran Graphic Design — dan cara menyiapkan pelajaran yang memenuhi setiap kriteria.',obj:'Mengetahui dengan tepat apa yang dievaluasi tim Quality dalam pelajaran Graphic Design, sehingga setiap pelajaran yang Anda ajarkan memenuhi standar sejak hari pertama.',color:'#14B8A6',
+   sections:[
+    {t:'👀 Apa yang Ditinjau QA',cards:[
+      {type:'text',b:'Tim Quality meninjau pelajaran dengan <strong>6 kriteria</strong>. Penuhi keenamnya dan pelajaran Anda memenuhi standar.'},
+      {type:'checklist',badge:'QA',h:'Yang diperhatikan peninjau',items:[
+        {ic:'📖',t:'Ikuti alur cerita',d:'Siswa adalah peserta magang di Kodland Art Labs — manual menunjukkan caranya'},
+        {ic:'🧩',t:'Gunakan FigJam',d:'Jika manual menyertakan papan, gunakan secara aktif di kelas'},
+        {ic:'🖥️',t:'Mengajar dari BackOffice / Platform',d:'Hanya materi resmi — dan jangan pernah melewatkan Refleksi'},
+        {ic:'🎨',t:'Demonstrasikan dan dampingi',d:'Tunjukkan proyek langkah demi langkah; bantu dan jawab pertanyaan'},
+        {ic:'💬',t:'Umpan balik berkualitas',d:'Mulai Modul 3: jelas dan ramah — satu kekuatan + satu saran konkret'},
+        {ic:'📧',t:'Pengingat email',d:'Di Modul 5: siswa akan memerlukan akses ke email mereka'},
+      ]},
+      {type:'warn',txt:'Kesalahan paling umum: kehabisan waktu dan melewatkan <strong>Refleksi</strong>. Lindungi menit-menit terakhir setiap pelajaran.'},
+    ]},
+    {t:'✅ Contoh Nyata: Daftar Periksa M1L1',cards:[
+      {type:'text',b:'Setiap pelajaran memiliki <strong>daftar periksa AutoQA</strong> sendiri: momen-momen yang diharapkan peninjau. Berikut daftar untuk pelajaran pertama — siapkan pelajaran dengan manual terbuka di samping Anda.'},
+      {type:'checklist',badge:'M1L1',h:'Pengenalan Desain Grafis di Figma',items:[
+        {ic:'🎬',t:'Kursus dan alur cerita',d:'Program magang Kodland Art Labs — meme adalah langkah pertama'},
+        {ic:'🤝',t:'Perkenalan dan kesepakatan',d:'Siswa memperkenalkan diri dan menyepakati aturan kelas'},
+        {ic:'🖥️',t:'BackOffice dan Platform',d:'Mengajar dari BackOffice; siswa berlatih <b>Submit</b>'},
+        {ic:'🎯',t:'Tujuan pribadi',d:'Setiap siswa membagikan tujuannya di chat'},
+        {ic:'🎨',t:'Apa itu desain grafis?',d:'Contoh: gambar, teks, dan warna menyampaikan ide'},
+        {ic:'🔑',t:'Masuk ke Figma',d:'Daftar atau masuk — bantu yang mengalami kesulitan'},
+        {ic:'😂',t:'Tugas praktik: meme',d:'Demo → membuat → posting di chat → <b>Submit</b>'},
+        {ic:'🪞',t:'Refleksi dan penutup',d:'Ringkasan, kesan, PR, chat grup'},
+      ]},
+    ]},
+   ],
+   quiz:[
+    {q:'Sebuah manual pelajaran menyertakan papan FigJam, tetapi waktu Anda terbatas. Apa yang diharapkan QA?',opts:['Gunakan papan tersebut secara aktif selama pelajaran, seperti yang dijelaskan manual','Sebutkan papan tersebut dan bagikan tautannya agar siswa bisa membukanya di rumah','Ganti papan tersebut dengan slide Anda sendiri, asalkan isinya tetap sama','Lewati saja — papan FigJam hanyalah tambahan opsional yang tidak ditinjau QA'],c:0,fb:'Jika manual menyertakan papan FigJam, peninjau mengharapkan Anda menggunakannya secara aktif selama pelajaran.'},
+    {q:'Menurut kriteria QA, tahap pelajaran mana yang tidak boleh dilewatkan?',opts:['Warm-Up di awal pelajaran','HW Check di awal pelajaran','Refleksi di akhir pelajaran','Next Lesson Preview di akhir pelajaran'],c:2,fb:'Tutor mengajar dari BackOffice/Platform dan tidak melewatkan tahap Refleksi.'},
+    {q:'Apa arti "mengikuti alur cerita kursus"?',opts:['Menghubungkan teori dan praktik setiap pelajaran dengan program magang di Kodland Art Labs, seperti yang dijelaskan manual','Menceritakan kisah baru yang berbeda kepada siswa di setiap pelajaran agar mereka penasaran dengan kelanjutannya','Membacakan sejarah desain grafis dengan lantang di awal setiap pelajaran, seperti yang dijelaskan manual','Membiarkan siswa mengarang agensi desain dan klien mereka sendiri untuk setiap proyek dalam kursus'],c:0,fb:'Siswa adalah peserta magang di agensi Kodland Art Labs; manual setiap pelajaran menjelaskan cara menghubungkan teori dan praktiknya dengan cerita tersebut.'},
+    {q:'Komentar mana pada proyek siswa yang memenuhi kriteria feedback QA?',opts:['"Kerja bagus, kelihatan keren sekali! Aku suka warna-warna yang kamu pilih — pertahankan!"','"Kontras pada judulmu sudah bagus — sekarang perbesar harganya agar juga menonjol."','"Lumayan, tapi ada yang kurang. Lihat lagi dan coba perbaiki."','"Sudah sempurna, tidak perlu diubah. Ayo langsung lanjut ke bagian berikutnya."'],c:1,fb:'Feedback berkualitas itu jelas dan membangun: menyebutkan satu kekuatan dan memberikan rekomendasi konkret, dengan cara yang ramah.'},
    ]
   },
 ];
@@ -922,6 +970,10 @@ function rc(c){
   if(c.type==='video'){
     const wlink='https://www.youtube.com/watch?v='+c.id+(c.start?('&t='+c.start+'s'):'');
     return`<div class="card video-card"><h4>${c.h}</h4><a class="yt-lite" href="${wlink}" target="_blank" style="background-image:url('https://i.ytimg.com/vi/${c.id}/hqdefault.jpg')" title="${c.h}"><div class="yt-play"></div></a><a class="video-link" href="${wlink}" target="_blank">▶ Watch on YouTube →</a><div class="video-note" style="font-size:11px;color:var(--text-muted);margin-top:4px">Catatan: Jika video dimuat dalam bahasa Inggris, aktifkan teks atau fitur terjemahan otomatis dan pilih bahasa pilihan Anda.</div></div>`;
+  }
+  if(c.type==='checklist'){
+    const li=c.items.map((i,n)=>`<li class="ck-i"><span class="ck-n">${n+1}</span><span class="ck-ic">${i.ic}</span><span class="ck-tx"><b>${i.t}</b><small>${i.d}</small></span></li>`).join('');
+    return`<div class="ck"><div class="ck-h"><span class="ck-badge">${c.badge}</span><span class="ck-ht">${c.h}</span></div><ol class="ck-l">${li}</ol></div>`;
   }
   if(c.type==='list'){
     const tag=c.ordered?'ol':'ul';
