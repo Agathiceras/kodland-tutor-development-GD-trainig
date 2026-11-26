@@ -163,6 +163,19 @@
     if (b){ e.preventDefault(); e.stopPropagation(); var go = G.lock && G.lock.querySelector('button'); if (go) go.click(); }
   }, true);
 
+  // Clicks inside cross-origin iframes (Drive/YouTube players) never reach the document:
+  // when the window loses focus to an iframe, count that iframe as opened.
+  window.addEventListener('blur', function(){
+    setTimeout(function(){
+      var a = document.activeElement;
+      if (!G || !a || a.tagName !== 'IFRAME') return;
+      G.items.forEach(function(it){
+        if (it.el === a && !G.done[it.key]){ G.done[it.key] = 1; save(); }
+      });
+      tick();
+    }, 0);
+  });
+
   // Read by engines that pass a reading module as soon as it opens (the Refunds engine):
   // true = hold it, the gate will pass it when everything is open.
   window.TD_GATE_HOLD = function(id){ return !!(G && G.id === id && !G.finished) || window.__tdgOpening === id; };
