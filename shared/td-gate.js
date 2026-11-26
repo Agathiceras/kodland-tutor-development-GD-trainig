@@ -132,6 +132,17 @@
     // started a video / simulation: the focus is inside its frame
     var a = document.activeElement;
     if (a && a.tagName === 'IFRAME') G.items.forEach(function(it){ if (it.el === a && !G.done[it.key]){ G.done[it.key] = 1; save(); } });
+    // Cross-origin players (Drive/YouTube iframes): focus detection is unreliable (Safari, mobile, Drive),
+    // so an iframe also counts as opened once it has stayed mostly in view for 3 seconds.
+    G.seen = G.seen || {};
+    var vh = window.innerHeight || document.documentElement.clientHeight, now = Date.now();
+    G.items.forEach(function(it){
+      if (it.el.tagName !== 'IFRAME' || G.done[it.key]) return;
+      var r = it.el.getBoundingClientRect(), shown = r.height > 0 ? (Math.min(r.bottom, vh) - Math.max(r.top, 0)) / r.height : 0;
+      if (shown < 0.6){ delete G.seen[it.key]; return; }
+      if (!G.seen[it.key]) G.seen[it.key] = now;
+      else if (now - G.seen[it.key] >= 3000){ G.done[it.key] = 1; save(); }
+    });
     var p = pending(), n = p.length + (G.done.end ? 0 : 1);
     var btns = G.root.querySelectorAll(G.cta);
     if (n === 0){
