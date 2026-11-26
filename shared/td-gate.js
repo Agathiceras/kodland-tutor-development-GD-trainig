@@ -63,6 +63,7 @@
     var out = [];
     CLICK.forEach(function(sel, si){
       root.querySelectorAll(sel).forEach(function(el, i){
+        if (sel === '.video-card' && el.querySelector('iframe')) return;   // ← LÍNEA NUEVA: las tarjetas con iframe se cuentan por el iframe (abajo)
         out.push({ key:'c' + si + '-' + i, el:el, show:sel === 'summary' ? el.parentNode : el,
           auto:function(){
             if (el.getAttribute('aria-pressed') === 'true') return true;
